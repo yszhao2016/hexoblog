@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="一、服务器环境     192.168.100.230 web服务器     192.168.100.20  备份服务器 （rsync服务端）  二、备份服务器安装 rsync 服务端     rpm -qa|grep rsync    &#x2F;&#x2F;检查是否安装 rsync          yum install -y rsync          vim &#x2F;etc&#x2F;rsyncd.conf   &#x2F;&#x2F;编辑">
+<meta name="description" content="一、服务器环境    192.168.100.230 web服务器     192.168.100.20  备份服务器 （rsync服务端）  二、备份服务器安装 rsync 服务端rpm -qa|grep rsync    &#x2F;&#x2F;检查是否安装 rsync  yum install -y rsync  vim &#x2F;etc&#x2F;rsyncd.conf   &#x2F;&#x2F;编辑rsyncd服务  rsyncd.conf配">
 <meta property="og:type" content="article">
 <meta property="og:title" content="web备份方案">
 <meta property="og:url" content="http://example.com/2021/12/23/web%E5%A4%87%E4%BB%BD%E6%96%B9%E6%A1%88/index.html">
 <meta property="og:site_name" content="yszhao的博客">
-<meta property="og:description" content="一、服务器环境     192.168.100.230 web服务器     192.168.100.20  备份服务器 （rsync服务端）  二、备份服务器安装 rsync 服务端     rpm -qa|grep rsync    &#x2F;&#x2F;检查是否安装 rsync          yum install -y rsync          vim &#x2F;etc&#x2F;rsyncd.conf   &#x2F;&#x2F;编辑">
+<meta property="og:description" content="一、服务器环境    192.168.100.230 web服务器     192.168.100.20  备份服务器 （rsync服务端）  二、备份服务器安装 rsync 服务端rpm -qa|grep rsync    &#x2F;&#x2F;检查是否安装 rsync  yum install -y rsync  vim &#x2F;etc&#x2F;rsyncd.conf   &#x2F;&#x2F;编辑rsyncd服务  rsyncd.conf配">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-12-23T12:33:32.000Z">
-<meta property="article:modified_time" content="2021-12-23T12:34:00.347Z">
+<meta property="article:modified_time" content="2021-12-30T13:22:55.402Z">
 <meta property="article:author" content="yszhao">
 <meta name="twitter:card" content="summary">
 
@@ -309,54 +309,32 @@
       
 
       
-        <p>一、服务器环境</p>
-<pre><code>    192.168.100.230 web服务器
+        <h2 id="一、服务器环境"><a href="#一、服务器环境" class="headerlink" title="一、服务器环境"></a>一、服务器环境</h2><pre><code>    192.168.100.230 web服务器
     192.168.100.20  备份服务器 （rsync服务端）
 </code></pre>
-<p>二、备份服务器安装 rsync 服务端</p>
-<pre><code>    rpm -qa|grep rsync    //检查是否安装 rsync
-    
-    yum install -y rsync
-    
-    vim /etc/rsyncd.conf   //编辑rsyncd服务
-    
-    #rsyncd.conf start
-    uid = rsync                                
-    gid = rsync
-    use chroot=no
-    max connections=200
-    timeout = 300
-    pid file = /var/run/rsyncd.pid
-    lock file = /var/run/rsyncd.lock
-    log file = /var/log/rsyncd.log
-    ignore errors
-    read only = false
-    list = false 
-    hosts allow = 172.16.1.0/24
-    #hosts deny = 0.0.0.0/32
-    auth users = rsync_backup
-    secrets file = /etc/rsync.password
-    fake super = yes
-    [backup]
-    comment = &quot;backup dir by oldboy&quot;
-    path = /home/backup  #备份的目录
-    
-    
-    创建rsync 服务管理用户
-    useradd -s /sbin/nologin -M rsync
-    
-    创建数据备份存储目录
-    chown -R rsyn.rsync /home/backup
-    
-    创建认证用户密码文件
-    echo &quot;rsync_backup:admin.123!@#$&quot;  &gt;/etc/rsync.password
-    chmod 600 /etc/rsync.password
-    
-    启动rsync服务
-    systemctl start rsyncd
+<h2 id="二、备份服务器安装-rsync-服务端"><a href="#二、备份服务器安装-rsync-服务端" class="headerlink" title="二、备份服务器安装 rsync 服务端"></a>二、备份服务器安装 rsync 服务端</h2><pre><code>rpm -qa|grep rsync    //检查是否安装 rsync
+
+yum install -y rsync
+
+vim /etc/rsyncd.conf   //编辑rsyncd服务
+
+rsyncd.conf配置文件如下
 </code></pre>
-<p>二、配置web 服务器端（192.168.100.230）</p>
-<pre><code>    确认 rsync是否安装
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#rsyncd.conf start</span><br><span class="line">uid = rsync                                </span><br><span class="line">gid = rsync</span><br><span class="line">use chroot=no</span><br><span class="line">max connections=200</span><br><span class="line">timeout = 300</span><br><span class="line">pid file = /var/run/rsyncd.pid</span><br><span class="line">lock file = /var/run/rsyncd.lock</span><br><span class="line">log file = /var/log/rsyncd.log</span><br><span class="line">ignore errors</span><br><span class="line">read only = false</span><br><span class="line">list = false </span><br><span class="line">hosts allow = 172.16.1.0/24</span><br><span class="line">#hosts deny = 0.0.0.0/32</span><br><span class="line">auth users = rsync_backup</span><br><span class="line">secrets file = /etc/rsync.password</span><br><span class="line">fake super = yes</span><br><span class="line">[backup]</span><br><span class="line">comment = &quot;backup dir by oldboy&quot;</span><br><span class="line">path = /home/backup  </span><br><span class="line">#备份的目录</span><br></pre></td></tr></table></figure>
+<pre><code>创建rsync 服务管理用户
+useradd -s /sbin/nologin -M rsync
+
+创建数据备份存储目录
+chown -R rsyn.rsync /home/backup
+
+创建认证用户密码文件
+echo &quot;rsync_backup:admin.123!@#$&quot;  &gt;/etc/rsync.password
+chmod 600 /etc/rsync.password
+
+启动rsync服务
+systemctl start rsyncd       
+</code></pre>
+<h2 id="三、配置web-服务器端（192-168-100-230）"><a href="#三、配置web-服务器端（192-168-100-230）" class="headerlink" title="三、配置web 服务器端（192.168.100.230）"></a>三、配置web 服务器端（192.168.100.230）</h2><pre><code>    确认 rsync是否安装
         rpm -qa|grep rsync
     
     建立认证文件
@@ -371,17 +349,18 @@
         非交互式：rsync -avz /etc/hosts  rsync_backup@172.16.1.41::backup --password-file=/etc/rsync.password
         
         
-     shell 脚本   
-        
-        #!/bin/bash
-        objectFilename=(&#39;文件夹名称&#39;);
-        sourcePath=&#39;/apps/web/&#39;;
-        for(( i=0;i&lt;$&#123;#objectFilename[@]&#125;;i++)) 
-        do 
-                tar zcf /home/backup/web/source/$&#123;objectFilename[i]&#125;-$(date +%Y-%m-%d).tar.gz -C $&#123;sourcePath&#125; $&#123;objectFilename[i]&#125;; 
-                rsync -avz /home/backup/web/source/  rsync_backup@192.168.100.20::backup --password-file=/etc/rsync.password
-                rm -rf /home/backup/web/source/$&#123;objectFilename[i]&#125;-$(date +%Y-%m-%d).tar.gz
-        done;
+    shell 脚本
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">objectFilename=(&#x27;文件夹名称&#x27;);</span><br><span class="line">sourcePath=&#x27;/apps/web/&#x27;;</span><br><span class="line">for(( i=0;i&lt;$&#123;#objectFilename[@]&#125;;i++)) </span><br><span class="line">do </span><br><span class="line">    tar zcf /home/backup/web/source/$&#123;objectFilename[i]&#125;-$(date +%Y-%m-%d).tar.gz -C $&#123;sourcePath&#125; $&#123;objectFilename[i]&#125;; </span><br><span class="line">    rsync -avz /home/backup/web/source/  rsync_backup@192.168.100.20::backup --password-file=/etc/rsync.password</span><br><span class="line">    rm -rf /home/backup/web/source/$&#123;objectFilename[i]&#125;-$(date +%Y-%m-%d).tar.gz</span><br><span class="line">done;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、注意事项"><a href="#四、注意事项" class="headerlink" title="四、注意事项"></a>四、注意事项</h2><pre><code>特殊情况 总是提示权限问题修改 服务端
+
+    uid = root                                
+    gid = root
+    fake super = no
+
+
+脚本备份大文件有问题
 </code></pre>
 
       
@@ -416,6 +395,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/01/01/webpack%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" rel="prev" title="webpack学习笔记1">
+                webpack学习笔记1 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -467,8 +450,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -483,7 +475,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -511,6 +503,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">一、服务器环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%A4%87%E4%BB%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85-rsync-%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="nav-number">2.</span> <span class="nav-text">二、备份服务器安装 rsync 服务端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%85%8D%E7%BD%AEweb-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%EF%BC%88192-168-100-230%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">三、配置web 服务器端（192.168.100.230）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">4.</span> <span class="nav-text">四、注意事项</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -524,7 +532,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

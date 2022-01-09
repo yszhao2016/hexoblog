@@ -24,7 +24,27 @@ hexo g        //完整命令  hexo generate
 ```
 将会在public目录生成相应的html文件
 
-5.
+5.开启本地测试环境
+``` bash
+hexo s        //完整命令  hexo server
+```
+    http://loaclhost:4000就可以访问了
+
+
+6.发布代码到github.io
+    
+    配置修改_config.yml文件
+```
+deploy:
+  type: 'git'
+  repo: https://github.com/github账号名称/github账号名称.github.io
+  branch: master
+```
+``` bash
+hexo d       //发布到线上  hexo generate
+```
+
+
 
 
 

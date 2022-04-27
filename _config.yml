@@ -107,7 +107,6 @@ theme: next
 deploy:
   type: 'git'
   repo: https://github.com/yszhao2016/yszhao2016.github.io
-  branch: master	
-
+  branch: master
 
 

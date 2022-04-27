@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hexo基础应用</title>
+    <url>/2021/12/10/Hexo%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<p>1.首先安装node,具体参考<a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
+<p>2.初始化 项目</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
+<p>将会在当前目录下产生blog文件夹</p>
+<p>3.新建文章</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo n 文章标题  //完整命令 hexo new 文章标题</span><br></pre></td></tr></table></figure>
+<p>相应会在source/_posts 目录下产生   文章标题.md</p>
+<p>4.生成html</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g        //完整命令  hexo generate</span><br></pre></td></tr></table></figure>
+<p>将会在public目录生成相应的html文件</p>
+<p>5.开启本地测试环境</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo s        //完整命令  hexo server</span><br></pre></td></tr></table></figure>
+<pre><code>http://loaclhost:4000就可以访问了
+</code></pre>
+<p>6.发布代码到github.io</p>
+<pre><code>配置修改_config.yml文件
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: &#x27;git&#x27;</span><br><span class="line">  repo: https://github.com/github账号名称/github账号名称.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo d       //发布到线上  hexo generate</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title>git总结</title>
+    <url>/2022/01/08/git%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<p> #标签</p>
+<ul>
+<li><p>git</p>
+<h1 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h1><p>  工作区(workspace)      就是你平时存放项目代码的地方<br>  暂存区(stage)          git add<br>  仓库区/版本库(Repository)     git commit<br>  远程仓库</p>
+</li>
+</ul>
+<h1 id="二、回退问题"><a href="#二、回退问题" class="headerlink" title="二、回退问题"></a>二、回退问题</h1><h2 id="1-git-add-后回退"><a href="#1-git-add-后回退" class="headerlink" title="1.git add 后回退"></a>1.git add 后回退</h2><pre><code>git status 先看一下add 中的文件
+git reset HEAD 如果后面什么都不跟的话 就是上一次add 里面的全部撤销了
+git reset HEAD XXX/XXX/XXX.java 就是对某个文件进行撤销了
+</code></pre>
+<h2 id="2-git-commit后回退"><a href="#2-git-commit后回退" class="headerlink" title="2.git commit后回退"></a>2.git commit后回退</h2><pre><code>git log    命令显示从最近到最远的提交日志
+
+    [root@localhost test-jenkins]# git log
+    commit e2c7f2d567cbdc36e4503479e15ea51d19816d33
+    Author: root &lt;root@localhost.localdomain&gt;
+    Date:   Fri Jan 7 11:17:27 2022 +0800
+
+    dev branch change
+
+    commit 8943166480734ac5a760e482a887ee8da0140ec8
+    Author: root &lt;root@localhost.localdomain&gt;
+    Date:   Fri Jan 7 10:56:22 2022 +0800
+
+    dev branch add index.php
+    。。。。
+
+git reest --hard  commit_id
+                  上一个版本就是HEAD^，
+                  上上一个版本就是HEAD^^，
+                  当然往上100个版本写100个^比较容易数不过来，
+                  所以写成HEAD~100。
+例：
+    git reset --hard 139dcfaa558e3276b30b6b2e5cbbb9c00bbdca96
+    git reset --hard HEAD^
+
+将会删除此版本之前添加
+
+强制push到对应的远程分支（如提交到develop分支）
+git push -f -u origin develop
+</code></pre>
+<h2 id="3-回退后悔药"><a href="#3-回退后悔药" class="headerlink" title="3.回退后悔药"></a>3.回退后悔药</h2><pre><code>git reflog用来记录你的每一次命令
+[root@localhost test-jenkins]# git reflog
+8943166 HEAD@&#123;0&#125;: reset: moving to 8943166480734ac5a760e482a887ee8da0140ec8
+e2c7f2d HEAD@&#123;1&#125;: commit: dev branch change
+8943166 HEAD@&#123;2&#125;: commit: dev branch add index.php
+1ca6f06 HEAD@&#123;3&#125;: checkout: moving from release to dev
+1ca6f06 HEAD@&#123;4&#125;: pull origin release: Fast-forward
+14fbb47 HEAD@&#123;5&#125;: checkout: moving from master to release
+14fbb47 HEAD@&#123;6&#125;: clone: from ssh://git@117.89.131.220:44222/zhaoyoushui/test-jenkins.git
+
+git reset --hard e2c7f2d
+</code></pre>
+<h2 id="4-已经提交远程分支"><a href="#4-已经提交远程分支" class="headerlink" title="4.已经提交远程分支"></a>4.已经提交远程分支</h2><pre><code>git reset 方法回退
+拉过的错误版本的本地分支  多需要回退
+回退  强制推送  远程
+
+git revert 版本号
+git revert HEAD 上个版本
+git revert HEAD~n 上n个版本
+git push 远程
+其他客户端正常拉取就可以
+</code></pre>
+<h1 id="三、Git-Reset-三种模式"><a href="#三、Git-Reset-三种模式" class="headerlink" title="三、Git Reset 三种模式"></a>三、Git Reset 三种模式</h1><pre><code>--hard: 会清空工作目录和暂存区的改动
+--soft：保留工作目录，并把重置 HEAD 所带来的新的差异放进暂存区  **变得只是仓库区**
+--mixed reset 不加参数(mixed)：保留工作目录，并清空暂存区
+</code></pre>
+<h1 id="四、修改远程url"><a href="#四、修改远程url" class="headerlink" title="四、修改远程url"></a>四、修改远程url</h1><pre><code>1.方法一
+    git remote set-url origin [url]
+    git remote -v 查看
+
+2.方法二
+    git remote rm origin
+    git remote add origin [url]
+    git remote -v 查看
+
+3.方法三
+    直接修改config 文件
+</code></pre>
+]]></content>
+  </entry>
+  <entry>
+    <title>搭建git服务（适用小团队开发）</title>
+    <url>/2022/04/13/git-server/</url>
+    <content><![CDATA[<p> #标签</p>
+<ul>
+<li><p>git<br>#添加账号<br>  useradd git </p>
+<p>  useradd -g git test<br>  passwd test</p>
+<p>  cd /home/git/<br>#创建项目<br>  git init –bare 项目名称.git</p>
+</li>
+</ul>
+<p>#配置权限<br>    cd /home/git/项目名称.git</p>
+<pre><code>git config core.sharedRepository 0770
+</code></pre>
+<p>第二种方法 公钥 方法</p>
+]]></content>
+      <categories>
+        <category>server</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>JS模块化</title>
+    <url>/2022/02/26/js%E6%A8%A1%E5%9D%97%E5%8C%96/</url>
+    <content><![CDATA[<h2 id="CommonJs规范简"><a href="#CommonJs规范简" class="headerlink" title="CommonJs规范简"></a>CommonJs规范简</h2><pre><code>前端模块化
+
+最初是服务于服务端的 但它的载体是前端语言 JavaScript
+commonjs 随着 nodejs 的诞生而面世，主要是用来解决服务端模块化的问题
+Node.js 应用由模块组成，每个文件就是一个模块，有自己的作用域。
+在一个文件里面定义的变量、函数、类，都是私有的，对其他文件不可见
+
+ CommonJS 规范的模块时，无外乎就是使用了 require 、 exports 、 module 三个东西，
+ 然后一个 js 文件就是一个模块
+ 
+ 弊端require 多个文件  网络加载问题
+</code></pre>
+<h3 id="require"><a href="#require" class="headerlink" title="require"></a>require</h3><pre><code>用来加载某个模块
+</code></pre>
+<h3 id="module"><a href="#module" class="headerlink" title="module"></a>module</h3><pre><code>module 代表当前模块，是一个对象，保存了当前模块的信息
+exports 是 module 上的一个属性，保存了当前模块要导出的接口或者变量，
+使用 require 加载的某个模块获取到的值就是那个模块使用 exports 导出的值
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// a.js</span><br><span class="line">var name = &#x27;morrain&#x27;</span><br><span class="line">var age = 18</span><br><span class="line">module.exports.name = name</span><br><span class="line">module.exports.getAge = function()&#123;</span><br><span class="line">    return age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//b.js</span><br><span class="line">var a = require(&#x27;a.js&#x27;)</span><br><span class="line">console.log(a.name) // &#x27;morrain&#x27;</span><br><span class="line">console.log(a.getAge())// 18</span><br></pre></td></tr></table></figure>
+
+<h3 id="exports"><a href="#exports" class="headerlink" title="exports"></a>exports</h3><pre><code>为了方便，Node.js 在实现 CommonJS 规范时，为每个模块提供一个 exports的私有变量
+为每个模块提供一个 exports的私有变量，指向 module.exports
+你可以理解为 Node.js 在每个模块开始的地方，添加了如下这行代码。
+
+exports 是模块内的私有局部变量，它只是指向了 module.exports
+所以直接对 exports 赋值是无效的
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//a.js</span><br><span class="line">var name = &#x27;test&#x27;</span><br><span class="line">var age = 18</span><br><span class="line">exports.name = name</span><br><span class="line">exports.getAge = function()&#123;</span><br><span class="line">    return age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//b.js</span><br><span class="line"></span><br><span class="line">a = require(&#x27;a.js&#x27;)</span><br><span class="line">console.log(a.name)</span><br><span class="line">a.name</span><br></pre></td></tr></table></figure>
+<h2 id="AMD-Asynchronous-Module-Definition-异步模块定义-require-js"><a href="#AMD-Asynchronous-Module-Definition-异步模块定义-require-js" class="headerlink" title="AMD(Asynchronous Module Definition 异步模块定义)   require.js"></a>AMD(Asynchronous Module Definition 异步模块定义)   require.js</h2><pre><code>　　（1）实现js文件的异步加载，避免网页失去响应；
+
+　　（2）管理模块之间的依赖性，便于代码的编写和维护。
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">define(id?, dependencies?, factory)</span><br><span class="line"></span><br><span class="line">id：可选参数，用来定义模块的标识，如果没有提供该参数，就使用 js 文件名（去掉拓展名）对于一个 js 文件只定义了一个模块时，这个参数是可以省略的</span><br><span class="line"></span><br><span class="line">dependencies：可选参数，是一个数组，表示当前模块的依赖，如果没有依赖可以不传</span><br><span class="line"></span><br><span class="line">factory：工厂方法，模块初始化要执行的函数或对象。如果为函数，它应该只被执行一次，返回值便是模块要导出的值。</span><br><span class="line">如果是对象，此对象应该为模块的输出值</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// a.js</span><br><span class="line">define(function()&#123;</span><br><span class="line">    var name = &#x27;morrain&#x27;</span><br><span class="line">    var age = 18</span><br><span class="line">    return &#123;</span><br><span class="line">        name,</span><br><span class="line">        getAge: () =&gt; age</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">// b.js</span><br><span class="line">define([&#x27;a.js&#x27;], function(a)&#123;</span><br><span class="line">    var name = &#x27;lilei&#x27;</span><br><span class="line">    var age = 15</span><br><span class="line">    console.log(a.name) // &#x27;morrain&#x27;</span><br><span class="line">    console.log(a.getAge()) // 18</span><br><span class="line">    return &#123;</span><br><span class="line">        name,</span><br><span class="line">        getAge: () =&gt; age</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="CMD-Common-Module-Definition-Sea-js"><a href="#CMD-Common-Module-Definition-Sea-js" class="headerlink" title="CMD (Common Module Definition)  Sea.js"></a>CMD (Common Module Definition)  Sea.js</h2><pre><code> Sea.js
+ 
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script src=&quot;sea.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;b.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">// a.js</span><br><span class="line">define(function(require, exports, module)&#123;</span><br><span class="line">    var name = &#x27;morrain&#x27;</span><br><span class="line">    var age = 18</span><br><span class="line"></span><br><span class="line">    exports.name = name</span><br><span class="line">    exports.getAge = () =&gt; age</span><br><span class="line">&#125;)</span><br><span class="line">// b.js</span><br><span class="line">define(function(require, exports, module)&#123;</span><br><span class="line">    var name = &#x27;lilei&#x27;</span><br><span class="line">    var age = 15</span><br><span class="line">    var a = require(&#x27;a.js&#x27;)</span><br><span class="line"></span><br><span class="line">    console.log(a.name) // &#x27;morrain&#x27;</span><br><span class="line">    console.log(a.getAge()) //18</span><br><span class="line"></span><br><span class="line">    exports.name = name</span><br><span class="line">    exports.getAge = () =&gt; age</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="ES6-Moudule"><a href="#ES6-Moudule" class="headerlink" title="ES6 Moudule"></a>ES6 Moudule</h2>]]></content>
+  </entry>
+  <entry>
+    <title>搭建lnmp环境</title>
+    <url>/2022/04/13/make-lnmp/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>搭建 mysql_server</title>
+    <url>/2022/04/17/mysql-server/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>server</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>搭建 nginx_server</title>
+    <url>/2022/04/17/nginx-server/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>server</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>搭建php环境</title>
+    <url>/2022/04/17/php/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>通过vsftpd搭建ftp服务器</title>
+    <url>/2022/04/15/vsftpd-server/</url>
+    <content><![CDATA[<p>1.yum 安装</p>
+<pre><code>yum install vsftpd
+</code></pre>
+<p>2.编译安装</p>
+<pre><code>yum -y install epel-release &amp;&amp; yum -y install pam pam-devel db4-utils
+wget https://security.appspot.com/downloads/vsftpd-3.0.5.tar.gz
+
+tar xf vsftpd-3.0.3.tar.gz
+
+make clean &amp;&amp; make -j 4 &amp;&amp; make install
+
+
+如果编译的时候报错
+/usr/bin/ld: cannot find -lcap
+查找该 .so 文件
+find / -name &quot;*libcap.so*&quot;
+/usr/lib64/libcap.so.2.22
+/usr/lib64/libcap.so.2
+ln -sv /usr/lib64/libcap.so.2 /usr/lib64/libcap.so
+</code></pre>
+<ol start="3">
+<li>/etc/vsftpd/vsftp.conf  配置文件<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#关闭匿名访问</span><br><span class="line">anonymous_enable=NO    </span><br><span class="line">local_enable=YES</span><br><span class="line">#启用虚拟账户</span><br><span class="line">guest_enable=YES</span><br><span class="line">##把虚拟账户映射到系统账户virftp</span><br><span class="line">guest_username=virftp</span><br><span class="line">##使用虚拟用户验证（PAM验证）</span><br><span class="line">pam_service_name=vsftpd</span><br><span class="line">#设置存放各虚拟用户配置文件的目录（此目录下与虚拟用户名相同的文件为他的配置文件）</span><br><span class="line">user_config_dir=/etc/vsftpd/vsftpd_viruser</span><br><span class="line">##启用chroot时，虚拟用户根目录允许写入</span><br><span class="line">allow_writeable_chroot=YES</span><br><span class="line"></span><br><span class="line"># Uncomment this to enable any form of FTP write command.</span><br><span class="line">write_enable=YES</span><br><span class="line">#</span><br><span class="line"># Default umask for local users is 077. You may wish to change this to 022,</span><br><span class="line"># if your users expect that (022 is used by most other ftpd&#x27;s)</span><br><span class="line">local_umask=022</span><br><span class="line">listen_port=10021</span><br><span class="line">ftp_data_port=10020</span><br><span class="line"></span><br><span class="line">#被动模式 配置</span><br><span class="line">pasv_enable=YES</span><br><span class="line">pasv_min_port=20000</span><br><span class="line">pasv_max_port=2001Z </span><br><span class="line"># 可以发送消息当访问某个目录时</span><br><span class="line">dirmessage_enable=YES</span><br><span class="line"># 开启上传下载记录</span><br><span class="line">xferlog_enable=YES</span><br><span class="line"># 日志标准输出</span><br><span class="line">xferlog_std_format=YES</span><br><span class="line"></span><br><span class="line">connect_from_port_20=YES</span><br><span class="line">#监听ipv4</span><br><span class="line">listen=NO</span><br><span class="line"># 监听IPv6和监听IPv4</span><br><span class="line">listen_ipv6=YES</span><br><span class="line"></span><br><span class="line">userlist_enable=YES</span><br><span class="line"># 访问控制</span><br><span class="line">tcp_wrappers=YES</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>server</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>webpack学习笔记1</title>
+    <url>/2022/01/01/webpack%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/</url>
+    <content><![CDATA[<p>#1. webpack 安装</p>
+<pre><code>全局安装 nodejs
+    验证  node -v
+          npm -v
+npm install webpack -g
+npm install webpack-cli -g
+正常情况下 安装webpack-cli 会自动安装webpack
+npm uninstall webpack -g 全局卸载
+
+单独项目内安装
+npm install webpack webpack-cli --save-dev
+或者
+npm install webpack webpack-cli -D
+
+运行npx webpack -v   //注 npx 会在node_module文件夹中找
+
+安装特定版本
+npm info webpack   //查看webpack有那些版本
+npm install webpack@4.16.5 webpack-cli -D
+</code></pre>
+<p>#2.webpack 基本使用</p>
+<pre><code>npm init    增加package.json文件
+npm init -y
+</code></pre>
+<p>#3.一些语法</p>
+<pre><code>ES Module 模块引入方式
+</code></pre>
+]]></content>
+  </entry>
+  <entry>
+    <title>web备份方案</title>
+    <url>/2021/12/23/web%E5%A4%87%E4%BB%BD%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<h2 id="一、服务器环境"><a href="#一、服务器环境" class="headerlink" title="一、服务器环境"></a>一、服务器环境</h2><pre><code>    192.168.100.230 web服务器
+    192.168.100.20  备份服务器 （rsync服务端）
+</code></pre>
+<h2 id="二、备份服务器安装-rsync-服务端"><a href="#二、备份服务器安装-rsync-服务端" class="headerlink" title="二、备份服务器安装 rsync 服务端"></a>二、备份服务器安装 rsync 服务端</h2><pre><code>rpm -qa|grep rsync    //检查是否安装 rsync
+
+yum install -y rsync
+
+vim /etc/rsyncd.conf   //编辑rsyncd服务
+
+rsyncd.conf配置文件如下
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#rsyncd.conf start</span><br><span class="line">uid = rsync                                </span><br><span class="line">gid = rsync</span><br><span class="line">use chroot=no</span><br><span class="line">max connections=200</span><br><span class="line">timeout = 300</span><br><span class="line">pid file = /var/run/rsyncd.pid</span><br><span class="line">lock file = /var/run/rsyncd.lock</span><br><span class="line">log file = /var/log/rsyncd.log</span><br><span class="line">ignore errors</span><br><span class="line">read only = false</span><br><span class="line">list = false </span><br><span class="line">hosts allow = 172.16.1.0/24</span><br><span class="line">#hosts deny = 0.0.0.0/32</span><br><span class="line">auth users = rsync_backup</span><br><span class="line">secrets file = /etc/rsync.password</span><br><span class="line">fake super = yes</span><br><span class="line">[backup]</span><br><span class="line">comment = &quot;backup dir by oldboy&quot;</span><br><span class="line">path = /home/backup  </span><br><span class="line">#备份的目录</span><br></pre></td></tr></table></figure>
+<pre><code>创建rsync 服务管理用户
+useradd -s /sbin/nologin -M rsync
+
+创建数据备份存储目录
+chown -R rsyn.rsync /home/backup
+
+创建认证用户密码文件
+echo &quot;rsync_backup:admin.123!@#$&quot;  &gt;/etc/rsync.password
+chmod 600 /etc/rsync.password
+
+启动rsync服务
+systemctl start rsyncd       
+</code></pre>
+<h2 id="三、配置web-服务器端（192-168-100-230）"><a href="#三、配置web-服务器端（192-168-100-230）" class="headerlink" title="三、配置web 服务器端（192.168.100.230）"></a>三、配置web 服务器端（192.168.100.230）</h2><pre><code>    确认 rsync是否安装
+        rpm -qa|grep rsync
+    
+    建立认证文件
+    
+        echo &quot;密码字符串（与rsync一致）&quot;  &gt;/etc/rsync.password
+        chmod 600 /etc/rsync.password
+    
+    web01主机数据传输到backup主机测试测试传输
+    
+        Push: rsync [OPTION...] SRC... [USER@]HOST::DEST
+        交互式：rsync -avz /etc/hosts  rsync_backup@172.16.1.41::backup
+        非交互式：rsync -avz /etc/hosts  rsync_backup@172.16.1.41::backup --password-file=/etc/rsync.password
+        
+        
+    shell 脚本
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">objectFilename=(&#x27;文件夹名称&#x27;);</span><br><span class="line">sourcePath=&#x27;/apps/web/&#x27;;</span><br><span class="line">for(( i=0;i&lt;$&#123;#objectFilename[@]&#125;;i++)) </span><br><span class="line">do </span><br><span class="line">    tar zcf /home/backup/web/source/$&#123;objectFilename[i]&#125;-$(date +%Y-%m-%d).tar.gz -C $&#123;sourcePath&#125; $&#123;objectFilename[i]&#125;; </span><br><span class="line">    rsync -avz /home/backup/web/source/  rsync_backup@192.168.100.20::backup --password-file=/etc/rsync.password</span><br><span class="line">    rm -rf /home/backup/web/source/$&#123;objectFilename[i]&#125;-$(date +%Y-%m-%d).tar.gz</span><br><span class="line">done;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、注意事项"><a href="#四、注意事项" class="headerlink" title="四、注意事项"></a>四、注意事项</h2><pre><code>特殊情况 总是提示权限问题修改 服务端
+
+    uid = root                                
+    gid = root
+    fake super = no
+
+
+脚本备份大文件有问题
+</code></pre>
+]]></content>
+  </entry>
+  <entry>
+    <title>普通心理学笔记1</title>
+    <url>/2021/12/21/%E6%99%AE%E9%80%9A%E5%BF%83%E7%90%86%E5%AD%A6%E7%AC%94%E8%AE%B01/</url>
+    <content><![CDATA[<p>#心理学</p>
+<pre><code>心理学研究行为和心理过程
+一门多个专业领域的的科学
+</code></pre>
+<p>#心理学三大分支</p>
+<pre><code>实验心理学 
+    实验心理学家 最少的
+心理学教学
+    心理学教师
+应用心理学
+    工业与组织心理学家
+    运动心里学家
+    学校心理学家
+    临床和咨询心理学家
+    法医心理学家
+    环境心理学家
+</code></pre>
+<p>#心理学与精神病学区别</p>
+<pre><code>精神病学是医学 接受过治疗精神与行为疾病的训练
+具有开具处方的执照
+从医学角度看问题
+
+心理学关注更为广泛 人类的行为和心理过程
+大脑功能到社会交往
+心里健康到心理障碍
+心理学角度 来访者
+</code></pre>
+<p>#批判性思考技巧</p>
+<pre><code>1.其来源出自哪里 问题的来源
+
+    提出问题的人 是否擅长啊
+    由于什么原因 提出了这个问题
+
+2.这个观点是合理的还是极端的
+
+3.证据是什么
+
+4.是否有影响结论的偏差
+    验证性偏差 只记得验证成功的那一面
+
+5.推理是否避开了常见谬误
+    避免 常识
+
+6.看待这个问题是否需要多种角度
+</code></pre>
+]]></content>
+      <categories>
+        <category>心理学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>普通心理学笔记2</title>
+    <url>/2021/12/21/%E6%99%AE%E9%80%9A%E5%BF%83%E7%90%86%E5%AD%A6%E7%AC%94%E8%AE%B02/</url>
+    <content><![CDATA[<h1 id="现代心理学6个视角"><a href="#现代心理学6个视角" class="headerlink" title="现代心理学6个视角"></a>现代心理学6个视角</h1><pre><code>起源：古希腊哲学家 苏格拉底 柏拉图 亚里士多德 意识和疯癫的理解
+亚洲和非洲 瑜伽和佛教 探索意识 通过冥想控制意识
+天主教
+1.生物视角
+    
+    大脑、神经系统、内分泌系统（激素）和基因        笛卡尔
+
+2.认知视角
+
+    每个人有各自的知觉模式、解释、预期、信念和记忆   威廉。冯特 威廉詹姆斯     
+    
+3.行为视角
+    
+    环境的刺激和先前行为的结果                   约翰。华生 斯金纳
+
+4.全人视角                                   弗洛伊德 古希腊   
+    
+    心理动力：无意识心理的过程
+    人本主义
+    特质和气质：
+
+5.发展视角                                   安斯沃思
+
+    遗传和环境的交互作用，在毕生发展中塑造
+    
+6.社会文化视角                                津巴多
+    
+    环境的影响。社会和文化比其他因素更能决定行为
+</code></pre>
+<p>笛卡尔 精神和肉体是分离的  由此生物学视角诞生</p>
+<p>生物学主题</p>
+<pre><code>神经科学
+进化心理学
+</code></pre>
+<p>德国科学家  威廉 冯特 |内省法  格式塔心理学家</p>
+<pre><code>科学心理学和现代认知视角的建立
+元素周期表  研究自然世界的科学方法  结构主义
+纳克立方体
+</code></pre>
+]]></content>
+      <categories>
+        <category>心理学</category>
+      </categories>
+  </entry>
+</search>

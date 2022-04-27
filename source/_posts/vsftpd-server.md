@@ -1,6 +1,8 @@
 ---
 title: 通过vsftpd搭建ftp服务器
 date: 2022-04-15 22:12:12
+categories: # 分类
+- server
 tags:
 ---
 

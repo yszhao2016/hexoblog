@@ -81,13 +81,15 @@
 
 
 
+<meta name="description" content="#1、安装Remi源： # CentOS 6 &#x2F; RHEL 6 yum install http:&#x2F;&#x2F;rpms.famillecollet.com&#x2F;enterprise&#x2F;remi-release-6.rpm # CentOS 7 &#x2F; RHEL 7 yum install http:&#x2F;&#x2F;rpms.remirepo.net&#x2F;enterprise&#x2F;remi-release-7.rpm  #2、配置Rem">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建php环境">
 <meta property="og:url" content="http://example.com/2022/04/17/php/index.html">
 <meta property="og:site_name" content="yszhao的博客">
+<meta property="og:description" content="#1、安装Remi源： # CentOS 6 &#x2F; RHEL 6 yum install http:&#x2F;&#x2F;rpms.famillecollet.com&#x2F;enterprise&#x2F;remi-release-6.rpm # CentOS 7 &#x2F; RHEL 7 yum install http:&#x2F;&#x2F;rpms.remirepo.net&#x2F;enterprise&#x2F;remi-release-7.rpm  #2、配置Rem">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-04-17T14:53:21.000Z">
-<meta property="article:modified_time" content="2022-04-26T06:59:26.690Z">
+<meta property="article:modified_time" content="2022-05-07T07:17:32.874Z">
 <meta property="article:author" content="yszhao">
 <meta name="twitter:card" content="summary">
 
@@ -319,7 +321,69 @@
       
 
       
-        
+        <p>#1、安装Remi源：</p>
+<pre><code># CentOS 6 / RHEL 6
+yum install http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+# CentOS 7 / RHEL 7
+yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+</code></pre>
+<p>#2、配置Remi源(可以不操作)：</p>
+<pre><code> 编辑remi源repo文件 /etc/yum.repos.d/remi.repo
+ 启用 Remi Repository修改 enabled=0 为 enabled=1。
+ 为 Remi Repository 设置合适的优先级在 [remi] 那一节的结尾另起一行添加下面的代码：
+ priority=3    
+</code></pre>
+<p>#3、安装 php</p>
+<pre><code> yum install php73 php73-php-fpm php73-php-opcache php73-php-gd php73-php-mbstring php73-php-xml php73-php-pdo php73-php-mysqlnd php73-php-pecl-mysql php73-php-bcmath
+php73-php-mcrypt   
+</code></pre>
+<p>#4.开机启动   </p>
+<pre><code>systemctl enable  php73-php-fpm
+</code></pre>
+<p>#5.服务相关命令</p>
+<pre><code>systemctl start  php73-php-fpm
+systemctl stop  php73-php-fpm
+systemctl status  php73-php-fpm
+</code></pre>
+<p>#6.加入系统命令</p>
+<pre><code>ln -s  /opt/remi/php73/root/usr/bin/php /usr/bin/php
+</code></pre>
+<p>#7.添加用户<br>7.配置文件<a target="_blank" rel="noopener" href="http://www.conf/">www.conf</a></p>
+<pre><code>[www]
+
+user = www
+group = www
+
+;listen = 127.0.0.1:9000
+listen = /dev/shm/php71-fpm.socket
+
+listen.owner = www
+listen.group = www
+listen.mode = 0660
+
+
+listen.allowed_clients = 127.0.0.1
+
+pm = static
+pm.max_children = 256
+pm.start_servers = 5
+pm.min_spare_servers = 5
+pm.max_spare_servers = 35
+pm.max_requests = 5000
+pm.status_path = /php7-php-fpm-status
+slowlog = /var/opt/remi/php71/log/php-fpm/www-slow.log
+
+php_admin_value[error_log] = /var/opt/remi/php71/log/php-fpm/www-error.log
+php_admin_flag[log_errors] = on
+
+#是否曝光php安装信息
+expose_php = Off
+
+php_value[session.save_handler] = files
+php_value[session.save_path]    = /var/opt/remi/php71/lib/php/session
+php_value[soap.wsdl_cache_dir]  = /var/opt/remi/php71/lib/php/wsdlcache
+</code></pre>
+
       
     </div>
     

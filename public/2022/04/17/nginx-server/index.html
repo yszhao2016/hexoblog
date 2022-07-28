@@ -81,13 +81,15 @@
 
 
 
+<meta name="description" content="安装nginx1.yum 安装（默认情况下使用yum安装的nginx包含ssl模块）    官方 yum 源链接 http:&#x2F;&#x2F;nginx.org&#x2F;en&#x2F;linux_packages.html#RHEL-CentOS          vim &#x2F;etc&#x2F;yum.repos.d&#x2F;nginx.repo     123456789101112131415[nginx-stable]name&#x3D;nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建 nginx_server">
 <meta property="og:url" content="http://example.com/2022/04/17/nginx-server/index.html">
 <meta property="og:site_name" content="yszhao的博客">
+<meta property="og:description" content="安装nginx1.yum 安装（默认情况下使用yum安装的nginx包含ssl模块）    官方 yum 源链接 http:&#x2F;&#x2F;nginx.org&#x2F;en&#x2F;linux_packages.html#RHEL-CentOS          vim &#x2F;etc&#x2F;yum.repos.d&#x2F;nginx.repo     123456789101112131415[nginx-stable]name&#x3D;nginx">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-04-17T14:53:07.000Z">
-<meta property="article:modified_time" content="2022-04-26T12:33:20.204Z">
+<meta property="article:modified_time" content="2022-06-24T08:25:50.700Z">
 <meta property="article:author" content="yszhao">
 <meta name="twitter:card" content="summary">
 
@@ -341,7 +343,147 @@
       
 
       
-        
+        <h1 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h1><h2 id="1-yum-安装（默认情况下使用yum安装的nginx包含ssl模块）"><a href="#1-yum-安装（默认情况下使用yum安装的nginx包含ssl模块）" class="headerlink" title="1.yum 安装（默认情况下使用yum安装的nginx包含ssl模块）"></a>1.yum 安装（默认情况下使用yum安装的nginx包含ssl模块）</h2><pre><code>    官方 yum 源链接 http://nginx.org/en/linux_packages.html#RHEL-CentOS
+    
+    vim /etc/yum.repos.d/nginx.repo
+    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[nginx-stable]</span><br><span class="line">name=nginx stable repo</span><br><span class="line">baseurl=http://nginx.org/packages/centos/$releasever/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=https://nginx.org/keys/nginx_signing.key</span><br><span class="line">module_hotfixes=true</span><br><span class="line"></span><br><span class="line">[nginx-mainline]</span><br><span class="line">name=nginx mainline repo</span><br><span class="line">baseurl=http://nginx.org/packages/mainline/centos/$releasever/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=0</span><br><span class="line">gpgkey=https://nginx.org/keys/nginx_signing.key</span><br><span class="line">module_hotfixes=true</span><br></pre></td></tr></table></figure>
+    
+    yum-config-manager --enable nginx-stable
+    
+    yum install nginx
+</code></pre>
+<h2 id="2-源码编译安装"><a href="#2-源码编译安装" class="headerlink" title="2.源码编译安装"></a>2.源码编译安装</h2><pre><code>下载源码包  http://nginx.org/en/download.html  下载稳定版本
+
+Mainline version：Mainline 是 Nginx 目前主力在做的版本，可以说是开发版
+Stable version：最新稳定版，生产环境上建议使用的版本
+Legacy versions：遗留的老版本的稳定版
+
+下载命令
+wget http://nginx.org/download/nginx-1.22.0.tar.gz
+
+解压缩
+tar -zxvf nginx-1.22.0.tar.gz
+    
+ ./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-pcre
+ 
+ make &amp;&amp; make install
+ 
+ ln -s /usr/local/nginx/conf  /etc/nginx
+ 
+ 
+ 
+</code></pre>
+<h1 id="配置服务"><a href="#配置服务" class="headerlink" title="配置服务"></a>配置服务</h1><pre><code>vim /lib/systemd/system/nginx.service     
+     
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=nginx</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/usr/local/nginx/sbin/nginx</span><br><span class="line">ExecReload=/usr/local/nginx/sbin/nginx -s reload</span><br><span class="line">ExecStop=/usr/local/nginx/sbin/nginx -s quit</span><br><span class="line">PrivateTmp=true</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+软连接etc目录
+ln -s /usr/local/nginx/conf /etc/nginx   
+
+systemctl status nginx
+systemctl reload nginx
+systemctl start nginx
+
+开机启动
+systemctl enable nginx
+
+添加用户
+groupadd www
+useradd -g www -s /sbin/nologin www  
+</code></pre>
+<h1 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h1><h6 id="etc-nginx-nginx-conf"><a href="#etc-nginx-nginx-conf" class="headerlink" title="/etc/nginx/nginx.conf"></a>/etc/nginx/nginx.conf</h6><pre><code>   user  www;
+   #cpu 几核 这进程就多少
+   worker_processes  2;
+   worker_cpu_affinity 01 10;
+   
+   worker_rlimit_nofile 65535;  # 一般等于ulimit -n系统值
+   
+   #error_log  logs/error.log;
+   #error_log  logs/error.log  notice;
+   #error_log  logs/error.log  info;
+   
+   #pid        logs/nginx.pid;
+   
+   
+   events &#123;
+       worker_connections  10240;
+       use epoll;
+   &#125;
+   
+   
+   http &#123;
+       include       mime.types;
+       default_type  application/octet-stream;
+       server_tokens off;
+   
+       #log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;
+       #                  &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;
+       #                  &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;
+   
+       #access_log  logs/access.log  main;
+   
+       sendfile        on;
+       #tcp_nopush     on;
+   
+       #keepalive_timeout  0;
+       keepalive_timeout  65;
+   
+       gzip on;       #表示开启压缩功能
+       gzip_min_length  1k; #表示允许压缩的页面最小字节数，页面字节数从header头的Content-Length中获取。默认值是0，表示不管页面多大都进行压缩，建议设置成大于1K。如果小于1K可能会&gt;越压越大
+       gzip_buffers     4 32k; #压缩缓存区大小
+       gzip_http_version 1.1; #压缩版本
+       gzip_comp_level 6; #压缩比率， 一般选择4-6，为了性能
+       gzip_types text/css text/xml application/javascript;
+       #指定压缩的类型 gzip_vary on;　#vary header支持
+   
+   
+       #配置空主机头 404
+       server &#123;
+           listen 80 default;
+           server_name _;
+           root html;
+           location / &#123; return 404;&#125;
+           location ~ /.ht &#123; deny all; &#125;
+   
+       &#125;
+       include vhost/*.conf;
+   &#125;
+</code></pre>
+<h6 id="vhost-conf"><a href="#vhost-conf" class="headerlink" title="vhost/*.conf"></a>vhost/*.conf</h6><pre><code>server&#123;
+    listen 80;
+    server_name tp.webstudy.cc;
+    set $wwwroot /home/www/htdocs/tp.webstudy.cc;
+    root $wwwroot;
+    access_log  logs/ai.access.log;
+    error_log logs/ai.error.log debug;
+
+    #ssl_certificate     /usr/local/nginx/conf/ssl/jinju.utooo.com/Nginx/1_jinju.utooo.com_bundle.crt;
+    #ssl_certificate_key /usr/local/nginx/conf/ssl/jinju.utooo.com/Nginx/2_jinju.utooo.com.key;
+    #ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    location / &#123;
+        index  index.php index.html index.htm;
+        # 这里使用try_files进行url重写，不用rewrite了
+        # try_files $uri $uri/ /index.php?$query_string;
+    &#125;
+
+   #error_page   500 502 503 504  /50x.html;
+   location = /50x.html &#123;
+        root   html;
+    &#125;
+    location ~ .*\.php&#123;
+            include fastcgi_params;
+            fastcgi_param SCRIPT_FILENAME   $document_root$fastcgi_script_name;
+            fastcgi_pass 127.0.0.1:9000;
+            fastcgi_index index.php;
+    &#125;
+
+&#125;
+
+
+  
+</code></pre>
+
       
     </div>
     
@@ -429,8 +571,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -488,6 +639,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85nginx"><span class="nav-number">1.</span> <span class="nav-text">安装nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-yum-%E5%AE%89%E8%A3%85%EF%BC%88%E9%BB%98%E8%AE%A4%E6%83%85%E5%86%B5%E4%B8%8B%E4%BD%BF%E7%94%A8yum%E5%AE%89%E8%A3%85%E7%9A%84nginx%E5%8C%85%E5%90%ABssl%E6%A8%A1%E5%9D%97%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">1.yum 安装（默认情况下使用yum安装的nginx包含ssl模块）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85"><span class="nav-number">1.2.</span> <span class="nav-text">2.源码编译安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.</span> <span class="nav-text">配置服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#etc-nginx-nginx-conf"><span class="nav-number">3.0.0.0.0.1.</span> <span class="nav-text">&#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#vhost-conf"><span class="nav-number">3.0.0.0.0.2.</span> <span class="nav-text">vhost&#x2F;*.conf</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

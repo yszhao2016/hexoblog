@@ -1,6 +1,6 @@
+http://example.com/2022/04/17/nginx-server/
 http://example.com/2022/04/17/php/
 http://example.com/2022/04/15/vsftpd-server/
-http://example.com/2022/04/17/nginx-server/
 http://example.com/2022/04/17/mysql-server/
 http://example.com/2022/04/13/git-server/
 http://example.com/categories/index.html

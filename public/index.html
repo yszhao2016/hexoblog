@@ -470,11 +470,10 @@
       
         
           
-          #1、安装Remi源：
-# CentOS 6 / RHEL 6
+          一、安装Remi源：# CentOS 6 / RHEL 6
 yum install http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
 # CentOS 7 / RHEL 7
-yum install http://rpms.re
+yum install http://rpms.remi
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -622,8 +621,11 @@ yum install http://rpms.re
       
         
           
-          
-          
+          安装nginx1.yum 安装（默认情况下使用yum安装的nginx包含ssl模块）    官方 yum 源链接 http://nginx.org/en/linux_packages.html#RHEL-CentOS
+    
+    vim /etc/yum.repos.d/nginx.repo
+
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2022/04/17/nginx-server/#more" rel="contents">

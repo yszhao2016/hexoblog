@@ -629,4 +629,41 @@ useradd -g www -s /sbin/nologin www
         <category>server</category>
       </categories>
   </entry>
+  <entry>
+    <title>2022初四</title>
+    <url>/2022/02/04/2022%E5%88%9D%E5%9B%9B/</url>
+    <content><![CDATA[<pre><code>转眼间3天年已经过去了，马上就要上班了。此时此刻心情五味杂陈，对于工作，感情，能力，未来
+</code></pre>
+<p>我有些烦，看见爷爷奶奶逐渐老去，走路已有些步履蹒跚，看着父母为了我的婚姻，无可奈何的叹息，拼命工作。<br>我的内心总有些许的难受。婚姻问题逐渐成为了我一道难以逾越的坎了，逐渐的让我怀疑自己的对于婚姻的认知，<br>怀疑自己的选择是不是错的，但是内心还是不甘心。就想找到那个能和我一起玩，一起相伴，自己看了对眼的人。<br>不想潦草了事以后后悔。可奈何时间不等人。鱼与熊掌不可兼得，在时间的洪流与世俗的冲击下，我又能吼的住多久呢？<br>无解。。。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>vue学习1</title>
+    <url>/2023/02/22/vue%E5%AD%A6%E4%B9%A01/</url>
+    <content><![CDATA[<p>#vue入门1</p>
+<p>##vuecli  vue脚手架<br>    vue 它是一个插件  最基础的项目架构 帮集成webpack 构建 打包 编译 包含基本的架子</p>
+<pre><code>安装命令：    npm install -g @vue/cli
+            npm i -g @vue/cli
+            -g      表示全局安装
+
+
+查看脚手架版本         vue --version
+</code></pre>
+<p>##创建项目</p>
+<pre><code>vue create [项目名称]
+默认安装项   [babel]  编译es6的语法    [eslint]     项目语法检查  可开关
+
+
+vue ui 启动vue ui操作界面
+</code></pre>
+<p>##项目目录</p>
+<pre><code>/src/assets  目录存放 icon 图片
+/src/api     存放  api  文件夹
+/src/util    存放  一些工具方法
+/src/storage 存放 数据存储的工具箱
+/src/pages
+/src/router.js
+</code></pre>
+]]></content>
+  </entry>
 </search>

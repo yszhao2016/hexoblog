@@ -3,9 +3,9 @@ title: vue学习1
 date: 2023-02-22 22:18:25
 tags:
 ---
-#vue入门1
 
-##vuecli  vue脚手架
+
+# vuecli  vue脚手架
     vue 它是一个插件  最基础的项目架构 帮集成webpack 构建 打包 编译 包含基本的架子
   
     安装命令：    npm install -g @vue/cli
@@ -17,7 +17,7 @@ tags:
 
 
 
-##创建项目
+# 创建项目
 
     vue create [项目名称]
     默认安装项   [babel]  编译es6的语法    [eslint]     项目语法检查  可开关
@@ -27,7 +27,7 @@ tags:
     
 
 
-##项目目录
+# 项目目录
 
     /src/assets  目录存放 icon 图片
     /src/api     存放  api  文件夹

@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-07-08T13:54:55.528Z</updated>
+  <updated>2023-07-09T06:19:39.421Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>docker学习2</title>
-    <link href="http://example.com/2023/07/08/docker%E5%AD%A6%E4%B9%A02/"/>
-    <id>http://example.com/2023/07/08/docker%E5%AD%A6%E4%B9%A02/</id>
-    <published>2023-07-08T13:54:55.000Z</published>
-    <updated>2023-07-08T13:54:55.528Z</updated>
+    <title>fail2ban软件使用</title>
+    <link href="http://example.com/2023/07/09/fail2ban%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/"/>
+    <id>http://example.com/2023/07/09/fail2ban%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/</id>
+    <published>2023-07-09T06:19:39.000Z</published>
+    <updated>2023-07-09T06:19:39.421Z</updated>
     
     
     
@@ -30,18 +30,97 @@
   </entry>
   
   <entry>
-    <title>docker学习1</title>
+    <title>web安全</title>
+    <link href="http://example.com/2023/07/09/web%E5%AE%89%E5%85%A8/"/>
+    <id>http://example.com/2023/07/09/web%E5%AE%89%E5%85%A8/</id>
+    <published>2023-07-09T06:16:41.000Z</published>
+    <updated>2023-07-09T06:16:41.663Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>openEuler搭建lnmp</title>
+    <link href="http://example.com/2023/07/09/openEuler%E6%90%AD%E5%BB%BAlnmp/"/>
+    <id>http://example.com/2023/07/09/openEuler%E6%90%AD%E5%BB%BAlnmp/</id>
+    <published>2023-07-09T06:04:46.000Z</published>
+    <updated>2023-07-09T06:04:46.821Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu搭建lnmp环境</title>
+    <link href="http://example.com/2023/07/09/ubuntn%E6%90%AD%E5%BB%BAlnmp%E7%8E%AF%E5%A2%83/"/>
+    <id>http://example.com/2023/07/09/ubuntn%E6%90%AD%E5%BB%BAlnmp%E7%8E%AF%E5%A2%83/</id>
+    <published>2023-07-09T06:01:25.000Z</published>
+    <updated>2023-07-09T06:02:58.871Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>docker学习3</title>
+    <link href="http://example.com/2023/07/09/docker%E5%AD%A6%E4%B9%A03/"/>
+    <id>http://example.com/2023/07/09/docker%E5%AD%A6%E4%B9%A03/</id>
+    <published>2023-07-09T06:00:02.000Z</published>
+    <updated>2023-07-09T06:11:42.051Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="docker-compose使用"><a href="#docker-compose使用" class="headerlink" title="docker-compose使用"></a>docker-compose使用</h1><h2 id="docker-compose安装"><a href="#docker-compose安装" class="headerlink" title="docker-compose安装"></a>docker-compose安装</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;docker-compose使用&quot;&gt;&lt;a href=&quot;#docker-compose使用&quot; class=&quot;headerlink&quot; title=&quot;docker-compose使用&quot;&gt;&lt;/a&gt;docker-compose使用&lt;/h1&gt;&lt;h2 id=&quot;docker-co</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>docker学习2</title>
+    <link href="http://example.com/2023/07/08/docker%E5%AD%A6%E4%B9%A02/"/>
+    <id>http://example.com/2023/07/08/docker%E5%AD%A6%E4%B9%A02/</id>
+    <published>2023-07-08T13:54:55.000Z</published>
+    <updated>2023-07-08T14:16:27.231Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Dockerfile-学习"><a href="#Dockerfile-学习" class="headerlink" title="Dockerfile 学习"></a>Dockerfile 学习</h1><h2 id="相关语法"><a href="#相关语法" class="headerlink" title="相关语法"></a>相关语法</h2><pre><code>FROM  scratchADD hello /CMD [&quot;/hello&quot;]</code></pre><h2 id="FROM语法"><a href="#FROM语法" class="headerlink" title="FROM语法"></a>FROM语法</h2><pre><code>FROM scratch   //制作  base imageFROM centos    //使用  base imageFROM ubuntu:14.4</code></pre><h2 id="LABEL语法"><a href="#LABEL语法" class="headerlink" title="LABEL语法"></a>LABEL语法</h2><pre><code>LABEL maintainer=&quot;xiaoquwl@gmail.com&quot;LABEL version=&quot;1.0&quot;LABEL description=&quot;This is description&quot;注：Metadata不可少</code></pre><h2 id="RUN-语法"><a href="#RUN-语法" class="headerlink" title="RUN 语法"></a>RUN 语法</h2><pre><code>RUN yum update &amp;&amp; yum install -y vim \python-dev 注：反斜杠换行RUN</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Dockerfile-学习&quot;&gt;&lt;a href=&quot;#Dockerfile-学习&quot; class=&quot;headerlink&quot; title=&quot;Dockerfile 学习&quot;&gt;&lt;/a&gt;Dockerfile 学习&lt;/h1&gt;&lt;h2 id=&quot;相关语法&quot;&gt;&lt;a href=&quot;#相关语法&quot;</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>docker学习1-Docker基础命令</title>
     <link href="http://example.com/2023/07/08/docker%E5%AD%A6%E4%B9%A01/"/>
     <id>http://example.com/2023/07/08/docker%E5%AD%A6%E4%B9%A01/</id>
     <published>2023-07-08T13:47:55.000Z</published>
-    <updated>2023-07-08T14:09:54.889Z</updated>
+    <updated>2023-07-09T06:41:01.857Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Docker基础命令"><a href="#Docker基础命令" class="headerlink" title="Docker基础命令"></a>Docker基础命令</h1><h2 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h2><pre><code>Docker image ls </code></pre><h2 id="查看运行中的容器container"><a href="#查看运行中的容器container" class="headerlink" title="查看运行中的容器container"></a>查看运行中的容器container</h2><pre><code>docker ps       docker ps -a   所有  启动与未启动的 </code></pre><h2 id="运行容器"><a href="#运行容器" class="headerlink" title="运行容器"></a>运行容器</h2><pre><code>docker run 容器名称</code></pre><h2 id="查看运行中的容器container-1"><a href="#查看运行中的容器container-1" class="headerlink" title="查看运行中的容器container"></a>查看运行中的容器container</h2><pre><code>docker inspect  容器名称    查看容器信息</code></pre><h2 id="根据dockerfile-文件生成image"><a href="#根据dockerfile-文件生成image" class="headerlink" title="根据dockerfile 文件生成image"></a>根据dockerfile 文件生成image</h2><pre><code>Docker build -t tag/镜像名称   dockerfile所在目录    示例：    docker build -t test/hello-word .</code></pre><h2 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h2><pre><code>docker rm 容器ID       docker rm $(docker container ls -aq)    删除所有容器docker rmi image名称   删除镜像</code></pre>]]></content>
+    <content type="html"><![CDATA[<h1 id="Docker基础命令"><a href="#Docker基础命令" class="headerlink" title="Docker基础命令"></a>Docker基础命令</h1><h3 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h3><pre><code>Docker image ls </code></pre><h3 id="查看运行中的容器container"><a href="#查看运行中的容器container" class="headerlink" title="查看运行中的容器container"></a>查看运行中的容器container</h3><pre><code>docker ps      展示 正在运行的docker ps -a   所有  启动与未启动的 </code></pre><h3 id="运行容器"><a href="#运行容器" class="headerlink" title="运行容器"></a>运行容器</h3><pre><code>docker run 容器名称示例：</code></pre><h3 id="查看运行中的容器container-1"><a href="#查看运行中的容器container-1" class="headerlink" title="查看运行中的容器container"></a>查看运行中的容器container</h3><pre><code>docker inspect  容器名称    查看容器信息</code></pre><h3 id="根据dockerfile-文件生成image"><a href="#根据dockerfile-文件生成image" class="headerlink" title="根据dockerfile 文件生成image"></a>根据dockerfile 文件生成image</h3><pre><code>Docker build -t tag/镜像名称   dockerfile所在目录    示例：    docker build -t test/hello-word .</code></pre><h3 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h3><pre><code>docker rm 容器ID       docker rm $(docker container ls -aq)    删除所有容器docker rmi image名称   删除镜像</code></pre><h3 id="进入容器内"><a href="#进入容器内" class="headerlink" title="进入容器内"></a>进入容器内</h3><pre><code>docker exec -it 容器名 /bin/bash示例：docker exec it php71 /bin/bash</code></pre><h3 id="docker-镜像-导出导入【必须成对使用】"><a href="#docker-镜像-导出导入【必须成对使用】" class="headerlink" title="docker 镜像 导出导入【必须成对使用】"></a>docker 镜像 导出导入【必须成对使用】</h3><pre><code>docker export：导出容器docker import：导入容器为镜像docker save：导出镜像    -o:输出到的文件。    导出示例：        docker save -o my_ubuntu_v3.tar runoob/ubuntu:v3        docker save ubuntu:load&gt;/root/ubuntu.tardocker load：导入镜像    -i：指定导出的文件    -q：精简输出信息        导入示例：        docker load -i ubuntu.tar        docker load &lt; ubuntu.tar</code></pre>]]></content>
     
     
       
       
-    <summary type="html">&lt;h1 id=&quot;Docker基础命令&quot;&gt;&lt;a href=&quot;#Docker基础命令&quot; class=&quot;headerlink&quot; title=&quot;Docker基础命令&quot;&gt;&lt;/a&gt;Docker基础命令&lt;/h1&gt;&lt;h2 id=&quot;查看镜像&quot;&gt;&lt;a href=&quot;#查看镜像&quot; class=&quot;head</summary>
+    <summary type="html">&lt;h1 id=&quot;Docker基础命令&quot;&gt;&lt;a href=&quot;#Docker基础命令&quot; class=&quot;headerlink&quot; title=&quot;Docker基础命令&quot;&gt;&lt;/a&gt;Docker基础命令&lt;/h1&gt;&lt;h3 id=&quot;查看镜像&quot;&gt;&lt;a href=&quot;#查看镜像&quot; class=&quot;head</summary>
       
     
     
@@ -135,17 +214,14 @@
     <link href="http://example.com/2023/02/22/vue%E5%AD%A6%E4%B9%A01/"/>
     <id>http://example.com/2023/02/22/vue%E5%AD%A6%E4%B9%A01/</id>
     <published>2023-02-22T14:18:25.000Z</published>
-    <updated>2023-07-08T13:11:09.698Z</updated>
+    <updated>2023-07-09T06:44:49.143Z</updated>
     
-    <content type="html"><![CDATA[<p>#vue入门1</p><p>##vuecli  vue脚手架<br>    vue 它是一个插件  最基础的项目架构 帮集成webpack 构建 打包 编译 包含基本的架子</p><pre><code>安装命令：    npm install -g @vue/cli            npm i -g @vue/cli            -g      表示全局安装查看脚手架版本         vue --version</code></pre><p>##创建项目</p><pre><code>vue create [项目名称]默认安装项   [babel]  编译es6的语法    [eslint]     项目语法检查  可开关vue ui 启动vue ui操作界面</code></pre><p>##项目目录</p><pre><code>/src/assets  目录存放 icon 图片/src/api     存放  api  文件夹/src/util    存放  一些工具方法/src/storage 存放 数据存储的工具箱/src/pages/src/router.js</code></pre>]]></content>
+    <content type="html"><![CDATA[<h1 id="vuecli-vue脚手架"><a href="#vuecli-vue脚手架" class="headerlink" title="vuecli  vue脚手架"></a>vuecli  vue脚手架</h1><pre><code>vue 它是一个插件  最基础的项目架构 帮集成webpack 构建 打包 编译 包含基本的架子安装命令：    npm install -g @vue/cli            npm i -g @vue/cli            -g      表示全局安装查看脚手架版本         vue --version</code></pre><h1 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h1><pre><code>vue create [项目名称]默认安装项   [babel]  编译es6的语法    [eslint]     项目语法检查  可开关vue ui 启动vue ui操作界面</code></pre><h1 id="项目目录"><a href="#项目目录" class="headerlink" title="项目目录"></a>项目目录</h1><pre><code>/src/assets  目录存放 icon 图片/src/api     存放  api  文件夹/src/util    存放  一些工具方法/src/storage 存放 数据存储的工具箱/src/pages/src/router.js</code></pre>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;#vue入门1&lt;/p&gt;
-&lt;p&gt;##vuecli  vue脚手架&lt;br&gt;    vue 它是一个插件  最基础的项目架构 帮集成webpack 构建 打包 编译 包含基本的架子&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;安装命令：    npm install -g @vue/cli
- </summary>
+    <summary type="html">&lt;h1 id=&quot;vuecli-vue脚手架&quot;&gt;&lt;a href=&quot;#vuecli-vue脚手架&quot; class=&quot;headerlink&quot; title=&quot;vuecli  vue脚手架&quot;&gt;&lt;/a&gt;vuecli  vue脚手架&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;vue 它是一个插件  最基础的</summary>
       
     
     
@@ -315,121 +391,6 @@ yum instal</summary>
       
     
     
-    
-    
-  </entry>
-  
-  <entry>
-    <title>2022初四</title>
-    <link href="http://example.com/2022/02/04/2022%E5%88%9D%E5%9B%9B/"/>
-    <id>http://example.com/2022/02/04/2022%E5%88%9D%E5%9B%9B/</id>
-    <published>2022-02-04T12:35:47.000Z</published>
-    <updated>2023-07-08T13:11:09.696Z</updated>
-    
-    <content type="html"><![CDATA[<pre><code>转眼间3天年已经过去了，马上就要上班了。此时此刻心情五味杂陈，对于工作，感情，能力，未来</code></pre><p>我有些烦，看见爷爷奶奶逐渐老去，走路已有些步履蹒跚，看着父母为了我的婚姻，无可奈何的叹息，拼命工作。<br>我的内心总有些许的难受。婚姻问题逐渐成为了我一道难以逾越的坎了，逐渐的让我怀疑自己的对于婚姻的认知，<br>怀疑自己的选择是不是错的，但是内心还是不甘心。就想找到那个能和我一起玩，一起相伴，自己看了对眼的人。<br>不想潦草了事以后后悔。可奈何时间不等人。鱼与熊掌不可兼得，在时间的洪流与世俗的冲击下，我又能吼的住多久呢？<br>无解。。。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;pre&gt;&lt;code&gt;转眼间3天年已经过去了，马上就要上班了。此时此刻心情五味杂陈，对于工作，感情，能力，未来
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;我有些烦，看见爷爷奶奶逐渐老去，走路已有些步履蹒跚，看着父母为了我的婚姻，无可奈何的叹息，拼命工作。&lt;br&gt;我的内心总有些许的难受。婚</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>git总结</title>
-    <link href="http://example.com/2022/01/08/git%E6%80%BB%E7%BB%93/"/>
-    <id>http://example.com/2022/01/08/git%E6%80%BB%E7%BB%93/</id>
-    <published>2022-01-08T14:19:16.000Z</published>
-    <updated>2022-11-30T13:01:15.847Z</updated>
-    
-    <content type="html"><![CDATA[<p> #标签</p><ul><li><p>git</p><h1 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h1><p>  工作区(workspace)      就是你平时存放项目代码的地方<br>  暂存区(stage)          git add<br>  仓库区/版本库(Repository)     git commit<br>  远程仓库</p></li></ul><h1 id="二、回退问题"><a href="#二、回退问题" class="headerlink" title="二、回退问题"></a>二、回退问题</h1><h2 id="1-git-add-后回退"><a href="#1-git-add-后回退" class="headerlink" title="1.git add 后回退"></a>1.git add 后回退</h2><pre><code>git status 先看一下add 中的文件git reset HEAD 如果后面什么都不跟的话 就是上一次add 里面的全部撤销了git reset HEAD XXX/XXX/XXX.java 就是对某个文件进行撤销了</code></pre><h2 id="2-git-commit后回退"><a href="#2-git-commit后回退" class="headerlink" title="2.git commit后回退"></a>2.git commit后回退</h2><pre><code>git log    命令显示从最近到最远的提交日志    [root@localhost test-jenkins]# git log    commit e2c7f2d567cbdc36e4503479e15ea51d19816d33    Author: root &lt;root@localhost.localdomain&gt;    Date:   Fri Jan 7 11:17:27 2022 +0800    dev branch change    commit 8943166480734ac5a760e482a887ee8da0140ec8    Author: root &lt;root@localhost.localdomain&gt;    Date:   Fri Jan 7 10:56:22 2022 +0800    dev branch add index.php    。。。。git reest --hard  commit_id                  上一个版本就是HEAD^，                  上上一个版本就是HEAD^^，                  当然往上100个版本写100个^比较容易数不过来，                  所以写成HEAD~100。例：    git reset --hard 139dcfaa558e3276b30b6b2e5cbbb9c00bbdca96    git reset --hard HEAD^将会删除此版本之前添加强制push到对应的远程分支（如提交到develop分支）git push -f -u origin develop</code></pre><h2 id="3-回退后悔药"><a href="#3-回退后悔药" class="headerlink" title="3.回退后悔药"></a>3.回退后悔药</h2><pre><code>git reflog用来记录你的每一次命令[root@localhost test-jenkins]# git reflog8943166 HEAD@&#123;0&#125;: reset: moving to 8943166480734ac5a760e482a887ee8da0140ec8e2c7f2d HEAD@&#123;1&#125;: commit: dev branch change8943166 HEAD@&#123;2&#125;: commit: dev branch add index.php1ca6f06 HEAD@&#123;3&#125;: checkout: moving from release to dev1ca6f06 HEAD@&#123;4&#125;: pull origin release: Fast-forward14fbb47 HEAD@&#123;5&#125;: checkout: moving from master to release14fbb47 HEAD@&#123;6&#125;: clone: from ssh://git@117.89.131.220:44222/zhaoyoushui/test-jenkins.gitgit reset --hard e2c7f2d</code></pre><h2 id="4-已经提交远程分支"><a href="#4-已经提交远程分支" class="headerlink" title="4.已经提交远程分支"></a>4.已经提交远程分支</h2><pre><code>git reset 方法回退拉过的错误版本的本地分支  多需要回退回退  强制推送  远程git revert 版本号git revert HEAD 上个版本git revert HEAD~n 上n个版本git push 远程其他客户端正常拉取就可以</code></pre><h1 id="三、Git-Reset-三种模式"><a href="#三、Git-Reset-三种模式" class="headerlink" title="三、Git Reset 三种模式"></a>三、Git Reset 三种模式</h1><pre><code>--hard: 会清空工作目录和暂存区的改动--soft：保留工作目录，并把重置 HEAD 所带来的新的差异放进暂存区  **变得只是仓库区**--mixed reset 不加参数(mixed)：保留工作目录，并清空暂存区</code></pre><h1 id="四、修改远程url"><a href="#四、修改远程url" class="headerlink" title="四、修改远程url"></a>四、修改远程url</h1><pre><code>1.方法一    git remote set-url origin [url]    git remote -v 查看2.方法二    git remote rm origin    git remote add origin [url]    git remote -v 查看3.方法三    直接修改config 文件</code></pre>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt; #标签&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;git&lt;/p&gt;
-&lt;h1 id=&quot;一、基础知识&quot;&gt;&lt;a href=&quot;#一、基础知识&quot; class=&quot;headerlink&quot; title=&quot;一、基础知识&quot;&gt;&lt;/a&gt;一、基础知识&lt;/h1&gt;&lt;p&gt;  工作区(workspace)      </summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>webpack学习笔记1</title>
-    <link href="http://example.com/2022/01/01/webpack%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/"/>
-    <id>http://example.com/2022/01/01/webpack%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/</id>
-    <published>2022-01-01T07:19:05.000Z</published>
-    <updated>2022-01-04T14:28:06.603Z</updated>
-    
-    <content type="html"><![CDATA[<p>#1. webpack 安装</p><pre><code>全局安装 nodejs    验证  node -v          npm -vnpm install webpack -gnpm install webpack-cli -g正常情况下 安装webpack-cli 会自动安装webpacknpm uninstall webpack -g 全局卸载单独项目内安装npm install webpack webpack-cli --save-dev或者npm install webpack webpack-cli -D运行npx webpack -v   //注 npx 会在node_module文件夹中找安装特定版本npm info webpack   //查看webpack有那些版本npm install webpack@4.16.5 webpack-cli -D</code></pre><p>#2.webpack 基本使用</p><pre><code>npm init    增加package.json文件npm init -y</code></pre><p>#3.一些语法</p><pre><code>ES Module 模块引入方式</code></pre>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;#1. webpack 安装&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;全局安装 nodejs
-    验证  node -v
-          npm -v
-npm install webpack -g
-npm install webpack-cli -g
-正常情况下 安装webp</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>web备份方案</title>
-    <link href="http://example.com/2021/12/23/web%E5%A4%87%E4%BB%BD%E6%96%B9%E6%A1%88/"/>
-    <id>http://example.com/2021/12/23/web%E5%A4%87%E4%BB%BD%E6%96%B9%E6%A1%88/</id>
-    <published>2021-12-23T12:33:32.000Z</published>
-    <updated>2021-12-30T13:22:55.402Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="一、服务器环境"><a href="#一、服务器环境" class="headerlink" title="一、服务器环境"></a>一、服务器环境</h2><pre><code>    192.168.100.230 web服务器    192.168.100.20  备份服务器 （rsync服务端）</code></pre><h2 id="二、备份服务器安装-rsync-服务端"><a href="#二、备份服务器安装-rsync-服务端" class="headerlink" title="二、备份服务器安装 rsync 服务端"></a>二、备份服务器安装 rsync 服务端</h2><pre><code>rpm -qa|grep rsync    //检查是否安装 rsyncyum install -y rsyncvim /etc/rsyncd.conf   //编辑rsyncd服务rsyncd.conf配置文件如下</code></pre><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#rsyncd.conf start</span><br><span class="line">uid = rsync                                </span><br><span class="line">gid = rsync</span><br><span class="line">use chroot=no</span><br><span class="line">max connections=200</span><br><span class="line">timeout = 300</span><br><span class="line">pid file = /var/run/rsyncd.pid</span><br><span class="line">lock file = /var/run/rsyncd.lock</span><br><span class="line">log file = /var/log/rsyncd.log</span><br><span class="line">ignore errors</span><br><span class="line">read only = false</span><br><span class="line">list = false </span><br><span class="line">hosts allow = 172.16.1.0/24</span><br><span class="line">#hosts deny = 0.0.0.0/32</span><br><span class="line">auth users = rsync_backup</span><br><span class="line">secrets file = /etc/rsync.password</span><br><span class="line">fake super = yes</span><br><span class="line">[backup]</span><br><span class="line">comment = &quot;backup dir by oldboy&quot;</span><br><span class="line">path = /home/backup  </span><br><span class="line">#备份的目录</span><br></pre></td></tr></table></figure><pre><code>创建rsync 服务管理用户useradd -s /sbin/nologin -M rsync创建数据备份存储目录chown -R rsyn.rsync /home/backup创建认证用户密码文件echo &quot;rsync_backup:admin.123!@#$&quot;  &gt;/etc/rsync.passwordchmod 600 /etc/rsync.password启动rsync服务systemctl start rsyncd       </code></pre><h2 id="三、配置web-服务器端（192-168-100-230）"><a href="#三、配置web-服务器端（192-168-100-230）" class="headerlink" title="三、配置web 服务器端（192.168.100.230）"></a>三、配置web 服务器端（192.168.100.230）</h2><pre><code>    确认 rsync是否安装        rpm -qa|grep rsync        建立认证文件            echo &quot;密码字符串（与rsync一致）&quot;  &gt;/etc/rsync.password        chmod 600 /etc/rsync.password        web01主机数据传输到backup主机测试测试传输            Push: rsync [OPTION...] SRC... [USER@]HOST::DEST        交互式：rsync -avz /etc/hosts  rsync_backup@172.16.1.41::backup        非交互式：rsync -avz /etc/hosts  rsync_backup@172.16.1.41::backup --password-file=/etc/rsync.password                    shell 脚本</code></pre><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">objectFilename=(&#x27;文件夹名称&#x27;);</span><br><span class="line">sourcePath=&#x27;/apps/web/&#x27;;</span><br><span class="line">for(( i=0;i&lt;$&#123;#objectFilename[@]&#125;;i++)) </span><br><span class="line">do </span><br><span class="line">    tar zcf /home/backup/web/source/$&#123;objectFilename[i]&#125;-$(date +%Y-%m-%d).tar.gz -C $&#123;sourcePath&#125; $&#123;objectFilename[i]&#125;; </span><br><span class="line">    rsync -avz /home/backup/web/source/  rsync_backup@192.168.100.20::backup --password-file=/etc/rsync.password</span><br><span class="line">    rm -rf /home/backup/web/source/$&#123;objectFilename[i]&#125;-$(date +%Y-%m-%d).tar.gz</span><br><span class="line">done;</span><br></pre></td></tr></table></figure><h2 id="四、注意事项"><a href="#四、注意事项" class="headerlink" title="四、注意事项"></a>四、注意事项</h2><pre><code>特殊情况 总是提示权限问题修改 服务端    uid = root                                    gid = root    fake super = no脚本备份大文件有问题</code></pre>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;一、服务器环境&quot;&gt;&lt;a href=&quot;#一、服务器环境&quot; class=&quot;headerlink&quot; title=&quot;一、服务器环境&quot;&gt;&lt;/a&gt;一、服务器环境&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;    192.168.100.230 web服务器
-    192.168.100</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>普通心理学笔记2</title>
-    <link href="http://example.com/2021/12/21/%E6%99%AE%E9%80%9A%E5%BF%83%E7%90%86%E5%AD%A6%E7%AC%94%E8%AE%B02/"/>
-    <id>http://example.com/2021/12/21/%E6%99%AE%E9%80%9A%E5%BF%83%E7%90%86%E5%AD%A6%E7%AC%94%E8%AE%B02/</id>
-    <published>2021-12-21T13:05:13.000Z</published>
-    <updated>2022-11-30T13:01:15.850Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="现代心理学6个视角"><a href="#现代心理学6个视角" class="headerlink" title="现代心理学6个视角"></a>现代心理学6个视角</h1><pre><code>起源：古希腊哲学家 苏格拉底 柏拉图 亚里士多德 意识和疯癫的理解亚洲和非洲 瑜伽和佛教 探索意识 通过冥想控制意识天主教1.生物视角        大脑、神经系统、内分泌系统（激素）和基因        笛卡尔2.认知视角    每个人有各自的知觉模式、解释、预期、信念和记忆   威廉。冯特 威廉詹姆斯         3.行为视角        环境的刺激和先前行为的结果                   约翰。华生 斯金纳4.全人视角                                   弗洛伊德 古希腊           心理动力：无意识心理的过程    人本主义    特质和气质：5.发展视角                                   安斯沃思    遗传和环境的交互作用，在毕生发展中塑造    6.社会文化视角                                津巴多        环境的影响。社会和文化比其他因素更能决定行为</code></pre><p>笛卡尔 精神和肉体是分离的  由此生物学视角诞生</p><p>生物学主题</p><pre><code>神经科学进化心理学</code></pre><p>德国科学家  威廉 冯特 |内省法  格式塔心理学家</p><pre><code>科学心理学和现代认知视角的建立元素周期表  研究自然世界的科学方法  结构主义纳克立方体</code></pre>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;现代心理学6个视角&quot;&gt;&lt;a href=&quot;#现代心理学6个视角&quot; class=&quot;headerlink&quot; title=&quot;现代心理学6个视角&quot;&gt;&lt;/a&gt;现代心理学6个视角&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;起源：古希腊哲学家 苏格拉底 柏拉图 亚里士多德 意识和疯癫的理解
-</summary>
-      
-    
-    
-    
-    <category term="心理学" scheme="http://example.com/categories/%E5%BF%83%E7%90%86%E5%AD%A6/"/>
     
     
   </entry>

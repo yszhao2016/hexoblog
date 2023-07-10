@@ -636,24 +636,22 @@ rename 1111.xlsx   processed/1111.xlsx
   <entry>
     <title>vue学习1</title>
     <url>/2023/02/22/vue%E5%AD%A6%E4%B9%A01/</url>
-    <content><![CDATA[<p>#vue入门1</p>
-<p>##vuecli  vue脚手架<br>    vue 它是一个插件  最基础的项目架构 帮集成webpack 构建 打包 编译 包含基本的架子</p>
-<pre><code>安装命令：    npm install -g @vue/cli
+    <content><![CDATA[<h1 id="vuecli-vue脚手架"><a href="#vuecli-vue脚手架" class="headerlink" title="vuecli  vue脚手架"></a>vuecli  vue脚手架</h1><pre><code>vue 它是一个插件  最基础的项目架构 帮集成webpack 构建 打包 编译 包含基本的架子
+
+安装命令：    npm install -g @vue/cli
             npm i -g @vue/cli
             -g      表示全局安装
 
 
 查看脚手架版本         vue --version
 </code></pre>
-<p>##创建项目</p>
-<pre><code>vue create [项目名称]
+<h1 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h1><pre><code>vue create [项目名称]
 默认安装项   [babel]  编译es6的语法    [eslint]     项目语法检查  可开关
 
 
 vue ui 启动vue ui操作界面
 </code></pre>
-<p>##项目目录</p>
-<pre><code>/src/assets  目录存放 icon 图片
+<h1 id="项目目录"><a href="#项目目录" class="headerlink" title="项目目录"></a>项目目录</h1><pre><code>/src/assets  目录存放 icon 图片
 /src/api     存放  api  文件夹
 /src/util    存放  一些工具方法
 /src/storage 存放 数据存储的工具箱
@@ -1029,31 +1027,103 @@ RewriteRule   .?   /404.php   [L]   #跳转到网站根目录
   <entry>
     <title>docker学习2</title>
     <url>/2023/07/08/docker%E5%AD%A6%E4%B9%A02/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="Dockerfile-学习"><a href="#Dockerfile-学习" class="headerlink" title="Dockerfile 学习"></a>Dockerfile 学习</h1><h2 id="相关语法"><a href="#相关语法" class="headerlink" title="相关语法"></a>相关语法</h2><pre><code>FROM  scratch
+ADD hello /
+CMD [&quot;/hello&quot;]
+</code></pre>
+<h2 id="FROM语法"><a href="#FROM语法" class="headerlink" title="FROM语法"></a>FROM语法</h2><pre><code>FROM scratch   //制作  base image
+
+FROM centos    //使用  base image
+
+FROM ubuntu:14.4
+</code></pre>
+<h2 id="LABEL语法"><a href="#LABEL语法" class="headerlink" title="LABEL语法"></a>LABEL语法</h2><pre><code>LABEL maintainer=&quot;xiaoquwl@gmail.com&quot;
+LABEL version=&quot;1.0&quot;
+LABEL description=&quot;This is description&quot;
+注：Metadata不可少
+</code></pre>
+<h2 id="RUN-语法"><a href="#RUN-语法" class="headerlink" title="RUN 语法"></a>RUN 语法</h2><pre><code>RUN yum update &amp;&amp; yum install -y vim \
+python-dev 
+注：反斜杠换行
+
+RUN
+</code></pre>
+]]></content>
   </entry>
   <entry>
-    <title>docker学习1</title>
+    <title>docker学习1-Docker基础命令</title>
     <url>/2023/07/08/docker%E5%AD%A6%E4%B9%A01/</url>
-    <content><![CDATA[<h1 id="Docker基础命令"><a href="#Docker基础命令" class="headerlink" title="Docker基础命令"></a>Docker基础命令</h1><h2 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h2><pre><code>Docker image ls 
+    <content><![CDATA[<h1 id="Docker基础命令"><a href="#Docker基础命令" class="headerlink" title="Docker基础命令"></a>Docker基础命令</h1><h3 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h3><pre><code>Docker image ls 
 </code></pre>
-<h2 id="查看运行中的容器container"><a href="#查看运行中的容器container" class="headerlink" title="查看运行中的容器container"></a>查看运行中的容器container</h2><pre><code>docker ps       
+<h3 id="查看运行中的容器container"><a href="#查看运行中的容器container" class="headerlink" title="查看运行中的容器container"></a>查看运行中的容器container</h3><pre><code>docker ps      展示 正在运行的
 
 docker ps -a   所有  启动与未启动的 
 </code></pre>
-<h2 id="运行容器"><a href="#运行容器" class="headerlink" title="运行容器"></a>运行容器</h2><pre><code>docker run 容器名称
+<h3 id="运行容器"><a href="#运行容器" class="headerlink" title="运行容器"></a>运行容器</h3><pre><code>docker run 容器名称
+
+示例：
 </code></pre>
-<h2 id="查看运行中的容器container-1"><a href="#查看运行中的容器container-1" class="headerlink" title="查看运行中的容器container"></a>查看运行中的容器container</h2><pre><code>docker inspect  容器名称    查看容器信息
+<h3 id="查看运行中的容器container-1"><a href="#查看运行中的容器container-1" class="headerlink" title="查看运行中的容器container"></a>查看运行中的容器container</h3><pre><code>docker inspect  容器名称    查看容器信息
 </code></pre>
-<h2 id="根据dockerfile-文件生成image"><a href="#根据dockerfile-文件生成image" class="headerlink" title="根据dockerfile 文件生成image"></a>根据dockerfile 文件生成image</h2><pre><code>Docker build -t tag/镜像名称   dockerfile所在目录
+<h3 id="根据dockerfile-文件生成image"><a href="#根据dockerfile-文件生成image" class="headerlink" title="根据dockerfile 文件生成image"></a>根据dockerfile 文件生成image</h3><pre><code>Docker build -t tag/镜像名称   dockerfile所在目录
     示例：
     docker build -t test/hello-word .
 </code></pre>
-<h2 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h2><pre><code>docker rm 容器ID       
+<h3 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h3><pre><code>docker rm 容器ID       
 
 docker rm $(docker container ls -aq)    删除所有容器
 
 docker rmi image名称   删除镜像
 </code></pre>
+<h3 id="进入容器内"><a href="#进入容器内" class="headerlink" title="进入容器内"></a>进入容器内</h3><pre><code>docker exec -it 容器名 /bin/bash
+
+示例：docker exec it php71 /bin/bash
+</code></pre>
+<h3 id="docker-镜像-导出导入【必须成对使用】"><a href="#docker-镜像-导出导入【必须成对使用】" class="headerlink" title="docker 镜像 导出导入【必须成对使用】"></a>docker 镜像 导出导入【必须成对使用】</h3><pre><code>docker export：导出容器
+docker import：导入容器为镜像
+
+
+docker save：导出镜像
+
+    -o:输出到的文件。
+
+    导出示例：
+        docker save -o my_ubuntu_v3.tar runoob/ubuntu:v3
+        docker save ubuntu:load&gt;/root/ubuntu.tar
+
+docker load：导入镜像
+    -i：指定导出的文件
+    -q：精简输出信息
+    
+    导入示例：
+        docker load -i ubuntu.tar
+        docker load &lt; ubuntu.tar
+</code></pre>
 ]]></content>
+  </entry>
+  <entry>
+    <title>docker学习3</title>
+    <url>/2023/07/09/docker%E5%AD%A6%E4%B9%A03/</url>
+    <content><![CDATA[<h1 id="docker-compose使用"><a href="#docker-compose使用" class="headerlink" title="docker-compose使用"></a>docker-compose使用</h1><h2 id="docker-compose安装"><a href="#docker-compose安装" class="headerlink" title="docker-compose安装"></a>docker-compose安装</h2>]]></content>
+  </entry>
+  <entry>
+    <title>ubuntu搭建lnmp环境</title>
+    <url>/2023/07/09/ubuntn%E6%90%AD%E5%BB%BAlnmp%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>fail2ban软件使用</title>
+    <url>/2023/07/09/fail2ban%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>openEuler搭建lnmp</title>
+    <url>/2023/07/09/openEuler%E6%90%AD%E5%BB%BAlnmp/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>web安全</title>
+    <url>/2023/07/09/web%E5%AE%89%E5%85%A8/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>

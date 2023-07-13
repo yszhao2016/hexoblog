@@ -97,6 +97,8 @@ tags:
     fat	就是 Windows 下的 fatl6 文件系统，在 Linux 中识别为 fat
     
     vfat	就是 Windows 下的 fat32 文件系统，在 Linux 中识别为 vfat。支持最大 32GB 的分区和最大 4GB 的文件
+<font color='red'>VFAT 是一种早期的文件系统，通常用于与 Windows 系统兼容的可移动设备。由于 VFAT 文件系统不支持类似 UNIX 文件系统的权限和所有权概念，
+因此在挂载后无法执行 chown 命令来更改文件和目录的所有者。</font>
     
     NTFS	就是 Windows 下的 NTFS 文件系统，不过 Linux 默认是不能识别 NTFS 文件系统的，如果需要识别，则需要重新编译内核才能支持。
             它比 fat32 文件系统更加安全，速度更快，支持最大 2TB 的分区和最大 64GB 的文件

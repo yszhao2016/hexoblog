@@ -22,7 +22,16 @@ tags:
     #failregex = <HOST>-.*-.*HTTP/1.*(404|301|503).*$
     failregex = ^<HOST> -.*"(GET|POST).* HTTP\/.*$
     ignoreregex =
+
+# 正则规则检查
+
+    fail2ban-regex /var/log/nginx/access.log "<HOST> -.*- .*HTTP/1.* .* .*$"  
     
+# 根据配置文件检查
+
+    fail2ban-regex /var/log/nginx/access.log /etc/fail2ban/filter.d/nginx-cc.conf  
+
+
 
 # 控制规则配置文件
 
@@ -73,6 +82,8 @@ tags:
     #匹配的哪些日志文件
     logpath = /var/log/nginx/*access.log
               /var/log/nginx/access.log
+
+
 
 # 常用命令
 

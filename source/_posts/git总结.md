@@ -2,8 +2,7 @@
 title: git总结
 date: 2022-01-08 22:19:16
 tags:
---- #标签
-- git
+--- 
 # 一、基础知识
 
     工作区(workspace)      就是你平时存放项目代码的地方
@@ -14,9 +13,9 @@ tags:
 # 二、回退问题
 ## 1.git add 后回退
 
-    git status 先看一下add 中的文件
-    git reset HEAD 如果后面什么都不跟的话 就是上一次add 里面的全部撤销了
-    git reset HEAD XXX/XXX/XXX.java 就是对某个文件进行撤销了
+git status 先看一下add 中的文件
+git reset HEAD 如果后面什么都不跟的话 就是上一次add 里面的全部撤销了
+git reset HEAD XXX/XXX/XXX.java 就是对某个文件进行撤销了
 
 
 ## 2.git commit后回退
@@ -54,7 +53,8 @@ tags:
 
 ## 3.回退后悔药
 
-    git reflog用来记录你的每一次命令
+git reflog用来记录你的每一次命令
+
     [root@localhost test-jenkins]# git reflog
     8943166 HEAD@{0}: reset: moving to 8943166480734ac5a760e482a887ee8da0140ec8
     e2c7f2d HEAD@{1}: commit: dev branch change
@@ -68,22 +68,30 @@ tags:
 
 ## 4.已经提交远程分支
 
-    git reset 方法回退
-    拉过的错误版本的本地分支  多需要回退
-    回退  强制推送  远程
+git reset 方法回退
+拉过的错误版本的本地分支  多需要回退
+回退  强制推送  远程
 
-    git revert 版本号
-    git revert HEAD 上个版本
-    git revert HEAD~n 上n个版本
-    git push 远程
-    其他客户端正常拉取就可以
+git revert 版本号
+git revert HEAD 上个版本
+git revert HEAD~n 上n个版本
+git push 远程
+其他客户端正常拉取就可以
 
 
 # 三、Git Reset 三种模式
-    --hard: 会清空工作目录和暂存区的改动
-    --soft：保留工作目录，并把重置 HEAD 所带来的新的差异放进暂存区  **变得只是仓库区**
-    --mixed reset 不加参数(mixed)：保留工作目录，并清空暂存区
 
+--hard: 会清空工作目录和暂存区的改动
+        
+        git reset --hard  c3b320427ad2560140e20af23225d803b2fed6e0
+        
+<font color="red">--soft：保留工作目录，并把重置 HEAD 所带来的新的差异放进暂存区  **变得只是仓库区**</font>
+    
+        git reset --soft  c3b320427ad2560140e20af23225d803b2fed6e0
+        
+--mixed reset 不加参数(mixed)：保留工作目录，并清空暂存区
+        
+        git reset c3b320427ad2560140e20af23225d803b2fed6e0
 
 # 四、修改远程url
 
@@ -99,3 +107,39 @@ tags:
     3.方法三
         直接修改config 文件
 
+# 五、常用命令
+
+git branch  :查看本地所有分钟
+    
+    示例 ：git branch
+
+git branch -a ：查看所有分支 包括远程
+
+    示例：git branch -a 
+
+git branch 【分支名]：新建分支
+
+    示例：git branch  dev
+    
+git branch  -d 【分支名】    删除分支
+    
+    示例 : git branch  -d  test
+
+git branch -D 【分支名】     强制删除 分支
+
+    示例 : git branch  -D  test
+
+git merge 【分支名】 ：合并分支，到当前分支
+    
+    示例：git merge dev
+
+git checkout 【分支名】：切换到那个分支
+
+    示例：git checkout dev
+
+<font color="red">git checkout -b 【分支名】 【远程分支名】：新建一个分支，来自远程分支</font>
+    
+    示例：git checkout -b  dev origin/dev
+    
+    
+    

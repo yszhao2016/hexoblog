@@ -121,8 +121,7 @@ doDelete()：用于HTTP DELETE请求
     public class classname extends HttpServlet{
     
     }   
-     
-# 四、Tomcat部署一个基于servlet项目
+ 
 
 
     

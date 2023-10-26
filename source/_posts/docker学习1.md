@@ -15,6 +15,8 @@ tags:
 
 	docker ps -a   所有  启动与未启动的 
 
+    docker ps -q
+
 
 ### 运行容器
 

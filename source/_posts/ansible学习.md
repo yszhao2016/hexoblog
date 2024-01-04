@@ -1,3 +1,10 @@
+---
+title: ansible学习
+date: 2023-12-01 19:48:14
+tags:
+---
+
+
 #ansible学习
 
 

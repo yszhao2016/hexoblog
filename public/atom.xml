@@ -6,7 +6,11 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
+<<<<<<< HEAD
   <updated>2023-10-26T15:09:48.387Z</updated>
+=======
+  <updated>2024-01-09T08:27:09.177Z</updated>
+>>>>>>> 66b25ca3c8985293568253e626c80c4c353c268e
   <id>http://example.com/</id>
   
   <author>
@@ -17,6 +21,7 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+<<<<<<< HEAD
     <title>docker学习4-网络</title>
     <link href="http://example.com/2023/10/26/docker%E5%AD%A6%E4%B9%A04-%E7%BD%91%E7%BB%9C/"/>
     <id>http://example.com/2023/10/26/docker%E5%AD%A6%E4%B9%A04-%E7%BD%91%E7%BB%9C/</id>
@@ -85,21 +90,223 @@ mysql</summary>
     <updated>2023-10-25T13:56:55.709Z</updated>
     
     <content type="html"><![CDATA[<p>#下载相应的扩展并phpize</p><pre><code>到扩展目录下执行phpize1.phpize 不是系统命令时候find / -name phpize 后找到相应版本的phpize2.报错can‘t find PHP headers in path/phpyum install -y php-devel</code></pre><h1 id="configure"><a href="#configure" class="headerlink" title="configure"></a>configure</h1><p> 项目目录下<br> 执行 ./configure</p><p> 1.报错：configure: error: Cannot find php-config. Please use –with-php-config=PATH</p><p> 执行 find / -name php-config</p><p> 找到相应版本php的 php-config</p><p> ./configure –with-php-config=【php-config路径】</p><h1 id="make-amp-amp-make-install"><a href="#make-amp-amp-make-install" class="headerlink" title="make &amp;&amp; make install"></a>make &amp;&amp; make install</h1><pre><code>执行成功后会提示.so文件的路径</code></pre><p> #配置php.ini</p>]]></content>
+=======
+    <title>Linux-firewalld使用总结</title>
+    <link href="http://example.com/2024/01/09/Linux-firewalld%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/"/>
+    <id>http://example.com/2024/01/09/Linux-firewalld%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</id>
+    <published>2024-01-09T08:27:09.000Z</published>
+    <updated>2024-01-09T08:27:09.177Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>云主机硬盘扩容</title>
+    <link href="http://example.com/2024/01/03/%E4%BA%91%E4%B8%BB%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/"/>
+    <id>http://example.com/2024/01/03/%E4%BA%91%E4%B8%BB%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/</id>
+    <published>2024-01-03T04:52:02.000Z</published>
+    <updated>2024-01-04T06:26:05.984Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-查看分区容量是否增加"><a href="#1-查看分区容量是否增加" class="headerlink" title="1.查看分区容量是否增加"></a>1.查看分区容量是否增加</h1><pre><code>lsblk</code></pre><h1 id="2-扩容MBR分区和ext4文件系统"><a href="#2-扩容MBR分区和ext4文件系统" class="headerlink" title="2. 扩容MBR分区和ext4文件系统"></a>2. 扩容MBR分区和ext4文件系统</h1><pre><code>#redhat类系统type growpart || sudo yum install -y cloud-utils-growpart#debian类系统type growpart || sudo apt-get install -y cloud-guest-utilssudo LC_ALL=en_US.UTF-8 growpart /dev/vdb 1sudo resize2fs /dev/vdb1</code></pre><h1 id="3-扩容GPT分区和xfs文件系统"><a href="#3-扩容GPT分区和xfs文件系统" class="headerlink" title="3. 扩容GPT分区和xfs文件系统"></a>3. 扩容GPT分区和xfs文件系统</h1><pre><code>sudo apt-get updatetype growpart || sudo apt-get install -y cloud-guest-utilstype sgdisk || sudo yum install -y gdisk# 扩容分区sudo LC_ALL=en_US.UTF-8 growpart /dev/vdb 2#扩容文件系统type xfs_growfs || sudo yum install -y xfsprogssudo xfs_growfs /mnt</code></pre><h1 id="4-扩容裸数据盘"><a href="#4-扩容裸数据盘" class="headerlink" title="4.扩容裸数据盘"></a>4.扩容裸数据盘</h1><pre><code>sudo resize2fs /dev/vdb</code></pre>]]></content>
+>>>>>>> 66b25ca3c8985293568253e626c80c4c353c268e
     
     
       
       
-    <summary type="html">&lt;p&gt;#下载相应的扩展并phpize&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;到扩展目录下
-执行phpize
+    <summary type="html">&lt;h1 id=&quot;1-查看分区容量是否增加&quot;&gt;&lt;a href=&quot;#1-查看分区容量是否增加&quot; class=&quot;headerlink&quot; title=&quot;1.查看分区容量是否增加&quot;&gt;&lt;/a&gt;1.查看分区容量是否增加&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;lsblk
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ansible学习</title>
+    <link href="http://example.com/2023/12/01/ansible%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://example.com/2023/12/01/ansible%E5%AD%A6%E4%B9%A0/</id>
+    <published>2023-12-01T11:48:14.000Z</published>
+    <updated>2024-01-17T07:30:43.039Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><p> yum install -y epel-release</p><p> yum install -y ansible</p><p> ansible配置文件：</p><pre><code>/etc/ansible/ansible.cfg/etc/ansible/hosts</code></pre><p> 生成秘钥：</p><pre><code>ssh-keygen -t rsa  #在/root/.ssh/目录下生成秘钥#被控端：(复制主机端公钥到被控端)ssh-copy-id -i /root/.ssh/id_rsa.pub root@192.168.7.99 ssh-copy-id  被控端ip</code></pre><h2 id="二、管理服务器：Inventory文件"><a href="#二、管理服务器：Inventory文件" class="headerlink" title="二、管理服务器：Inventory文件"></a>二、管理服务器：Inventory文件</h2><p>用于管理主机与主机组的文件 也叫主机清单<br>默认文件  /etc/ansible/hosts 最好不要用这  不然一不小心  没指定hosts 就执行这个了</p><p>文件示例</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[gs]</span><br><span class="line">gs157 ansible_ssh_host=1.11.1.11 ansible_ssh_port=65022</span><br><span class="line">[remote]</span><br><span class="line">kh251 ansible_ssh_host=2.22.222.2</span><br></pre></td></tr></table></figure><h2 id="三、基础命令"><a href="#三、基础命令" class="headerlink" title="三、基础命令"></a>三、基础命令</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><p>查看具体主机配置</p><pre><code>grep -v ^# /etc/ansible/hosts |grep -v ^$ansible all --list-host     </code></pre><h3 id="基础参数"><a href="#基础参数" class="headerlink" title="基础参数"></a>基础参数</h3><p>-m 指定模块【command copy shell】<br><font color="red">   忽略时，就默认是 -m command </font></p><pre><code>示例：  ansible -i ./hosts -a ifconfig  test</code></pre><p>-a 模块中使用的参数</p><pre><code>示例：  ansible -i ./hosts -m shell -a &quot;free -mh&quot;  test</code></pre><p>-i 指定hosts文件</p><pre><code>示例  ansible -i ./hosts -m ping test</code></pre><h3 id="检查能否在受管主机上运行python模块"><a href="#检查能否在受管主机上运行python模块" class="headerlink" title="检查能否在受管主机上运行python模块"></a>检查能否在受管主机上运行python模块</h3><pre><code>ansible host-pattern -m module [-a &#39;module arguments&#39;] [-i inventory]示例    ansible gsweb -m ping        ansible -i /etc/ansible/hosts gsweb -m ping   </code></pre><h3 id="command模块"><a href="#command模块" class="headerlink" title="command模块"></a>command模块</h3><pre><code>执行shell命令-m 不使用 默认使用command模块ansible -m command -a &quot;frem -mh&quot; test   ansible -m command -a &quot;frem -mh&quot; test     ansible  -a &quot;frem -mh&quot; test </code></pre><h3 id="shell模块"><a href="#shell模块" class="headerlink" title="shell模块"></a>shell模块</h3><p> 与command模块有些相似,但是command 有些命令无法执行</p><p>  命令行示例</p><pre><code> ansible -m shell -a &quot;cat /etc/*release&quot; test</code></pre><h3 id="copy模块"><a href="#copy模块" class="headerlink" title="copy模块"></a>copy模块</h3><p>   参数</p><pre><code>src：    待copy的文件或目录dest：   目标copy到远程主机的具体目录（必要参数）owner：  目标copy到远程主机后的属主（远程主机上必须有对应的用户，否则报错）group：  目标copy到远程主机后的属组（远程主机上必须有对应的组，否则报错）mode：   目标copy到远程主机后的权限content： 若不用src指定拷贝的文件，必须用content直接指定文件内容，2选一。 force：   当远程主机的目标路径中已经存在同名文件，并且与ansible主机中的文件内容不同时，          是否强制覆盖，可选值有yes和no。默认值为yes，表示覆盖，          如果设置为no，则不会执行覆盖拷贝操作，远程主机中的文件保持不变。          backup：  当远程主机的目标路径中已经存在同名文件，并且与ansible主机中的文件内容不同时，          是否对远程主机的文件进行备份，          可选值有yes和no，当设置为yes时，会先备份远程主机中的文件，          然后再将ansible主机中的文件拷贝到远程主机。</code></pre><p>   命令行 示例</p><pre><code>   ansible khweb  -m copy -a &quot;src=/home/soft/node_exporter-1.6.1.linux-amd64.tar.gz  dest=/home/soft/  backup=yes mode=644&quot;</code></pre><p>   playbook 示例</p><pre><code>   - name: Copy a file from local to remote     copy:      src: /path/to/local/file.txt      dest: /path/to/remote/file.txt               - name: &quot;copy files&quot;         copy:         src: &quot;&#123;&#123; item.src &#125;&#125;&quot;         dest: &quot;&#123;&#123; item.dest &#125;&#125;&quot;         owner: root         group: root         mode: 755         with_items:            - &#123;src: &quot;/root/aaa.txt&quot;, dest: &quot;/tmp&quot; &#125;            - &#123;src: &quot;/root/bbb.txt&quot;, dest: &quot;/tmp&quot; &#125;</code></pre><h3 id="setup模块"><a href="#setup模块" class="headerlink" title="setup模块"></a>setup模块</h3><h3 id="file模块"><a href="#file模块" class="headerlink" title="file模块"></a>file模块</h3><h3 id="debug模块"><a href="#debug模块" class="headerlink" title="debug模块"></a>debug模块</h3><h3 id="yum模块"><a href="#yum模块" class="headerlink" title="yum模块"></a>yum模块</h3><h3 id="user模块"><a href="#user模块" class="headerlink" title="user模块"></a>user模块</h3><h3 id="register模块"><a href="#register模块" class="headerlink" title="register模块"></a>register模块</h3><p> register 捕获 task 的输出，并将它保存到一个变量中，方便在以后的任务中调用</p><p> change： 表示执行命令的状态，如果命令执行了，则为 true；</p><p> cmd： 表示的则是你当前执行的命令；</p><p> delta： 表示命令执行所花费的时间</p><p> start： 表示命令开始执行的时间</p><p> end： 表示命令结束的时间</p><p> failed： 表示命令执行的结果，如果为 false 则表示命令执行成功，true 则表示命令执行失败</p><p> rc： 表示命令执行的返回码（return code），0 表示执行成功；</p><p> stderr：命令输出的标准错误信息</p><p> stderr_lines： 按换行符分割输出的内容，在多行输出时，显示的效果比 stderr 更加直观</p><p> stdout： 命令的标准输出信息</p><p> stdout_lines： 按换行符分割输出的内容，在多行输出时，结果更加直观    </p><pre><code>示例：- name: View the logged in user name  shell: whoami  register: user- debug:    var: user       - name: check nginx running   stat: path=/var/run/nginx.pid   register: nginxrunning   - name: check nginx syntax  shell: /usr/sbin/nginx -t  register: nginxsyntax# check_mode  true  -C测试 会跳过  check_mode: false  debug:    var: &quot;nginxsyntax,nginxrunning&quot;- name: reload nginx server  service: name=nginx state=reloaded  when: nginxsyntax.rc == 0  and nginxrunning.stat.exists == true           </code></pre><h2 id="when模块"><a href="#when模块" class="headerlink" title="when模块"></a>when模块</h2><h2 id="debug与when连用"><a href="#debug与when连用" class="headerlink" title="debug与when连用"></a>debug与when连用</h2><h2 id="剧本（Playbooks）"><a href="#剧本（Playbooks）" class="headerlink" title="剧本（Playbooks）"></a>剧本（Playbooks）</h2><pre><code>Playbook可以运行多个任务，并提供一些更高级的功能。让我们将上述任务移到一本剧本中。在ansible中剧本（playbooks）和角色（roles）都使用Yaml文件定义</code></pre><h3 id="常用标签"><a href="#常用标签" class="headerlink" title="常用标签"></a>常用标签</h3><pre><code>gather_facts: no只要是使用了ansible-playbook，默认情况，第 1 个步骤总是执行 Gathering Facts 这个TASK 这个主要收集目标主机的常用信息，如：主机名、内核版本、网卡接口、IP 地址、操作系统版本、CPU、内存、磁盘 等等tag标签可以单独使用#启动nginx    - name: start nginx server      service: name=nginx state=started      when:         - nginxsyntax.rc == 0        - nginxrunning.stat.exists == false      tags: updateconfig       ansible-playbook -i hosts site.yml -t updateconfig           通过debug模块去确认返回结果的数据结构   - name: print nginx syntax result  debug: var=nginxsyntax   </code></pre><h3 id="定义变量-循环示例"><a href="#定义变量-循环示例" class="headerlink" title="定义变量 循环示例"></a>定义变量 循环示例</h3><pre><code> vars:    createuser:      - tomcat      - www      - mysql        tasks:   #利用循环创建多个用户    - name: create user      user: name=&#123;&#123;item&#125;&#125; state=present      with_items: &quot;&#123;&#123;createuser&#125;&#125;&quot;</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;一、安装&quot;&gt;&lt;a href=&quot;#一、安装&quot; class=&quot;headerlink&quot; title=&quot;一、安装&quot;&gt;&lt;/a&gt;一、安装&lt;/h2&gt;&lt;p&gt; yum install -y epel-release&lt;/p&gt;
+&lt;p&gt; yum install -y ansible&lt;/p</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>奇怪问题总结</title>
+    <link href="http://example.com/2023/11/12/%E5%A5%87%E6%80%AA%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/"/>
+    <id>http://example.com/2023/11/12/%E5%A5%87%E6%80%AA%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/</id>
+    <published>2023-11-12T11:48:14.000Z</published>
+    <updated>2024-01-04T06:32:46.032Z</updated>
+    
+    <content type="html"><![CDATA[<p>#奇怪的问题</p><h2 id="无法访问php文件，总是报错-file-not-found"><a href="#无法访问php文件，总是报错-file-not-found" class="headerlink" title="无法访问php文件，总是报错 file not found"></a>无法访问php文件，总是报错 file not found</h2><pre><code>解决思路        1.首先查询 文件是否存在    2.查询nginx php访问的配置    3.关闭selinux     </code></pre><h2 id="配置ssh-免密码-登录总是提示需要输入密码"><a href="#配置ssh-免密码-登录总是提示需要输入密码" class="headerlink" title="配置ssh 免密码 登录总是提示需要输入密码"></a>配置ssh 免密码 登录总是提示需要输入密码</h2><pre><code>解决思路    1.排查下authorized_keys 是否存在key    2.排查/etc/sshd/sshd_config下是否关闭了 证书登录【PubkeyAuthentication no】</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;#奇怪的问题&lt;/p&gt;
+&lt;h2 id=&quot;无法访问php文件，总是报错-file-not-found&quot;&gt;&lt;a href=&quot;#无法访问php文件，总是报错-file-not-found&quot; class=&quot;headerlink&quot; title=&quot;无法访问php文件，总是报错 file </summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>搭建k8s</title>
+    <link href="http://example.com/2023/11/10/%E6%90%AD%E5%BB%BAk8s/"/>
+    <id>http://example.com/2023/11/10/%E6%90%AD%E5%BB%BAk8s/</id>
+    <published>2023-11-10T04:00:16.000Z</published>
+    <updated>2023-11-10T06:46:26.026Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>openEuler系统安装遇到问题</title>
+    <link href="http://example.com/2023/11/10/openEuler%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98/"/>
+    <id>http://example.com/2023/11/10/openEuler%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98/</id>
+    <published>2023-11-10T03:59:43.000Z</published>
+    <updated>2024-01-15T06:43:45.191Z</updated>
+    
+    <content type="html"><![CDATA[<p>#yum 安装报依赖库找不到问题</p><pre><code>openEuler release 22.03版本替换centos 7的源就可以具体命令：wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo然后 将文件中$releasever替换7具体命令：vim 后  %s/$releasever/7/g</code></pre><h1 id="安装-yum-install-nginx-报错"><a href="#安装-yum-install-nginx-报错" class="headerlink" title="安装 yum install nginx 报错"></a>安装 yum install nginx 报错</h1><pre><code>Error:  Problem: 软件包 nginx-1:1.24.0-1.el7.ngx.x86_64 需要 libcrypto.so.10()(64bit)，但没有提供者可以被安装  - 软件包 nginx-1:1.24.0-1.el7.ngx.x86_64 需要 libcrypto.so.10(libcrypto.so.10)(64bit)，但没有提供者可以被安装  - 软件包 nginx-1:1.24.0-1.el7.ngx.x86_64 需要 libssl.so.10()(64bit)，但没有提供者可以被安装  - 软件包 nginx-1:1.24.0-1.el7.ngx.x86_64 需要 libssl.so.10(libssl.so.10)(64bit)，但没有提供者可以被安装  - 软件包 nginx-1:1.24.0-1.el7.ngx.x86_64 需要 libcrypto.so.10(OPENSSL_1.0.2)(64bit)，但没有提供者可以被安装  - 无法同时安装 openssl-libs-1:1.0.2k-19.el7.x86_64 和 openssl-libs-1:1.1.1m-22.oe2203.x86_64  - 无法同时安装 openssl-libs-1:1.0.2k-21.el7_9.x86_64 和 openssl-libs-1:1.1.1m-22.oe2203.x86_64  - 无法同时安装 openssl-libs-1:1.0.2k-22.el7_9.x86_64 和 openssl-libs-1:1.1.1m-22.oe2203.x86_64  - 无法同时安装 openssl-libs-1:1.0.2k-24.el7_9.x86_64 和 openssl-libs-1:1.1.1m-22.oe2203.x86_64  - 无法同时安装 openssl-libs-1:1.0.2k-25.el7_9.x86_64 和 openssl-libs-1:1.1.1m-22.oe2203.x86_64  - 无法同时安装 openssl-libs-1:1.0.2k-26.el7_9.x86_64 和 openssl-libs-1:1.1.1m-22.oe2203.x86_64  - 软件包 ima-evm-utils-libs-1.3.2-8.oe2203sp1.x86_64 需要 libcrypto.so.1.1()(64bit)，但没有提供者可以被安装  - 软件包 ima-evm-utils-libs-1.3.2-8.oe2203sp1.x86_64 需要 libcrypto.so.1.1(OPENSSL_1_1_0)(64bit)，但没有提供者可以被安装  - 软件包 ima-evm-utils-libs-1.3.2-8.oe2203sp1.x86_64 需要 libcrypto.so.1.1(OPENSSL_1_1_1)(64bit)，但没有提供者可以被安装  - 无法为该任务安装最佳候选  - 安装的软件包的问题 ima-evm-utils-libs-1.3.2-8.oe2203sp1.x86_64(try to add &#39;--allowerasing&#39; to command line to replace conflicting packages or &#39;--skip-broken&#39; to skip uninstallable packages or &#39;--nobest&#39; to use not only best candidate packages)解决方案yum install compat-openssl10yum install http://mirror.centos.org/centos/8-stream/AppStream/x86_64/os/Packages/compat-openssl10-1.0.2o-3.el8.x86_64.rpm</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;#yum 安装报依赖库找不到问题&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;openEuler release 22.03版本
 
-1.phpize 不是系统命令时候
+替换centos 7的源就可以
 
-find / -name phpize 
-
-后找到相应版本的phpize
-
-2.报错can‘t find PHP headers in pa</summary>
+具体命令：wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>特殊的SQL语句</title>
+    <link href="http://example.com/2023/11/08/%E7%89%B9%E6%AE%8A%E7%9A%84SQL%E8%AF%AD%E5%8F%A5/"/>
+    <id>http://example.com/2023/11/08/%E7%89%B9%E6%AE%8A%E7%9A%84SQL%E8%AF%AD%E5%8F%A5/</id>
+    <published>2023-11-08T09:54:07.000Z</published>
+    <updated>2023-11-10T03:56:46.009Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="使用逗号分割拆分"><a href="#使用逗号分割拆分" class="headerlink" title="使用逗号分割拆分"></a>使用逗号分割拆分</h1><p>查询出field字段中有value的记录<br>SELECT * FROM table WHERE FIND_IN_SET(‘value’, field)&gt;0</p><p> FIND_IN_SET(‘value’, field)<font color=Red>&gt;0</font>  查询的是字段中<font color=Red>包含了</font>查询字符value的<br> FIND_IN_SET(‘value’, field)<font color=Red>=0</font>   查询的是字段中<font color=Red>不包含</font>了查询字符value的</p><h1 id="SUBSTRING-INDEX-函数"><a href="#SUBSTRING-INDEX-函数" class="headerlink" title="SUBSTRING_INDEX 函数"></a>SUBSTRING_INDEX 函数</h1><p>string：用于截取目标字符串的字符串。可为字段，表达式等。</p><p>sep：分隔符，string存在且用于分割的字符，比如“，”、“.”等。</p><p>num：序号 <font color=Red>负数 从右边取   正数从左边取 取几个值</font></p><p>示例 field  a1,b2,c3<br>SUBSTRING_INDEX(field, ‘,’, 1) 取值就是 a1<br><font color=Red>SUBSTRING_INDEX(field, ‘,’, 2) 取值就是 a1,b2</font></p><p><font color=Red>根据，分割拆分多条数据sql：</font></p><pre><code>SELECT SUBSTRING_INDEX(field, &#39;,&#39;, 1) AS value1,    SUBSTRING_INDEX(SUBSTRING_INDEX(field, &#39;,&#39;, 2), &#39;,&#39;, -1) AS value2,    SUBSTRING_INDEX(SUBSTRING_INDEX(field, &#39;,&#39;, 3), &#39;,&#39;, -1) AS value3    SUBSTRING_INDEX(field, &#39;,&#39;, -1) AS value4FROM table</code></pre><h2 id="根据，隔开字段-分组统计"><a href="#根据，隔开字段-分组统计" class="headerlink" title="根据，隔开字段 分组统计"></a>根据，隔开字段 分组统计</h2><p>根据，隔开字段拆分成多行数据 多会拆分成3行了</p><p>SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(comInputField163, ‘,’,numbers.n), ‘,’, -1) AS tag ,numbers.n,a.*<br>      #,COUNT(*) AS count<br>FROM mida_gd_2023101116015948 a<br>JOIN (<br>  SELECT 1 AS n UNION ALL SELECT 2 UNION ALL SELECT 3                                   <font color=Red>#这边SELECT 数 根据，隔开最多项来，写到SELECT 5只有数据中只有2项它也要关联5个出来</font><br>) AS numbers<br>WHERE CHAR_LENGTH(comInputField163) - CHAR_LENGTH(REPLACE(comInputField163, ‘,’, ‘’)) &gt;= numbers.n-1  #通过这个来限制,<font color=Red>统计，数量</font> 判断需要几个<br>GROUP BY tag;</p><h1 id="两表连接的SQL语句"><a href="#两表连接的SQL语句" class="headerlink" title="两表连接的SQL语句"></a>两表连接的SQL语句</h1><p>select A.c1,A.c2,B.c1,B.c2<br>from table1 A,table2 B<br>where A.id=B.id</p><p>select A.c1,A.c2,B.c1,B.c2<br>from table1 A join table2 B<br>on A.id=B.id</p><p>select A.c1,A.c2,B.c1,B.c2<br>from table1 A inner join table2 B<br>on A.id=B.id</p><p>join on与inner join on是相同</p><p>默认JOIN就是指的INNER JOIN</p><p>内连接推荐 join 方式 通过where 的方式 性能较差<br>有的数据库底层 认为是交叉 连接</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;使用逗号分割拆分&quot;&gt;&lt;a href=&quot;#使用逗号分割拆分&quot; class=&quot;headerlink&quot; title=&quot;使用逗号分割拆分&quot;&gt;&lt;/a&gt;使用逗号分割拆分&lt;/h1&gt;&lt;p&gt;查询出field字段中有value的记录&lt;br&gt;SELECT * FROM table WH</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>wordpress相关</title>
+    <link href="http://example.com/2023/11/01/wordpress%E7%9B%B8%E5%85%B3/"/>
+    <id>http://example.com/2023/11/01/wordpress%E7%9B%B8%E5%85%B3/</id>
+    <published>2023-11-01T03:01:22.000Z</published>
+    <updated>2023-11-01T03:13:31.043Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="wordpress-迁移后还是访问之前的域名"><a href="#wordpress-迁移后还是访问之前的域名" class="headerlink" title="wordpress 迁移后还是访问之前的域名"></a>wordpress 迁移后还是访问之前的域名</h1><pre><code>1.找到 前缀_options 表修改 siteurl  home字段 2.或者登录后台修改</code></pre><h1 id="wordpress-迁移后栏目打开是404"><a href="#wordpress-迁移后栏目打开是404" class="headerlink" title="wordpress 迁移后栏目打开是404"></a>wordpress 迁移后栏目打开是404</h1><pre><code>nginx加上如下配置location / &#123; try_files $uri $uri/ /index.php?$args;&#125;# Add trailing slash to */wp-admin requests.rewrite /wp-admin$ $scheme://$host$uri/ permanent;</code></pre><h1 id="修改忘记密码-修改"><a href="#修改忘记密码-修改" class="headerlink" title="修改忘记密码 修改"></a>修改忘记密码 修改</h1><pre><code>修改 前缀_users 表    user_pass 字段 MD5 加密</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;wordpress-迁移后还是访问之前的域名&quot;&gt;&lt;a href=&quot;#wordpress-迁移后还是访问之前的域名&quot; class=&quot;headerlink&quot; title=&quot;wordpress 迁移后还是访问之前的域名&quot;&gt;&lt;/a&gt;wordpress 迁移后还是访问之前的</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>docker学习4-网络</title>
+    <link href="http://example.com/2023/10/26/docker%E5%AD%A6%E4%B9%A04-%E7%BD%91%E7%BB%9C/"/>
+    <id>http://example.com/2023/10/26/docker%E5%AD%A6%E4%B9%A04-%E7%BD%91%E7%BB%9C/</id>
+    <published>2023-10-26T13:56:52.000Z</published>
+    <updated>2023-11-01T02:48:52.627Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="原理linux-network-namespace"><a href="#原理linux-network-namespace" class="headerlink" title="原理linux network namespace"></a>原理linux network namespace</h1><h1 id="docker-bridge-网络"><a href="#docker-bridge-网络" class="headerlink" title="docker  bridge 网络"></a>docker  bridge 网络</h1><h2 id="link"><a href="#link" class="headerlink" title="link"></a>link</h2><h2 id="自定义-docker-网络"><a href="#自定义-docker-网络" class="headerlink" title="自定义 docker 网络"></a>自定义 docker 网络</h2><h1 id="docker端口映射"><a href="#docker端口映射" class="headerlink" title="docker端口映射"></a>docker端口映射</h1><h1 id="docker-host-网络"><a href="#docker-host-网络" class="headerlink" title="docker host 网络"></a>docker host 网络</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;原理linux-network-namespace&quot;&gt;&lt;a href=&quot;#原理linux-network-namespace&quot; class=&quot;headerlink&quot; title=&quot;原理linux network namespace&quot;&gt;&lt;/a&gt;原理linux net</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux之LVM(逻辑卷管理)</title>
+    <link href="http://example.com/2023/10/19/Linux%E4%B9%8BLVM-%E9%80%BB%E8%BE%91%E5%8D%B7%E7%AE%A1%E7%90%86/"/>
+    <id>http://example.com/2023/10/19/Linux%E4%B9%8BLVM-%E9%80%BB%E8%BE%91%E5%8D%B7%E7%AE%A1%E7%90%86/</id>
+    <published>2023-10-19T04:50:58.000Z</published>
+    <updated>2024-01-09T05:30:53.019Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h1><p>一个  分区 对应 一个PV <font color="red">【pvcreate /dev/sdb1 /dev/sdb2 /dev/sdc1 /dev/sdc2】</font></p><p>多个PV 对应 一个VG <font color="red">【 vgcreate vgdata /dev/sdb1 /dev/sdb2 /dev/sdc1 /dev/sdc2】 </font></p><p>一个VG 中可以  分出多个LV <font color="red">【 lvcreate -L 11G -n lv001 vgdata 】</font></p><p><font color="red">查看命令 【pvdisplay vgdisplay lvdisplay】</font></p><pre><code> PV(Physical Volume)：物理卷，处于LVM最底层，可以是物理硬盘或者分区。 VG(Volume Group)：卷组，建立在PV之上，可以含有一个到多个PV    LV(Logical Volume)：逻辑卷，建立在VG之上，相当于原来分区的概念。不过大小可以动态改变。      创建PV   pvcreate /dev/sdb1  查看PV   pvscan  创建一个名为vgdata的VG，并且将所有的新建的PV加入vgdata vgcreate vgdata /dev/sdb1   从VG vgdata中创建一个大小为11G的名为lv001的LV lvcreate -L 11G -n lv001 vgdata  格式化 mkfs.ext3    mkfs.ext4    mkfs.xfs mkfs.ext4  /dev/mapper/【vg名称】-【lv名称】 示例mkfs.ext4 /dev/mapper/vgdata-lv001  挂载 mount /dev/mapper/vgdata-lv001 /data  卸载  umount 【设备名】   xfs格式不支持缩容，只支持扩容 </code></pre><h1 id="二、新硬盘-扩容-根目录"><a href="#二、新硬盘-扩容-根目录" class="headerlink" title="二、新硬盘 扩容 根目录 /"></a>二、新硬盘 扩容 根目录 /</h1><h2 id="lsblk查看"><a href="#lsblk查看" class="headerlink" title="lsblk查看"></a>lsblk查看</h2><pre><code>     NAME               MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS     sda                  8:0    0   60G  0 disk      ├─sda1               8:1    0    1G  0 part /boot     └─sda2               8:2    0   59G  0 part        ├─openeuler-root 253:0    0 40.4G  0 lvm  /       ├─openeuler-swap 253:1    0    6G  0 lvm         └─openeuler-home 253:2    0 17.4G  0 lvm  /home     sdb                  8:16   0    5G  0 disk      ├─sdb1               8:17   0  1.9G  0 part      └─sdb2               8:18   0  3.1G  0 part        └─vgdata-lv001   253:3    0    8G  0 lvm       sdc                  8:32   0    5G  0 disk      ├─sdc1               8:33   0  2.5G  0 part      │ └─vgdata-lv001   253:3    0    8G  0 lvm       └─sdc2               8:34   0  2.5G  0 part        └─vgdata-lv001   253:3    0    8G  0 lvm       sdd                  8:48   0    5G  0 disk      └─sdd1               8:49   0    5G  0 part        └─openeuler-root 253:0    0 40.4G  0 lvm  /     sr0                 11:0    1  3.5G  0 rom</code></pre><h2 id="分区新的硬盘"><a href="#分区新的硬盘" class="headerlink" title="分区新的硬盘"></a>分区新的硬盘</h2><pre><code>fdisk /dev/sdd默认值 回车 就可以了</code></pre><h2 id="查看vg"><a href="#查看vg" class="headerlink" title="查看vg"></a>查看vg</h2><pre><code>vgscan      [root@k8snode-2 ~]# vgscanFound volume group &quot;vgdata&quot; using metadata type lvm2Found volume group &quot;openeuler&quot; using metadata type lvm2vgdisplay  查看vg还有多少空余空间</code></pre><h2 id="扩展-vg"><a href="#扩展-vg" class="headerlink" title="扩展 vg"></a>扩展 vg</h2><pre><code>#将新建的分区/dev/sdd1  加入openeuler vg中vgextend openeuler /dev/sdd1   </code></pre><h2 id="扩充逻辑卷"><a href="#扩充逻辑卷" class="headerlink" title="扩充逻辑卷"></a>扩充逻辑卷</h2><pre><code>lvextend -L +5G /dev/mapper/openeuler-rootdf -h 可以查看目录挂载的 逻辑卷[root@k8snode-2 ~]# df -h文件系统                    容量  已用  可用 已用% 挂载点devtmpfs                    4.0M     0  4.0M    0% /devtmpfs                       3.7G     0  3.7G    0% /dev/shmtmpfs                       1.5G  147M  1.4G   10% /runtmpfs                       4.0M     0  4.0M    0% /sys/fs/cgroup/dev/mapper/openeuler-root   40G  5.0G   33G   14% /tmpfs                       3.7G     0  3.7G    0% /tmp/dev/sda1                   974M  151M  756M   17% /boot/dev/mapper/openeuler-home   17G  709M   16G    5% /home  </code></pre><h2 id="更新文件系统（争对不同的文件系统，其更新的命令也不一样"><a href="#更新文件系统（争对不同的文件系统，其更新的命令也不一样" class="headerlink" title="更新文件系统（争对不同的文件系统，其更新的命令也不一样"></a>更新文件系统（争对不同的文件系统，其更新的命令也不一样</h2><pre><code>e2fsck -f /dev/datavg/lvdata1 #ext4文件系统，检查lv的文件系统resize2fs /dev/VG/LV01 #ext4文件系统命令，该命令后面接lv的设备名就行xfs_growfs /nas #xfs文件系统，该命令后面直接跟的是挂载点当更新文件系统后，你就会发现，df -h正常了</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;一、基础&quot;&gt;&lt;a href=&quot;#一、基础&quot; class=&quot;headerlink&quot; title=&quot;一、基础&quot;&gt;&lt;/a&gt;一、基础&lt;/h1&gt;&lt;p&gt;一个  分区 对应 一个PV &lt;font color=&quot;red&quot;&gt;【pvcreate /dev/sdb1 /dev/sdb2</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>mysql的常用应用</title>
+    <link href="http://example.com/2023/10/17/mysql%E7%9A%84%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8/"/>
+    <id>http://example.com/2023/10/17/mysql%E7%9A%84%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8/</id>
+    <published>2023-10-17T02:12:16.000Z</published>
+    <updated>2024-01-09T08:30:00.132Z</updated>
+    
+    <content type="html"><![CDATA[<p>#mysql忘记密码,重置密码</p><p>1.修改my.cnf</p><p>添加</p><pre><code>--skip-grant-tables</code></pre><p>2.进入数据</p><pre><code>执行use mysql;mysql&gt; update user set password=password(&#39;123&#39;) where user=&#39;root&#39; and host=&#39;localhost&#39;;mysql&gt; flush privileges;</code></pre><p>#mysql导出、导入数据命令</p><p>导出<br>mysqldump -u &lt;用户名&gt; -p&lt;密码&gt; &lt;数据库名&gt; &gt; &lt;输出文件路径&gt;</p><p>示例</p><pre><code> mysqldump  -u root -p wastewater.iguanwei.com &gt;bak.sql</code></pre><p>导入</p><pre><code>方法一：mysql -u用户名 -p 数据库名 &lt; 123.sql方法二：source 123.sql;</code></pre><h1 id="mysql修改root权限-修改密码-远程访问"><a href="#mysql修改root权限-修改密码-远程访问" class="headerlink" title="mysql修改root权限/修改密码/远程访问"></a>mysql修改root权限/修改密码/远程访问</h1><pre><code>GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39;IDENTIFIED BY &#39;Storage@202312&#39; WITH GRANT OPTION;</code></pre><h1 id=""><a href="#" class="headerlink" title=""></a></h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;#mysql忘记密码,重置密码&lt;/p&gt;
+&lt;p&gt;1.修改my.cnf&lt;/p&gt;
+&lt;p&gt;添加&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;--skip-grant-tables
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2.进入数据&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;执行
+use mysql;
+mysql</summary>
       
     
     
@@ -205,9 +412,9 @@ w
     <link href="http://example.com/2023/08/28/%E6%90%AD%E5%BB%BAopenvpn/"/>
     <id>http://example.com/2023/08/28/%E6%90%AD%E5%BB%BAopenvpn/</id>
     <published>2023-08-28T05:42:06.000Z</published>
-    <updated>2023-08-28T06:52:47.424Z</updated>
+    <updated>2024-01-09T11:08:40.516Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h1><h2 id="1-1、安装epel库和openvpn软件"><a href="#1-1、安装epel库和openvpn软件" class="headerlink" title="1.1、安装epel库和openvpn软件"></a>1.1、安装epel库和openvpn软件</h2><pre><code>yum -y install openvpn easy-rsa firewalldyum install epel-release -y</code></pre><h2 id="1-2、开启路由转发"><a href="#1-2、开启路由转发" class="headerlink" title="1.2、开启路由转发"></a>1.2、开启路由转发</h2><pre><code> echo  &quot;net.ipv4.ip_forward = 1&quot; &gt;&gt;/etc/sysctl.conf sysctl -p</code></pre><h2 id="1-3、创建OpenVPN相关的密钥"><a href="#1-3、创建OpenVPN相关的密钥" class="headerlink" title="1.3、创建OpenVPN相关的密钥"></a>1.3、创建OpenVPN相关的密钥</h2><pre><code> cp -rf /usr/share/easy-rsa/3.0/* /etc/openvpn/easy-rsa/ cp -p /usr/share/doc/easy-rsa-3.0.6/vars.example /etc/openvpn/easy-rsa/vars cd /etc/openvpn/easy-rsa/</code></pre><h3 id="1-3-1、创建ca证书"><a href="#1-3-1、创建ca证书" class="headerlink" title="1.3.1、创建ca证书"></a>1.3.1、创建ca证书</h3><pre><code>/usr/share/easy-rsa/3/easyrsa init-pki/usr/share/easy-rsa/3/easyrsa build-ca nopass</code></pre><h3 id="1-3-2、创建client证书和签名"><a href="#1-3-2、创建client证书和签名" class="headerlink" title="1.3..2、创建client证书和签名"></a>1.3..2、创建client证书和签名</h3><pre><code>/usr/share/easy-rsa/3/easyrsa gen-req client1 nopass           #Enter/usr/share/easy-rsa/3/easyrsa sign-req client client1          #需要输入yes创建dh、tls、crl（证书撤销秘钥）/usr/share/easy-rsa/3/easyrsa gen-dhopenvpn --genkey --secret /etc/openvpn/easy-rsa/ta.key/usr/share/easy-rsa/3/easyrsa  gen-crl</code></pre><h3 id="1-3-3、将秘钥拷贝至相应目录"><a href="#1-3-3、将秘钥拷贝至相应目录" class="headerlink" title="1.3.3、将秘钥拷贝至相应目录"></a>1.3.3、将秘钥拷贝至相应目录</h3><pre><code>cp -p pki/ca.crt /etc/openvpn/server/cp -p pki/issued/server1.crt /etc/openvpn/server/cp -p pki/private/server1.key /etc/openvpn/server/cp -p ta.key /etc/openvpn/server/cp -p pki/ca.crt /etc/openvpn/client/cp -p pki/issued/client1.crt /etc/openvpn/client/cp -p pki/private/client1.key /etc/openvpn/client/cp -p ta.key /etc/openvpn/client/cp pki/dh.pem /etc/openvpn/server/cp pki/crl.pem /etc/openvpn/server/cp /usr/share/doc/openvpn-2.4.11/sample/sample-config-files/server.conf /etc/openvpn/</code></pre><h1 id="二、配置-openvpn"><a href="#二、配置-openvpn" class="headerlink" title="二、配置 openvpn"></a>二、配置 openvpn</h1><h2 id="2-1、编辑配置文件-etc-openvpn-server-conf"><a href="#2-1、编辑配置文件-etc-openvpn-server-conf" class="headerlink" title="2.1、编辑配置文件 /etc/openvpn/server.conf"></a>2.1、编辑配置文件 /etc/openvpn/server.conf</h2><pre><code>cp /usr/share/doc/openvpn-2.4.11/sample/sample-config-files/server.conf /etc/openvpn/      #拷贝实例修改或直接拷贝以下内容vim /etc/openvpn/server.conflocal 0.0.0.0    #监听地址port 1194        #监听端口proto tcp        #监听协议dev tun          #采用路由隧道模式ca /etc/openvpn/server/ca.crt              #ca证书路径cert /etc/openvpn/server/server1.crt       #服务器证书key /etc/openvpn/server/server1.key        #服务器秘钥dh /etc/openvpn/server/dh.pem              #密钥交换协议文件#####注意在设备中加一条到10.100.100.0虚拟网段的路由！！！！server 10.100.100.0 255.255.255.0          ####给客户端分配地址池，注意：不能和VPN服务器内网网段有相同#####注意在设备中加一条到10.100.100.0虚拟网段的路由！！！！ifconfig-pool-persist ipp.txt#push &quot;redirect-gateway def1 bypass-dhcp&quot;      #推送默认路由（所有流量走vpn）push &quot;route 192.168.0.0 255.255.255.0&quot;           #推送客户端常用路由（根据自己内网网段来写或修改客户端配置添加路由）push &quot;dhcp-option DNS 192.168.5.251&quot;           #dhcp分配dnsclient-to-client       #客户端之间互相通信keepalive 10 120       #存活时间，10秒ping一次,120 如未收到响应则视为断线comp-lzo               #传输数据压缩max-clients 100        #最多允许 100 客户端连接user openvpn           #用户group openvpn          #用户组cipher AES-256-CBC     #加密方式--客户端必须一致persist-keypersist-tunstatus /var/log/openvpn-status.loglog         /var/log/openvpn.logverb 3#以下参数为用户认证使用script-security 3auth-user-pass-verify /etc/openvpn/checkpsw.sh via-env    #指定用户认证脚本username-as-common-nameverify-client-cert none</code></pre><h2 id="2-2虚拟网段的路由"><a href="#2-2虚拟网段的路由" class="headerlink" title="2.2虚拟网段的路由"></a>2.2虚拟网段的路由</h2><pre><code>iptables -t nat -A POSTROUTING -s 10.100.100.0/24 -j MASQUERADE</code></pre><h1 id="三、用户认证"><a href="#三、用户认证" class="headerlink" title="三、用户认证"></a>三、用户认证</h1><h2 id="3-1编写用户认证脚本文件-脚本是由openvpn官网提供"><a href="#3-1编写用户认证脚本文件-脚本是由openvpn官网提供" class="headerlink" title="3.1编写用户认证脚本文件 (脚本是由openvpn官网提供)"></a>3.1编写用户认证脚本文件 (脚本是由openvpn官网提供)</h2><pre><code>vim /etc/openvpn/checkpsw.sh#!/bin/sh############################################################ checkpsw.sh (C) 2004 Mathias Sundman # This script will authenticate OpenVPN users against# a plain text file. The passfile should simply contain# one row per user with the username first followed by# one or more space(s) or tab(s) and then the password.PASSFILE=&quot;/etc/openvpn/psw-file&quot;LOG_FILE=&quot;/etc/openvpn/openvpn-password.log&quot;TIME_STAMP=`date &quot;+%Y-%m-%d %T&quot;`###########################################################if [ ! -r &quot;$&#123;PASSFILE&#125;&quot; ]; then  echo &quot;$&#123;TIME_STAMP&#125;: Could not open password file \&quot;$&#123;PASSFILE&#125;\&quot; for reading.&quot; &gt;&gt;$&#123;LOG_FILE&#125;  exit 1fiCORRECT_PASSWORD=`awk &#39;!/^;/&amp;&amp;!/^#/&amp;&amp;$1==&quot;&#39;$&#123;username&#125;&#39;&quot;&#123;print $2;exit&#125;&#39; $&#123;PASSFILE&#125;`if [ &quot;$&#123;CORRECT_PASSWORD&#125;&quot; = &quot;&quot; ]; then   echo &quot;$&#123;TIME_STAMP&#125;: User does not exist: username=\&quot;$&#123;username&#125;\&quot;, password=\&quot;$&#123;password&#125;\&quot;.&quot; &gt;&gt; $&#123;LOG_FILE&#125;  exit 1fiif [ &quot;$&#123;password&#125;&quot; = &quot;$&#123;CORRECT_PASSWORD&#125;&quot; ]; then   echo &quot;$&#123;TIME_STAMP&#125;: Successful authentication: username=\&quot;$&#123;username&#125;\&quot;.&quot; &gt;&gt; $&#123;LOG_FILE&#125;  exit 0fiecho &quot;$&#123;TIME_STAMP&#125;: Incorrect password: username=\&quot;$&#123;username&#125;\&quot;,     password=\&quot;$&#123;password&#125;\&quot;.&quot; &gt;&gt; $&#123;LOG_FILE&#125;exit 1</code></pre><h2 id="3-2-加权限及添加用户账号"><a href="#3-2-加权限及添加用户账号" class="headerlink" title="3.2 加权限及添加用户账号"></a>3.2 加权限及添加用户账号</h2><pre><code>给脚本添加执行权限chmod 755 /etc/openvpn/checkpsw.sh编辑密码文件vim /etc/openvpn/psw-filetom  123456Jerry 654321#前面为用户名，后面为密码。 中间使用空格分开</code></pre><h1 id="四、客户端配置"><a href="#四、客户端配置" class="headerlink" title="四、客户端配置"></a>四、客户端配置</h1><pre><code>client.ovpn##---------以下为将ca.crt证书写入到客户端文件的方式（直接给一个client.ovpn文件即可）------------##clientdev tunproto tcp   #根据服务端的来remote utnanjing.tpddns.cn 11194resolv-retry infinitenobindpersist-keypersist-tun&lt;ca&gt;-----BEGIN CERTIFICATE-----MIIDNTCCAh2gAwIBAgIJAJgy1QReG9VmMA0GCSqGSIb3DQEBCwUAMBYxFDASBgNVBAMMC0Vhc3ktUlNBIENBMB4XDTIzMDgyNDA5NTgzN1oXDTMzMDgyMTA5NTgzN1owFjEUMBIGA1UEAwwLRWFzeS1SU0EgQ0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDLutXX/OaN1muPGKQV2uiEaZbQy9F0PptJxM3ZTHdyn+HuQ/3xqYHzz6hgIr2IjWtD5pqZXGMwIxbpNFKfPfJtwU5xpuUA6hxWV3yYtaXGsaLvFA0StL/NP5/3VgL1KpdcivjMejgVCwX5CkN97hsS6uk9Z/PUB9OEAWygeRHS8CYQ37PhXmDCh/1VeXWZDHJzxCD1fqoo2dB8MGFJjvg3FVQ0o8Gf0XE9cvj5dtk73f6AyiuYTeLLnD8vY8jbCVGeLcnoDnduK6y6ZLFOUHWfEPH+a1jDFLpXIby0oo3yBWcldzaKJMzfUP7HoczkDaUo5ykecDjxGkD8kpTmwyQPAgMBAAGjgYUwgYIwHQYDVR0OBBYEFPCYFNHxZ/eBKLRh009Bm08j8zurMEYGA1UdIwQ/MD2AFPCYFNHxZ/eBKLRh009Bm08j8zuroRqkGDAWMRQwEgYDVQQDDAtFYXN5LVJTQSBDQYIJAJgy1QReG9VmMAwGA1UdEwQFMAMBAf8wCwYDVR0PBAQDAgEGMA0GCSqGSIb3DQEBCwUAA4IBAQCYFaym5wCrlti+7p9MqLm4UF7pOmZQ2NamZjP1cQuMh2SgdJphddZEhEUO5NOQms8gMJsZ3sd7DIul+XkDcbhjKNNxD4oeXiITR8BgLsCkqtLStwWtOSLGxgHHWD3S+IBSM21A4RxyhE4VUr81i9XUM2lI7ml5RgCVTvbWosCnVFuXypaYs4/c1yJJ1I578M6oVWjahJOxENoeYYSI/V+2ySTtRQlW8HQEc4GhSeybhmXgrfLKhmHTVl/ZqZg5zp3kwBcnsrUQjunuLBLMMYSLPXhJQFU/10EMxv/9AAdBGiO3RL0G2qYc0JF11qVpmD9nwP9f/YR3Yvs7E2kwDViH-----END CERTIFICATE-----&lt;/ca&gt;cipher AES-256-CBCcomp-lzoverb 3auth-user-pass              #使用用户名密码登录openvpn服务器auth-nocache证书方式clientdev tunproto tcpremote 公网ipxxx.xxx.xxx.xxx 1194resolv-retry infinitenobindpersist-keypersist-tunca ca.crtcert client1.crt  #拷贝自服务端key client1.key   #拷贝自服务端 remote-cert-tls servercipher AES-256-CBCcomp-lzoverb 3</code></pre>]]></content>
+    <content type="html"><![CDATA[<h1 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h1><h2 id="1-1、安装epel库和openvpn软件"><a href="#1-1、安装epel库和openvpn软件" class="headerlink" title="1.1、安装epel库和openvpn软件"></a>1.1、安装epel库和openvpn软件</h2><pre><code>yum -y install openvpn easy-rsa firewalldyum install epel-release -y</code></pre><h2 id="1-2、开启路由转发"><a href="#1-2、开启路由转发" class="headerlink" title="1.2、开启路由转发"></a>1.2、开启路由转发</h2><pre><code> echo  &quot;net.ipv4.ip_forward = 1&quot; &gt;&gt;/etc/sysctl.conf sysctl -p</code></pre><h2 id="1-3、创建OpenVPN相关的密钥"><a href="#1-3、创建OpenVPN相关的密钥" class="headerlink" title="1.3、创建OpenVPN相关的密钥"></a>1.3、创建OpenVPN相关的密钥</h2><pre><code> cp -rf /usr/share/easy-rsa/3.0/* /etc/openvpn/easy-rsa/ cp -p /usr/share/doc/easy-rsa-3.0.6/vars.example /etc/openvpn/easy-rsa/vars cd /etc/openvpn/easy-rsa/</code></pre><h3 id="1-3-1、创建ca证书"><a href="#1-3-1、创建ca证书" class="headerlink" title="1.3.1、创建ca证书"></a>1.3.1、创建ca证书</h3><pre><code>/usr/share/easy-rsa/3/easyrsa init-pki/usr/share/easy-rsa/3/easyrsa build-ca nopass</code></pre><h3 id="1-3-2、创建client证书和签名"><a href="#1-3-2、创建client证书和签名" class="headerlink" title="1.3..2、创建client证书和签名"></a>1.3..2、创建client证书和签名</h3><pre><code>/usr/share/easy-rsa/3/easyrsa gen-req client1 nopass           #Enter/usr/share/easy-rsa/3/easyrsa sign-req client client1          #需要输入yes创建dh、tls、crl（证书撤销秘钥）/usr/share/easy-rsa/3/easyrsa gen-dhopenvpn --genkey --secret /etc/openvpn/easy-rsa/ta.key/usr/share/easy-rsa/3/easyrsa  gen-crl</code></pre><h3 id="1-3-3、将秘钥拷贝至相应目录"><a href="#1-3-3、将秘钥拷贝至相应目录" class="headerlink" title="1.3.3、将秘钥拷贝至相应目录"></a>1.3.3、将秘钥拷贝至相应目录</h3><pre><code>cp -p pki/ca.crt /etc/openvpn/server/cp -p pki/issued/server1.crt /etc/openvpn/server/cp -p pki/private/server1.key /etc/openvpn/server/cp -p ta.key /etc/openvpn/server/cp -p pki/ca.crt /etc/openvpn/client/cp -p pki/issued/client1.crt /etc/openvpn/client/cp -p pki/private/client1.key /etc/openvpn/client/cp -p ta.key /etc/openvpn/client/cp pki/dh.pem /etc/openvpn/server/cp pki/crl.pem /etc/openvpn/server/cp /usr/share/doc/openvpn-2.4.11/sample/sample-config-files/server.conf /etc/openvpn/</code></pre><h1 id="二、配置-openvpn"><a href="#二、配置-openvpn" class="headerlink" title="二、配置 openvpn"></a>二、配置 openvpn</h1><h2 id="2-1、编辑配置文件-etc-openvpn-server-conf"><a href="#2-1、编辑配置文件-etc-openvpn-server-conf" class="headerlink" title="2.1、编辑配置文件 /etc/openvpn/server.conf"></a>2.1、编辑配置文件 /etc/openvpn/server.conf</h2><pre><code>cp /usr/share/doc/openvpn-2.4.11/sample/sample-config-files/server.conf /etc/openvpn/      #拷贝实例修改或直接拷贝以下内容vim /etc/openvpn/server.conflocal 0.0.0.0    #监听地址port 1194        #监听端口proto tcp        #监听协议dev tun          #采用路由隧道模式ca /etc/openvpn/server/ca.crt              #ca证书路径cert /etc/openvpn/server/server1.crt       #服务器证书key /etc/openvpn/server/server1.key        #服务器秘钥dh /etc/openvpn/server/dh.pem              #密钥交换协议文件#####注意在设备中加一条到10.100.100.0虚拟网段的路由！！！！server 10.100.100.0 255.255.255.0          ####给客户端分配地址池，注意：不能和VPN服务器内网网段有相同#####注意在设备中加一条到10.100.100.0虚拟网段的路由！！！！ifconfig-pool-persist ipp.txt#push &quot;redirect-gateway def1 bypass-dhcp&quot;      #推送默认路由（所有流量走vpn）push &quot;route 192.168.0.0 255.255.255.0&quot;           #推送客户端常用路由（根据自己内网网段来写或修改客户端配置添加路由）push &quot;dhcp-option DNS 192.168.5.251&quot;           #dhcp分配dnsclient-to-client       #客户端之间互相通信keepalive 10 120       #存活时间，10秒ping一次,120 如未收到响应则视为断线comp-lzo               #传输数据压缩max-clients 100        #最多允许 100 客户端连接user openvpn           #用户group openvpn          #用户组cipher AES-256-CBC     #加密方式--客户端必须一致persist-keypersist-tunstatus /var/log/openvpn-status.loglog         /var/log/openvpn.logverb 3#以下参数为用户认证使用script-security 3auth-user-pass-verify /etc/openvpn/checkpsw.sh via-env    #指定用户认证脚本username-as-common-nameverify-client-cert none</code></pre><h2 id="2-2虚拟网段的路由"><a href="#2-2虚拟网段的路由" class="headerlink" title="2.2虚拟网段的路由"></a>2.2虚拟网段的路由</h2><pre><code>iptables -t nat -A POSTROUTING -s 10.100.100.0/24 -j MASQUERADEfirewall-cmd --add-masquerade --permanentfirewall-cmd --query-masquerade --permanentfirewall-cmd --zone=public --add-rich-rule=&#39;rule family=&quot;ipv4&quot; source address=&quot;10.100.100.0/24&quot; port protocol=&quot;tcp&quot; accept&#39;firewall-cmd --zone=public --add-rich-rule=&#39;rule family=&quot;ipv4&quot; source address=&quot;10.100.100.0/24&quot; port protocol=&quot;udp&quot; accept&#39;firewall-cmd --zone=public --add-masquerade</code></pre><h1 id="三、用户认证"><a href="#三、用户认证" class="headerlink" title="三、用户认证"></a>三、用户认证</h1><h2 id="3-1编写用户认证脚本文件-脚本是由openvpn官网提供"><a href="#3-1编写用户认证脚本文件-脚本是由openvpn官网提供" class="headerlink" title="3.1编写用户认证脚本文件 (脚本是由openvpn官网提供)"></a>3.1编写用户认证脚本文件 (脚本是由openvpn官网提供)</h2><pre><code>vim /etc/openvpn/checkpsw.sh#!/bin/sh############################################################ checkpsw.sh (C) 2004 Mathias Sundman # This script will authenticate OpenVPN users against# a plain text file. The passfile should simply contain# one row per user with the username first followed by# one or more space(s) or tab(s) and then the password.PASSFILE=&quot;/etc/openvpn/psw-file&quot;LOG_FILE=&quot;/etc/openvpn/openvpn-password.log&quot;TIME_STAMP=`date &quot;+%Y-%m-%d %T&quot;`###########################################################if [ ! -r &quot;$&#123;PASSFILE&#125;&quot; ]; then  echo &quot;$&#123;TIME_STAMP&#125;: Could not open password file \&quot;$&#123;PASSFILE&#125;\&quot; for reading.&quot; &gt;&gt;$&#123;LOG_FILE&#125;  exit 1fiCORRECT_PASSWORD=`awk &#39;!/^;/&amp;&amp;!/^#/&amp;&amp;$1==&quot;&#39;$&#123;username&#125;&#39;&quot;&#123;print $2;exit&#125;&#39; $&#123;PASSFILE&#125;`if [ &quot;$&#123;CORRECT_PASSWORD&#125;&quot; = &quot;&quot; ]; then   echo &quot;$&#123;TIME_STAMP&#125;: User does not exist: username=\&quot;$&#123;username&#125;\&quot;, password=\&quot;$&#123;password&#125;\&quot;.&quot; &gt;&gt; $&#123;LOG_FILE&#125;  exit 1fiif [ &quot;$&#123;password&#125;&quot; = &quot;$&#123;CORRECT_PASSWORD&#125;&quot; ]; then   echo &quot;$&#123;TIME_STAMP&#125;: Successful authentication: username=\&quot;$&#123;username&#125;\&quot;.&quot; &gt;&gt; $&#123;LOG_FILE&#125;  exit 0fiecho &quot;$&#123;TIME_STAMP&#125;: Incorrect password: username=\&quot;$&#123;username&#125;\&quot;,     password=\&quot;$&#123;password&#125;\&quot;.&quot; &gt;&gt; $&#123;LOG_FILE&#125;exit 1</code></pre><h2 id="3-2-加权限及添加用户账号"><a href="#3-2-加权限及添加用户账号" class="headerlink" title="3.2 加权限及添加用户账号"></a>3.2 加权限及添加用户账号</h2><pre><code>给脚本添加执行权限chmod 755 /etc/openvpn/checkpsw.sh编辑密码文件vim /etc/openvpn/psw-filetom  123456Jerry 654321#前面为用户名，后面为密码。 中间使用空格分开</code></pre><h1 id="四、客户端配置"><a href="#四、客户端配置" class="headerlink" title="四、客户端配置"></a>四、客户端配置</h1><pre><code>client.ovpn##---------以下为将ca.crt证书写入到客户端文件的方式（直接给一个client.ovpn文件即可）------------##clientdev tunproto tcp   #根据服务端的来remote utnanjing.tpddns.cn 11194resolv-retry infinitenobindpersist-keypersist-tun&lt;ca&gt;-----BEGIN CERTIFICATE-----MIIDNTCCAh2gAwIBAgIJAJgy1QReG9VmMA0GCSqGSIb3DQEBCwUAMBYxFDASBgNVBAMMC0Vhc3ktUlNBIENBMB4XDTIzMDgyNDA5NTgzN1oXDTMzMDgyMTA5NTgzN1owFjEUMBIGA1UEAwwLRWFzeS1SU0EgQ0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDLutXX/OaN1muPGKQV2uiEaZbQy9F0PptJxM3ZTHdyn+HuQ/3xqYHzz6hgIr2IjWtD5pqZXGMwIxbpNFKfPfJtwU5xpuUA6hxWV3yYtaXGsaLvFA0StL/NP5/3VgL1KpdcivjMejgVCwX5CkN97hsS6uk9Z/PUB9OEAWygeRHS8CYQ37PhXmDCh/1VeXWZDHJzxCD1fqoo2dB8MGFJjvg3FVQ0o8Gf0XE9cvj5dtk73f6AyiuYTeLLnD8vY8jbCVGeLcnoDnduK6y6ZLFOUHWfEPH+a1jDFLpXIby0oo3yBWcldzaKJMzfUP7HoczkDaUo5ykecDjxGkD8kpTmwyQPAgMBAAGjgYUwgYIwHQYDVR0OBBYEFPCYFNHxZ/eBKLRh009Bm08j8zurMEYGA1UdIwQ/MD2AFPCYFNHxZ/eBKLRh009Bm08j8zuroRqkGDAWMRQwEgYDVQQDDAtFYXN5LVJTQSBDQYIJAJgy1QReG9VmMAwGA1UdEwQFMAMBAf8wCwYDVR0PBAQDAgEGMA0GCSqGSIb3DQEBCwUAA4IBAQCYFaym5wCrlti+7p9MqLm4UF7pOmZQ2NamZjP1cQuMh2SgdJphddZEhEUO5NOQms8gMJsZ3sd7DIul+XkDcbhjKNNxD4oeXiITR8BgLsCkqtLStwWtOSLGxgHHWD3S+IBSM21A4RxyhE4VUr81i9XUM2lI7ml5RgCVTvbWosCnVFuXypaYs4/c1yJJ1I578M6oVWjahJOxENoeYYSI/V+2ySTtRQlW8HQEc4GhSeybhmXgrfLKhmHTVl/ZqZg5zp3kwBcnsrUQjunuLBLMMYSLPXhJQFU/10EMxv/9AAdBGiO3RL0G2qYc0JF11qVpmD9nwP9f/YR3Yvs7E2kwDViH-----END CERTIFICATE-----&lt;/ca&gt;cipher AES-256-CBCcomp-lzoverb 3auth-user-pass              #使用用户名密码登录openvpn服务器auth-nocache证书方式clientdev tunproto tcpremote 公网ipxxx.xxx.xxx.xxx 1194resolv-retry infinitenobindpersist-keypersist-tunca ca.crtcert client1.crt  #拷贝自服务端key client1.key   #拷贝自服务端 remote-cert-tls servercipher AES-256-CBCcomp-lzoverb 3</code></pre>]]></content>
     
     
       
@@ -293,6 +500,7 @@ w
     
   </entry>
   
+<<<<<<< HEAD
   <entry>
     <title>nginx配置</title>
     <link href="http://example.com/2023/07/27/nginx%E9%85%8D%E7%BD%AE/"/>
@@ -425,4 +633,6 @@ apt install supe</summary>
     
   </entry>
   
+=======
+>>>>>>> 66b25ca3c8985293568253e626c80c4c353c268e
 </feed>

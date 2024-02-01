@@ -285,6 +285,7 @@
   
   
   <div class="post-block">
+<<<<<<< HEAD
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/01/%E5%8D%87%E7%BA%A7openssh/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -672,6 +673,9 @@ yum remove openssh-server
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/27/nginx%E9%85%8D%E7%BD%AE/">
+=======
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/17/mysql%E7%9A%84%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8/">
+>>>>>>> 66b25ca3c8985293568253e626c80c4c353c268e
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -690,7 +694,7 @@ yum remove openssh-server
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2023/07/27/nginx%E9%85%8D%E7%BD%AE/" itemprop="url">nginx配置</a></h1>
+                <a class="post-title-link" href="/2023/10/17/mysql%E7%9A%84%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8/" itemprop="url">mysql的常用应用</a></h1>
         
 
         <div class="post-meta">
@@ -702,8 +706,8 @@ yum remove openssh-server
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-07-27T14:17:43+08:00">
-                2023-07-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-10-17T10:12:16+08:00">
+                2023-10-17
               </time>
             
 
@@ -742,18 +746,19 @@ yum remove openssh-server
       
         
           
-          一 、配置详解1.1nginx配置文件#nginx 已那个用户身份访问文件
-user  www;  
+          #mysql忘记密码,重置密码
+1.修改my.cnf
+添加
+--skip-grant-tables
 
-#指定nginx使用的worker进程数
-worker_processes 8;   
-
-#worker_cpu_affinity是一个用于配置工作进程CPU亲和性的选项。
-#CPU亲和性是指将进
+2.进入数据
+执行
+use mysql;
+mysql&gt; update user set password=password(&#39;123&#39;) where user=&#39;roo
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2023/07/27/nginx%E9%85%8D%E7%BD%AE/#more" rel="contents">
+            <a class="btn" href="/2023/10/17/mysql%E7%9A%84%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -804,7 +809,7 @@ worker_processes 8;
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/26/linux-iptables%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/26/redis%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -823,7 +828,7 @@ worker_processes 8;
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2023/07/26/linux-iptables%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" itemprop="url">linux-iptables使用总结</a></h1>
+                <a class="post-title-link" href="/2023/09/26/redis%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url">redis基本数据结构</a></h1>
         
 
         <div class="post-meta">
@@ -835,8 +840,8 @@ worker_processes 8;
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-07-26T15:31:32+08:00">
-                2023-07-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-09-26T18:47:44+08:00">
+                2023-09-26
               </time>
             
 
@@ -875,18 +880,16 @@ worker_processes 8;
       
         
           
-          一、iptables    iptables防火墙没有启用,iptables命令仍然会显示默认的规则.
-二、常用命令
-常用参数
--n 参数表示将 IP 地址和端口号显示为数字形式，而不是解析为主机名和服务名。
+          简介Redis五大数据类型：String、Hash、List、Set、Sorted set
 
--L 选项用于列出防火墙规则。
+字符串String类型的最大能存储512M 应用场景 【缓存】
+1.SET key value [EX seconds] [PX milliseconds] [NX|XX]
 
--t nat 参数指定了要操作的表为 NAT 表，NA
+EX和PX参数可选，用于设置键
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2023/07/26/linux-iptables%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/#more" rel="contents">
+            <a class="btn" href="/2023/09/26/redis%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -937,7 +940,7 @@ worker_processes 8;
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/25/php%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/25/redis%E5%9F%BA%E7%A1%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -956,7 +959,7 @@ worker_processes 8;
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2023/07/25/php%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/" itemprop="url">php常用函数总结</a></h1>
+                <a class="post-title-link" href="/2023/09/25/redis%E5%9F%BA%E7%A1%80/" itemprop="url">redis基础</a></h1>
         
 
         <div class="post-meta">
@@ -968,8 +971,8 @@ worker_processes 8;
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-07-25T15:54:20+08:00">
-                2023-07-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-09-25T15:48:26+08:00">
+                2023-09-25
               </time>
             
 
@@ -1008,15 +1011,12 @@ worker_processes 8;
       
         
           
-          一、字符串处理函数1.1 str_pad()str_pad(【必填 需要处理的字符串】,【必填 填充的长度】，【 可选 填充的字符串，默认空白】，【可选 填充字符串的哪边】)
-规定填充字符串的哪边 可能的值：
-
-STR_PAD_BOTH - 填充字符串的两侧。如果不是偶数，则右侧获得额外的填充。
-S
+          redis 简介Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储Redis支持数据的备份，即master-slave模式的数据备份
+Redi
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2023/07/25/php%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/#more" rel="contents">
+            <a class="btn" href="/2023/09/25/redis%E5%9F%BA%E7%A1%80/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1067,7 +1067,7 @@ S
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/21/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/29/%E6%90%AD%E5%BB%BAnps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -1086,7 +1086,7 @@ S
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2023/07/21/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" itemprop="url">跨域问题总结</a></h1>
+                <a class="post-title-link" href="/2023/08/29/%E6%90%AD%E5%BB%BAnps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" itemprop="url">搭建nps内网穿透</a></h1>
         
 
         <div class="post-meta">
@@ -1098,8 +1098,8 @@ S
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-07-21T16:26:13+08:00">
-                2023-07-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-08-29T15:19:19+08:00">
+                2023-08-29
               </time>
             
 
@@ -1138,268 +1138,12 @@ S
       
         
           
-          
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2023/07/21/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/21/session%E5%92%8Ccookie/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yszhao的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2023/07/21/session%E5%92%8Ccookie/" itemprop="url">session和cookie</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-07-21T16:25:34+08:00">
-                2023-07-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2023/07/21/session%E5%92%8Ccookie/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/19/Linux%E6%9C%8D%E5%8A%A1%E4%B9%8Bcrond/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yszhao的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2023/07/19/Linux%E6%9C%8D%E5%8A%A1%E4%B9%8Bcrond/" itemprop="url">Linux服务之crond</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-07-19T14:20:19+08:00">
-                2023-07-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          一、Cron介绍Cron被用来进行Linux系统的计划任务执行
-二、相关目录cron.d/*用来存放一些软件的Cron设置
-cron.daily/每天执行一次的任务
-cron.hourly/每小时执行一次的任务
-cron.monthly/每个月执行一次的任务
-cron.weekly/，每周执行一次的
+          前言内网穿透的方式有很多种，什么Frp、Ngrok、NPS、蒲公英等等，
+NPS简介nps是一款轻量级、高性能、功能强大的内网穿透代理服务器。目前支持tcp、udp流量转发，可支持任何tcp、udp上层协议（访问内网网站、本地支付接口调试、ssh访问、远程桌面，内网dns解析等等……），此外还支持内
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2023/07/19/Linux%E6%9C%8D%E5%8A%A1%E4%B9%8Bcrond/#more" rel="contents">
+            <a class="btn" href="/2023/08/29/%E6%90%AD%E5%BB%BAnps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1450,7 +1194,7 @@ cron.weekly/，每周执行一次的
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/19/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B-supervisor/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/28/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%89%A9%E5%AE%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -1469,7 +1213,7 @@ cron.weekly/，每周执行一次的
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2023/07/19/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B-supervisor/" itemprop="url">守护进程-supervisor</a></h1>
+                <a class="post-title-link" href="/2023/08/28/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%89%A9%E5%AE%B9/" itemprop="url">vmvare-esxi虚拟机扩容</a></h1>
         
 
         <div class="post-meta">
@@ -1481,8 +1225,8 @@ cron.weekly/，每周执行一次的
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-07-19T11:38:09+08:00">
-                2023-07-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-08-28T14:55:16+08:00">
+                2023-08-28
               </time>
             
 
@@ -1521,16 +1265,26 @@ cron.weekly/，每周执行一次的
       
         
           
-          一、安装yum install supervisor    #centos 系统
+          修改硬盘大小
+先虚拟机管理页面修改硬盘大小
+    注：不删除快照是 无法修改成功的
 
-apt install supervisor    #ubuntu 系统
+分区  
+fdisk /dev/sda    
+n
+p
+默认确定
+w
 
-二、配置守护进程在/etc/supervisord.d/下新建后缀名为ini的文件
-; 设置进程的名称，使用 supervisorctl 来
+手动同步磁盘到系统内核
+partprobe
+
+创建物理卷
+pvcreate /dev/sda3          #【/dev/sda3 是
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2023/07/19/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B-supervisor/#more" rel="contents">
+            <a class="btn" href="/2023/08/28/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%89%A9%E5%AE%B9/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1568,6 +1322,655 @@ apt install supervisor    #ubuntu 系统
 
 
     
+<<<<<<< HEAD
+=======
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/28/%E6%90%AD%E5%BB%BAopenvpn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yszhao的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/08/28/%E6%90%AD%E5%BB%BAopenvpn/" itemprop="url">搭建openvpn</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-08-28T13:42:06+08:00">
+                2023-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          一、安装1.1、安装epel库和openvpn软件yum -y install openvpn easy-rsa firewalld
+
+yum install epel-release -y
+
+1.2、开启路由转发 echo  &quot;net.ipv4.ip_forward = 1&quot; 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2023/08/28/%E6%90%AD%E5%BB%BAopenvpn/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/01/springboot%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yszhao的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/08/01/springboot%E5%AD%A6%E4%B9%A0/" itemprop="url">springboot学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-08-01T20:20:47+08:00">
+                2023-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          创建基于springboot 项目1.maven方式pom.xml文件加入
+
+  &lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spri
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2023/08/01/springboot%E5%AD%A6%E4%B9%A0/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/01/%E5%8D%87%E7%BA%A7openssh/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yszhao的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/08/01/%E5%8D%87%E7%BA%A7openssh/" itemprop="url">升级openssh</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-08-01T19:48:14+08:00">
+                2023-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          centos系统查看是否安装opensshrpm -qa|grep openssh
+有则卸载
+
+卸载用rpm -e 如果出现依赖包导致无法卸载，在最后面加上--nodeps即可
+rpm -e openssl --nodeps
+yum remove openssh-server
+
+卸载还可以手动删除
+
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2023/08/01/%E5%8D%87%E7%BA%A7openssh/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/29/nginx%E4%B9%8Blocation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yszhao的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/07/29/nginx%E4%B9%8Blocation/" itemprop="url">nginx之location</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-07-29T15:33:47+08:00">
+                2023-07-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2023/07/29/nginx%E4%B9%8Blocation/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/29/shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yszhao的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/07/29/shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A02/" itemprop="url">shell脚本学习2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-07-29T14:58:19+08:00">
+                2023-07-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          搜索出当前目录下包含某个字符串的文件  并替换文件中的xx字符串为bb字符串    sed -i “s/xx/bb/g” grep -rl &quot;xx ./    sed -i “s/http://121.229.56.251:8082/https://zkzp.jyrcfzjt.com:80
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2023/07/29/shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A02/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+>>>>>>> 66b25ca3c8985293568253e626c80c4c353c268e
   </section>
 
   
@@ -1618,7 +2021,11 @@ apt install supervisor    #ubuntu 系统
               
                 <a href="/archives/%7C%7C%20archive">
               
+<<<<<<< HEAD
                   <span class="site-state-item-count">53</span>
+=======
+                  <span class="site-state-item-count">60</span>
+>>>>>>> 66b25ca3c8985293568253e626c80c4c353c268e
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1675,7 +2082,7 @@ apt install supervisor    #ubuntu 系统
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

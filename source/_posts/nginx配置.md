@@ -73,14 +73,25 @@ tags:
         #将tcp_nodelay设置为on可以减少TCP延迟，适用于实时性要求高的应用场景。
         tcp_nodelay on;
         
+        #隐藏Nginx版本号
+        server_tokens  off;    
+
+        proxy_hide_header X-Powered-By;
         
+        proxy_hide_header Server;
+         
         #配置空主机头 404 就是禁用http通过ip访问
+        
         server {
-           listen 80 default;
-           server_name _;
-           root html;
-           location / { return 404;}
-           location ~ /.ht { deny all; }
+            listen 80 default_server;
+            server_name _;
+            return 444;
+        }
+        server {
+            listen 443 ssl default_server;
+            server_name _;
+            ssl on;
+            return 444;
         }
         
         include /etc/nginx/conf.d/*.conf;

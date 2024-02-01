@@ -285,6 +285,7 @@
   
   
   <div class="post-block">
+<<<<<<< HEAD
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/26/docker%E5%AD%A6%E4%B9%A04-%E7%BD%91%E7%BB%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -672,6 +673,9 @@ mysql&gt; update user set password=password(&#39;123&#39;) where user=&#39;roo
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/16/php%E6%89%A9%E5%B1%95%E5%AE%89%E8%A3%85-1/">
+=======
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/09/Linux-firewalld%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">
+>>>>>>> 66b25ca3c8985293568253e626c80c4c353c268e
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -690,7 +694,7 @@ mysql&gt; update user set password=password(&#39;123&#39;) where user=&#39;roo
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2023/10/16/php%E6%89%A9%E5%B1%95%E5%AE%89%E8%A3%85-1/" itemprop="url">php扩展安装</a></h1>
+                <a class="post-title-link" href="/2024/01/09/Linux-firewalld%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" itemprop="url">Linux-firewalld使用总结</a></h1>
         
 
         <div class="post-meta">
@@ -702,8 +706,8 @@ mysql&gt; update user set password=password(&#39;123&#39;) where user=&#39;roo
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-10-16T18:54:48+08:00">
-                2023-10-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2024-01-09T16:27:09+08:00">
+                2024-01-09
               </time>
             
 
@@ -742,23 +746,11 @@ mysql&gt; update user set password=password(&#39;123&#39;) where user=&#39;roo
       
         
           
-          #下载相应的扩展并phpize
-到扩展目录下
-执行phpize
-
-1.phpize 不是系统命令时候
-
-find / -name phpize 
-
-后找到相应版本的phpize
-
-2.报错can‘t find PHP headers in path/php
-
-yum install -y php-d
-          ...
+          
+          
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2023/10/16/php%E6%89%A9%E5%B1%95%E5%AE%89%E8%A3%85-1/#more" rel="contents">
+            <a class="btn" href="/2024/01/09/Linux-firewalld%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -809,7 +801,7 @@ yum install -y php-d
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/26/redis%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/03/%E4%BA%91%E4%B8%BB%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -828,7 +820,7 @@ yum install -y php-d
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2023/09/26/redis%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url">redis基本数据结构</a></h1>
+                <a class="post-title-link" href="/2024/01/03/%E4%BA%91%E4%B8%BB%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/" itemprop="url">云主机硬盘扩容</a></h1>
         
 
         <div class="post-meta">
@@ -840,8 +832,8 @@ yum install -y php-d
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-09-26T18:47:44+08:00">
-                2023-09-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2024-01-03T12:52:02+08:00">
+                2024-01-03
               </time>
             
 
@@ -880,16 +872,17 @@ yum install -y php-d
       
         
           
-          简介Redis五大数据类型：String、Hash、List、Set、Sorted set
+          1.查看分区容量是否增加lsblk
 
-字符串String类型的最大能存储512M 应用场景 【缓存】
-1.SET key value [EX seconds] [PX milliseconds] [NX|XX]
+2. 扩容MBR分区和ext4文件系统#redhat类系统
+type growpart || sudo yum install -y cloud-utils-growpart
 
-EX和PX参数可选，用于设置键
+#debian类系统
+type growpart || sudo apt-get i
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2023/09/26/redis%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/#more" rel="contents">
+            <a class="btn" href="/2024/01/03/%E4%BA%91%E4%B8%BB%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -940,7 +933,7 @@ EX和PX参数可选，用于设置键
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/25/redis%E5%9F%BA%E7%A1%80/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/01/ansible%E5%AD%A6%E4%B9%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -959,7 +952,7 @@ EX和PX参数可选，用于设置键
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2023/09/25/redis%E5%9F%BA%E7%A1%80/" itemprop="url">redis基础</a></h1>
+                <a class="post-title-link" href="/2023/12/01/ansible%E5%AD%A6%E4%B9%A0/" itemprop="url">ansible学习</a></h1>
         
 
         <div class="post-meta">
@@ -971,8 +964,8 @@ EX和PX参数可选，用于设置键
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-09-25T15:48:26+08:00">
-                2023-09-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-12-01T19:48:14+08:00">
+                2023-12-01
               </time>
             
 
@@ -1011,12 +1004,18 @@ EX和PX参数可选，用于设置键
       
         
           
-          redis 简介Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储Redis支持数据的备份，即master-slave模式的数据备份
-Redi
+          一、安装 yum install -y epel-release
+ yum install -y ansible
+ ansible配置文件：
+/etc/ansible/ansible.cfg
+/etc/ansible/hosts
+
+ 生成秘钥：
+ssh-keygen -t rsa  #在/root/
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2023/09/25/redis%E5%9F%BA%E7%A1%80/#more" rel="contents">
+            <a class="btn" href="/2023/12/01/ansible%E5%AD%A6%E4%B9%A0/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1067,7 +1066,7 @@ Redi
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/29/%E6%90%AD%E5%BB%BAnps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/11/12/%E5%A5%87%E6%80%AA%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -1086,7 +1085,7 @@ Redi
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2023/08/29/%E6%90%AD%E5%BB%BAnps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" itemprop="url">搭建nps内网穿透</a></h1>
+                <a class="post-title-link" href="/2023/11/12/%E5%A5%87%E6%80%AA%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" itemprop="url">奇怪问题总结</a></h1>
         
 
         <div class="post-meta">
@@ -1098,8 +1097,8 @@ Redi
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-08-29T15:19:19+08:00">
-                2023-08-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-11-12T19:48:14+08:00">
+                2023-11-12
               </time>
             
 
@@ -1138,12 +1137,21 @@ Redi
       
         
           
-          前言内网穿透的方式有很多种，什么Frp、Ngrok、NPS、蒲公英等等，
-NPS简介nps是一款轻量级、高性能、功能强大的内网穿透代理服务器。目前支持tcp、udp流量转发，可支持任何tcp、udp上层协议（访问内网网站、本地支付接口调试、ssh访问、远程桌面，内网dns解析等等……），此外还支持内
+          #奇怪的问题
+无法访问php文件，总是报错 file not found解决思路
+    
+    1.首先查询 文件是否存在
+    2.查询nginx php访问的配置
+    3.关闭selinux 
+    
+
+配置ssh 免密码 登录总是提示需要输入密码解决思路
+
+    1.排查下aut
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2023/08/29/%E6%90%AD%E5%BB%BAnps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/#more" rel="contents">
+            <a class="btn" href="/2023/11/12/%E5%A5%87%E6%80%AA%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1194,7 +1202,7 @@ NPS简介nps是一款轻量级、高性能、功能强大的内网穿透代理�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/28/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%89%A9%E5%AE%B9/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/11/10/%E6%90%AD%E5%BB%BAk8s/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -1213,7 +1221,7 @@ NPS简介nps是一款轻量级、高性能、功能强大的内网穿透代理�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2023/08/28/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%89%A9%E5%AE%B9/" itemprop="url">vmvare-esxi虚拟机扩容</a></h1>
+                <a class="post-title-link" href="/2023/11/10/%E6%90%AD%E5%BB%BAk8s/" itemprop="url">搭建k8s</a></h1>
         
 
         <div class="post-meta">
@@ -1225,8 +1233,8 @@ NPS简介nps是一款轻量级、高性能、功能强大的内网穿透代理�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-08-28T14:55:16+08:00">
-                2023-08-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-11-10T12:00:16+08:00">
+                2023-11-10
               </time>
             
 
@@ -1265,26 +1273,11 @@ NPS简介nps是一款轻量级、高性能、功能强大的内网穿透代理�
       
         
           
-          修改硬盘大小
-先虚拟机管理页面修改硬盘大小
-    注：不删除快照是 无法修改成功的
-
-分区  
-fdisk /dev/sda    
-n
-p
-默认确定
-w
-
-手动同步磁盘到系统内核
-partprobe
-
-创建物理卷
-pvcreate /dev/sda3          #【/dev/sda3 是
-          ...
+          
+          
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2023/08/28/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%89%A9%E5%AE%B9/#more" rel="contents">
+            <a class="btn" href="/2023/11/10/%E6%90%AD%E5%BB%BAk8s/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1335,7 +1328,7 @@ pvcreate /dev/sda3          #【/dev/sda3 是
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/28/%E6%90%AD%E5%BB%BAopenvpn/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/11/10/openEuler%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -1354,7 +1347,7 @@ pvcreate /dev/sda3          #【/dev/sda3 是
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2023/08/28/%E6%90%AD%E5%BB%BAopenvpn/" itemprop="url">搭建openvpn</a></h1>
+                <a class="post-title-link" href="/2023/11/10/openEuler%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98/" itemprop="url">openEuler系统安装遇到问题</a></h1>
         
 
         <div class="post-meta">
@@ -1366,8 +1359,8 @@ pvcreate /dev/sda3          #【/dev/sda3 是
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-08-28T13:42:06+08:00">
-                2023-08-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-11-10T11:59:43+08:00">
+                2023-11-10
               </time>
             
 
@@ -1406,15 +1399,16 @@ pvcreate /dev/sda3          #【/dev/sda3 是
       
         
           
-          一、安装1.1、安装epel库和openvpn软件yum -y install openvpn easy-rsa firewalld
+          #yum 安装报依赖库找不到问题
+openEuler release 22.03版本
 
-yum install epel-release -y
+替换centos 7的源就可以
 
-1.2、开启路由转发 echo  &quot;net.ipv4.ip_forward = 1&quot; 
+具体命令：wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.re
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2023/08/28/%E6%90%AD%E5%BB%BAopenvpn/#more" rel="contents">
+            <a class="btn" href="/2023/11/10/openEuler%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1465,7 +1459,7 @@ yum install epel-release -y
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/01/springboot%E5%AD%A6%E4%B9%A0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/11/08/%E7%89%B9%E6%AE%8A%E7%9A%84SQL%E8%AF%AD%E5%8F%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -1484,7 +1478,7 @@ yum install epel-release -y
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2023/08/01/springboot%E5%AD%A6%E4%B9%A0/" itemprop="url">springboot学习</a></h1>
+                <a class="post-title-link" href="/2023/11/08/%E7%89%B9%E6%AE%8A%E7%9A%84SQL%E8%AF%AD%E5%8F%A5/" itemprop="url">特殊的SQL语句</a></h1>
         
 
         <div class="post-meta">
@@ -1496,8 +1490,8 @@ yum install epel-release -y
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-08-01T20:20:47+08:00">
-                2023-08-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-11-08T17:54:07+08:00">
+                2023-11-08
               </time>
             
 
@@ -1536,15 +1530,12 @@ yum install epel-release -y
       
         
           
-          创建基于springboot 项目1.maven方式pom.xml文件加入
-
-  &lt;parent&gt;
-        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-        &lt;artifactId&gt;spri
+          使用逗号分割拆分查询出field字段中有value的记录SELECT * FROM table WHERE FIND_IN_SET(‘value’, field)&gt;0
+ FIND_IN_SET(‘value’, field)&gt;0  查询的是字段中包含了查询字符value的 FIND_IN
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2023/08/01/springboot%E5%AD%A6%E4%B9%A0/#more" rel="contents">
+            <a class="btn" href="/2023/11/08/%E7%89%B9%E6%AE%8A%E7%9A%84SQL%E8%AF%AD%E5%8F%A5/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1582,6 +1573,395 @@ yum install epel-release -y
 
 
     
+<<<<<<< HEAD
+=======
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/11/01/wordpress%E7%9B%B8%E5%85%B3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yszhao的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/11/01/wordpress%E7%9B%B8%E5%85%B3/" itemprop="url">wordpress相关</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-11-01T11:01:22+08:00">
+                2023-11-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          wordpress 迁移后还是访问之前的域名1.找到 前缀_options 表修改 siteurl  home字段 
+2.或者登录后台修改
+
+wordpress 迁移后栏目打开是404nginx加上如下配置
+
+location / &#123;
+ try_files $uri $uri/ /inde
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2023/11/01/wordpress%E7%9B%B8%E5%85%B3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/26/docker%E5%AD%A6%E4%B9%A04-%E7%BD%91%E7%BB%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yszhao的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/10/26/docker%E5%AD%A6%E4%B9%A04-%E7%BD%91%E7%BB%9C/" itemprop="url">docker学习4-网络</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-10-26T21:56:52+08:00">
+                2023-10-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          原理linux network namespacedocker  bridge 网络link自定义 docker 网络docker端口映射docker host 网络
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2023/10/26/docker%E5%AD%A6%E4%B9%A04-%E7%BD%91%E7%BB%9C/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/19/Linux%E4%B9%8BLVM-%E9%80%BB%E8%BE%91%E5%8D%B7%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yszhao的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/10/19/Linux%E4%B9%8BLVM-%E9%80%BB%E8%BE%91%E5%8D%B7%E7%AE%A1%E7%90%86/" itemprop="url">Linux之LVM(逻辑卷管理)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-10-19T12:50:58+08:00">
+                2023-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          一、基础一个  分区 对应 一个PV 【pvcreate /dev/sdb1 /dev/sdb2 /dev/sdc1 /dev/sdc2】
+多个PV 对应 一个VG 【 vgcreate vgdata /dev/sdb1 /dev/sdb2 /dev/sdc1 /dev/sdc2】 
+一个VG 中可
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2023/10/19/Linux%E4%B9%8BLVM-%E9%80%BB%E8%BE%91%E5%8D%B7%E7%AE%A1%E7%90%86/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+>>>>>>> 66b25ca3c8985293568253e626c80c4c353c268e
   </section>
 
   
@@ -1632,7 +2012,11 @@ yum install epel-release -y
               
                 <a href="/archives/%7C%7C%20archive">
               
+<<<<<<< HEAD
                   <span class="site-state-item-count">53</span>
+=======
+                  <span class="site-state-item-count">60</span>
+>>>>>>> 66b25ca3c8985293568253e626c80c4c353c268e
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1689,7 +2073,7 @@ yum install epel-release -y
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

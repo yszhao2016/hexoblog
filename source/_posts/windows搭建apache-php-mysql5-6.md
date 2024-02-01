@@ -14,6 +14,15 @@ tags:
     4.设置开机启动  然后再win+r 输入services.msc  打开后找到mysql 右键点击属性   将启动类型设置为自动即可
     
     【注：期间不同版本可能会报奇奇怪怪的错，百度安装相关的版本vc库】
+    
+     1.缺少msvcr100.dll文件如何解决
+    
+     百度Visual C++ 2010 Redistributable Package 搜索相关 下载安装
+
+## mysql 相关操作     
+     
+     修改密码
+     GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'IDENTIFIED BY 'Storage@202312' WITH GRANT OPTION;
 
 # 安装php
 
@@ -28,6 +37,7 @@ tags:
     
     【注：期间不同版本可能会报奇奇怪怪的错，百度安装相关的版本vc库】
     
+    【注：建议放在c:\php目录，不然可能出现无法加载到ddl扩展】
     
     
 
@@ -91,8 +101,52 @@ tags:
                   DirectoryIndex  index.php index.html
             </IfModule>     
          
+### vhost配置示例
+    
+    主配置文件httpd.conf
+    LoadModule rewrite_module modules/mod_rewrite.so
+    
+    LoadModule vhost_alias_module modules/mod_vhost_alias.so
+    
+    Include conf/extra/httpd-vhosts.conf
         
-### 伪静态
+####  vhost配置文件
+        <VirtualHost *:8081>
+                ServerAdmin webmaster@localhost
+                DocumentRoot "E:/wwwroot/storage/public"
+                DirectoryIndex index.php
+        		ErrorLog "logs/storage-error.log"
+                CustomLog "logs/storage-access.log" common
+        		<Directory "E:/wwwroot/storage/public">
+        		  Options Indexes FollowSymLinks
+        		  AllowOverride all
+        		  Require all granted
+        		  DirectoryIndex index.php index.html
+        		  ;图片等 资源可下载
+        		  AddType application/octet-stream .jpg .jpeg .png .gif .mp4 .avi .mov .flv
+        		</Directory>
+        </VirtualHost>
+        
+        
+        
+        
+        <VirtualHost *:8082>
+                ServerAdmin webmaster@localhost
+                DocumentRoot "E:/wwwroot/storage-web"
+                DirectoryIndex index.html
+        		ErrorLog "logs/storage-web-error.log"
+                CustomLog "logs/storage-web-access.log" common
+        		<Directory "E:/wwwroot/storage-web">
+        		  Options Indexes FollowSymLinks
+        		  AllowOverride all
+        		  Require all granted
+        		  DirectoryIndex  index.html
+        		</Directory>
+        </VirtualHost>
+        
+        
+        
+### 2.php伪静态
 
     1. httpd.conf配置文件 启动rewrite模块 如下：
     
@@ -120,7 +174,16 @@ tags:
                                 Require all granted
         </Directory>
         
-      
+### 3.vue项目伪静态
+
+    <IfModule mod_rewrite.c>
+        RewriteEngine On
+        RewriteBase /
+        RewriteRule ^index\.html$ - [L]
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule . /index.html [L]
+    </ifModule>	      
     
 ### 配置开机启动
         

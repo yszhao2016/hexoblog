@@ -26,19 +26,17 @@ tags:
     rpm -ivh mysql-community-libs-compat-5.7.19-1.el7.x86_64.rpm
     
     rpm -ivh mysql-community-client-5.7.19-1.el7.x86_64.rpm
-    
+
     rpm -ivh mysql-community-server-5.7.19-1.el7.x86_64.rpm
     
-6 安装完毕 初始密码一般在/var/log/mysqld.log文件中   cat   /var/log/mysqld.log |grep password
+6.优化配置   
 
-7.登录数据库 修改密码 mysql -u root -p
-
-8.登录后修改密码 
-
-    SET PASSWORD = PASSWORD('xxx@520Flzx3qc');
+  6.1 /data/mysql/logs/相关目录需要创建
     
-9.优化配置    
-
+    mkdir -p  /data/mysql/logs/
+  
+  6.2  my.cnf 配置文件
+  
     port=3306
     设置端口号
     
@@ -73,9 +71,24 @@ tags:
     ###################     Bin Log    ######################
     server_id = 6
     ###################     Error Log   ####################
-    log_error=/data/mysql/logs/mysqld.log
+    log_error=/data/mysql/logs/mysqld.log    
     
+7.  启动 systemctl start mysqld
+    安装完毕 初始密码一般在/var/log/mysqld.log文件中   
+    cat   /var/log/mysqld.log |grep password
+
+8.登录数据库 修改密码 mysql -u root -p
+
+
+9.登录后修改密码 
+
+    SET PASSWORD = PASSWORD('xxx@520Flzx3qc');
     
+    允许远程root用户连接
+    GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'your_password' WITH GRANT OPTION;
+    FLUSH PRIVILEGES;
+    
+
 10.相关命令
     
     开机启动
@@ -85,7 +98,7 @@ tags:
     systemctl start mysqld
     systemctl restart mysqld
     
-    
+ 
 #安装报错解决
 
     Error: 
@@ -101,6 +114,23 @@ tags:
     
     
     解决方案
-    
+
+    wget https://rpmfind.net/linux/centos/8-stream/AppStream/x86_64/os/Packages/compat-openssl10-1.0.2o-4.el8.x86_64.rpm
     yum install compat-openssl10
+    或者
     yum install http://mirror.centos.org/centos/8-stream/AppStream/x86_64/os/Packages/compat-openssl10-1.0.2o-3.el8.x86_64.rpm
+    或者
+    yum install -y ./compat-openssl10-1.0.2o-4.el8.x86_64.rpm
+    
+    
+    
+    [root@ecs-41618143 ~]# rpm -ivh mysql-community-client-5.7.34-1.el7.x86_64.rpm 
+    warning: mysql-community-client-5.7.34-1.el7.x86_64.rpm: Header V3 DSA/SHA1 Signature, key ID 5072e1f5: NOKEY
+    error: Failed dependencies:
+    	libncurses.so.5()(64bit) is needed by mysql-community-client-5.7.34-1.el7.x86_64
+    	libtinfo.so.5()(64bit) is needed by mysql-community-client-5.7.34-1.el7.x86_64
+    	
+    	
+     解决方案	
+     
+     yum install libncurses*

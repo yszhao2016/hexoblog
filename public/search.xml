@@ -1,7 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
+<search>
+  <entry>
+    <title>Hexo基础应用</title>
+    <url>/2021/12/10/Hexo%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<p>1.首先安装node,具体参考<a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
+<p>2.初始化 项目</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
+<p>将会在当前目录下产生blog文件夹</p>
+<p>3.新建文章</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo n 文章标题  //完整命令 hexo new 文章标题</span><br></pre></td></tr></table></figure>
+<p>相应会在source/_posts 目录下产生   文章标题.md</p>
+<p>4.生成html</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g        //完整命令  hexo generate</span><br></pre></td></tr></table></figure>
+<p>将会在public目录生成相应的html文件</p>
+<p>5.开启本地测试环境</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo s        //完整命令  hexo server</span><br></pre></td></tr></table></figure>
+<pre><code>http://loaclhost:4000就可以访问了
+</code></pre>
+<p>6.发布代码到github.io</p>
+<pre><code>配置修改_config.yml文件
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: &#x27;git&#x27;</span><br><span class="line">  repo: https://github.com/github账号名称/github账号名称.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo d       //发布到线上  hexo generate</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title>docker学习2-DockerFile</title>
+    <url>/2023/07/08/docker%E5%AD%A6%E4%B9%A02/</url>
+    <content><![CDATA[<h1 id="Dockerfile-学习"><a href="#Dockerfile-学习" class="headerlink" title="Dockerfile 学习"></a>Dockerfile 学习</h1><h2 id="相关语法"><a href="#相关语法" class="headerlink" title="相关语法"></a>相关语法</h2><pre><code>FROM  scratch
+ADD hello /
+CMD [&quot;/hello&quot;]
+</code></pre>
+<h2 id="FROM语法"><a href="#FROM语法" class="headerlink" title="FROM语法"></a>FROM语法</h2><pre><code>FROM scratch   //制作  base image
+
+FROM centos    //使用  base image
+
+FROM ubuntu:14.4
+</code></pre>
+<h2 id="LABEL语法（类似注释作用）"><a href="#LABEL语法（类似注释作用）" class="headerlink" title="LABEL语法（类似注释作用）"></a>LABEL语法（类似注释作用）</h2><pre><code>LABEL maintainer=&quot;xiaoquwl@gmail.com&quot;
+LABEL version=&quot;1.0&quot;
+LABEL description=&quot;This is description&quot;
+注：Metadata(元数据)不可少
+
+示例：
+LABEL org.opencontainers.image.authors=&quot;yeasy&quot;
+LABEL org.opencontainers.image.documentation=&quot;https://yeasy.gitbooks.io&quot;
+</code></pre>
+<h2 id="RUN-语法"><a href="#RUN-语法" class="headerlink" title="RUN 语法"></a>RUN 语法</h2><pre><code>RUN yum update &amp;&amp; yum install -y vim \
+python-dev 
+注：反斜杠换行
+
+RUN
+</code></pre>
+<h2 id="WORKDIR-语法"><a href="#WORKDIR-语法" class="headerlink" title="WORKDIR 语法"></a>WORKDIR 语法</h2><pre><code>设置工作目录，目录不存在，会自动创建
+
+示列：
+WORKDIR /test
+WORKDIR abc
+这样就工作在/test/abc目录下
+注：
+    1、RUN cd 能实现类似效果 但不推荐
+    2、目录尽量示绝对目录
+</code></pre>
+<h2 id="ADD-amp-amp-COPY-语法"><a href="#ADD-amp-amp-COPY-语法" class="headerlink" title="ADD&amp;&amp;COPY 语法"></a>ADD&amp;&amp;COPY 语法</h2><pre><code>功能类似添加文件到容器
+ADD 有解压缩功能
+
+示列：
+ ADD test.tar.gz /app/web
+</code></pre>
+<h2 id="ENV-语法"><a href="#ENV-语法" class="headerlink" title="ENV 语法"></a>ENV 语法</h2><pre><code>定义变量
+示列：
+    ENV  MYSQL_VERSION 5.6
+    RUM yum install mysql_server=&quot;$&#123;MYSQL_VERSION&#125;&quot;
+</code></pre>
+<h2 id="VOLUME-amp-amp-EXPOSE"><a href="#VOLUME-amp-amp-EXPOSE" class="headerlink" title="VOLUME&amp;&amp;EXPOSE"></a>VOLUME&amp;&amp;EXPOSE</h2><pre><code>存储和网络
+</code></pre>
+]]></content>
+  </entry>
+  <entry>
+    <title>docker学习3</title>
+    <url>/2023/07/09/docker%E5%AD%A6%E4%B9%A03/</url>
+    <content><![CDATA[<h1 id="docker-compose使用"><a href="#docker-compose使用" class="headerlink" title="docker-compose使用"></a>docker-compose使用</h1><h2 id="docker-compose安装"><a href="#docker-compose安装" class="headerlink" title="docker-compose安装"></a>docker-compose安装</h2>]]></content>
+  </entry>
+  <entry>
+    <title>fail2ban软件使用</title>
+    <url>/2023/07/09/fail2ban%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><pre><code>CentOS 中使用fail2ban和firewalld限制IP拦截cc攻击
+</code></pre>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><pre><code>yum -y install fail2ban
+</code></pre>
+<h1 id="新建规则"><a href="#新建规则" class="headerlink" title="新建规则"></a>新建规则</h1><pre><code>/etc/fail2ban/filter.d/  编写过滤规则的目录 
+
+vi /etc/fail2ban/filter.d/nginx-cc.conf
+
+[Definition]
+#failregex = &lt;HOST&gt;-.*-.*HTTP/1.*(404|301|503).*$
+failregex = ^&lt;HOST&gt; -.*&quot;(GET|POST).* HTTP\/.*$
+ignoreregex =
+</code></pre>
+<h1 id="正则规则检查"><a href="#正则规则检查" class="headerlink" title="正则规则检查"></a>正则规则检查</h1><pre><code>fail2ban-regex /var/log/nginx/access.log &quot;&lt;HOST&gt; -.*- .*HTTP/1.* .* .*$&quot;  
+</code></pre>
+<h1 id="根据配置文件检查"><a href="#根据配置文件检查" class="headerlink" title="根据配置文件检查"></a>根据配置文件检查</h1><pre><code>fail2ban-regex /var/log/nginx/access.log /etc/fail2ban/filter.d/nginx-cc.conf  
+</code></pre>
+<h1 id="控制规则配置文件"><a href="#控制规则配置文件" class="headerlink" title="控制规则配置文件"></a>控制规则配置文件</h1><pre><code>[DEFAULT]
+ignoreip = 127.0.0.1/8  117.89.130.84 117.89.134.183/16  218.2.244.241/16 49.82.132.215/16 122.195.252.237/16 114.238.64.157/16 180.110.114.152/16
+#放行的ip 可以带网段
+ignorecommand =
+bantime  = 60
+#屏蔽时间，-1是永久屏蔽
+findtime  = 60
+#设置限定时间内超过 最大尝试次数 限制次数即被封锁
+maxretry = 5
+#最大尝试次数
+backend = auto
+#日志修改后检测机制
+usedns = warn
+#ssh链接加速
+logencoding = auto
+enabled = false
+[sshd]
+## 分类设置（基于 SSHD 服务的防护） 
+enabled = true
+## 是否开启防护，false 为关闭 
+filter = sshd
+## 过滤规则 filter 名称，对应 filter.d 目录下的 sshd.conf  action   = iptables[name=SSH, port=22, protocol=tcp] 
+#《###action = iptables[name=SSH, port=ssh, protocol=tcp] ## 动作参数
+#sendmail-whois[name=SSH, dest=you@example.com, sender=fail2ban@example.com,   sendername=&quot;Fail2Ban&quot;]
+## 邮件通知参数
+## 收件人地址           ## 发件人地址####》   这是个例子 
+logpath = /var/log/secure
+## 检测系统登陆日志文件 
+maxretry = 3
+## 最大尝试次数
+banaction=iptables-allports
+bantime = 3600
+[nginx-cc] 
+#过滤规则名称 下方就是 规律规则 相关 限制条件
+enabled = true
+port=http,https
+filter = nginx-cc
+findtime = 1
+#1秒钟检查一次
+maxretry = 100
+#最多100个
+bantime = 3600
+#封锁ip的时间
+banaction=iptables-multiport
+#匹配的哪些日志文件
+logpath = /var/log/nginx/*access.log
+          /var/log/nginx/access.log
+</code></pre>
+<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><pre><code>#启动
+systemctl start fail2ban
+#停止
+systemctl stop fail2ban
+
+#查看具体规则限制了哪些ip
+fail2ban-client status 规则名称
+示例：   fail2ban-client status nginx-cc
+
+#解封某条过滤规则封锁的ip
+fail2ban-client set nginx-cc unbanip  112.84.237.102
+</code></pre>
+]]></content>
+  </entry>
+  <entry>
+    <title>docker学习1-Docker基础命令</title>
+    <url>/2023/07/08/docker%E5%AD%A6%E4%B9%A01/</url>
+    <content><![CDATA[<h1 id="Docker基础命令"><a href="#Docker基础命令" class="headerlink" title="Docker基础命令"></a>Docker基础命令</h1><h3 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h3><pre><code>Docker image ls 
+</code></pre>
+<h3 id="查看运行中的容器container"><a href="#查看运行中的容器container" class="headerlink" title="查看运行中的容器container"></a>查看运行中的容器container</h3><pre><code>docker ps      展示 正在运行的
+
+docker ps -a   所有  启动与未启动的 
+
+docker ps -q
+</code></pre>
+<h3 id="运行容器"><a href="#运行容器" class="headerlink" title="运行容器"></a>运行容器</h3><pre><code>docker run 容器名称
+
+示例：
+</code></pre>
+<h3 id="查看运行中的容器container-1"><a href="#查看运行中的容器container-1" class="headerlink" title="查看运行中的容器container"></a>查看运行中的容器container</h3><pre><code>docker inspect  容器名称    查看容器信息
+</code></pre>
+<h3 id="根据dockerfile-文件生成image"><a href="#根据dockerfile-文件生成image" class="headerlink" title="根据dockerfile 文件生成image"></a>根据dockerfile 文件生成image</h3><pre><code>Docker build -t tag/镜像名称   dockerfile所在目录
+    示例：
+    docker build -t test/hello-word .
+</code></pre>
+<h3 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h3><pre><code>docker rm 容器ID       
+
+docker rm $(docker container ls -aq)    删除所有容器
+
+docker rmi image名称   删除镜像
+</code></pre>
+<h3 id="进入容器内"><a href="#进入容器内" class="headerlink" title="进入容器内"></a>进入容器内</h3><pre><code>docker exec -it 容器名 /bin/bash
+
+示例：docker exec it php71 /bin/bash
+</code></pre>
+<h3 id="docker-镜像-导出导入【必须成对使用】"><a href="#docker-镜像-导出导入【必须成对使用】" class="headerlink" title="docker 镜像 导出导入【必须成对使用】"></a>docker 镜像 导出导入【必须成对使用】</h3><pre><code>docker export：导出容器
+docker import：导入容器为镜像
+
+
+docker save：导出镜像
+
+    -o:输出到的文件。
+
+    导出示例：
+        docker save -o my_ubuntu_v3.tar runoob/ubuntu:v3
+        docker save ubuntu:load&gt;/root/ubuntu.tar
+
+docker load：导入镜像
+    -i：指定导出的文件
+    -q：精简输出信息
+=======
 <search> 
   
   
+>>>>>>> 66b25ca3c8985293568253e626c80c4c353c268e
     
     <entry>
       <title>Linux-firewalld使用总结</title>
@@ -820,4 +1041,568 @@
     
   
   
+<<<<<<< HEAD
+  make &amp;&amp; make install
+    
+</code></pre>
+<h2 id="修改相关配置"><a href="#修改相关配置" class="headerlink" title="修改相关配置"></a>修改相关配置</h2><pre><code>cp -p contrib/redhat/sshd.init /etc/init.d/sshd 
+
+chmod u+x /etc/init.d/sshd 
+
+/etc/init.d/sshd start 此命令后就加入systemctl
+
+systemctl enable sshd 加入开机启动
+
+# vim /etc/ssh/sshd_config
+PermitRootLogin yes                #允许root账户登录，单root账户必须加上，其他的参数请自行修改
+</code></pre>
+<h2 id="报错处理"><a href="#报错处理" class="headerlink" title="报错处理"></a>报错处理</h2><pre><code>1.编译时报错
+
+    configure: error: PAM headers not found
+    
+解决方法
+    
+    yum -y install pam-devel
+    
+    
+2.编译别的目录，然后通过相应文件覆盖或者软连接方式更新
+  如果密码正确 就是登录不上
+  
+  删除重装     
+</code></pre>
+<h1 id="ubutun系统"><a href="#ubutun系统" class="headerlink" title="ubutun系统"></a>ubutun系统</h1><h2 id="查看是否安装"><a href="#查看是否安装" class="headerlink" title="查看是否安装"></a>查看是否安装</h2><pre><code>dpkg --list|grep ssh
+卸载
+sudo apt-get remove openssh-server 
+</code></pre>
+<h2 id="编译过程参考centos即可"><a href="#编译过程参考centos即可" class="headerlink" title="编译过程参考centos即可"></a>编译过程参考centos即可</h2>]]></content>
+  </entry>
+  <entry>
+    <title>springboot学习</title>
+    <url>/2023/08/01/springboot%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h2 id="创建基于springboot-项目"><a href="#创建基于springboot-项目" class="headerlink" title="创建基于springboot 项目"></a>创建基于springboot 项目</h2><h2 id="1-maven方式"><a href="#1-maven方式" class="headerlink" title="1.maven方式"></a>1.maven方式</h2><pre><code>pom.xml文件加入
+
+  &lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+        &lt;version&gt;2.5.6&lt;/version&gt;
+   &lt;/parent&gt;
+   
+   
+   &lt;dependencies&gt;
+       &lt;!-- Web 依赖 --&gt;
+       &lt;dependency&gt;
+           &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+           &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+       &lt;/dependency&gt;
+       &lt;!-- Web 依赖 --&gt;
+   &lt;/dependencies&gt;
+
+更新库就可以
+</code></pre>
+<h2 id="2-通过官网的spring-initializr安装"><a href="#2-通过官网的spring-initializr安装" class="headerlink" title="2. 通过官网的spring initializr安装"></a>2. 通过官网的spring initializr安装</h2><pre><code>https://start.spring.io/  
+</code></pre>
+<h2 id="3-idea旗舰版-新建时-可以选"><a href="#3-idea旗舰版-新建时-可以选" class="headerlink" title="3.idea旗舰版 新建时 可以选"></a>3.idea旗舰版 新建时 可以选</h2><h2 id="Spring-Boot-应用启动类，"><a href="#Spring-Boot-应用启动类，" class="headerlink" title="Spring Boot 应用启动类，"></a>Spring Boot 应用启动类，</h2><p> 在package创建类加上@SpringBootApplication</p>
+<pre><code>package com.zysstudy;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class StartApplication &#123;
+    public static void main(String[] args) &#123;
+        SpringApplication.run(StartApplication.class,args);
+    &#125;
+
+&#125;
+</code></pre>
+]]></content>
+  </entry>
+  <entry>
+    <title>搭建openvpn</title>
+    <url>/2023/08/28/%E6%90%AD%E5%BB%BAopenvpn/</url>
+    <content><![CDATA[<h1 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h1><h2 id="1-1、安装epel库和openvpn软件"><a href="#1-1、安装epel库和openvpn软件" class="headerlink" title="1.1、安装epel库和openvpn软件"></a>1.1、安装epel库和openvpn软件</h2><pre><code>yum -y install openvpn easy-rsa firewalld
+
+yum install epel-release -y
+</code></pre>
+<h2 id="1-2、开启路由转发"><a href="#1-2、开启路由转发" class="headerlink" title="1.2、开启路由转发"></a>1.2、开启路由转发</h2><pre><code> echo  &quot;net.ipv4.ip_forward = 1&quot; &gt;&gt;/etc/sysctl.conf
+ sysctl -p
+</code></pre>
+<h2 id="1-3、创建OpenVPN相关的密钥"><a href="#1-3、创建OpenVPN相关的密钥" class="headerlink" title="1.3、创建OpenVPN相关的密钥"></a>1.3、创建OpenVPN相关的密钥</h2><pre><code> cp -rf /usr/share/easy-rsa/3.0/* /etc/openvpn/easy-rsa/
+ cp -p /usr/share/doc/easy-rsa-3.0.6/vars.example /etc/openvpn/easy-rsa/vars
+ cd /etc/openvpn/easy-rsa/
+</code></pre>
+<h3 id="1-3-1、创建ca证书"><a href="#1-3-1、创建ca证书" class="headerlink" title="1.3.1、创建ca证书"></a>1.3.1、创建ca证书</h3><pre><code>/usr/share/easy-rsa/3/easyrsa init-pki
+/usr/share/easy-rsa/3/easyrsa build-ca nopass
+</code></pre>
+<h3 id="1-3-2、创建client证书和签名"><a href="#1-3-2、创建client证书和签名" class="headerlink" title="1.3..2、创建client证书和签名"></a>1.3..2、创建client证书和签名</h3><pre><code>/usr/share/easy-rsa/3/easyrsa gen-req client1 nopass           #Enter
+/usr/share/easy-rsa/3/easyrsa sign-req client client1          #需要输入yes
+创建dh、tls、crl（证书撤销秘钥）
+/usr/share/easy-rsa/3/easyrsa gen-dh
+openvpn --genkey --secret /etc/openvpn/easy-rsa/ta.key
+/usr/share/easy-rsa/3/easyrsa  gen-crl
+</code></pre>
+<h3 id="1-3-3、将秘钥拷贝至相应目录"><a href="#1-3-3、将秘钥拷贝至相应目录" class="headerlink" title="1.3.3、将秘钥拷贝至相应目录"></a>1.3.3、将秘钥拷贝至相应目录</h3><pre><code>cp -p pki/ca.crt /etc/openvpn/server/
+cp -p pki/issued/server1.crt /etc/openvpn/server/
+cp -p pki/private/server1.key /etc/openvpn/server/
+cp -p ta.key /etc/openvpn/server/
+cp -p pki/ca.crt /etc/openvpn/client/
+cp -p pki/issued/client1.crt /etc/openvpn/client/
+cp -p pki/private/client1.key /etc/openvpn/client/
+cp -p ta.key /etc/openvpn/client/
+cp pki/dh.pem /etc/openvpn/server/
+cp pki/crl.pem /etc/openvpn/server/
+cp /usr/share/doc/openvpn-2.4.11/sample/sample-config-files/server.conf /etc/openvpn/
+</code></pre>
+<h1 id="二、配置-openvpn"><a href="#二、配置-openvpn" class="headerlink" title="二、配置 openvpn"></a>二、配置 openvpn</h1><h2 id="2-1、编辑配置文件-etc-openvpn-server-conf"><a href="#2-1、编辑配置文件-etc-openvpn-server-conf" class="headerlink" title="2.1、编辑配置文件 /etc/openvpn/server.conf"></a>2.1、编辑配置文件 /etc/openvpn/server.conf</h2><pre><code>cp /usr/share/doc/openvpn-2.4.11/sample/sample-config-files/server.conf /etc/openvpn/      
+#拷贝实例修改或直接拷贝以下内容
+vim /etc/openvpn/server.conf
+
+local 0.0.0.0    #监听地址
+port 1194        #监听端口
+proto tcp        #监听协议
+dev tun          #采用路由隧道模式
+ca /etc/openvpn/server/ca.crt              #ca证书路径
+cert /etc/openvpn/server/server1.crt       #服务器证书
+key /etc/openvpn/server/server1.key        #服务器秘钥
+dh /etc/openvpn/server/dh.pem              #密钥交换协议文件
+#####注意在设备中加一条到10.100.100.0虚拟网段的路由！！！！
+server 10.100.100.0 255.255.255.0          
+####给客户端分配地址池，注意：不能和VPN服务器内网网段有相同
+#####注意在设备中加一条到10.100.100.0虚拟网段的路由！！！！
+ifconfig-pool-persist ipp.txt
+#push &quot;redirect-gateway def1 bypass-dhcp&quot;      #推送默认路由（所有流量走vpn）
+push &quot;route 192.168.0.0 255.255.255.0&quot;           
+#推送客户端常用路由（根据自己内网网段来写或修改客户端配置添加路由）
+push &quot;dhcp-option DNS 192.168.5.251&quot;           #dhcp分配dns
+client-to-client       #客户端之间互相通信
+keepalive 10 120       #存活时间，10秒ping一次,120 如未收到响应则视为断线
+comp-lzo               #传输数据压缩
+max-clients 100        #最多允许 100 客户端连接
+user openvpn           #用户
+group openvpn          #用户组
+cipher AES-256-CBC     #加密方式--客户端必须一致
+persist-key
+persist-tun
+status /var/log/openvpn-status.log
+log         /var/log/openvpn.log
+verb 3
+#以下参数为用户认证使用
+script-security 3
+auth-user-pass-verify /etc/openvpn/checkpsw.sh via-env    #指定用户认证脚本
+username-as-common-name
+verify-client-cert none
+</code></pre>
+<h2 id="2-2虚拟网段的路由"><a href="#2-2虚拟网段的路由" class="headerlink" title="2.2虚拟网段的路由"></a>2.2虚拟网段的路由</h2><pre><code>iptables -t nat -A POSTROUTING -s 10.100.100.0/24 -j MASQUERADE
+</code></pre>
+<h1 id="三、用户认证"><a href="#三、用户认证" class="headerlink" title="三、用户认证"></a>三、用户认证</h1><h2 id="3-1编写用户认证脚本文件-脚本是由openvpn官网提供"><a href="#3-1编写用户认证脚本文件-脚本是由openvpn官网提供" class="headerlink" title="3.1编写用户认证脚本文件 (脚本是由openvpn官网提供)"></a>3.1编写用户认证脚本文件 (脚本是由openvpn官网提供)</h2><pre><code>vim /etc/openvpn/checkpsw.sh
+#!/bin/sh
+###########################################################
+# checkpsw.sh (C) 2004 Mathias Sundman 
+# This script will authenticate OpenVPN users against
+# a plain text file. The passfile should simply contain
+# one row per user with the username first followed by
+# one or more space(s) or tab(s) and then the password.
+
+PASSFILE=&quot;/etc/openvpn/psw-file&quot;
+LOG_FILE=&quot;/etc/openvpn/openvpn-password.log&quot;
+TIME_STAMP=`date &quot;+%Y-%m-%d %T&quot;`
+###########################################################
+
+if [ ! -r &quot;$&#123;PASSFILE&#125;&quot; ]; then
+  echo &quot;$&#123;TIME_STAMP&#125;: Could not open password file \&quot;$&#123;PASSFILE&#125;\&quot; for reading.&quot; &gt;&gt;$&#123;LOG_FILE&#125;
+  exit 1
+fi
+
+CORRECT_PASSWORD=`awk &#39;!/^;/&amp;&amp;!/^#/&amp;&amp;$1==&quot;&#39;$&#123;username&#125;&#39;&quot;&#123;print $2;exit&#125;&#39; $&#123;PASSFILE&#125;`
+
+if [ &quot;$&#123;CORRECT_PASSWORD&#125;&quot; = &quot;&quot; ]; then 
+  echo &quot;$&#123;TIME_STAMP&#125;: User does not exist: username=\&quot;$&#123;username&#125;\&quot;, password=\&quot;$&#123;password&#125;\&quot;.&quot; &gt;&gt; $&#123;LOG_FILE&#125;
+  exit 1
+fi
+
+if [ &quot;$&#123;password&#125;&quot; = &quot;$&#123;CORRECT_PASSWORD&#125;&quot; ]; then 
+  echo &quot;$&#123;TIME_STAMP&#125;: Successful authentication: username=\&quot;$&#123;username&#125;\&quot;.&quot; &gt;&gt; $&#123;LOG_FILE&#125;
+  exit 0
+fi
+
+echo &quot;$&#123;TIME_STAMP&#125;: Incorrect password: username=\&quot;$&#123;username&#125;\&quot;,     password=\&quot;$&#123;password&#125;\&quot;.&quot; &gt;&gt; $&#123;LOG_FILE&#125;
+exit 1
+</code></pre>
+<h2 id="3-2-加权限及添加用户账号"><a href="#3-2-加权限及添加用户账号" class="headerlink" title="3.2 加权限及添加用户账号"></a>3.2 加权限及添加用户账号</h2><pre><code>给脚本添加执行权限
+chmod 755 /etc/openvpn/checkpsw.sh
+
+
+编辑密码文件
+vim /etc/openvpn/psw-file
+tom  123456
+Jerry 654321
+#前面为用户名，后面为密码。 中间使用空格分开
+</code></pre>
+<h1 id="四、客户端配置"><a href="#四、客户端配置" class="headerlink" title="四、客户端配置"></a>四、客户端配置</h1><pre><code>client.ovpn
+
+##---------以下为将ca.crt证书写入到客户端文件的方式（直接给一个client.ovpn文件即可）------------##
+client
+dev tun
+proto tcp   #根据服务端的来
+remote utnanjing.tpddns.cn 11194
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+&lt;ca&gt;
+-----BEGIN CERTIFICATE-----
+MIIDNTCCAh2gAwIBAgIJAJgy1QReG9VmMA0GCSqGSIb3DQEBCwUAMBYxFDASBgNV
+BAMMC0Vhc3ktUlNBIENBMB4XDTIzMDgyNDA5NTgzN1oXDTMzMDgyMTA5NTgzN1ow
+FjEUMBIGA1UEAwwLRWFzeS1SU0EgQ0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw
+ggEKAoIBAQDLutXX/OaN1muPGKQV2uiEaZbQy9F0PptJxM3ZTHdyn+HuQ/3xqYHz
+z6hgIr2IjWtD5pqZXGMwIxbpNFKfPfJtwU5xpuUA6hxWV3yYtaXGsaLvFA0StL/N
+P5/3VgL1KpdcivjMejgVCwX5CkN97hsS6uk9Z/PUB9OEAWygeRHS8CYQ37PhXmDC
+h/1VeXWZDHJzxCD1fqoo2dB8MGFJjvg3FVQ0o8Gf0XE9cvj5dtk73f6AyiuYTeLL
+nD8vY8jbCVGeLcnoDnduK6y6ZLFOUHWfEPH+a1jDFLpXIby0oo3yBWcldzaKJMzf
+UP7HoczkDaUo5ykecDjxGkD8kpTmwyQPAgMBAAGjgYUwgYIwHQYDVR0OBBYEFPCY
+FNHxZ/eBKLRh009Bm08j8zurMEYGA1UdIwQ/MD2AFPCYFNHxZ/eBKLRh009Bm08j
+8zuroRqkGDAWMRQwEgYDVQQDDAtFYXN5LVJTQSBDQYIJAJgy1QReG9VmMAwGA1Ud
+EwQFMAMBAf8wCwYDVR0PBAQDAgEGMA0GCSqGSIb3DQEBCwUAA4IBAQCYFaym5wCr
+lti+7p9MqLm4UF7pOmZQ2NamZjP1cQuMh2SgdJphddZEhEUO5NOQms8gMJsZ3sd7
+DIul+XkDcbhjKNNxD4oeXiITR8BgLsCkqtLStwWtOSLGxgHHWD3S+IBSM21A4Rxy
+hE4VUr81i9XUM2lI7ml5RgCVTvbWosCnVFuXypaYs4/c1yJJ1I578M6oVWjahJOx
+ENoeYYSI/V+2ySTtRQlW8HQEc4GhSeybhmXgrfLKhmHTVl/ZqZg5zp3kwBcnsrUQ
+junuLBLMMYSLPXhJQFU/10EMxv/9AAdBGiO3RL0G2qYc0JF11qVpmD9nwP9f/YR3
+Yvs7E2kwDViH
+-----END CERTIFICATE-----
+&lt;/ca&gt;
+cipher AES-256-CBC
+comp-lzo
+verb 3
+auth-user-pass              #使用用户名密码登录openvpn服务器
+auth-nocache
+
+
+证书方式
+
+client
+dev tun
+proto tcp
+remote 公网ipxxx.xxx.xxx.xxx 1194
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+ca ca.crt
+cert client1.crt  #拷贝自服务端
+key client1.key   #拷贝自服务端 
+remote-cert-tls server
+cipher AES-256-CBC
+comp-lzo
+verb 3
+</code></pre>
+]]></content>
+  </entry>
+  <entry>
+    <title>vmvare-esxi虚拟机扩容</title>
+    <url>/2023/08/28/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%89%A9%E5%AE%B9/</url>
+    <content><![CDATA[<p>修改硬盘大小</p>
+<pre><code>先虚拟机管理页面修改硬盘大小
+    注：不删除快照是 无法修改成功的
+</code></pre>
+<p>分区  </p>
+<pre><code>fdisk /dev/sda    
+n
+p
+默认确定
+w
+</code></pre>
+<p>手动同步磁盘到系统内核</p>
+<pre><code>partprobe
+</code></pre>
+<p>创建物理卷</p>
+<pre><code>pvcreate /dev/sda3          #【/dev/sda3 是根据fdisk来的】
+</code></pre>
+<p>查看卷组</p>
+<pre><code>vgdisplay
+</code></pre>
+<p>添加物理卷（/dev/sda3）到卷组（centos）</p>
+<pre><code>vgextend centos /dev/sda3   #此处的centos根据vgdisplay查看得来
+</code></pre>
+<p>将空闲的空间都分配给root文件系统 </p>
+<pre><code> lvextend -L +250G /dev/centos/root   【/dev/centos/root  就是要扩容的目录通过df 可查看】
+</code></pre>
+<p>对root文件系统执行扩容</p>
+<pre><code>xfs_growfs /dev/centos/root
+</code></pre>
+]]></content>
+  </entry>
+  <entry>
+    <title>搭建nps内网穿透</title>
+    <url>/2023/08/29/%E6%90%AD%E5%BB%BAnps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>内网穿透的方式有很多种，什么Frp、Ngrok、NPS、蒲公英等等，</p>
+<h1 id="NPS简介"><a href="#NPS简介" class="headerlink" title="NPS简介"></a>NPS简介</h1><p>nps是一款轻量级、高性能、功能强大的内网穿透代理服务器。目前支持tcp、udp流量转发，<br>可支持任何tcp、udp上层协议（访问内网网站、本地支付接口调试、ssh访问、远程桌面，内网dns解析等等……），<br>此外还支持内网http代理、内网socks5代理、p2p等，并带有功能强大的web管理端</p>
+<h1 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h1><pre><code>配置docker阿里云 镜像
+yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+    
+yum install docker-ce docker-ce-cli containerd.io
+</code></pre>
+<h1 id="安装nps"><a href="#安装nps" class="headerlink" title="安装nps"></a>安装nps</h1><pre><code>拉取镜像
+docker pull ffdfgdfg/nps
+
+添加配置文件
+创建nps挂载文件目录(自己随意设置)
+mkdir -p /docker/nps/conf
+
+配置下载地址 https://github.com/ehang-io/nps/blob/master/conf
+修改刚下载的conf文件夹里的/docker/nps/conf/nps.conf文件：
+
+web_host=a.o.com   #修改为你的域名admin.nps.youdomain.com
+web_username=admin 
+web_password=123   #修改为一个强密码，毕竟是放在公网上的服务
+web_port = 8090    访问的端口号
+web_ip=0.0.0.0
+
+
+运行nps
+docker run -d   --restart=always --name nps --net=host -v /docker/nps/conf:/conf ffdfgdfg/nps
+</code></pre>
+<h1 id="客户端安装npc"><a href="#客户端安装npc" class="headerlink" title="客户端安装npc"></a>客户端安装npc</h1><pre><code>拉取npc镜像
+docker pull ffdfgdfg/npc
+
+
+docker run -d --restart=always --name npc-227 --net=host ffdfgdfg/npc -server=111.231.69.227:8024 -vkey=dle31e3ry1yl616p
+【参数 -server 服务端获取  -vkey 服务端获取】 
+</code></pre>
+<h1 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h1><pre><code>http://ip/8090  账号密码 配置文件中   
+</code></pre>
+]]></content>
+  </entry>
+  <entry>
+    <title>shell脚本学习2</title>
+    <url>/2023/07/29/shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A02/</url>
+    <content><![CDATA[<p>搜索出当前目录下包含某个字符串的文件  并替换文件中的xx字符串为bb字符串<br>    sed -i “s/xx/bb/g” <code>grep -rl &quot;xx ./</code><br>    sed -i “s/http://121.229.56.251:8082/https://zkzp.jyrcfzjt.com:8082/g” <code>grep -rl &quot;http://121.229.56.251:8082&quot; ./</code></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>php扩展安装</title>
+    <url>/2023/10/16/php%E6%89%A9%E5%B1%95%E5%AE%89%E8%A3%85-1/</url>
+    <content><![CDATA[<p>#下载相应的扩展并phpize</p>
+<pre><code>到扩展目录下
+执行phpize
+
+1.phpize 不是系统命令时候
+
+find / -name phpize 
+
+后找到相应版本的phpize
+
+2.报错can‘t find PHP headers in path/php
+
+yum install -y php-devel
+</code></pre>
+<h1 id="configure"><a href="#configure" class="headerlink" title="configure"></a>configure</h1><p> 项目目录下<br> 执行 ./configure</p>
+<p> 1.报错：configure: error: Cannot find php-config. Please use –with-php-config=PATH</p>
+<p> 执行 find / -name php-config</p>
+<p> 找到相应版本php的 php-config</p>
+<p> ./configure –with-php-config=【php-config路径】</p>
+<h1 id="make-amp-amp-make-install"><a href="#make-amp-amp-make-install" class="headerlink" title="make &amp;&amp; make install"></a>make &amp;&amp; make install</h1><pre><code>执行成功后会提示.so文件的路径
+</code></pre>
+<p> #配置php.ini</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>redis基本数据结构</title>
+    <url>/2023/09/26/redis%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><pre><code>Redis五大数据类型：String、Hash、List、Set、Sorted set
+</code></pre>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><p>String类型的最大能存储512M 应用场景 【缓存】</p>
+<pre><code>1.SET key value [EX seconds] [PX milliseconds] [NX|XX]
+
+EX和PX参数可选，用于设置键的过期时间，单位分别为秒和毫秒
+
+NX表示只在键不存在时创建，XX表示只在键已存在时执行操作。
+
+将键 &quot;abc&quot; 设置为值 &quot;123&quot; 并设置过期时间为 12 秒
+
+    set abc 123 ex 12
+
+2. MSET key1 value1 [key2 value2 ...]  设置多条
+     mset a 1 b 2 
+       
+3.EXPIRE key seconds    设置过期时间
+
+4.SETEX key seconds value 可用于一次设置带有过期时间的键值对
+
+select命令切换数据库，分库的作用主要用来业务分片：
+dbsize查看当前数据库的key的数量
+flushdb清除当前库所有key(当前库)：
+</code></pre>
+<h1 id="Hash-哈希表"><a href="#Hash-哈希表" class="headerlink" title="Hash(哈希表)"></a>Hash(哈希表)</h1><pre><code>hget：通过key值，从hash里取对应的value
+
+hset：往hash里，添加key-value
+
+hmset
+hmget：一次性获取多个key的value
+
+hmset user:2 name:kati age 28 sex woman
+
+hmget user:2 name age sex
+</code></pre>
+<h1 id="List-列表"><a href="#List-列表" class="headerlink" title="List(列表)"></a>List(列表)</h1><pre><code>lpush：从列表List的左边插入一个元素。
+
+lpop：从列表List的左边移出一个元素。
+
+rpush：从列表List的右边插入一个元素。
+
+rpop：从列表List的右边移出一个元素。
+
+llen：打印当前列表List中的元素个数。
+</code></pre>
+<h1 id="Set-集合"><a href="#Set-集合" class="headerlink" title="Set(集合)"></a>Set(集合)</h1><h1 id="Sorted-set-有序集合"><a href="#Sorted-set-有序集合" class="headerlink" title="Sorted set(有序集合)"></a>Sorted set(有序集合)</h1>]]></content>
+  </entry>
+  <entry>
+    <title>redis基础</title>
+    <url>/2023/09/25/redis%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="redis-简介"><a href="#redis-简介" class="headerlink" title="redis 简介"></a>redis 简介</h1><p>Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用<br>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储<br>Redis支持数据的备份，即master-slave模式的数据备份</p>
+<p>Redis是单进程的</p>
+<h1 id="redis-持久化方案"><a href="#redis-持久化方案" class="headerlink" title="redis 持久化方案"></a>redis 持久化方案</h1><h2 id="AOF持久化"><a href="#AOF持久化" class="headerlink" title="AOF持久化"></a>AOF持久化</h2><p>三种写回策略<br>always，同步写回，每个子命令执行完，都立即将日志写回磁盘。</p>
+<p>everysec，每个命令执行完，只是先把日志写到AOF内存缓冲区，每隔一秒同步到磁盘。</p>
+<p>no：只是先把日志写到AOF内存缓冲区，有操作系统去决定何时写入磁盘</p>
+<p>数据保证：我们可以设置fsync策略，一般默认是everysec，也可以设置每次写入追加，<br>所以即使服务死掉了，也最多丢失一秒数据</p>
+<h2 id="RDB持久化"><a href="#RDB持久化" class="headerlink" title="RDB持久化"></a>RDB持久化</h2><p>体积更小：相同的数据量rdb数据比aof的小，因为rdb是紧凑型文件。<br>恢复更快：因为rdb是数据的快照，基本上就是数据的复制，不用重新读取再写入内存。<br>性能更高:父进程在保存rdb时候只需要fork一个子进程，无需父进程的进行其他io操作，也保证了服务器的性能。</p>
+<h2 id="如何选择RDB和AOF"><a href="#如何选择RDB和AOF" class="headerlink" title="如何选择RDB和AOF"></a>如何选择RDB和AOF</h2><p>如果数据不能丢失，RDB和AOF混用<br>如果只作为缓存使用，可以承受几分钟的数据丢失的话，可以只使用RDB。<br>如果只使用AOF，优先使用everysec的写回策略。</p>
+<h1 id="RDB-快照-持久化-配置"><a href="#RDB-快照-持久化-配置" class="headerlink" title="RDB(快照)持久化 配置"></a>RDB(快照)持久化 配置</h1><pre><code>#   900秒（15分钟）内至少1个key值改变（则进行数据库保存--持久化）  
+#   300秒（5分钟）内至少10个key值改变（则进行数据库保存--持久化）  
+#   60秒（1分钟）内至少10000个key值改变（则进行数据库保存--持久化） 
+save 900 1  
+save 300 10  
+save 60 10000 
+
+
+#在默认情况下，如果RDB快照持久化操作被激活（至少一个条件被激活）并且持久化操作失败，Redis则会停止接受更新操作。  
+#这样会让用户了解到数据没有被正确的存储到磁盘上。否则没人会注意到这个问题，可能会造成灾难。  
+#  
+#如果后台存储（持久化）操作进程再次工作，Redis会自动允许更新操作。  
+#  
+#然而，如果你已经恰当的配置了对Redis服务器的监视和备份，你也许想关掉这项功能。  
+#如此一来即使后台保存操作出错,redis也仍然可以继续像平常一样工作。  
+stop-writes-on-bgsave-error yes
+
+#是否压缩数据
+rdbcompression yes
+#没有校验的RDB文件会有一个0校验位，来告诉加载代码跳过校验检查。  
+rdbchecksum yes 
+# 导出数据库的文件名称  
+dbfilename dump.rdb
+
+dir ./
+</code></pre>
+<h1 id="AOF-Append-Only-File-日志-配置"><a href="#AOF-Append-Only-File-日志-配置" class="headerlink" title="AOF(Append Only File 日志)  配置"></a>AOF(Append Only File 日志)  配置</h1><pre><code>appendonly yes
+appendfilename &quot;appendonly_6379.aof&quot;
+appendfsync everysec
+1、不适用fsync模式，仅仅使用操作系统的写数据策略；（no）
+2、总是启动用fsync；（always） 
+3、每秒同步一次。（everyse）
+
+#在rewrite的时候不进行fsync，避免响应过慢。为了避免丢数据建议设置成no
+#rewrite操作时，appendfsync会被阻塞。如果当前AOF文件很大，
+#那么相应的rewrite时间会变长，appendfsync被阻塞的时间也会更长
+no-appendfsync-on-rewrite no
+
+#AOF文件如果不执行rewrite，文件会不断的增长。
+#可以设置达到一定量就开始执行rewrite，避免磁盘耗尽
+auto-aof-rewrite-percentage 100
+
+#过最后一次rewrite文件大小的百分比，如果设置为0表示不自动aof。
+#如果数据量比较小，设置百分比就会一直执行rewrite，消耗信息，这时候就可以设置最小rewrite的大小。
+auto-aof-rewrite-min-size 64mb
+
+#如果redis异常推出，会导致aof不完整，
+#如果设置为yes，启动时就会加载aof异常文件，如果设置为no，就不会加载，启动失败。
+aof-load-truncated yes
+
+#启动的时候使用rdb文件会加载数据比较快，再执行aof操作，可以减少数据加载时间
+aof-use-rdb-preamble yes
+</code></pre>
+<h1 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h1><pre><code>redis默认是没有使用守护进程进行运行。可以通过daemonize参数进行设置  
+daemonize yes
+loglevel notice
+requirepass  密码
+
+#有限时间内,移除那些TTL值最小的key,ttl最小代表最近要过期
+maxmemory-policy  allkeys-lru
+
+设置在执行淘汰策略时，要考虑的样本数量。
+较大的样本数可以提高淘汰算法的准确性，但也会增加CPU负载。
+默认值为5，您可以根据实际情况进行调整
+maxmemory-samples 10
+
+noeviction(默认策略)：对于写请求不再提供服务，直接返回错误（DEL请求和部分特殊请求除外）
+allkeys-lru：从所有key中使用LRU算法进行淘汰
+volatile-lru：从设置了过期时间的key中使用LRU算法进行淘汰
+allkeys-random：从所有key中随机淘汰数据
+volatile-random：从设置了过期时间的key中随机淘汰
+volatile-ttl：在设置了过期时间的key中，根据key的过期时间进行淘汰，越早过期的越优先被淘汰
+
+#用于设置慢查询的评定时间，也就是说超过此配置项的命令，
+将会被当成慢操作记录在慢查询日志中，
+它执行单位是微秒 (1 秒等于 1000000 微秒)
+slowlog-log-slower-than:100
+
+#用来配置慢查询日志的最大记录数
+slowlog-max-len:100
+
+#表示当 Redis 运行内存超过最大内存时，是否开启 lazy free 机制删除
+lazyfree-lazy-eviction no 
+
+#表示设置了过期时间的键值，当过期之后是否开启 lazy free 机制删除
+lazyfree-lazy-expire no 
+
+#有些指令在处理已存在的键时，会带有一个隐式的 del 键的操作，
+比如rename(修改key的名称) 命令，当目标键已存在，Redis 会先删除目标键，如果这些目标键是一个 big key，
+就会造成阻塞删除的问题，此配置表示在这种场景中是否开启 lazy free 机制删除
+lazyfree-lazy-server-del no 
+
+#针对 slave(从节点) 进行全量数据同步，slave 在加载 master 的 RDB 文件前，
+会运行 flushall 来清理自己的数据，
+它表示此时是否开启 lazy free 机制删除
+slave-lazy-flush no
+</code></pre>
+]]></content>
+  </entry>
+  <entry>
+    <title>Linux之LVM(逻辑卷管理)</title>
+    <url>/2023/10/19/Linux%E4%B9%8BLVM-%E9%80%BB%E8%BE%91%E5%8D%B7%E7%AE%A1%E7%90%86/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>docker学习4-网络</title>
+    <url>/2023/10/26/docker%E5%AD%A6%E4%B9%A04-%E7%BD%91%E7%BB%9C/</url>
+    <content><![CDATA[<h1 id="原理linux-network-namespace"><a href="#原理linux-network-namespace" class="headerlink" title="原理linux network namespace"></a>原理linux network namespace</h1><h1 id="docker-bridge-网络"><a href="#docker-bridge-网络" class="headerlink" title="docker  bridge 网络"></a>docker  bridge 网络</h1><h2 id="link"><a href="#link" class="headerlink" title="link"></a>link</h2><h2 id="自定义-docker-网络"><a href="#自定义-docker-网络" class="headerlink" title="自定义 docker 网络"></a>自定义 docker 网络</h2><h1 id="docker端口映射"><a href="#docker端口映射" class="headerlink" title="docker端口映射"></a>docker端口映射</h1><h1 id="docker-host-网络"><a href="#docker-host-网络" class="headerlink" title="docker host 网络"></a>docker host 网络</h1>]]></content>
+  </entry>
+  <entry>
+    <title>mysql的常用应用</title>
+    <url>/2023/10/17/mysql%E7%9A%84%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<p>#mysql忘记密码,重置密码</p>
+<p>1.修改my.cnf</p>
+<p>添加</p>
+<pre><code>--skip-grant-tables
+</code></pre>
+<p>2.进入数据</p>
+<pre><code>执行
+use mysql;
+mysql&gt; update user set password=password(&#39;123&#39;) where user=&#39;root&#39; and host=&#39;localhost&#39;;
+mysql&gt; flush privileges;
+</code></pre>
+<p>#mysql导出、导入数据命令</p>
+<p>导出<br>mysqldump -u &lt;用户名&gt; -p&lt;密码&gt; &lt;数据库名&gt; &gt; &lt;输出文件路径&gt;</p>
+<p>示例</p>
+<pre><code> mysqldump  -u root -p wastewater.iguanwei.com &gt;bak.sql
+</code></pre>
+<p>导入</p>
+<pre><code>方法一：
+mysql -u用户名 -p 数据库名 &lt; 123.sql
+方法二：
+source 123.sql;
+</code></pre>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>]]></content>
+  </entry>
+=======
+>>>>>>> 66b25ca3c8985293568253e626c80c4c353c268e
 </search>

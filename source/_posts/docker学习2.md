@@ -1,5 +1,8 @@
 ---
 title: docker学习2-DockerFile
+abbrlink: ad46b1ee
+categories:
+  - 服务器相关
 date: 2023-07-08 21:54:55
 tags:
 ---

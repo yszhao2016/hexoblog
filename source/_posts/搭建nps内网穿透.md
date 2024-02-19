@@ -1,5 +1,6 @@
 ---
 title: 搭建nps内网穿透
+abbrlink: a04b492d
 date: 2023-08-29 15:19:19
 tags:
 ---

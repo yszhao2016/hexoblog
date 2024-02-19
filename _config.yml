@@ -4,9 +4,9 @@
 
 # Site
 title: yszhao的博客
-subtitle: '记录我的生活 学习'
+subtitle: 记录我的生活 学习
 description: ''
-keywords:
+keywords: php
 author: yszhao
 language: zh-Hans
 timezone: ''
@@ -14,11 +14,26 @@ timezone: ''
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: http://example.com
-permalink: :year/:month/:day/:title/
+#permalink: :year/:month/:day/:title/
+permalink: posts/:abbrlink.html  ## 此处可以自己设置,也可以直接使用 :/abbrlink
 permalink_defaults:
-pretty_urls:
-  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
-  trailing_html: true # Set to false to remove trailing '.html' from permalinks
+#pretty_urls:
+#  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
+#  trailing_html: true # Set to false to remove trailing '.html' from permalinks
+## abbrlink config
+abbrlink:
+  alg: crc32      #support crc16(default) and crc32 进制
+  rep: hex        #support dec(default) and hex  算法
+  drafts: false   #(true)Process draft,(false)Do not process draft. false(default)
+  ## Generate categories from directory-tree
+  ## depth: the max_depth of directory-tree you want to generate, should > 0
+  auto_category:
+    enable: true  #true(default)
+    depth:        #3(default)
+    over_write: false
+  auto_title: false #enable auto title, it can auto fill the title by path
+  auto_date: false #enable auto date, it can auto fill the date by time today
+  force: false #enable force mode,in this mode, the plugin will ignore the cache, and calc the abbrlink for every post even it already had abbrlink.
 
 # Directory
 source_dir: source
@@ -124,3 +139,24 @@ search:
   format: html
   limit: 10000
 
+symbols_count_time:
+  symbols: true               # 文章字数统计
+  time: true                  # 文章阅读时长
+  total_symbols: true         # 站点总字数统计
+  total_time: true            # 站点总阅读时长
+  exclude_codeblock: false     # 排除代码字数统计
+  awl: 2                      # 每个单词所占字符数，中文建议设置为2，英文建议设置为4
+  wpm: 300                    # 每分钟阅读单词数，中文建议设置为300，英文建议设置为275
+  suffix: "mins"              # 时间单位
+
+# If true, site-subtitle will be added to index page.
+# Remember to set up your site-subtitle in Hexo `_config.yml` (e.g. subtitle: Subtitle)
+# 站点地图设置
+index_with_subtitle: true
+
+# Automatically add external URL with Base64 encrypt & decrypt.
+# 自动添加外部标签
+exturl: true
+
+# 允许百度推送
+baidu_push: true

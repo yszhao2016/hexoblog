@@ -1,4 +1,7 @@
 ---
+abbrlink: 3820734e
+---
+---
 title: 搭建git服务（适用小团队开发）
 date: 2022-04-13 22:14:23
 categories: # 分类

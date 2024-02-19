@@ -1,5 +1,8 @@
 ---
 title: wordpress相关
+abbrlink: 4aea2b73
+categories:
+  - PHP开发
 date: 2023-11-01 11:01:22
 tags:
 ---

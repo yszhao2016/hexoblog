@@ -1,5 +1,8 @@
 ---
 title: nginx-vhost-安全配置模版
+abbrlink: 8a9d1567
+categories:
+  - 服务器相关
 date: 2023-07-13 19:11:30
 tags:
 ---

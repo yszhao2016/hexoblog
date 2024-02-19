@@ -1,5 +1,8 @@
 ---
 title: docker学习4-网络
+abbrlink: 32b808f5
+categories:
+  - 服务器相关
 date: 2023-10-26 21:56:52
 tags:
 ---

@@ -1,5 +1,6 @@
 ---
 title: Hexo基础应用
+abbrlink: cc20be5e
 date: 2021-12-10 14:20:38
 tags:
 ---

@@ -1,5 +1,8 @@
 ---
 title: springboot学习
+abbrlink: 8a82885c
+categories:
+  - JAVA开发
 date: 2023-08-01 20:20:47
 tags:
 ---

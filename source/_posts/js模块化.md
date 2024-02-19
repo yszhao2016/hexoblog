@@ -1,5 +1,8 @@
 ---
 title: JS模块化
+abbrlink: b2e052be
+categories:
+  - 前端
 date: 2022-02-26 10:48:58
 tags:
 ---

@@ -1,5 +1,8 @@
 ---
 title: fastadmin使用总结
+categories:
+  - PHP开发
+abbrlink: ae0c2972
 date: 2024-01-25 11:12:26
 tags:
 ---

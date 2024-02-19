@@ -1,5 +1,6 @@
 ---
 title: 升级openssh
+abbrlink: 59b7aac2
 date: 2023-08-01 19:48:14
 tags:
 ---

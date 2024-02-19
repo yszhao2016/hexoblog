@@ -1,5 +1,8 @@
 ---
 title: docker学习1-Docker基础命令
+abbrlink: 2cb0387a
+categories:
+  - 服务器相关
 date: 2023-07-08 21:47:55
 tags:
 ---

@@ -1,5 +1,6 @@
 ---
 title: java学习1
+abbrlink: 1f1744f1
 date: 2023-02-08 11:39:50
 tags:
 ---

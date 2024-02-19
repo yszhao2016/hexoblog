@@ -1,8 +1,9 @@
 ---
 title: 通过vsftpd搭建ftp服务器
+categories:
+  - 服务器相关
+abbrlink: 40a34212
 date: 2022-04-15 22:12:12
-categories: # 分类
-- server
 tags:
 ---
 
@@ -152,3 +153,5 @@ local_root=/ftproot/admin/
 
     rename [filename]  [newfilename]，重命名远程Linux FTP服务器上指定的文件｡
     rename 1111.xlsx   processed/1111.xlsx
+    
+    

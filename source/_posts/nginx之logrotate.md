@@ -1,5 +1,8 @@
 ---
 title: nginx之logrotate
+abbrlink: a61dc71f
+categories:
+  - 服务器相关
 date: 2023-07-19 09:14:27
 tags:
 ---

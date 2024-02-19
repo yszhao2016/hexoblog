@@ -1,5 +1,6 @@
 ---
 title: linux-iptables使用总结
+abbrlink: 24ccf49a
 date: 2023-07-26 15:31:32
 tags:
 ---

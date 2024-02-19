@@ -1,5 +1,8 @@
 ---
 title: nginx配置
+abbrlink: 2bee8b90
+categories:
+  - 服务器相关
 date: 2023-07-27 14:17:43
 tags:
 ---

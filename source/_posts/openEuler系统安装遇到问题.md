@@ -1,5 +1,8 @@
 ---
 title: openEuler系统安装遇到问题
+abbrlink: a9da9b42
+categories:
+  - 服务器相关
 date: 2023-11-10 11:59:43
 tags:
 ---

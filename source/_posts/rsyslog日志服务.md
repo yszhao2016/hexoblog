@@ -1,5 +1,8 @@
 ---
 title: rsyslog日志上报服务
+abbrlink: aaedf8b3
+categories:
+  - 服务器相关
 date: 2024-02-01 18:52:54
 tags:
 ---

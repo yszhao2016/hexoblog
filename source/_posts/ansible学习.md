@@ -1,5 +1,8 @@
 ---
 title: ansible学习
+abbrlink: 901bc739
+categories:
+  - 服务器相关
 date: 2023-12-01 19:48:14
 tags:
 ---

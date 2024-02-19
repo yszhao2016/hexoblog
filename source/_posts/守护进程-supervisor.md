@@ -1,5 +1,6 @@
 ---
 title: 守护进程-supervisor
+abbrlink: 28b7458e
 date: 2023-07-19 11:38:09
 tags:
 ---

@@ -23,14 +23,34 @@ tags:
 
 ### 运行容器
 
-    docker run 容器名称
+docker run 容器名称
 
+docker run -d
+
+    用来在 Docker 中以后台模式运行容器的命令
+    
+    
+docker run -p 8080:80   
+    
+    -p 宿主机IP:宿主机端口:容器端口
+    
+    宿主机IP不写表示"0.0.0.0",宿主机PORT不写表示随机端口，
+    容器PORT必须指定，可以同时对多个端口进行映射绑定
+    指定端口映射，在标准化场景下使用频率高
+    
+docker run -v
+
+      -v宿主机路径:容器中路径
+     
     示例：
-
+        docker run -d -p 8080:80  -v /root/nginx/:/etc/nginx --name nginx-test nginx:1.22
 
 ### 查看运行中的容器container
 
 	docker inspect  容器名称    查看容器信息
+	
+	示例：
+	    docker inspect nginx
 
 ### 根据dockerfile 文件生成image
 

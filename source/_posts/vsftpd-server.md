@@ -7,12 +7,12 @@ date: 2022-04-15 22:12:12
 tags:
 ---
 
-1.yum 安装
+# 一、yum 安装
 
     yum install vsftpd
 
 
-2.编译安装
+# 二、编译安装
 
     yum -y install epel-release && yum -y install pam pam-devel db4-utils
     wget https://security.appspot.com/downloads/vsftpd-3.0.5.tar.gz
@@ -32,7 +32,7 @@ tags:
     
     
     
-3./etc/vsftpd/vsftp.conf  配置文件    
+# 三、/etc/vsftpd/vsftp.conf  配置文件    
 
     配置文件  vsftp.conf 
 
@@ -89,7 +89,7 @@ tags:
 
 
 
-4、生成虚拟用户数据库：
+# 四、生成虚拟用户数据库：
 
     touch /etc/vsftpd/vir_user
     vir_user文件内容：
@@ -103,7 +103,7 @@ tags:
     chmod 700 /etc/vsftpd/vir_user.db
 
 
-5、将auth及account的所有配置行均注释掉，添加如下两行
+# 五、将auth及account的所有配置行均注释掉，添加如下两行
 ```
 vim /etc/pam.d/vsftpd
 
@@ -111,14 +111,14 @@ auth                 required     pam_userdb.so   db=/etc/vsftpd/vir_user
 account              required     pam_userdb.so   db=/etc/vsftpd/vir_user
 ```
 
-6、增加一个系统用户
+# 六、增加一个系统用户
 ```
 mkdir /home/ftproot
 useradd -d /home/ftproot -s /sbin/nologin virftp
 chown -R virftp:virftp /home/ftproot
 ```
 
-7、创建和配置虚拟用户各自的配置文件，文件名称是‘虚拟用户名
+# 七、创建和配置虚拟用户各自的配置文件，文件名称是‘虚拟用户名
 ```
 vim /etc/vsftpd/vsftpd_viruser/根据创建虚拟用户密码文件来(user1,user2)
 
@@ -140,7 +140,7 @@ local_root=/ftproot/admin/
 
 ```
 
-8、各配置文件说明：
+# 八、各配置文件说明：
 
     /etc/vsftpd/vsftpd.conf                             ：vsftpd的主配置文件
     /etc/vsftpd/vir_user                                   ：虚拟用户的账号密码文件  
@@ -149,8 +149,14 @@ local_root=/ftproot/admin/
   
 
 
-9、命令
+# 九、客户端命令
 
+    ftp -p 192.168.100.230 22221
+    
+    passive on   # 切换模式 显示    Passive mode on.  为被动模式
+    
+    get  文件名  # 下载文件
+    
     rename [filename]  [newfilename]，重命名远程Linux FTP服务器上指定的文件｡
     rename 1111.xlsx   processed/1111.xlsx
     

@@ -40,4 +40,29 @@ tags:
    
 # 四、supervisorctl管理    
     
-    supervisorctl start server:myblog
+    supervisorctl status 查看进程运行状态
+    
+    supervisorctl start 进程名 启动进程
+    
+    supervisorctl stop 进程名 关闭进程
+    
+    supervisorctl restart 进程名 重启进程
+    
+    supervisorctl reread 重新读取配置
+    
+    supervisorctl update 重新载入配置文件
+    
+    supervisorctl shutdown 关闭supervisord
+    
+    supervisorctl clear 进程名 清空进程日志
+    
+    supervisorctl 进入到交互模式下。使用help查看所有命令。
+    
+    start stop restart + all 表示启动，关闭，重启所有进程。
+    
+示例
+
+    supervisorctl start myblog
+    supervisorctl status myblog
+    supervisorctl status 
+    supervisorctl update

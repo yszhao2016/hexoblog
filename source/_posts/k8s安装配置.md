@@ -260,3 +260,7 @@ combined from similar events): Failed to create pod sandbox: rpc error: code = U
 
 
 sysctl -w net.ipv4.ip_forward=1
+
+
+发现不了节点报错
+https://blog.csdn.net/qq_32264301/article/details/125486521

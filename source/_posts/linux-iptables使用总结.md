@@ -19,7 +19,7 @@ tags:
     -t nat 参数指定了要操作的表为 NAT 表，NAT 表用于处理网络地址转换相关的规则。
 
 iptables -n -L           显示当前防火墙规则列表。
-
+iptables --list
 
 iptables -t nat -n -L    看 iptables 中 NAT（Network Address Translation）表的规则。
 
@@ -75,3 +75,19 @@ iptables -t nat -n -L    看 iptables 中 NAT（Network Address Translation）�
     
     DROP   丢弃
     
+禁止主机去访问某个ip
+    
+    iptables -A OUTPUT -d 185.196.8.123 -j DROP 
+    
+    iptables -I OUTPUT -d aheatcorner.world -j REJECT
+    
+    -A: 在规则链的末尾加入新规则
+    
+    -I: 在规则链的头部加入新规则
+    
+删除某个链中某规则    
+    
+    iptables -D 链名 序号
+    
+    示例：
+    iptables -D OUTPUT  1

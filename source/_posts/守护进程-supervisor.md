@@ -66,3 +66,33 @@ tags:
     supervisorctl status myblog
     supervisorctl status 
     supervisorctl update
+    
+# 五、案例
+
+
+    /etc/supervisor/conf.d/huanjing-queue.conf
+    
+    
+    [program:hjqueue]
+    directory = /www/wwwroot/huanjingjiance.kuaidasoft.com          ; 程序的启动目录
+    command= bash -c "sudo -u www  /www/server/php/73/bin/php think queue:listen --queue=hj212 >> /www/wwwroot/huanjingjiance.kuaidasoft.com/runtime/log/queue.log 2>&1"          ; 启动命令 最好绝对路径
+    autostart = true                      ; 在 supervisord 启动的时候也自动启动
+    numprocs=1                            ; 默认为1
+    RestartSec=30
+    process_name=hjqueue         ; 默认为 %(program_name)s，即 [program:x] 中的 x
+    user=root                             ; 使用 root 用户来启动该进程
+    autorestart=true                      ; 程序崩溃时自动重启，重启次数是有限制的，默认为3次
+    redirect_stderr=true                  ; 重定向输出的日志
+    stderr_logfile= /www/wwwroot/huanjingjiance.kuaidasoft.com/runtime/log/huanjing_stderr.log
+    stdout_logfile = /www/wwwroot/huanjingjiance.kuaidasoft.com/runtime/log/huanjing_stdout.log
+    loglevel=info
+    
+    
+    supervisorctl status hjqueue
+    supervisorctl start hjqueue
+    
+    
+    
+    
+
+        

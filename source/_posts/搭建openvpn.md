@@ -109,7 +109,6 @@ tags:
     firewall-cmd --query-masquerade --permanent
     
     firewall-cmd --zone=public --add-rich-rule='rule family="ipv4" source address="10.100.100.0/24" port protocol="tcp" accept'
-    firewall-cmd --zone=public --add-rich-rule='rule family="ipv4" source address="10.100.100.0/24" port protocol="udp" accept'
     firewall-cmd --zone=public --add-masquerade
     
 # 三、用户认证

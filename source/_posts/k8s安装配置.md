@@ -282,17 +282,53 @@ sysctl -w net.ipv4.ip_forward=1
  NotReady message:Network plugin returns error: cni plugin not initialized
  to get sandbox image \"registry.k8s.i
  
+ evel=info msg="Stop CRI service"
+ 024-05-31T02:22:27.294384683Z" level=info msg="stop pulling image registry.k8s.io/pause:3.8: active requests=1, bytes>
+ 024-05-31T02:22:27.294515739Z" level=info msg="trying next host" error="failed to do request: Head \"https://us-west2> 
+
+ 
 解决
 
-    containerd config default > /etc/containerd/config.toml
+containerd config default > /etc/containerd/config.toml
 
-    修改
-    sandbox_image = "registry.aliyuncs.com/google_containers/pause:3.9"
+修改
+sandbox_image = "registry.aliyuncs.com/google_containers/pause:3.9"
 
-    systemctl restart containerd
+systemctl restart containerd
+
+
+mkdir /etc/containerd
+containerd config default > /etc/containerd/config.toml
+sed -i '/sandbox_image/s#registry.k8s.io/pause:3.8#registry.aliyuncs.com/google_containers/pause:3.9#g' /etc/containerd/config.toml
+sed -i '/SystemdCgroup/s/false/true/' /etc/containerd/config.toml
+systemctl restart containerd
     
+ 
+
+发现不了节点报错
+https://blog.csdn.net/qq_32264301/article/details/125486521
 
 
+ error="rpc error: code = Unavailable desc = error reading from server: EOF" module=libcontainerd namespace=moby
+ 
+
+
+报错
+Error registering network: failed to acquire lease: subnet "10.244.0.0/16" 
+specified in the flannel net config doesn't contain "10.120.0.0/24" PodCIDR of the "ubuntuutoootest" node 
+
+
+修改 kube-flannel.yml
+
+net-conf.json: |
+    {
+      "Network": "10.120.0.0/16",
+      "EnableNFTables": false,
+      "Backend": {
+        "Type": "vxlan"
+      }
+    }
+---
 
 
 
@@ -339,5 +375,3 @@ Contriner runtime Docker， rkt等实际运行容器的组件
 
 
 
-发现不了节点报错
-https://blog.csdn.net/qq_32264301/article/details/125486521

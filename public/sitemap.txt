@@ -1,3 +1,8 @@
+http://example.com/posts/33571e0f.html
+http://example.com/posts/4a58ed40.html
+http://example.com/posts/7052941e.html
+http://example.com/posts/5951e8f7.html
+http://example.com/posts/224c29d4.html
 http://example.com/posts/18f37986.html
 http://example.com/posts/24ccf49a.html
 http://example.com/posts/28b7458e.html
@@ -35,7 +40,6 @@ http://example.com/posts/b2e052be.html
 http://example.com/posts/49b184d4.html
 http://example.com/posts/fa30932c.html
 http://example.com/posts/ee8708d7.html
-http://example.com/posts/224c29d4.html
 http://example.com/posts/8a82885c.html
 http://example.com/posts/30bc514d.html
 http://example.com/posts/5dd4fb79.html
@@ -79,10 +83,10 @@ http://example.com/about/index.html
 http://example.com/tags/index.html
 http://example.com/
 http://example.com/tags/PHP%E5%BC%80%E5%8F%91/
-http://example.com/categories/server/
-http://example.com/categories/%E5%BF%83%E7%90%86%E5%AD%A6/
 http://example.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%B8%E5%85%B3/
 http://example.com/categories/PHP%E5%BC%80%E5%8F%91/
 http://example.com/categories/%E5%89%8D%E7%AB%AF/
+http://example.com/categories/server/
 http://example.com/categories/JAVA%E5%BC%80%E5%8F%91/
+http://example.com/categories/%E5%BF%83%E7%90%86%E5%AD%A6/
 http://example.com/categories/MYSQL/

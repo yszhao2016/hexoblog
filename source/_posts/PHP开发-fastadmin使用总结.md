@@ -1,5 +1,5 @@
 ---
-title: fastadmin使用总结
+title: PHP开发-fastadmin使用总结
 categories:
   - PHP开发
 abbrlink: ae0c2972

@@ -45,6 +45,25 @@ date: 2024-03-19 11:11:00
             // 行为逻辑
         }
     }
+    
+##如果行为类需要绑定到多个标签，可以采用如下定义：
+
+```php
+class Test 
+{
+    public function app_init(&$params)
+    {
+
+    }
+    
+    public function app_end(&$params)
+    {
+
+    }    
+} 
+```
+namespace app\index\behavior;
+   
 # 下钩子
 
     Hook:listen('钩子名称','参数','是否只有一次有效返回值')

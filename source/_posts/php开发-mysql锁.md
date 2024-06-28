@@ -1,6 +1,6 @@
 ---
 title: php开发-mysql锁
-tags: PHP开发
+tags: mysql
 categories:
   - PHP开发
 abbrlink: 33571e0f

@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-06-28T02:43:24.741Z</updated>
+  <updated>2024-06-28T14:18:21.061Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>gitlab备份恢复</title>
+    <link href="http://example.com/posts/6551734d.html"/>
+    <id>http://example.com/posts/6551734d.html</id>
+    <published>2024-06-28T14:14:05.000Z</published>
+    <updated>2024-06-28T14:18:21.061Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>php开发-fastadmin按钮弹框传数据到列表</title>
+    <link href="http://example.com/posts/6df754b5.html"/>
+    <id>http://example.com/posts/6df754b5.html</id>
+    <published>2024-06-28T14:13:59.000Z</published>
+    <updated>2024-06-28T14:17:14.828Z</updated>
+    
+    
+    
+    
+    <category term="PHP开发" scheme="http://example.com/categories/PHP%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="fastadmin" scheme="http://example.com/tags/fastadmin/"/>
+    
+  </entry>
   
   <entry>
     <title>windows2012-R2发布asp网站</title>
@@ -109,7 +139,7 @@
     <link href="http://example.com/posts/33571e0f.html"/>
     <id>http://example.com/posts/33571e0f.html</id>
     <published>2024-06-11T14:23:14.000Z</published>
-    <updated>2024-06-12T00:56:50.462Z</updated>
+    <updated>2024-06-28T14:15:23.993Z</updated>
     
     <content type="html"><![CDATA[<h1 id="一、数据库中的锁"><a href="#一、数据库中的锁" class="headerlink" title="一、数据库中的锁"></a>一、数据库中的锁</h1><p>   数据库锁定机制简单来说，就是数据库为了保证数据的一致性，而使各种共享资源在被并发访问变得有序所设计的一种规则。</p><h2 id="1-1-表级锁"><a href="#1-1-表级锁" class="headerlink" title="1.1 表级锁"></a>1.1 表级锁</h2><p>   使用表级锁定的主要是 MyISAM，MEMORY，CSV 等一些非事务性存储引擎。</p><h2 id="1-2-行级锁"><a href="#1-2-行级锁" class="headerlink" title="1.2 行级锁"></a>1.2 行级锁</h2><p>   使用行级锁定的主要是 InnoDB 存储引擎。</p><h2 id="行级锁类型"><a href="#行级锁类型" class="headerlink" title="行级锁类型"></a>行级锁类型</h2><p>   对于InnoDB 在 RR（MySQL默认隔离级别）而言，对于 update、delete 和 insert 语句，<br>会自动给涉及数据集加排它锁（X）；</p><p>   对于普通 select 语句，innodb 不会加任何锁。<br>如果想在 select 操作的时候加上 S 锁 或者 X 锁，需要我们手动加锁。</p><h3 id="共享锁（简称-s-锁）"><a href="#共享锁（简称-s-锁）" class="headerlink" title="共享锁（简称 s 锁）"></a>共享锁（简称 s 锁）</h3><p>  不会阻塞其他事务对同一行的读请求，但会阻塞对同一行的写请求。<br>  只有当读锁释放后，才会执行其它事物的写操作。</p><h3 id="排它锁（简称-x-锁）"><a href="#排它锁（简称-x-锁）" class="headerlink" title="排它锁（简称 x 锁）"></a>排它锁（简称 x 锁）</h3><p>  会阻塞其他事务对同一行的读和写操作，只有当写锁释放后，才会执行其它事务的读写操作</p><h2 id="Sql示列"><a href="#Sql示列" class="headerlink" title="Sql示列"></a>Sql示列</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 加共享锁（S） lock in share mode</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> table_name <span class="keyword">where</span> ... lock <span class="keyword">in</span> share mode</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 加排它锁（X)  for update</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> table_name <span class="keyword">where</span> ... <span class="keyword">for</span> update</span><br><span class="line"></span><br><span class="line"><span class="comment">-- LOCK TABLES 语句用于锁定一个或多个表</span></span><br><span class="line">LOCK TABLES users READ;</span><br></pre></td></tr></table></figure><p>InnoDB 中的 行锁 的实现依赖于 索引，一旦某个加锁操作没有使用到索引，那么该锁就会退化为表锁。</p>]]></content>
     
@@ -124,7 +154,7 @@
     <category term="PHP开发" scheme="http://example.com/categories/PHP%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="PHP开发" scheme="http://example.com/tags/PHP%E5%BC%80%E5%8F%91/"/>
+    <category term="mysql" scheme="http://example.com/tags/mysql/"/>
     
   </entry>
   
@@ -380,46 +410,6 @@ app_dispatch    应用调度标</summary>
     
     
     <category term="PHP开发" scheme="http://example.com/categories/PHP%E5%BC%80%E5%8F%91/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>php开发-ftp下载上传</title>
-    <link href="http://example.com/posts/eae5a656.html"/>
-    <id>http://example.com/posts/eae5a656.html</id>
-    <published>2024-02-06T08:43:04.000Z</published>
-    <updated>2024-02-08T03:50:38.129Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="检查ftp"><a href="#检查ftp" class="headerlink" title="检查ftp"></a>检查ftp</h1><p>1.使用ftp 客户端 连接ftp</p><p>windows系统      winscp<br>redhat发行版本   yum install ftp<br>debian发行版本   apt install ftp</p><pre><code>示例（一定要ls get 下，才能证明能传输数据）    ftp 192.14.23.23 22221    ls                         </code></pre><h1 id="基础方法"><a href="#基础方法" class="headerlink" title="基础方法"></a>基础方法</h1><pre><code>    ftp_connect(ip,port)                            #连接服务器  默认21  返回值 连接资源    ftp_login($conn,$username,$passwd)              #登录  返回值是 bool    ftp_pasv($conn,true)                            #设置被动模式  默认ftp 主动模式       ftp_nlist($conn,$path)                          #查看当前目录 文件列表 类ls功能    ftp_pwd($conn)                                  #查看当前目录    ftp_get($conn,$localpath,$filename,FTP_ASCII)   #下载远程 文件到 本地    ftp_put($conn,$filename,$localpath,FTP_ASCII)   #上传本地文件 到服务器</code></pre><h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p><font color="red">ftp 默认是主动模式 传输数据端口是随机的</font></p><p><font color="red">ftp 被动模式  是端口需要配置定义 </font></p><p><font color="red">防火墙需要放开端口</font></p><p>排查方案 用步骤一</p><h1 id="代码摘录示例"><a href="#代码摘录示例" class="headerlink" title="代码摘录示例"></a>代码摘录示例</h1><pre><code class="php">        $conn = ftp_connect($ip, $port);        if ($conn) &#123;            // 登录FTP服务器            $login = ftp_login($conn, $username, $passwd);            if ($login&amp;&amp;$pasv) &#123;//                ftp_set_option($conn, FTP_USEPASVADDRESS, false);                  // 切换到主动模式                  ftp_pasv($conn, true);            &#125;        &#125; else &#123;            throw new Exception(&quot;登录失败&quot;);        &#125;                //查看目录下 列表 类似ls功能        $dirList = ftp_nlist($conn, $dir);                #下载文件        $ret = ftp_get($conn, $local_filepath.$filename, $filename, FTP_ASCII);                #上传文件               ftp_put($conn, $filename, $local_filepath . $filename, FTP_ASCII);</code></pre>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;检查ftp&quot;&gt;&lt;a href=&quot;#检查ftp&quot; class=&quot;headerlink&quot; title=&quot;检查ftp&quot;&gt;&lt;/a&gt;检查ftp&lt;/h1&gt;&lt;p&gt;1.使用ftp 客户端 连接ftp&lt;/p&gt;
-&lt;p&gt;windows系统      winscp&lt;br&gt;redhat发行</summary>
-      
-    
-    
-    
-    <category term="PHP开发" scheme="http://example.com/categories/PHP%E5%BC%80%E5%8F%91/"/>
-    
-    
-    <category term="PHP开发" scheme="http://example.com/tags/PHP%E5%BC%80%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>高德地图-点位展示开发</title>
-    <link href="http://example.com/posts/fa30932c.html"/>
-    <id>http://example.com/posts/fa30932c.html</id>
-    <published>2024-02-01T10:53:51.000Z</published>
-    <updated>2024-02-06T11:02:25.300Z</updated>
-    
-    
-    
-    
-    <category term="前端" scheme="http://example.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
   </entry>

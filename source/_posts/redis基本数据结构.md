@@ -2,7 +2,7 @@
 title: redis基本数据结构
 abbrlink: 660a1c80
 date: 2023-09-26 18:47:44
-tags:
+tags:redis
 ---
 # 简介
     

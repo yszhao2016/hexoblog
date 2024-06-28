@@ -4,7 +4,7 @@ categories:
   - PHP开发
 abbrlink: ae0c2972
 date: 2024-01-25 11:12:26
-tags:
+tags:fastadmin
 ---
 
 # 一、常用设置

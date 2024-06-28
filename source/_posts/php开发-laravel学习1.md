@@ -1,6 +1,6 @@
 ---
 title: php开发-laravel学习1
-tags: PHP开发
+tags: laravel
 categories:
   - PHP开发
 abbrlink: f00cf8de

@@ -2577,7 +2577,7 @@ yum install http://mirror.centos.org/centos/8-stream/AppStream/x86_64/os/Package
         <category>PHP开发</category>
       </categories>
       <tags>
-        <tag>PHP开发</tag>
+        <tag>laravel</tag>
       </tags>
   </entry>
   <entry>
@@ -2598,7 +2598,7 @@ yum install http://mirror.centos.org/centos/8-stream/AppStream/x86_64/os/Package
         <category>PHP开发</category>
       </categories>
       <tags>
-        <tag>PHP开发</tag>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -2665,7 +2665,7 @@ yum install http://mirror.centos.org/centos/8-stream/AppStream/x86_64/os/Package
         <category>PHP开发</category>
       </categories>
       <tags>
-        <tag>PHP开发</tag>
+        <tag>laravel</tag>
       </tags>
   </entry>
   <entry>
@@ -4592,5 +4592,21 @@ erveryone  读写权限就可以了
 <h1 id="六、IIS给网站配置https证书"><a href="#六、IIS给网站配置https证书" class="headerlink" title="六、IIS给网站配置https证书"></a>六、IIS给网站配置https证书</h1><h2 id="6-1导入入证书"><a href="#6-1导入入证书" class="headerlink" title="6.1导入入证书"></a>6.1导入入证书</h2><p><img src="../pic/iis-3.png" alt="lena"></p>
 <h2 id="6-2配置证书"><a href="#6-2配置证书" class="headerlink" title="6.2配置证书"></a>6.2配置证书</h2><p><img src="../pic/iis-1.png" alt="lena"></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>php开发-fastadmin按钮弹框传数据到列表</title>
+    <url>/posts/6df754b5.html</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>PHP开发</category>
+      </categories>
+      <tags>
+        <tag>fastadmin</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>gitlab备份恢复</title>
+    <url>/posts/6551734d.html</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>

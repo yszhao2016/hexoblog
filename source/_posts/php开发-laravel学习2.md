@@ -1,6 +1,6 @@
 ---
 title: php开发-laravel源码学习2
-tags: PHP开发
+tags: laravel
 categories:
   - PHP开发
 abbrlink: 35967ec2

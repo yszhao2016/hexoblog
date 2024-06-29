@@ -45,3 +45,14 @@ date: 2024-06-25 20:22:20
 
 ## 6.2配置证书
 ![lena](../pic/iis-1.png)
+
+
+# 七、IIS限制上传配置
+修改ASP 配置中 限制属性
+![lena](../pic/iis8-file-3.png)
+
+网站中的配置修改(没配置项，可不配置) 
+在“节”选项下找到system.webServer/security/requestFiltering节。
+![lena](../pic/iis8-file-1.png)
+
+![lena](../pic/iis8-file-2.png)

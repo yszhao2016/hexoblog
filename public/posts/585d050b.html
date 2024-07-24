@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="mysql," />
 
 
 
@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="简介CentOS 中使用fail2ban和firewalld限制IP拦截cc攻击  安装yum -y install fail2ban  新建规则&#x2F;etc&#x2F;fail2ban&#x2F;filter.d&#x2F;  编写过滤规则的目录   vi &#x2F;etc&#x2F;fail2ban&#x2F;filter.d&#x2F;nginx-cc.conf  [Definition] #failregex &#x3D; &lt;HOST&gt;-.*-.*HTTP&#x2F;">
+<meta name="description" content="mysql主从的应用用来数据迁移开启主从同步，将数据导入主节点，让从节点同步；  将数据分别导入主从节点，让主从节点数据一致后，建立连接，开启同步  数据备份读写分离配置主节点配置主节点 my.cnf配置my.cnf  mysqld      # 开启日志 general_log &#x3D; 1 general_log_file &#x3D; mysql.log # 主从复制配置 server-id &#x3D; 1 # b">
 <meta property="og:type" content="article">
-<meta property="og:title" content="fail2ban软件使用">
-<meta property="og:url" content="http://example.com/posts/f44631de.html">
+<meta property="og:title" content="mysql-主从数据库">
+<meta property="og:url" content="http://example.com/posts/585d050b.html">
 <meta property="og:site_name" content="yszhao的博客">
-<meta property="og:description" content="简介CentOS 中使用fail2ban和firewalld限制IP拦截cc攻击  安装yum -y install fail2ban  新建规则&#x2F;etc&#x2F;fail2ban&#x2F;filter.d&#x2F;  编写过滤规则的目录   vi &#x2F;etc&#x2F;fail2ban&#x2F;filter.d&#x2F;nginx-cc.conf  [Definition] #failregex &#x3D; &lt;HOST&gt;-.*-.*HTTP&#x2F;">
+<meta property="og:description" content="mysql主从的应用用来数据迁移开启主从同步，将数据导入主节点，让从节点同步；  将数据分别导入主从节点，让主从节点数据一致后，建立连接，开启同步  数据备份读写分离配置主节点配置主节点 my.cnf配置my.cnf  mysqld      # 开启日志 general_log &#x3D; 1 general_log_file &#x3D; mysql.log # 主从复制配置 server-id &#x3D; 1 # b">
 <meta property="og:locale">
-<meta property="article:published_time" content="2023-07-09T06:19:39.000Z">
-<meta property="article:modified_time" content="2024-02-06T11:04:56.723Z">
+<meta property="article:published_time" content="2024-07-23T02:33:22.000Z">
+<meta property="article:modified_time" content="2024-07-24T02:41:14.959Z">
 <meta property="article:author" content="yszhao">
-<meta property="article:tag" content="php">
+<meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/posts/f44631de.html"/>
+  <link rel="canonical" href="http://example.com/posts/585d050b.html"/>
 
 
 
 
 
-  <title>fail2ban软件使用 | yszhao的博客</title>
+  <title>mysql-主从数据库 | yszhao的博客</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/f44631de.html">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/585d050b.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">fail2ban软件使用</h1>
+          <h1 class="post-title" itemprop="name headline">mysql-主从数据库</h1>
         
 
         <div class="post-meta">
@@ -318,8 +318,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-07-09T14:19:39+08:00">
-                2023-07-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2024-07-23T10:33:22+08:00">
+                2024-07-23
               </time>
             
 
@@ -378,82 +378,65 @@
       
 
       
-        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><pre><code>CentOS 中使用fail2ban和firewalld限制IP拦截cc攻击
-</code></pre>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><pre><code>yum -y install fail2ban
-</code></pre>
-<h1 id="新建规则"><a href="#新建规则" class="headerlink" title="新建规则"></a>新建规则</h1><pre><code>/etc/fail2ban/filter.d/  编写过滤规则的目录 
+        <h1 id="mysql主从的应用"><a href="#mysql主从的应用" class="headerlink" title="mysql主从的应用"></a>mysql主从的应用</h1><h2 id="用来数据迁移"><a href="#用来数据迁移" class="headerlink" title="用来数据迁移"></a>用来数据迁移</h2><pre><code>开启主从同步，将数据导入主节点，让从节点同步；
 
-vi /etc/fail2ban/filter.d/nginx-cc.conf
+将数据分别导入主从节点，让主从节点数据一致后，建立连接，开启同步
+</code></pre>
+<h2 id="数据备份"><a href="#数据备份" class="headerlink" title="数据备份"></a>数据备份</h2><h2 id="读写分离"><a href="#读写分离" class="headerlink" title="读写分离"></a>读写分离</h2><h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="主节点配置"><a href="#主节点配置" class="headerlink" title="主节点配置"></a>主节点配置</h2><h3 id="主节点-my-cnf配置"><a href="#主节点-my-cnf配置" class="headerlink" title="主节点 my.cnf配置"></a>主节点 my.cnf配置</h3><pre><code>my.cnf  mysqld    
 
-[Definition]
-#failregex = &lt;HOST&gt;-.*-.*HTTP/1.*(404|301|503).*$
-failregex = ^&lt;HOST&gt; -.*&quot;(GET|POST).* HTTP\/.*$
-ignoreregex =
+# 开启日志
+general_log = 1
+general_log_file = mysql.log
+# 主从复制配置
+server-id = 1
+# binlog日志格式，mysql默认采用statement，建议使用mixed
+# STATEMENT模式（SBR）
+# 每一条会修改数据的sql语句会记录到binlog中。优点是并不需要记录每一条sql语句和每一行的数据变化，减少了binlog日志量，节约IO，提高性能。缺点是在某些情况下会导致master-slave中的数据不一致(如sleep()函数， last_insert_id()，以及user-defined functions(udf)等会出现问题)
+# ROW模式（RBR）
+# 不记录每条sql语句的上下文信息，仅需记录哪条数据被修改了，修改成什么样了。而且不会出现某些特定情况下的存储过程、或function、或trigger的调用和触发无法被正确复制的问题。缺点是会产生大量的日志，尤其是alter table的时候会让日志暴涨。
+# MIXED模式（MBR）
+# 以上两种模式的混合使用，一般的复制使用STATEMENT模式保存binlog，对于STATEMENT模式无法复制的操作使用ROW模式保存binlog，MySQL会根据执行的SQL语句选择日志保存方式。
+binlog_format= MIXED
+# binlog日志文件
+log-bin=mysql-bin
+# 是否只读，1 代表只读，0代表读写，主数据库需要读写，设置0
+read-only=0
+# binlog过期清理时间
+expire_logs_days=7
+# binlog每个日志文件大小
+max_binlog_size= 100m
+# binlog缓存大小
+binlog_cache_size= 4m
+# 最大binlog缓存大小
+max_binlog_cache_size= 512m
 </code></pre>
-<h1 id="正则规则检查"><a href="#正则规则检查" class="headerlink" title="正则规则检查"></a>正则规则检查</h1><pre><code>fail2ban-regex /var/log/nginx/access.log &quot;&lt;HOST&gt; -.*- .*HTTP/1.* .* .*$&quot;  
-</code></pre>
-<h1 id="根据配置文件检查"><a href="#根据配置文件检查" class="headerlink" title="根据配置文件检查"></a>根据配置文件检查</h1><pre><code>fail2ban-regex /var/log/nginx/access.log /etc/fail2ban/filter.d/nginx-cc.conf  
-</code></pre>
-<h1 id="控制规则配置文件"><a href="#控制规则配置文件" class="headerlink" title="控制规则配置文件"></a>控制规则配置文件</h1><pre><code>[DEFAULT]
-ignoreip = 127.0.0.1/8  117.89.130.84 117.89.134.183/16  218.2.244.241/16 49.82.132.215/16 122.195.252.237/16 114.238.64.157/16 180.110.114.152/16
-#放行的ip 可以带网段
-ignorecommand =
-bantime  = 60
-#屏蔽时间，-1是永久屏蔽
-findtime  = 60
-#设置限定时间内超过 最大尝试次数 限制次数即被封锁
-maxretry = 5
-#最大尝试次数
-backend = auto
-#日志修改后检测机制
-usedns = warn
-#ssh链接加速
-logencoding = auto
-enabled = false
-[sshd]
-## 分类设置（基于 SSHD 服务的防护） 
-enabled = true
-## 是否开启防护，false 为关闭 
-filter = sshd
-## 过滤规则 filter 名称，对应 filter.d 目录下的 sshd.conf  action   = iptables[name=SSH, port=22, protocol=tcp] 
-#《###action = iptables[name=SSH, port=ssh, protocol=tcp] ## 动作参数
-#sendmail-whois[name=SSH, dest=you@example.com, sender=fail2ban@example.com,   sendername=&quot;Fail2Ban&quot;]
-## 邮件通知参数
-## 收件人地址           ## 发件人地址####》   这是个例子 
-logpath = /var/log/secure
-## 检测系统登陆日志文件 
-maxretry = 3
-## 最大尝试次数
-banaction=iptables-allports
-bantime = 3600
-[nginx-cc] 
-#过滤规则名称 下方就是 规律规则 相关 限制条件
-enabled = true
-port=http,https
-filter = nginx-cc
-findtime = 1
-#1秒钟检查一次
-maxretry = 100
-#最多100个
-bantime = 3600
-#封锁ip的时间
-banaction=iptables-multiport
-#匹配的哪些日志文件
-logpath = /var/log/nginx/*access.log
-          /var/log/nginx/access.log
-</code></pre>
-<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><pre><code>#启动
-systemctl start fail2ban
-#停止
-systemctl stop fail2ban
+<h3 id="相关sql操作"><a href="#相关sql操作" class="headerlink" title="相关sql操作"></a>相关sql操作</h3><pre><code>## 创建dd用户 授权只能ip 192.168.227.134 访问 密码设置为123456
+CREATE USER &#39;dd&#39;@&#39;192.168.227.134&#39; IDENTIFIED BY &#39;123456&#39;;
 
-#查看具体规则限制了哪些ip
-fail2ban-client status 规则名称
-示例：   fail2ban-client status nginx-cc
+## 设置一个从服务器（slave）来复制主服务器（master）的数据权限
+GRANT REPLICATION SLAVE ON *.* TO &#39;dd&#39;@&#39;192.168.227.134&#39;;
 
-#解封某条过滤规则封锁的ip
-fail2ban-client set nginx-cc unbanip  112.84.237.102
+show master status 
+</code></pre>
+<h3 id="从节点-my-cnf配置"><a href="#从节点-my-cnf配置" class="headerlink" title="从节点 my.cnf配置"></a>从节点 my.cnf配置</h3><pre><code>server-id=2
+#它指定了从服务器（slave）用于存储从中继日志（relay logs）
+#中读取并准备应用于本地数据库的事件的文件的路径和名称模式。
+relay-log=mysql-relay-bin
+
+
+sql
+//配置并启动主从复制
+change master to
+    -&gt; master_host=&#39;192.168.227.133&#39;,        #主的ip地址
+    -&gt; master_user=&#39;dd&#39;,                    #创建的用户名
+    -&gt; master_password=&#39;123456&#39;,            #创建的密码
+    -&gt; master_log_file=&#39;mysql-bin.000001&#39;,    #日志文件
+    -&gt; master_log_pos=328;                    #数据的最新位置
+
+//开启奴隶模式
+start slave;    
+
+show slave status 
 </code></pre>
 
       
@@ -470,6 +453,12 @@ fail2ban-client set nginx-cc unbanip  112.84.237.102
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
+          
+        </div>
+      
 
       
       
@@ -479,8 +468,8 @@ fail2ban-client set nginx-cc unbanip  112.84.237.102
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/def64e49.html" rel="next" title="web安全">
-                <i class="fa fa-chevron-left"></i> web安全
+              <a href="/posts/77054df3.html" rel="next" title="php开发-微信登录">
+                <i class="fa fa-chevron-left"></i> php开发-微信登录
               </a>
             
           </div>
@@ -488,10 +477,6 @@ fail2ban-client set nginx-cc unbanip  112.84.237.102
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/8a9d1567.html" rel="prev" title="nginx-vhost-安全配置模版">
-                nginx-vhost-安全配置模版 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -630,7 +615,7 @@ fail2ban-client set nginx-cc unbanip  112.84.237.102
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E8%A7%84%E5%88%99"><span class="nav-number">3.</span> <span class="nav-text">新建规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A7%84%E5%88%99%E6%A3%80%E6%9F%A5"><span class="nav-number">4.</span> <span class="nav-text">正则规则检查</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%A3%80%E6%9F%A5"><span class="nav-number">5.</span> <span class="nav-text">根据配置文件检查</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E8%A7%84%E5%88%99%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">6.</span> <span class="nav-text">控制规则配置文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">7.</span> <span class="nav-text">常用命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mysql%E4%B8%BB%E4%BB%8E%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">mysql主从的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%9D%A5%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB"><span class="nav-number">1.1.</span> <span class="nav-text">用来数据迁移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD"><span class="nav-number">1.2.</span> <span class="nav-text">数据备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB"><span class="nav-number">1.3.</span> <span class="nav-text">读写分离</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E8%8A%82%E7%82%B9%E9%85%8D%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text">主节点配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E8%8A%82%E7%82%B9-my-cnf%E9%85%8D%E7%BD%AE"><span class="nav-number">2.1.1.</span> <span class="nav-text">主节点 my.cnf配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3sql%E6%93%8D%E4%BD%9C"><span class="nav-number">2.1.2.</span> <span class="nav-text">相关sql操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E8%8A%82%E7%82%B9-my-cnf%E9%85%8D%E7%BD%AE"><span class="nav-number">2.1.3.</span> <span class="nav-text">从节点 my.cnf配置</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

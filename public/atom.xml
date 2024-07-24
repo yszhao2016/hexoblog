@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-07-04T11:52:39.312Z</updated>
+  <updated>2024-07-24T02:41:14.959Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>mysql-主从数据库</title>
+    <link href="http://example.com/posts/585d050b.html"/>
+    <id>http://example.com/posts/585d050b.html</id>
+    <published>2024-07-23T02:33:22.000Z</published>
+    <updated>2024-07-24T02:41:14.959Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="mysql主从的应用"><a href="#mysql主从的应用" class="headerlink" title="mysql主从的应用"></a>mysql主从的应用</h1><h2 id="用来数据迁移"><a href="#用来数据迁移" class="headerlink" title="用来数据迁移"></a>用来数据迁移</h2><pre><code>开启主从同步，将数据导入主节点，让从节点同步；将数据分别导入主从节点，让主从节点数据一致后，建立连接，开启同步</code></pre><h2 id="数据备份"><a href="#数据备份" class="headerlink" title="数据备份"></a>数据备份</h2><h2 id="读写分离"><a href="#读写分离" class="headerlink" title="读写分离"></a>读写分离</h2><h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="主节点配置"><a href="#主节点配置" class="headerlink" title="主节点配置"></a>主节点配置</h2><h3 id="主节点-my-cnf配置"><a href="#主节点-my-cnf配置" class="headerlink" title="主节点 my.cnf配置"></a>主节点 my.cnf配置</h3><pre><code>my.cnf  mysqld    # 开启日志general_log = 1general_log_file = mysql.log# 主从复制配置server-id = 1# binlog日志格式，mysql默认采用statement，建议使用mixed# STATEMENT模式（SBR）# 每一条会修改数据的sql语句会记录到binlog中。优点是并不需要记录每一条sql语句和每一行的数据变化，减少了binlog日志量，节约IO，提高性能。缺点是在某些情况下会导致master-slave中的数据不一致(如sleep()函数， last_insert_id()，以及user-defined functions(udf)等会出现问题)# ROW模式（RBR）# 不记录每条sql语句的上下文信息，仅需记录哪条数据被修改了，修改成什么样了。而且不会出现某些特定情况下的存储过程、或function、或trigger的调用和触发无法被正确复制的问题。缺点是会产生大量的日志，尤其是alter table的时候会让日志暴涨。# MIXED模式（MBR）# 以上两种模式的混合使用，一般的复制使用STATEMENT模式保存binlog，对于STATEMENT模式无法复制的操作使用ROW模式保存binlog，MySQL会根据执行的SQL语句选择日志保存方式。binlog_format= MIXED# binlog日志文件log-bin=mysql-bin# 是否只读，1 代表只读，0代表读写，主数据库需要读写，设置0read-only=0# binlog过期清理时间expire_logs_days=7# binlog每个日志文件大小max_binlog_size= 100m# binlog缓存大小binlog_cache_size= 4m# 最大binlog缓存大小max_binlog_cache_size= 512m</code></pre><h3 id="相关sql操作"><a href="#相关sql操作" class="headerlink" title="相关sql操作"></a>相关sql操作</h3><pre><code>## 创建dd用户 授权只能ip 192.168.227.134 访问 密码设置为123456CREATE USER &#39;dd&#39;@&#39;192.168.227.134&#39; IDENTIFIED BY &#39;123456&#39;;## 设置一个从服务器（slave）来复制主服务器（master）的数据权限GRANT REPLICATION SLAVE ON *.* TO &#39;dd&#39;@&#39;192.168.227.134&#39;;show master status </code></pre><h3 id="从节点-my-cnf配置"><a href="#从节点-my-cnf配置" class="headerlink" title="从节点 my.cnf配置"></a>从节点 my.cnf配置</h3><pre><code>server-id=2#它指定了从服务器（slave）用于存储从中继日志（relay logs）#中读取并准备应用于本地数据库的事件的文件的路径和名称模式。relay-log=mysql-relay-binsql//配置并启动主从复制change master to    -&gt; master_host=&#39;192.168.227.133&#39;,        #主的ip地址    -&gt; master_user=&#39;dd&#39;,                    #创建的用户名    -&gt; master_password=&#39;123456&#39;,            #创建的密码    -&gt; master_log_file=&#39;mysql-bin.000001&#39;,    #日志文件    -&gt; master_log_pos=328;                    #数据的最新位置//开启奴隶模式start slave;    show slave status </code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;mysql主从的应用&quot;&gt;&lt;a href=&quot;#mysql主从的应用&quot; class=&quot;headerlink&quot; title=&quot;mysql主从的应用&quot;&gt;&lt;/a&gt;mysql主从的应用&lt;/h1&gt;&lt;h2 id=&quot;用来数据迁移&quot;&gt;&lt;a href=&quot;#用来数据迁移&quot; class=&quot;</summary>
+      
+    
+    
+    
+    <category term="服务器相关" scheme="http://example.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%B8%E5%85%B3/"/>
+    
+    
+    <category term="mysql" scheme="http://example.com/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
     <title>php开发-微信登录</title>
     <link href="http://example.com/posts/77054df3.html"/>
     <id>http://example.com/posts/77054df3.html</id>
     <published>2024-07-04T11:52:39.000Z</published>
-    <updated>2024-07-04T11:52:39.312Z</updated>
+    <updated>2024-07-04T11:54:33.210Z</updated>
     
     
     
@@ -380,27 +404,6 @@ app_dispatch    应用调度标</summary>
       
       
     <summary type="html">&lt;h1 id=&quot;一、验证码&quot;&gt;&lt;a href=&quot;#一、验证码&quot; class=&quot;headerlink&quot; title=&quot;一、验证码&quot;&gt;&lt;/a&gt;一、验证码&lt;/h1&gt;&lt;h2 id=&quot;1-1-生成&quot;&gt;&lt;a href=&quot;#1-1-生成&quot; class=&quot;headerlink&quot; title=&quot;1</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>linux环境编译安装总结</title>
-    <link href="http://example.com/posts/1b78fbfa.html"/>
-    <id>http://example.com/posts/1b78fbfa.html</id>
-    <published>2024-03-06T07:41:02.000Z</published>
-    <updated>2024-03-06T08:04:05.064Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="make-很慢"><a href="#make-很慢" class="headerlink" title="make 很慢"></a>make 很慢</h1><p>make -j4   表示同时运行4个编译任务</p><p>编译任务数  一般情况是cpu 核心的一半</p><h1 id="make遇到语法错误"><a href="#make遇到语法错误" class="headerlink" title="make遇到语法错误"></a>make遇到语法错误</h1><p>大概率是gcc 版本高了或者低了</p><p>安装示例</p><pre><code>wget https://mirrors.tuna.tsinghua.edu.cn/gnu/gcc/gcc-8.2.0/gcc-8.2.0.tar.gztar -zxvf gcc-8.2.0.tar.gz./contrib/download_prerequisitesmkdir buildcd bulid../configure --prefix=/usr/local/gcc-8.2.0 --enable-bootstrap --enable-checking=release --enable-languages=c,c++ --disable-multilibmake make installecho -e &#39;\nexport PATH=/usr/local/gcc-8.2.0/bin:$PATH\n&#39; &gt;&gt; /etc/profile.d/gcc.sh &amp;&amp; source /etc/profile.d/gcc.shln -sv /usr/local/gcc-8.2.0/include/ /usr/include/gccldconfig -vldconfig -p |grep gccgcc -v</code></pre>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;make-很慢&quot;&gt;&lt;a href=&quot;#make-很慢&quot; class=&quot;headerlink&quot; title=&quot;make 很慢&quot;&gt;&lt;/a&gt;make 很慢&lt;/h1&gt;&lt;p&gt;make -j4   表示同时运行4个编译任务&lt;/p&gt;
-&lt;p&gt;编译任务数  一般情况是cpu 核心的</summary>
       
     
     

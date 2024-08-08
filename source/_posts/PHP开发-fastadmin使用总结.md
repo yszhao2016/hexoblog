@@ -37,6 +37,7 @@ tags:fastadmin
 
 data-rule 设置 检查规则 可以自定义验证方法 checksite JS并相关设置
 data-source select 可以设置数据源
+设置弹框大小 'extend': 'data-area=\'["95%","95%"]\''
 示例
 ```
 //input设置
@@ -112,6 +113,7 @@ var Controller = {
         api: {
             bindevent: function () {
 	                $.validator.config({
+	                
                     rules: {
                         checksite: function (element) {
                             return $.ajax({

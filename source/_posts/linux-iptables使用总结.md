@@ -77,7 +77,7 @@ iptables -t nat -n -L    看 iptables 中 NAT（Network Address Translation）�
     
 禁止主机去访问某个ip
     
-    iptables -A OUTPUT -d 185.196.8.123 -j DROP 
+    iptables -A OUTPUT -d 185.196.8.123 -j DROP  #试了下不知为啥不行
     
     iptables -I OUTPUT -d aheatcorner.world -j REJECT
     

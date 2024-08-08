@@ -1,3 +1,6 @@
+http://example.com/posts/ae0c2972.html
+http://example.com/posts/5f9fc809.html
+http://example.com/posts/24ccf49a.html
 http://example.com/posts/34fa5185.html
 http://example.com/posts/c70fd524.html
 http://example.com/posts/6df754b5.html
@@ -15,13 +18,11 @@ http://example.com/posts/9b3ce30d.html
 http://example.com/posts/cab3e457.html
 http://example.com/posts/680ac944.html
 http://example.com/posts/9d1b4110.html
-http://example.com/posts/ae0c2972.html
 http://example.com/posts/4a58ed40.html
 http://example.com/posts/7052941e.html
 http://example.com/posts/5951e8f7.html
 http://example.com/posts/224c29d4.html
 http://example.com/posts/18f37986.html
-http://example.com/posts/24ccf49a.html
 http://example.com/posts/28b7458e.html
 http://example.com/posts/c6f6fc00.html
 http://example.com/posts/e9f2e524.html

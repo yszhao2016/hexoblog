@@ -57,7 +57,6 @@ GROUP BY tag;
 # 两表连接的SQL语句
 
 
-
 select A.c1,A.c2,B.c1,B.c2
 from table1 A,table2 B
 where A.id=B.id

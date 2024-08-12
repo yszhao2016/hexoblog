@@ -38,7 +38,10 @@ mysqldump -u <用户名> -p<密码> <数据库名> > <输出文件路径>
 
     方法一：
     mysql -u用户名 -p 数据库名 < 123.sql
+    示例：
+        mysql -u root -p book < 123.sql
     方法二：
+    登录mysql
     source 123.sql;
 
 

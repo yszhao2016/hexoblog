@@ -89,7 +89,7 @@
 <meta property="og:description" content="一、iptables    iptables防火墙没有启用,iptables命令仍然会显示默认的规则. 二、常用命令 常用参数 -n 参数表示将 IP 地址和端口号显示为数字形式，而不是解析为主机名和服务名。  -L 选项用于列出防火墙规则。  -t nat 参数指定了要操作的表为 NAT 表，NAT 表用于处理网络地址转换相关的规则。  iptables -n -L           显示当前">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-07-26T07:31:32.000Z">
-<meta property="article:modified_time" content="2024-08-08T12:27:26.682Z">
+<meta property="article:modified_time" content="2024-08-13T12:30:34.876Z">
 <meta property="article:author" content="yszhao">
 <meta property="article:tag" content="php">
 <meta name="twitter:card" content="summary">
@@ -432,6 +432,11 @@ iptables -I OUTPUT -d aheatcorner.world -j REJECT
 示例：
 iptables -D OUTPUT  1
 </code></pre>
+<p>-A INPUT: 将此规则添加到INPUT链中，即用于处理传入的数据包。<br>-p tcp: 指定匹配的协议为TCP。<br>-m tcp: 使用TCP模块，以便使用更多的TCP相关选项。<br>–tcp-flags FIN,SYN,RST,ACK SYN: 匹配TCP标志位中的SYN标志，表示仅匹配连接请求。<br>-m set: 使用set模块，允许对集合进行匹配操作。<br>–match-set YJ-GLOBAL-INBLOCK src: 匹配指定的IP地址集合，这里的YJ-GLOBAL-INBLOCK是集合的名称，src表示匹配源IP地址。<br>-j DROP: 如果上述条件匹配成功，则丢弃该数据包，即阻止TCP连接请求。</p>
+<p>“-m state”是iptables中的一个模块，它用于根据连接的状态来匹配和处理数据包。这个模块允许你在规则中设置条件来匹配特定的连接状态。</p>
+<p>一些常见的连接状态包括：</p>
+<p>NEW：表示新的连接请求。<br>ESTABLISHED：表示已经建立的连接。<br>RELATED：表示和已经建立的连接相关的新连接。<br>INVALID：表示无效的连接状态。<br>UNTRACKED：表示未被iptables跟踪的连接。<br>你可以在规则中使用”-m state”来根据特定的连接状态来匹配数据包，例如：</p>
+<p>“-m state –state NEW”：匹配新建的连接请求。<br>“-m state –state ESTABLISHED,RELATED”：匹配已建立和相关的连接。<br>需要注意的是，”-m state”只能在iptables的filter表中使用，并且在使用之前需要确保安装了iptables state模块。    </p>
 
       
     </div>
@@ -536,7 +541,7 @@ iptables -D OUTPUT  1
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">94</span>
+                  <span class="site-state-item-count">101</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

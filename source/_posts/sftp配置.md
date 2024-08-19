@@ -18,7 +18,11 @@ Match Group sftp
 
 fatal: bad ownership or modes for chroot directory "/www/wwwroot/ftp_ip_user" 
 
-这个错误通常发生在使用SSH服务进行远程登录时，特别是当你尝试为特定用户设置chroot环境时。chroot是一种安全机制，它将用户的根目录更改为另一个目录，从而限制用户只能在该目录及其子目录下操作。报错信息fatal: bad ownership or modes意味着chroot目录的所有权或权限设置不正确，SSH服务无法以安全的方式访问该目录。
+这个错误通常发生在使用SSH服务进行远程登录时，特别是当你尝试为特定用户设置chroot环境时。
+chroot是一种安全机制，它将用户的根目录更改为另一个目录，从而限制用户只能在该目录及其子目录下操作。
+报错信息fatal: bad ownership or modes意味着chroot目录的所有权或权限设置不正确，SSH服务无法以安全的方式访问该目录。
+
+
 
 问题解决：
 

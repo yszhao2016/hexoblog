@@ -89,7 +89,7 @@
 <meta property="og:description" content="vim &#x2F;etc&#x2F;ssh&#x2F;ssh_config Subsystem sftp internal-sftpMatch Group sftp        ChrootDirectory &#x2F;www&#x2F;wwwroot&#x2F;ftp_ip_user        X11Forwarding no        AllowTcpForwarding no        ForceCommand internal-s">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-08-02T02:34:24.000Z">
-<meta property="article:modified_time" content="2024-08-02T06:48:15.682Z">
+<meta property="article:modified_time" content="2024-08-15T07:49:05.507Z">
 <meta property="article:author" content="yszhao">
 <meta property="article:tag" content="php">
 <meta name="twitter:card" content="summary">
@@ -359,7 +359,7 @@
         <p>vim /etc/ssh/ssh_config</p>
 <p>Subsystem sftp internal-sftp<br>Match Group sftp<br>        ChrootDirectory /www/wwwroot/ftp_ip_user<br>        X11Forwarding no<br>        AllowTcpForwarding no<br>        ForceCommand internal-sftp</p>
 <p>fatal: bad ownership or modes for chroot directory “/www/wwwroot/ftp_ip_user” </p>
-<p>这个错误通常发生在使用SSH服务进行远程登录时，特别是当你尝试为特定用户设置chroot环境时。chroot是一种安全机制，它将用户的根目录更改为另一个目录，从而限制用户只能在该目录及其子目录下操作。报错信息fatal: bad ownership or modes意味着chroot目录的所有权或权限设置不正确，SSH服务无法以安全的方式访问该目录。</p>
+<p>这个错误通常发生在使用SSH服务进行远程登录时，特别是当你尝试为特定用户设置chroot环境时。<br>chroot是一种安全机制，它将用户的根目录更改为另一个目录，从而限制用户只能在该目录及其子目录下操作。<br>报错信息fatal: bad ownership or modes意味着chroot目录的所有权或权限设置不正确，SSH服务无法以安全的方式访问该目录。</p>
 <p>问题解决：</p>
 <p>检查/www/wwwroot/ftp_ip_user目录的所有权和权限。它应该只有root用户有写权限。可以使用以下命令来修复：</p>
 <p>sudo chown root:root /www/wwwroot/ftp_ip_user<br>sudo chmod 0755 /www/wwwroot/ftp_ip_user</p>
@@ -472,7 +472,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">94</span>
+                  <span class="site-state-item-count">101</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

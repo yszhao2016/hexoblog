@@ -91,3 +91,31 @@ iptables -t nat -n -L    看 iptables 中 NAT（Network Address Translation）�
     
     示例：
     iptables -D OUTPUT  1
+    
+    
+-A INPUT: 将此规则添加到INPUT链中，即用于处理传入的数据包。
+-p tcp: 指定匹配的协议为TCP。
+-m tcp: 使用TCP模块，以便使用更多的TCP相关选项。
+--tcp-flags FIN,SYN,RST,ACK SYN: 匹配TCP标志位中的SYN标志，表示仅匹配连接请求。
+-m set: 使用set模块，允许对集合进行匹配操作。
+--match-set YJ-GLOBAL-INBLOCK src: 匹配指定的IP地址集合，这里的YJ-GLOBAL-INBLOCK是集合的名称，src表示匹配源IP地址。
+-j DROP: 如果上述条件匹配成功，则丢弃该数据包，即阻止TCP连接请求。
+
+
+    
+    
+    
+"-m state"是iptables中的一个模块，它用于根据连接的状态来匹配和处理数据包。这个模块允许你在规则中设置条件来匹配特定的连接状态。
+
+一些常见的连接状态包括：
+
+NEW：表示新的连接请求。
+ESTABLISHED：表示已经建立的连接。
+RELATED：表示和已经建立的连接相关的新连接。
+INVALID：表示无效的连接状态。
+UNTRACKED：表示未被iptables跟踪的连接。
+你可以在规则中使用"-m state"来根据特定的连接状态来匹配数据包，例如：
+
+"-m state --state NEW"：匹配新建的连接请求。
+"-m state --state ESTABLISHED,RELATED"：匹配已建立和相关的连接。
+需要注意的是，"-m state"只能在iptables的filter表中使用，并且在使用之前需要确保安装了iptables state模块。    

@@ -1,5 +1,5 @@
 ---
-title: fail2ban软件使用
+title: linux-fail2ban软件使用
 abbrlink: f44631de
 categories:
   - 服务器相关
@@ -33,8 +33,6 @@ tags:
 # 根据配置文件检查
 
     fail2ban-regex /var/log/nginx/access.log /etc/fail2ban/filter.d/nginx-cc.conf  
-
-
 
 # 控制规则配置文件
 
@@ -85,8 +83,6 @@ tags:
     #匹配的哪些日志文件
     logpath = /var/log/nginx/*access.log
               /var/log/nginx/access.log
-
-
 
 # 常用命令
 

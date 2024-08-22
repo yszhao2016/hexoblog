@@ -1,5 +1,5 @@
 ---
-title: 搭建php环境
+title: linux-安装配置php环境
 abbrlink: 35d2b340
 categories:
   - 服务器相关

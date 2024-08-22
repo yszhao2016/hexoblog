@@ -1,5 +1,5 @@
 ---
-title: sftp配置
+title: linux-sftp服务配置
 abbrlink: 8e2962f3
 date: 2024-08-02 10:34:24
 tags:

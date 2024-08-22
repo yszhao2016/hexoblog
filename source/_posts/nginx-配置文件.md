@@ -1,5 +1,5 @@
 ---
-title: nginx配置
+title: nginx-配置文件
 abbrlink: 2bee8b90
 categories:
   - 服务器相关

@@ -1,5 +1,5 @@
 ---
-title: nginx配置-rewrite
+title: nginx-配置rewrite
 abbrlink: a0181459
 date: 2024-06-29 12:04:32
 tags:

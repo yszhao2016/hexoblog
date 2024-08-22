@@ -1,5 +1,5 @@
 ---
-title: linux硬盘以及分区
+title: linux-硬盘分区
 abbrlink: 2acbc304
 date: 2023-03-16 10:24:39
 tags:

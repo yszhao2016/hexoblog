@@ -1,5 +1,5 @@
 ---
-title: Linux之LVM(逻辑卷管理)
+title: linux-LVM逻辑卷管理
 abbrlink: 427bdc6a
 date: 2023-10-19 12:50:58
 tags:
@@ -122,3 +122,9 @@ tags:
     xfs_growfs /nas #xfs文件系统，该命令后面直接跟的是挂载点
     
     当更新文件系统后，你就会发现，df -h正常了
+    
+# 删除其他逻辑券扩容到根目录
+
+         lvremove /dev/centos/home
+         lvextend -L +101.12G /dev/centos/root
+         xfs_growfs  /dev/centos/root

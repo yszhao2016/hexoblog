@@ -58,10 +58,10 @@ tags:
 # 依赖注入(DI) 
 
 依赖注入 是一种设计模式
-依赖注入是控制反转的一种实现方法
+依赖注入是控制反转的一种实现方式/方法
 也就是依赖注入 实现了  控制反转
 
-依赖注入方式 1、构造方法注入；2、set属性注入；3、静态工厂方法注入；
+依赖注入方式 1、构造方法注入；2、set属性注入__set；3、静态工厂方法注入；
 
 一旦换了平台，就要修改构造函数 即使你传参数 构造判断使用哪个类，新增了平台，你还有去修改A类构造方法
 ```php
@@ -139,7 +139,7 @@ class Container
     {
         // 如果是匿名函数（Anonymous functions），也叫闭包函数（closures）
         if ($className instanceof Closure) {
-            var_dump($className);exit;
+//            var_dump($className);exit;
             // 执行闭包函数，并将结果
             return $className($this);
         }

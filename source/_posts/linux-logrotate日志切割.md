@@ -1,5 +1,5 @@
 ---
-title: nginx之logrotate
+title: linux-logrotate日志切割
 abbrlink: a61dc71f
 categories:
   - 服务器相关

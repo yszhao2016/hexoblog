@@ -1,5 +1,5 @@
 ---
-title: 搭建 mysql_server
+title: linux-搭建mysql服务
 categories:
   - server
 abbrlink: ca8fa022

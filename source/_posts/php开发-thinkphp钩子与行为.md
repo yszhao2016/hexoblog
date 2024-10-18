@@ -1,6 +1,6 @@
 ---
 title: php开发-thinkphp钩子与行为
-tags: PHP开发
+tags: thinkphp
 categories:
   - PHP开发
 abbrlink: 9d1b4110

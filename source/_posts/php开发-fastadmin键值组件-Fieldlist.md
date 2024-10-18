@@ -2,7 +2,7 @@
 title: php开发-fastadmin键值组件(Fieldlist)
 abbrlink: c70fd524
 date: 2024-08-08 19:56:55
-tags:
+tags: fastadmin
 ---
 
 # fieldlist中有select

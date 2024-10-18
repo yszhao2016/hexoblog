@@ -1,5 +1,6 @@
 ---
 title: php开发-fastadmin中input自定义验证方法
+tags: fastadmin
 categories:
   - PHP开发
 abbrlink: ae0c2972

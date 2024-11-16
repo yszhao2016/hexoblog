@@ -1,3 +1,4 @@
+http://example.com/posts/78f26761.html
 http://example.com/posts/71fe1155.html
 http://example.com/posts/cb6a68f0.html
 http://example.com/posts/b61a700f.html
@@ -68,7 +69,6 @@ http://example.com/posts/32b808f5.html
 http://example.com/posts/2cb0387a.html
 http://example.com/posts/b90b7557.html
 http://example.com/posts/42347bce.html
-http://example.com/posts/78f26761.html
 http://example.com/posts/eae5a656.html
 http://example.com/posts/a707732.html
 http://example.com/posts/ad46b1ee.html

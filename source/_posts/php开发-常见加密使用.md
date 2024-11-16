@@ -12,8 +12,12 @@ tags:
     数字签名 就是明文+私钥密文  这样就能保证数据没有被篡改  
     
     非对称加密 RSA、DSA
+        
+        公钥、私钥
     
     对称加密 DES、AES
+    
+        只需要一个秘钥  加密解密 多用它就行了
     
     密码散列算法有 SHA-1、SHA-256 、MD5  
         算出来就不可逆了，主要用来确定来源的
@@ -87,6 +91,20 @@ openssl_encrypt($data,$method,$key,$options=0,$iv="",&$tag=NULL,$aad="",$tag_len
         #一般多需要转换为base64传输
         base64_encode(openssl_encrypt(json_encode($body), 'AES-128-CBC', $this->key, OPENSSL_RAW_DATA, $this->iv));
 ```
+    
+    
+# DES加密
+
+填充模式：pkcs5、pkcs7、iso10126、ansix923、zero。
+
+加密模式：DES-ECB、DES-CBC、DES-CTR、DES-OFB、DES-CFB。
+
+输出类型：无编码，base64编码，hex编码。
+
+java 下默认是DES-ECB
+
+    bin2hex(openssl_encrypt($str, 'DES-ECB', $this->appSecret, OPENSSL_RAW_DATA));
+    
 
 
 # HMAC 散列消息身份验证码

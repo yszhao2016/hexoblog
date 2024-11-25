@@ -3,6 +3,9 @@ title: linux配置代理
 abbrlink: 42347bce
 date: 2024-03-01 17:29:34
 tags:
+ - linux
+categories:
+  - 服务器相关  
 ---
 
 #设置wget

@@ -2,7 +2,8 @@
 title: redis基础
 abbrlink: 78b568c7
 date: 2023-09-25 15:48:26
-tags:redis
+tags:
+ - redis
 ---
 
 # redis 简介

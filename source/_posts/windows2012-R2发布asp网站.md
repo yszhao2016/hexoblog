@@ -3,6 +3,7 @@ title: windows2012-R2发布asp网站
 abbrlink: dd0146de
 categories:
   - 服务器相关
+  - windows
 date: 2024-06-25 20:22:20
 ---
 # 一 、安装asp.net 3.5 总是失败

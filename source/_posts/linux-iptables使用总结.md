@@ -3,6 +3,9 @@ title: linux-iptables使用总结
 abbrlink: 24ccf49a
 date: 2023-07-26 15:31:32
 tags:
+  - linux
+categories:
+  - 服务器相关  
 ---
 一、iptables
     iptables防火墙没有启用,iptables命令仍然会显示默认的规则.

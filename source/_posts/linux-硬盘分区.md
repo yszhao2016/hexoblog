@@ -3,6 +3,9 @@ title: linux-硬盘分区
 abbrlink: 2acbc304
 date: 2023-03-16 10:24:39
 tags:
+ - linux
+categories:
+  - 服务器相关  
 ---
    
 

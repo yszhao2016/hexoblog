@@ -3,6 +3,7 @@ title: linux-编译安装软件总结
 abbrlink: 1b78fbfa
 date: 2024-03-06 15:41:02
 tags:
+ - linux 
 ---
 
 

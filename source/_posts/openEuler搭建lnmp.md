@@ -3,6 +3,7 @@ title: openEuler搭建lnmp
 abbrlink: b991678b
 categories:
   - 服务器相关
+  - openEnler
 date: 2023-07-09 14:04:46
 tags:
 ---

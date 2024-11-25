@@ -5,6 +5,7 @@ categories:
   - 服务器相关
 date: 2023-07-19 09:14:27
 tags:
+  - linux
 ---
 # 一、logrotate介绍
     

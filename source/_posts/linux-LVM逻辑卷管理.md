@@ -3,6 +3,9 @@ title: linux-LVM逻辑卷管理
 abbrlink: 427bdc6a
 date: 2023-10-19 12:50:58
 tags:
+  - linux
+categories:
+  - 服务器相关  
 ---
 
 # 一、基础

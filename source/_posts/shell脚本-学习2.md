@@ -2,6 +2,9 @@
 title: shell脚本学习2
 abbrlink: 8a98ccfe
 date: 2023-07-29 14:58:19
+categories:
+  - 服务器相关
+  - shell
 tags:
 ---
 

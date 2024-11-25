@@ -3,6 +3,7 @@ title: nginx-配置文件
 abbrlink: 2bee8b90
 categories:
   - 服务器相关
+  - nginx
 date: 2023-07-27 14:17:43
 tags:
 ---

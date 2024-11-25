@@ -2,7 +2,7 @@
 title: 特殊的SQL语句
 abbrlink: ee8708d7
 categories:
-  - MYSQL
+  - mysql
 date: 2023-11-08 17:54:07
 tags:
 ---

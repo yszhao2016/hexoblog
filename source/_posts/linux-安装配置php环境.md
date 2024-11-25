@@ -5,6 +5,7 @@ categories:
   - 服务器相关
 date: 2022-04-17 22:53:21
 tags:
+  - linux
 ---
 # 一、安装Remi源：
 

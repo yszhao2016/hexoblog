@@ -3,6 +3,10 @@ title: linux-防火墙相关
 abbrlink: 10974f2f
 date: 2024-03-25 18:55:25
 tags:
+ - linux
+categories:
+  - 服务器相关  
+  - 防火墙
 ---
 # 基础
 

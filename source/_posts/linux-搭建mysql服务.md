@@ -1,10 +1,13 @@
 ---
 title: linux-搭建mysql服务
-categories:
-  - server
 abbrlink: ca8fa022
 date: 2022-04-17 22:53:37
 tags:
+  - linux
+  - mysql
+categories:
+  - 服务器相关 
+  - mysql  
 ---
 # centos mysql安装
 

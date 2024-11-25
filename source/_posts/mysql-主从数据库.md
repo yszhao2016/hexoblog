@@ -3,7 +3,7 @@ title: mysql-主从数据库
 abbrlink: 585d050b
 date: 2024-07-23 10:33:22
 categories:
- - 服务器相关
+ - mysql
 tags:
  - mysql
 ---

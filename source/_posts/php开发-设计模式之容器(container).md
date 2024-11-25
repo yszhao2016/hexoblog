@@ -3,6 +3,8 @@ title: php开发-设计模式之容器(container)
 abbrlink: aa1b125a
 date: 2024-08-15 19:58:22
 tags:
+categories:
+  - PHP开发
 ---
 
 # 控制反转(IOC)

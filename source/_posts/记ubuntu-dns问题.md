@@ -2,7 +2,10 @@
 title: DNS问题
 abbrlink: 7052941e
 date: 2024-05-25 13:35:34
+categories:
+  - 服务器相关
 tags:
+ - ubuntu
 ---
 
 # ubuntu 系统 

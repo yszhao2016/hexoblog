@@ -5,6 +5,7 @@ categories:
 abbrlink: fa953e4f
 date: 2022-04-17 22:53:07
 tags:
+  - linux
 ---
 
 # 安装nginx

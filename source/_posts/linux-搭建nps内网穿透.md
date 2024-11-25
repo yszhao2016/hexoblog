@@ -3,6 +3,9 @@ title: 搭建nps内网穿透
 abbrlink: a04b492d
 date: 2023-08-29 15:19:19
 tags:
+ - linux
+categories:
+  - 服务器相关  
 ---
 # 前言
 内网穿透的方式有很多种，什么Frp、Ngrok、NPS、蒲公英等等，

@@ -3,6 +3,10 @@ title: linux-sftp服务配置
 abbrlink: 8e2962f3
 date: 2024-08-02 10:34:24
 tags:
+  - linux
+  - sftp
+categories:
+  - 服务器相关  
 ---
 
 vim /etc/ssh/ssh_config

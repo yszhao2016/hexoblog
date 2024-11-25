@@ -3,6 +3,9 @@ title: Linux服务之crond
 abbrlink: ceed82ea
 date: 2023-07-19 14:20:19
 tags:
+  - linux
+categories:
+  - 服务器相关  
 ---
 
 

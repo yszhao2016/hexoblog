@@ -3,6 +3,8 @@ title: php开发-注册登录
 abbrlink: a634ca62
 date: 2024-03-18 15:43:30
 tags:
+categories:
+  - PHP开发
 ---
 
 # 一、验证码

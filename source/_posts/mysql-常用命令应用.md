@@ -3,6 +3,7 @@ title: mysql的常用应用
 abbrlink: c8d81a10
 date: 2023-10-17 10:12:16
 tags:
+ - mysql
 ---
 
 

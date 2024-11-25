@@ -3,6 +3,7 @@ title: windows搭建apache+php+mysql5.6
 abbrlink: '27e26578'
 categories:
   - 服务器相关
+  - windows
 date: 2023-02-25 11:51:34
 tags:
 ---

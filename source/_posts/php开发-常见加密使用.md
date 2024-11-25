@@ -95,17 +95,31 @@ openssl_encrypt($data,$method,$key,$options=0,$iv="",&$tag=NULL,$aad="",$tag_len
     
 # DES加密
 
-填充模式：pkcs5、pkcs7、iso10126、ansix923、zero。
+ 填充模式：pkcs5、pkcs7、iso10126、ansix923、zero。
 
-加密模式：DES-ECB、DES-CBC、DES-CTR、DES-OFB、DES-CFB。
+ 加密模式：DES-ECB、DES-CBC、DES-CTR、DES-OFB、DES-CFB。
+
+ ECB模式（电子密码本模式）： 将明文分成块并分别加密，每个块独立处理。
+                            相同的明文块将加密成相同的密文块，可能存在安全性问题。
+
+ CBC模式（密码块链接模式）： 使用前一个块的密文与当前块的明文进行异或操作，增强了安全性。
+                            需要一个初始化向量（IV）来加密第一个块。
+                            
+ CFB模式（密码反馈模式）：   将前一个密文块与密钥流进行异或，再与明文进行异或。
+                            这种模式使得每个密文块的加密都依赖于前一个密文块。   
+                          
+ OFB模式（输出反馈模式）：   将前一个输出块与密钥流进行异或，再与明文进行异或。
+                            类似于CFB模式，但不同的是OFB不直接依赖前一个密文块      
+                                                                         
+ CTR模式（计数器模式）：       使用一个计数器和密钥流进行异或，得到密文。
+                            计数器的值会逐块增加，确保相同的明文块不会产生相同的密文块。
+
 
 输出类型：无编码，base64编码，hex编码。
 
 java 下默认是DES-ECB
 
-    bin2hex(openssl_encrypt($str, 'DES-ECB', $this->appSecret, OPENSSL_RAW_DATA));
     
-
 
 # HMAC 散列消息身份验证码
 

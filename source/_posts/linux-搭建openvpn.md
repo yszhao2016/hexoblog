@@ -1,10 +1,11 @@
 ---
 title: 搭建openvpn
 abbrlink: 224c29d4
-categories:
-  - 服务器相关
 date: 2023-08-28 13:42:06
 tags:
+ - linux
+categories:
+  - 服务器相关  
 ---
 # 一、安装
 ## 1.1、安装epel库和openvpn软件

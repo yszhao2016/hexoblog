@@ -2,7 +2,8 @@
 title: k8s安装配置
 abbrlink: 5951e8f7
 date: 2024-05-16 19:58:36
-tags:k8s
+tags:
+  - k8s
 ---
 
 # 一、redhat/openEluer 22/Centos 系统 安装k8s

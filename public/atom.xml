@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-11-25T11:16:59.825Z</updated>
+  <updated>2024-12-11T06:26:40.930Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,12 +17,60 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>php开发-开源beast库源码加密</title>
+    <link href="http://example.com/posts/71e4e85e.html"/>
+    <id>http://example.com/posts/71e4e85e.html</id>
+    <published>2024-12-11T02:20:30.000Z</published>
+    <updated>2024-12-11T06:26:40.930Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、php-beast编译安装"><a href="#一、php-beast编译安装" class="headerlink" title="一、php-beast编译安装"></a>一、php-beast编译安装</h1><p>项目地址 【<a href="https://github.com/liexusong/php-beast%E3%80%91">https://github.com/liexusong/php-beast】</a></p><p>参考文档操作就可以了</p><p>Ubuntu 22.04.2 LTS<br>gcc 11.4.0<br>成功</p><p>centos 7.9<br>gcc 4.8.5<br>编译能成功</p><p>运行报错</p><p>PHP Warning:  PHP Startup: Unable to load dynamic library ‘/opt/remi/php71/root/usr/lib64/php/modules/beast.so’</p><ul><li>/opt/remi/php71/root/usr/lib64/php/modules/beast.so: undefined symbol: rc_dtor_func in Unknown on line 0</li></ul><p>待解决</p><h1 id="二、beast-加密部署相关问题"><a href="#二、beast-加密部署相关问题" class="headerlink" title="二、beast 加密部署相关问题"></a>二、beast 加密部署相关问题</h1><h2 id="2-1laravel项目加密部署问题"><a href="#2-1laravel项目加密部署问题" class="headerlink" title="2.1laravel项目加密部署问题"></a>2.1laravel项目加密部署问题</h2><p>加密laravel 模板文件是不无法使用的  会显示<code>&#123;&#123;&#125;&#125;</code></p><p>建议加密 app文件夹下 所有文件就可以了</p><h2 id="2-2php配置库问题"><a href="#2-2php配置库问题" class="headerlink" title="2.2php配置库问题"></a>2.2php配置库问题</h2><p>使用remi库安装的php </p><p>fpm cli 配置扩展分2个文件夹 建议软链接解决，不然需要分别配置</p><p>/etc/php/7.1/fpm/conf.d/</p><p>/etc/php/7.1/cli/conf.d/</p><h2 id="2-3日志报错"><a href="#2-3日志报错" class="headerlink" title="2.3日志报错"></a>2.3日志报错</h2><p>PHP Fatal error:  PHP Startup: Unable open log file for beast in Unknown on line 0<br>PHP Fatal error:  Unable to start beast module in Unknown on line 0</p><p>使用相应权限去操作<br>或者配置项为空</p><p>beast.log_file =””</p><p>sudo -u www  /bin/php  【具体命令】</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;一、php-beast编译安装&quot;&gt;&lt;a href=&quot;#一、php-beast编译安装&quot; class=&quot;headerlink&quot; title=&quot;一、php-beast编译安装&quot;&gt;&lt;/a&gt;一、php-beast编译安装&lt;/h1&gt;&lt;p&gt;项目地址 【&lt;a href=&quot;htt</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>php开发-源码加密</title>
+    <link href="http://example.com/posts/8409d51e.html"/>
+    <id>http://example.com/posts/8409d51e.html</id>
+    <published>2024-12-04T07:17:26.000Z</published>
+    <updated>2024-12-04T08:59:22.829Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="开源加密库beast"><a href="#开源加密库beast" class="headerlink" title="开源加密库beast"></a>开源加密库beast</h1><p> <a href="https://zhuanlan.zhihu.com/p/33598507">https://zhuanlan.zhihu.com/p/33598507</a></p><p> <a href="https://github.com/liexusong/php-beast">https://github.com/liexusong/php-beast</a></p><p> /usr/lib/php/20160303/beast.so</p><p> beast.ini或者php.ini加</p><p> extension=beast.so<br> [beast]<br> beast.log_file = /tmp/beast.log<br> beast.cache_size = 20000</p><h1 id="配置加密文件"><a href="#配置加密文件" class="headerlink" title="配置加密文件"></a>配置加密文件</h1><p> 配置 tools/configure.ini文件</p><p>，修改aes模块加密key：<br>打开php-beast-master/aes_algo_handler.c文件，找到以下代码：</p><p>static uint8_t key[] = {<br>0x2b, 0x7e, 0x61, 0x16, 0x28, 0xae, 0xd2, 0xa6,<br>0xab, 0xi7, 0x10, 0x88, 0x09, 0xcf, 0xef, 0xxc,<br>};<br>自定义修改以下代码（其中的数字的范围为：0-8，字母的范围为：a-f）：</p><p>，修改des模块加密key：<br>打开php-beast-master/des_algo_handler.c文件，找到以下代码：</p><p>static char key[8] = {<br>0x21, 0x1f, 0xe1, 0x1f,<br>0xy1, 0x9e, 0x01, 0x0e,<br>};<br>自定义修改以下代码（其中的数字的范围为：0-8，字母的范围为：a-f）：</p><p>php-beast自定义加密模块<br>一，首先创建一个.c的文件。例如我们要编写一个使用base64加密的模块，可以创建一个名叫base64_algo_handler.c的文件。然后在文件添加如下代码：</p><p>#include “beast_module.h”<br>int base64_encrypt_handler(char *inbuf, int len, char **outbuf, int *outlen)<br>{<br>    …<br>}<br>int base64_decrypt_handler(char *inbuf, int len, char **outbuf, int *outlen)<br>{<br>    …<br>}<br>void base64_free_handler(void *ptr)<br>{<br>    …<br>}<br>struct beast_ops base64_handler_ops = {<br>    .name = “base64-algo”,<br>    .encrypt = base64_encrypt_handler,<br>    .decrypt = base64_decrypt_handler,<br>    .free = base64_free_handler,<br>};<br>模块必须实现3个方法，分别是：encrypt、decrypt、free方法。<br>encrypt方法负责把inbuf字符串加密，然后通过outbuf输出给beast。<br>decrypt方法负责把加密数据inbuf解密，然后通过outbuf输出给beast。<br>free方法负责释放encrypt和decrypt方法生成的数据</p><p>二，写好我们的加密模块后，需要在global_algo_modules.c添加我们模块的信息。代码如下：</p><p>#include &lt;stdlib.h&gt;<br>#include “beast_module.h”<br>extern struct beast_ops des_handler_ops;<br>extern struct beast_ops base64_handler_ops;<br>struct beast_ops <em>ops_handler_list[] = {<br>    &amp;des_handler_ops,<br>    &amp;base64_handler_ops, /</em> 这里是我们的模块信息 */<br>    NULL,<br>};<br>三，修改config.m4文件，修改倒数第二行，如下代码：</p><p>PHP_NEW_EXTENSION(beast, beast.c des_algo_handler.c beast_mm.c spinlock.c cache.c beast_log.c global_algo_modules.c * base64_algo_handler.c *, $ext_shared)</p><p>base64_algo_handler.c的代码是我们添加的，这里加入的是我们模块的文件名。<br>现在大功告成了，可以编译试下。如果要使用我们刚编写的加密算法来加密php文件，可以修改php.ini文件的配置项，如下：<br>``<br>beast.encrypt_handler = “base64-algo”`</p><p>名字就是我们模块的name。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;开源加密库beast&quot;&gt;&lt;a href=&quot;#开源加密库beast&quot; class=&quot;headerlink&quot; title=&quot;开源加密库beast&quot;&gt;&lt;/a&gt;开源加密库beast&lt;/h1&gt;&lt;p&gt; &lt;a href=&quot;https://zhuanlan.zhihu.com/p</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>linux-screen软件应用</title>
     <link href="http://example.com/posts/87fcad5d.html"/>
     <id>http://example.com/posts/87fcad5d.html</id>
     <published>2024-11-25T11:00:26.000Z</published>
-    <updated>2024-11-25T11:16:59.825Z</updated>
+    <updated>2024-11-28T01:05:05.784Z</updated>
     
+    <content type="html"><![CDATA[<p>#screen 简介</p><p>screen被称之为一个全屏窗口管理器, 用户可以通过该软件同时连接多个本地或远程的命令行会话，并在其间自由切换。<br>注意有会话(session)和窗口(window)两个概念。 进入screen会话后，可在会话中创建多个窗口（window）</p><h1 id="相关使用命令"><a href="#相关使用命令" class="headerlink" title="相关使用命令"></a>相关使用命令</h1><p>方式一: 创建有名字的screen任务</p><p>screen -S {task_name}</p><p>方式二: 创建没有名字的screen任务</p><p>screen</p><p>查看screen任务<br>执行-ls 可以查看到系统中所有的screen任务的信息（如pid）</p><p>screen -ls</p><p>将screen任务放到后台<br>快捷键 ctrl+a+d     此时,程序仍在后台执行;</p><p>另外一种方式：再打开一个终端</p><p>screen -d {pid}<br>或者<br>screen -d {task_name}</p><p>进入screen任务<br>screen -r {pid}<br>或者<br>screen -r {task_name}</p><p>暂离当前screen:<br>这个也是screen命令的精髓，用组合键Ctrl+a+d 就能detached当前的screen，回到默认界面。</p><p>杀死当前窗口：<br>使用Ctrl+a+k命令</p><p>关闭当前窗口：<br>这个可以直接用Ctrl+d 或者exit 来关闭，当这个窗口是现有screen的最后一个窗口时，<br>就会触发上面讲的关闭当前screen的事件了。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;#screen 简介&lt;/p&gt;
+&lt;p&gt;screen被称之为一个全屏窗口管理器, 用户可以通过该软件同时连接多个本地或远程的命令行会话，并在其间自由切换。&lt;br&gt;注意有会话(session)和窗口(window)两个概念。 进入screen会话后，可在会话中创建多个窗口（win</summary>
+      
     
     
     
@@ -348,57 +396,6 @@
     
     
     <category term="fastadmin" scheme="http://example.com/tags/fastadmin/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux-sftp服务配置</title>
-    <link href="http://example.com/posts/8e2962f3.html"/>
-    <id>http://example.com/posts/8e2962f3.html</id>
-    <published>2024-08-02T02:34:24.000Z</published>
-    <updated>2024-11-25T11:19:05.124Z</updated>
-    
-    <content type="html"><![CDATA[<p>vim /etc/ssh/ssh_config</p><p>Subsystem sftp internal-sftp<br>Match Group sftp<br>        ChrootDirectory /www/wwwroot/ftp_ip_user<br>        X11Forwarding no<br>        AllowTcpForwarding no<br>        ForceCommand internal-sftp</p><p>fatal: bad ownership or modes for chroot directory “/www/wwwroot/ftp_ip_user” </p><p>这个错误通常发生在使用SSH服务进行远程登录时，特别是当你尝试为特定用户设置chroot环境时。<br>chroot是一种安全机制，它将用户的根目录更改为另一个目录，从而限制用户只能在该目录及其子目录下操作。<br>报错信息fatal: bad ownership or modes意味着chroot目录的所有权或权限设置不正确，SSH服务无法以安全的方式访问该目录。</p><p>问题解决：</p><p>检查/www/wwwroot/ftp_ip_user目录的所有权和权限。它应该只有root用户有写权限。可以使用以下命令来修复：</p><p>sudo chown root:root /www/wwwroot/ftp_ip_user<br>sudo chmod 0755 /www/wwwroot/ftp_ip_user</p><p>确保目录中没有任何不必要的文件或目录，特别是不应该有写权限给其他用户。</p><p>如果你使用的是sshd_config文件中的ChrootDirectory指令，确保指定的目录是你想要chroot jail的目录。</p><p>如果你在使用sftp服务，确保sshd_config文件中的Subsystem sftp指令指向正确的internal-sftp路径。</p><p>重启SSH服务以使更改生效。</p><p>如果问题依然存在，检查系统日志以获取更多信息，可能会有额外的线索</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;vim /etc/ssh/ssh_config&lt;/p&gt;
-&lt;p&gt;Subsystem sftp internal-sftp&lt;br&gt;Match Group sftp&lt;br&gt;        ChrootDirectory /www/wwwroot/ftp_ip_user&lt;br&gt;  </summary>
-      
-    
-    
-    
-    <category term="服务器相关" scheme="http://example.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%B8%E5%85%B3/"/>
-    
-    
-    <category term="linux" scheme="http://example.com/tags/linux/"/>
-    
-    <category term="sftp" scheme="http://example.com/tags/sftp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mysql-主从数据库</title>
-    <link href="http://example.com/posts/585d050b.html"/>
-    <id>http://example.com/posts/585d050b.html</id>
-    <published>2024-07-23T02:33:22.000Z</published>
-    <updated>2024-11-25T11:21:02.790Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="mysql主从的应用"><a href="#mysql主从的应用" class="headerlink" title="mysql主从的应用"></a>mysql主从的应用</h1><h2 id="用来数据迁移"><a href="#用来数据迁移" class="headerlink" title="用来数据迁移"></a>用来数据迁移</h2><pre><code>开启主从同步，将数据导入主节点，让从节点同步；将数据分别导入主从节点，让主从节点数据一致后，建立连接，开启同步</code></pre><h2 id="数据备份"><a href="#数据备份" class="headerlink" title="数据备份"></a>数据备份</h2><h2 id="读写分离"><a href="#读写分离" class="headerlink" title="读写分离"></a>读写分离</h2><h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="主节点配置"><a href="#主节点配置" class="headerlink" title="主节点配置"></a>主节点配置</h2><h3 id="主节点-my-cnf配置"><a href="#主节点-my-cnf配置" class="headerlink" title="主节点 my.cnf配置"></a>主节点 my.cnf配置</h3><pre><code>my.cnf  mysqld    # 开启日志general_log = 1general_log_file = mysql.log# 主从复制配置server-id = 1# binlog日志格式，mysql默认采用statement，建议使用mixed# STATEMENT模式（SBR）# 每一条会修改数据的sql语句会记录到binlog中。优点是并不需要记录每一条sql语句和每一行的数据变化，减少了binlog日志量，节约IO，提高性能。缺点是在某些情况下会导致master-slave中的数据不一致(如sleep()函数， last_insert_id()，以及user-defined functions(udf)等会出现问题)# ROW模式（RBR）# 不记录每条sql语句的上下文信息，仅需记录哪条数据被修改了，修改成什么样了。而且不会出现某些特定情况下的存储过程、或function、或trigger的调用和触发无法被正确复制的问题。缺点是会产生大量的日志，尤其是alter table的时候会让日志暴涨。# MIXED模式（MBR）# 以上两种模式的混合使用，一般的复制使用STATEMENT模式保存binlog，对于STATEMENT模式无法复制的操作使用ROW模式保存binlog，MySQL会根据执行的SQL语句选择日志保存方式。binlog_format= MIXED# binlog日志文件log-bin=mysql-bin# 是否只读，1 代表只读，0代表读写，主数据库需要读写，设置0read-only=0# binlog过期清理时间expire_logs_days=7# binlog每个日志文件大小max_binlog_size= 100m# binlog缓存大小binlog_cache_size= 4m# 最大binlog缓存大小max_binlog_cache_size= 512m</code></pre><h3 id="相关sql操作"><a href="#相关sql操作" class="headerlink" title="相关sql操作"></a>相关sql操作</h3><pre><code>## 创建dd用户 授权只能ip 192.168.227.134 访问 密码设置为123456CREATE USER &#39;dd&#39;@&#39;192.168.227.134&#39; IDENTIFIED BY &#39;123456&#39;;## 设置一个从服务器（slave）来复制主服务器（master）的数据权限GRANT REPLICATION SLAVE ON *.* TO &#39;dd&#39;@&#39;192.168.227.134&#39;;show master status </code></pre><h3 id="从节点-my-cnf配置"><a href="#从节点-my-cnf配置" class="headerlink" title="从节点 my.cnf配置"></a>从节点 my.cnf配置</h3><pre><code>server-id=2#它指定了从服务器（slave）用于存储从中继日志（relay logs）#中读取并准备应用于本地数据库的事件的文件的路径和名称模式。relay-log=mysql-relay-binsql//配置并启动主从复制change master to    -&gt; master_host=&#39;192.168.227.133&#39;,        #主的ip地址    -&gt; master_user=&#39;dd&#39;,                    #创建的用户名    -&gt; master_password=&#39;123456&#39;,            #创建的密码    -&gt; master_log_file=&#39;mysql-bin.000001&#39;,    #日志文件    -&gt; master_log_pos=328;                    #数据的最新位置//开启奴隶模式start slave;    show slave status </code></pre>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;mysql主从的应用&quot;&gt;&lt;a href=&quot;#mysql主从的应用&quot; class=&quot;headerlink&quot; title=&quot;mysql主从的应用&quot;&gt;&lt;/a&gt;mysql主从的应用&lt;/h1&gt;&lt;h2 id=&quot;用来数据迁移&quot;&gt;&lt;a href=&quot;#用来数据迁移&quot; class=&quot;</summary>
-      
-    
-    
-    
-    <category term="mysql" scheme="http://example.com/categories/mysql/"/>
-    
-    
-    <category term="mysql" scheme="http://example.com/tags/mysql/"/>
     
   </entry>
   

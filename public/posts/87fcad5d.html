@@ -81,13 +81,15 @@
 
 
 
+<meta name="description" content="#screen 简介 screen被称之为一个全屏窗口管理器, 用户可以通过该软件同时连接多个本地或远程的命令行会话，并在其间自由切换。注意有会话(session)和窗口(window)两个概念。 进入screen会话后，可在会话中创建多个窗口（window） 相关使用命令方式一: 创建有名字的screen任务 screen -S {task_name} 方式二: 创建没有名字的screen任务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux-screen软件应用">
 <meta property="og:url" content="http://example.com/posts/87fcad5d.html">
 <meta property="og:site_name" content="yszhao的博客">
+<meta property="og:description" content="#screen 简介 screen被称之为一个全屏窗口管理器, 用户可以通过该软件同时连接多个本地或远程的命令行会话，并在其间自由切换。注意有会话(session)和窗口(window)两个概念。 进入screen会话后，可在会话中创建多个窗口（window） 相关使用命令方式一: 创建有名字的screen任务 screen -S {task_name} 方式二: 创建没有名字的screen任务">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-11-25T11:00:26.000Z">
-<meta property="article:modified_time" content="2024-11-25T11:16:59.825Z">
+<meta property="article:modified_time" content="2024-11-28T01:05:05.784Z">
 <meta property="article:author" content="yszhao">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
@@ -376,7 +378,22 @@
       
 
       
-        
+        <p>#screen 简介</p>
+<p>screen被称之为一个全屏窗口管理器, 用户可以通过该软件同时连接多个本地或远程的命令行会话，并在其间自由切换。<br>注意有会话(session)和窗口(window)两个概念。 进入screen会话后，可在会话中创建多个窗口（window）</p>
+<h1 id="相关使用命令"><a href="#相关使用命令" class="headerlink" title="相关使用命令"></a>相关使用命令</h1><p>方式一: 创建有名字的screen任务</p>
+<p>screen -S {task_name}</p>
+<p>方式二: 创建没有名字的screen任务</p>
+<p>screen</p>
+<p>查看screen任务<br>执行-ls 可以查看到系统中所有的screen任务的信息（如pid）</p>
+<p>screen -ls</p>
+<p>将screen任务放到后台<br>快捷键 ctrl+a+d     此时,程序仍在后台执行;</p>
+<p>另外一种方式：再打开一个终端</p>
+<p>screen -d {pid}<br>或者<br>screen -d {task_name}</p>
+<p>进入screen任务<br>screen -r {pid}<br>或者<br>screen -r {task_name}</p>
+<p>暂离当前screen:<br>这个也是screen命令的精髓，用组合键Ctrl+a+d 就能detached当前的screen，回到默认界面。</p>
+<p>杀死当前窗口：<br>使用Ctrl+a+k命令</p>
+<p>关闭当前窗口：<br>这个可以直接用Ctrl+d 或者exit 来关闭，当这个窗口是现有screen的最后一个窗口时，<br>就会触发上面讲的关闭当前screen的事件了。</p>
+
       
     </div>
     
@@ -415,6 +432,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/8409d51e.html" rel="prev" title="php开发-源码加密">
+                php开发-源码加密 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -466,8 +487,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -482,7 +512,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">107</span>
+                  <span class="site-state-item-count">109</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -504,7 +534,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -534,6 +564,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">相关使用命令</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -1,3 +1,8 @@
+http://example.com/posts/71e4e85e.html
+http://example.com/posts/8409d51e.html
+http://example.com/posts/a7094d11.html
+http://example.com/posts/5951e8f7.html
+http://example.com/posts/87fcad5d.html
 http://example.com/posts/224c29d4.html
 http://example.com/posts/6551734d.html
 http://example.com/posts/2af5ddcd.html
@@ -45,7 +50,6 @@ http://example.com/posts/427bdc6a.html
 http://example.com/posts/24ccf49a.html
 http://example.com/posts/34fa5185.html
 http://example.com/posts/ceed82ea.html
-http://example.com/posts/87fcad5d.html
 http://example.com/posts/35d2b340.html
 http://example.com/posts/fa953e4f.html
 http://example.com/posts/a61dc71f.html
@@ -77,7 +81,6 @@ http://example.com/posts/35967ec2.html
 http://example.com/posts/f00cf8de.html
 http://example.com/posts/ab7af144.html
 http://example.com/posts/9b3ce30d.html
-http://example.com/posts/5951e8f7.html
 http://example.com/posts/18f37986.html
 http://example.com/posts/2b88779d.html
 http://example.com/posts/a535b82c.html
@@ -91,7 +94,6 @@ http://example.com/posts/ad46b1ee.html
 http://example.com/posts/45805688.html
 http://example.com/posts/901bc739.html
 http://example.com/posts/78909e13.html
-http://example.com/posts/a7094d11.html
 http://example.com/posts/b2e052be.html
 http://example.com/posts/49b184d4.html
 http://example.com/posts/a9da9b42.html
@@ -122,6 +124,7 @@ http://example.com/tags/ubuntu/
 http://example.com/tags/redis/
 http://example.com/tags/php/
 http://example.com/tags/gitlab/
+http://example.com/tags/k8s/
 http://example.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%B8%E5%85%B3/
 http://example.com/categories/PHP%E5%BC%80%E5%8F%91/
 http://example.com/categories/%E5%89%8D%E7%AB%AF/

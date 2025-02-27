@@ -126,7 +126,7 @@ tags:
         		  AllowOverride all
         		  Require all granted
         		  DirectoryIndex index.php index.html
-        		  ;图片等 资源可下载
+        		
         		  AddType application/octet-stream .jpg .jpeg .png .gif .mp4 .avi .mov .flv
         		</Directory>
         </VirtualHost>

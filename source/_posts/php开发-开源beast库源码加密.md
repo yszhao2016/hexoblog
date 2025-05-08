@@ -29,18 +29,52 @@ PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/remi/php71/root/
 
 
 待解决
+# 二、具体加密操作
+## 、2.1加密方案1
+项目【https://github.com/liexusong/php-beast】目录下有/tools/configure.ini
+```phpregexp
+; source path
+src_path = ""
 
+; destination path
+dst_path = ""
 
-# 二、beast 加密部署相关问题
+; expire time
+expire = ""
 
-## 2.1 laravel项目加密部署问题
+; encrypt type (selection: DES, AES, BASE64)
+encrypt_type = "DES"
+```
+
+修改完 configure.ini 文件后就可以使用命令 php encode_files.php 开始加密项目。
+
+## 、2.2 加密方案2
+
+制定自己的php-beast
+
+1. 使用 header.c 文件可以修改 php-beast 加密后的文件头结构，
+     这样网上的解密软件就不能认识我们的加密文件，就不能进行解密，增加加密的安全性。
+
+2. php-beast 提供只能在指定的机器上运行的功能
+   要使用此功能可以在 networkcards.c 文件添加能够运行机器的网卡号，例如：
+
+```phpregexp
+char *allow_networkcards[] = {
+	"fa:16:3e:08:88:01",
+    NULL,
+};
+```
+
+# 三、beast 加密部署相关问题
+
+## 3.1 laravel项目加密部署问题
 
 加密laravel 模板文件是不无法使用的  会显示`{{}}`
 
 建议加密 app文件夹下 所有文件就可以了
 
 
-## 2.2 php配置库问题
+## 3.2 php配置库问题
 
 使用remi库安装的php 
 
@@ -51,7 +85,7 @@ fpm cli 配置扩展分2个文件夹 建议软链接解决，不然需要分别�
 /etc/php/7.1/cli/conf.d/
 
 
-## 2.3 日志报错
+## 3.3 日志报错
 
 ```
 PHP Fatal error:  PHP Startup: Unable open log file for beast in Unknown on line 0

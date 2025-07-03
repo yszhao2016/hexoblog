@@ -51,12 +51,17 @@ nps是一款轻量级、高性能、功能强大的内网穿透代理服务器�
   
     拉取npc镜像
     docker pull ffdfgdfg/npc
-    
-    
+
+    nps新增客户端 获取到key
+    ![lena](../pic/nps-1.jpg)
+
     docker run -d --restart=always --name npc-227 --net=host ffdfgdfg/npc -server=111.231.69.227:8024 -vkey=dle31e3ry1yl616p
-    【参数 -server 服务端获取  -vkey 服务端获取】 
+    【参数 -server 服务端IP:8024  -vkey 服务端获取】 
     
+   
     
 # 访问
     
     http://ip/8090  账号密码 配置文件中   
+
+    ![lena](../pic/nps-2.jpg)

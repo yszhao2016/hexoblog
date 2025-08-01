@@ -65,4 +65,7 @@ screen -r {task_name}
 
 关闭当前窗口：
 这个可以直接用Ctrl+d 或者exit 来关闭，当这个窗口是现有screen的最后一个窗口时，
-就会触发上面讲的关闭当前screen的事件了。
+就会触发上面讲的关闭当前screen的事件了 。
+
+查看当前是否在screen中
+echo $STY

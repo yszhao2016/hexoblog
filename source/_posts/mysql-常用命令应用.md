@@ -7,7 +7,7 @@ tags:
 ---
 
 
-#mysql忘记密码,重置密码
+# mysql忘记密码,重置密码
 
 
 1.修改my.cnf
@@ -46,10 +46,16 @@ mysqldump -u <用户名> -p<密码> <数据库名> > <输出文件路径>
     source 123.sql;
 
 
-
 # mysql修改root权限/修改密码/远程访问
 
     GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'IDENTIFIED BY 'Storage@202312' WITH GRANT OPTION;
 
 
-#
+
+
+# 导入时间类型默认值报错问题
+    
+    加如下配置项:
+
+        [mysqld]
+        explicit_defaults_for_timestamp = ON

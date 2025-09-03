@@ -48,6 +48,11 @@ mysqldump -u <用户名> -p<密码> <数据库名> > <输出文件路径>
 
 # mysql修改root权限/修改密码/远程访问
 
+    CREATE DATABASE IF NOT EXISTS 数据库名
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_general_ci;
+
+
     GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'IDENTIFIED BY 'Storage@202312' WITH GRANT OPTION;
 
 

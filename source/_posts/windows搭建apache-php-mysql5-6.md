@@ -54,7 +54,7 @@ tags:
     到apache/config/httpd.conf文件
     找到<IfModule unixd_module>配置行 在其上面添加
     
-    LoadModule php7_module C:/php/php7apache2_4.dll  【php7apache2_4.dll 不同版本不同  具体目录根据自己的配置】
+    LoadModule php_module C:/php/php7apache2_4.dll  【php7apache2_4.dll 不同版本不同  具体目录根据自己的配置】
     AddType application/x-httpd-php .php .html .htm
     PHPIniDir c:/php                                 【配置PHP所在目录  具体目录根据自己的配置】  
     

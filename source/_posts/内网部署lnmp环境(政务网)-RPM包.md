@@ -1,5 +1,5 @@
 ---
-title: 内网部署-政务网
+title: 内网部署lnmp环境-RPM包
 categories:
   - 服务器相关
 abbrlink: cd152417
@@ -23,12 +23,16 @@ tags:
     #--destdir=/home/ffmpeg指定下载文件的存储目录
 
     yumdownloader --resolve --destdir=/home/ffmpeg ffmpeg
+    或者
+    此命令如已经安装，不行了，则删除安装包重新下载
+    yum install docker-ce-26*  --downloadonly --downloaddir=/home/soft/docker26
 
 2.内网系统操作如下
     拷贝安装包到内网服务器，如何目录下操作如下命令
 
     rpm -Uvh --force --nodeps *.rpm  #--force --nodeps忽略依赖检查和版本冲突
-
+    或者
+    rpm -ivh *.rpm
 
 ### ubuntu类系统
 

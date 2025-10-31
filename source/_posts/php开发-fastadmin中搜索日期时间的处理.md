@@ -19,7 +19,8 @@ categories:
 
 正常一般这么写
 ```js
-  {field: 'notice_time',title: "通知时间",operate: 'Range',addclass: 'datetimerange',formatter: Table.api.formatter.datetime,data:'data-date-format="YYYY-MM-DD"'},
+  {field: 'notice_time',title: "通知时间",operate: 'Range',addclass: 'datetimerange',
+    formatter: Table.api.formatter.datetime,data:'data-date-format="YYYY-MM-DD"'},
 ```
 
 fastadmin 后端处理 BETWEEN TIME
@@ -32,7 +33,8 @@ fastadmin 后端处理 BETWEEN TIME
 
 那就只能用
 ```js
-  {field: 'notice_time',title: "通知时间",operate: 'BETWEEN',addclass: 'datetimepicker',formatter: Table.api.formatter.datetime,data:'data-date-format="YYYY-MM-DD"'},
+  {field: 'notice_time',title: "通知时间",operate: 'BETWEEN',addclass: 'datetimepicker',
+    formatter: Table.api.formatter.datetime,data:'data-date-format="YYYY-MM-DD"'},
 ```
 
 但是bootstrap-table-commonsearch.js 中有将datetimepicker样式的operate字段  强制转为Range了

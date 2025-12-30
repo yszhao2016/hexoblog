@@ -1,14 +1,11 @@
 ---
-abbrlink: 3820734e
----
----
 title: 搭建git服务（适用小团队开发）
+categories:
+  - server
+abbrlink: 3820734e
 date: 2022-04-13 22:14:23
-categories: # 分类
-- server
 tags:
---- #标签
-- git
+---
 # 添加账号
     useradd git 
 

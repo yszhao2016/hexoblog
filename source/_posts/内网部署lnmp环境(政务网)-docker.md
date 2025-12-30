@@ -1,5 +1,6 @@
 ---
 title: 内网部署lnmp环境-docker
+abbrlink: 4535910d
 date: 2025-09-02 09:08:37
 tags:
 ---

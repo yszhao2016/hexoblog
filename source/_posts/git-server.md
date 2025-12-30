@@ -9,17 +9,17 @@ categories: # 分类
 tags:
 --- #标签
 - git
-#添加账号
+# 添加账号
     useradd git 
 
     useradd -g git test 
     passwd test
 
     cd /home/git/
-#创建项目
+# 创建项目
     git init --bare 项目名称.git
 
-#配置权限
+# 配置权限
     cd /home/git/项目名称.git
 
     git config core.sharedRepository 0770

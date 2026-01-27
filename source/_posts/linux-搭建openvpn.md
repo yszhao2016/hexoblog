@@ -221,3 +221,38 @@ categories:
     cipher AES-256-CBC
     comp-lzo
     verb 3
+# 五、相关命令
+
+ systemctl start openvpn@server
+ systemctl stop openvpn@server
+ systemctl restart openvpn@server
+ systemctl status openvpn@server
+
+# 六、问题总结
+## 一、客户端总报证书错误
+
+检查证书有效期
+openssl x509 -in /etc/openvpn/server.crt -noout -dates
+
+openssl x509 -in /etc/openvpn/ca.crt -noout -dates
+
+
+### 1. 生成CA私钥
+openssl genrsa -out ca.key 2048
+
+### 2. 生成CA根证书（自签名，有效期10年）
+openssl req -x509 -new -nodes -key ca.key -sha256 -days 3650 -out ca.crt \
+-subj "/C=CN/ST=Guangdong/L=Shenzhen/O=MyOrg/CN=MyOpenVPN-CA"
+
+如果ca.key ca.crt 已经存在就只需要接下来步骤
+
+### 3. 生成服务器私钥
+openssl genrsa -out server.key 2048
+
+### 4。 创建证书签名请求 (CSR)
+openssl req -new -key server.key -out server.csr
+
+### 5. 使用现有 CA 签名（假设您有 ca.key 和 ca.crt）
+openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt -days 3650
+
+### 6.替换 /etc/openvpn/server.key   /etc/openvpn/server.crt

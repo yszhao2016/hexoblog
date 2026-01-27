@@ -81,13 +81,15 @@
 
 
 
+<meta name="description" content="基础权重抽奖算法算法描述：     1. 获取奖品配置，并计算总权重；     2. 生成随机数（1-100之间）；     3. 遍历奖品，确定随机数落在哪个区间；【 具体实现 权重遍历累加 判断】  为什么这个算法是公平的？ 数学原理正确：每个奖品的中奖概率 &#x3D; 自身权重 &#x2F; 总权重 随机性保证：使用高质量的随机数生成器 无偏向性：每个权重区间被选中的机会均等  123456789101112">
 <meta property="og:type" content="article">
 <meta property="og:title" content="php开发-根据设置的概率抽奖">
 <meta property="og:url" content="http://example.com/posts/84d7639f.html">
 <meta property="og:site_name" content="yszhao的博客">
+<meta property="og:description" content="基础权重抽奖算法算法描述：     1. 获取奖品配置，并计算总权重；     2. 生成随机数（1-100之间）；     3. 遍历奖品，确定随机数落在哪个区间；【 具体实现 权重遍历累加 判断】  为什么这个算法是公平的？ 数学原理正确：每个奖品的中奖概率 &#x3D; 自身权重 &#x2F; 总权重 随机性保证：使用高质量的随机数生成器 无偏向性：每个权重区间被选中的机会均等  123456789101112">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-08-15T10:48:19.000Z">
-<meta property="article:modified_time" content="2024-11-25T11:34:35.911Z">
+<meta property="article:modified_time" content="2025-10-31T09:39:28.354Z">
 <meta property="article:author" content="yszhao">
 <meta property="article:tag" content="php">
 <meta name="twitter:card" content="summary">
@@ -376,7 +378,21 @@
       
 
       
-        
+        <h1 id="基础权重抽奖算法"><a href="#基础权重抽奖算法" class="headerlink" title="基础权重抽奖算法"></a>基础权重抽奖算法</h1><pre><code>算法描述：
+    1. 获取奖品配置，并计算总权重；
+    2. 生成随机数（1-100之间）；
+    3. 遍历奖品，确定随机数落在哪个区间；【 具体实现 权重遍历累加 判断】
+
+为什么这个算法是公平的？
+数学原理正确：每个奖品的中奖概率 = 自身权重 / 总权重
+随机性保证：使用高质量的随机数生成器
+无偏向性：每个权重区间被选中的机会均等
+</code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 基础权重抽奖算法</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> array $prizes 奖品配置 [奖品ID =&gt; 权重]</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> int|string 中奖奖品ID</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">simpleLottery</span>(<span class="params"><span class="variable">$prizes</span></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1. 计算总权重</span></span><br><span class="line">    <span class="variable">$totalWeight</span> = array_sum(<span class="variable">$prizes</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 2. 生成随机数 (1-100之间)</span></span><br><span class="line">    <span class="variable">$rand</span> = mt_rand(<span class="number">1</span>, <span class="variable">$totalWeight</span>);</span><br><span class="line">    <span class="variable">$currentWeight</span> = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 3. 遍历奖品，确定随机数落在哪个区间</span></span><br><span class="line">    <span class="keyword">foreach</span> (<span class="variable">$prizes</span> <span class="keyword">as</span> <span class="variable">$prizeId</span> =&gt; <span class="variable">$weight</span>) &#123;</span><br><span class="line">    </span><br><span class="line">        <span class="variable">$currentWeight</span> += <span class="variable">$weight</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 检查随机数是否在当前奖品的区间内</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$rand</span> &lt;= <span class="variable">$currentWeight</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="variable">$prizeId</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用示例</span></span><br><span class="line"><span class="variable">$prizes</span> = [</span><br><span class="line">    <span class="string">&#x27;一等奖&#x27;</span> =&gt; <span class="number">1</span>,    <span class="comment">// 1% 概率</span></span><br><span class="line">    <span class="string">&#x27;二等奖&#x27;</span> =&gt; <span class="number">5</span>,    <span class="comment">// 5% 概率</span></span><br><span class="line">    <span class="string">&#x27;三等奖&#x27;</span> =&gt; <span class="number">10</span>,   <span class="comment">// 10% 概率</span></span><br><span class="line">    <span class="string">&#x27;谢谢参与&#x27;</span> =&gt; <span class="number">84</span>   <span class="comment">// 84% 概率</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="variable">$result</span> = simpleLottery(<span class="variable">$prizes</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;恭喜获得：<span class="subst">&#123;$result&#125;</span>&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="抽奖类"><a href="#抽奖类" class="headerlink" title="抽奖类"></a>抽奖类</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Lottery</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$prizes</span> = [];</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$totalWeight</span> = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加奖品</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addPrize</span>(<span class="params"><span class="variable">$id</span>, <span class="variable">$name</span>, <span class="variable">$weight</span>, <span class="variable">$stock</span> = -<span class="number">1</span></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;prizes[] = [</span><br><span class="line">            <span class="string">&#x27;id&#x27;</span> =&gt; <span class="variable">$id</span>,</span><br><span class="line">            <span class="string">&#x27;name&#x27;</span> =&gt; <span class="variable">$name</span>,</span><br><span class="line">            <span class="string">&#x27;weight&#x27;</span> =&gt; <span class="variable">$weight</span>,</span><br><span class="line">            <span class="string">&#x27;stock&#x27;</span> =&gt; <span class="variable">$stock</span>, <span class="comment">// -1 表示无限库存</span></span><br><span class="line">            <span class="string">&#x27;used&#x27;</span> =&gt; <span class="number">0</span></span><br><span class="line">        ];</span><br><span class="line">        <span class="keyword">$this</span>-&gt;totalWeight += <span class="variable">$weight</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 执行抽奖</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;totalWeight &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> [<span class="string">&#x27;success&#x27;</span> =&gt; <span class="literal">false</span>, <span class="string">&#x27;message&#x27;</span> =&gt; <span class="string">&#x27;暂无奖品&#x27;</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="variable">$rand</span> = mt_rand(<span class="number">1</span>, <span class="keyword">$this</span>-&gt;totalWeight);</span><br><span class="line">        <span class="variable">$currentWeight</span> = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">$this</span>-&gt;prizes <span class="keyword">as</span> <span class="variable">$prize</span>) &#123;</span><br><span class="line">            <span class="comment">// 检查库存</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="variable">$prize</span>[<span class="string">&#x27;stock&#x27;</span>] &gt; <span class="number">0</span> &amp;&amp; <span class="variable">$prize</span>[<span class="string">&#x27;used&#x27;</span>] &gt;= <span class="variable">$prize</span>[<span class="string">&#x27;stock&#x27;</span>]) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="variable">$currentWeight</span> += <span class="variable">$prize</span>[<span class="string">&#x27;weight&#x27;</span>];</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable">$rand</span> &lt;= <span class="variable">$currentWeight</span>) &#123;</span><br><span class="line">                <span class="variable">$prize</span>[<span class="string">&#x27;used&#x27;</span>]++;</span><br><span class="line">                <span class="keyword">return</span> [</span><br><span class="line">                    <span class="string">&#x27;success&#x27;</span> =&gt; <span class="literal">true</span>,</span><br><span class="line">                    <span class="string">&#x27;prize&#x27;</span> =&gt; <span class="variable">$prize</span>[<span class="string">&#x27;name&#x27;</span>],</span><br><span class="line">                    <span class="string">&#x27;id&#x27;</span> =&gt; <span class="variable">$prize</span>[<span class="string">&#x27;id&#x27;</span>]</span><br><span class="line">                ];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> [<span class="string">&#x27;success&#x27;</span> =&gt; <span class="literal">false</span>, <span class="string">&#x27;message&#x27;</span> =&gt; <span class="string">&#x27;很遗憾，未中奖&#x27;</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取奖品列表和概率</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getPrizeInfo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="variable">$info</span> = [];</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">$this</span>-&gt;prizes <span class="keyword">as</span> <span class="variable">$prize</span>) &#123;</span><br><span class="line">            <span class="variable">$probability</span> = (<span class="variable">$prize</span>[<span class="string">&#x27;weight&#x27;</span>] / <span class="keyword">$this</span>-&gt;totalWeight) * <span class="number">100</span>;</span><br><span class="line">            <span class="variable">$info</span>[] = [</span><br><span class="line">                <span class="string">&#x27;name&#x27;</span> =&gt; <span class="variable">$prize</span>[<span class="string">&#x27;name&#x27;</span>],</span><br><span class="line">                <span class="string">&#x27;probability&#x27;</span> =&gt; round(<span class="variable">$probability</span>, <span class="number">2</span>) . <span class="string">&#x27;%&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;stock&#x27;</span> =&gt; <span class="variable">$prize</span>[<span class="string">&#x27;stock&#x27;</span>] - <span class="variable">$prize</span>[<span class="string">&#x27;used&#x27;</span>]</span><br><span class="line">            ];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$info</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用示例</span></span><br><span class="line"><span class="variable">$lottery</span> = <span class="keyword">new</span> Lottery();</span><br><span class="line"><span class="variable">$lottery</span>-&gt;addPrize(<span class="number">1</span>, <span class="string">&#x27;iPhone 15&#x27;</span>, <span class="number">1</span>, <span class="number">1</span>);     <span class="comment">// 1% 概率，库存1个</span></span><br><span class="line"><span class="variable">$lottery</span>-&gt;addPrize(<span class="number">2</span>, <span class="string">&#x27;AirPods&#x27;</span>, <span class="number">5</span>, <span class="number">3</span>);       <span class="comment">// 5% 概率，库存3个</span></span><br><span class="line"><span class="variable">$lottery</span>-&gt;addPrize(<span class="number">3</span>, <span class="string">&#x27;谢谢参与&#x27;</span>, <span class="number">94</span>, -<span class="number">1</span>);     <span class="comment">// 94% 概率，无限库存</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 查看奖品信息</span></span><br><span class="line"><span class="variable">$prizeInfo</span> = <span class="variable">$lottery</span>-&gt;getPrizeInfo();</span><br><span class="line">print_r(<span class="variable">$prizeInfo</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 抽奖</span></span><br><span class="line"><span class="variable">$result</span> = <span class="variable">$lottery</span>-&gt;draw();</span><br><span class="line">print_r(<span class="variable">$result</span>);</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -464,8 +480,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -480,7 +505,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -491,7 +516,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -502,7 +527,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -533,6 +558,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%9D%83%E9%87%8D%E6%8A%BD%E5%A5%96%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">基础权重抽奖算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%BD%E5%A5%96%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">抽奖类</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -546,7 +587,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2025</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

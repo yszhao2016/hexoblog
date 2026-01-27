@@ -81,15 +81,15 @@
 
 
 
-<meta name="description" content="#mysql忘记密码,重置密码 1.修改my.cnf 添加 --skip-grant-tables  2.进入数据 执行 use mysql; mysql&gt; update user set password&#x3D;password(&#39;123&#39;) where user&#x3D;&#39;root&#39; and host&#x3D;&#39;localhost&#39;; mysql&gt; flu">
+<meta name="description" content="mysql忘记密码,重置密码1.修改my.cnf 添加 --skip-grant-tables  2.进入数据 执行 use mysql; mysql&gt; update user set password&#x3D;password(&#39;123&#39;) where user&#x3D;&#39;root&#39; and host&#x3D;&#39;localhost&#39;; mysql&gt; flush">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql的常用应用">
 <meta property="og:url" content="http://example.com/posts/c8d81a10.html">
 <meta property="og:site_name" content="yszhao的博客">
-<meta property="og:description" content="#mysql忘记密码,重置密码 1.修改my.cnf 添加 --skip-grant-tables  2.进入数据 执行 use mysql; mysql&gt; update user set password&#x3D;password(&#39;123&#39;) where user&#x3D;&#39;root&#39; and host&#x3D;&#39;localhost&#39;; mysql&gt; flu">
+<meta property="og:description" content="mysql忘记密码,重置密码1.修改my.cnf 添加 --skip-grant-tables  2.进入数据 执行 use mysql; mysql&gt; update user set password&#x3D;password(&#39;123&#39;) where user&#x3D;&#39;root&#39; and host&#x3D;&#39;localhost&#39;; mysql&gt; flush">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-10-17T02:12:16.000Z">
-<meta property="article:modified_time" content="2024-11-25T11:20:54.052Z">
+<meta property="article:modified_time" content="2025-08-12T03:25:05.484Z">
 <meta property="article:author" content="yszhao">
 <meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
@@ -356,8 +356,7 @@
       
 
       
-        <p>#mysql忘记密码,重置密码</p>
-<p>1.修改my.cnf</p>
+        <h1 id="mysql忘记密码-重置密码"><a href="#mysql忘记密码-重置密码" class="headerlink" title="mysql忘记密码,重置密码"></a>mysql忘记密码,重置密码</h1><p>1.修改my.cnf</p>
 <p>添加</p>
 <pre><code>--skip-grant-tables
 </code></pre>
@@ -381,9 +380,19 @@ mysql -u用户名 -p 数据库名 &lt; 123.sql
 登录mysql
 source 123.sql;
 </code></pre>
-<h1 id="mysql修改root权限-修改密码-远程访问"><a href="#mysql修改root权限-修改密码-远程访问" class="headerlink" title="mysql修改root权限/修改密码/远程访问"></a>mysql修改root权限/修改密码/远程访问</h1><pre><code>GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39;IDENTIFIED BY &#39;Storage@202312&#39; WITH GRANT OPTION;
+<h1 id="mysql修改root权限-修改密码-远程访问"><a href="#mysql修改root权限-修改密码-远程访问" class="headerlink" title="mysql修改root权限/修改密码/远程访问"></a>mysql修改root权限/修改密码/远程访问</h1><pre><code>CREATE DATABASE IF NOT EXISTS 数据库名
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_general_ci;
+
+
+GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39;IDENTIFIED BY &#39;Storage@202312&#39; WITH GRANT OPTION;
 </code></pre>
-<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
+<h1 id="导入时间类型默认值报错问题"><a href="#导入时间类型默认值报错问题" class="headerlink" title="导入时间类型默认值报错问题"></a>导入时间类型默认值报错问题</h1><pre><code>加如下配置项:
+
+    [mysqld]
+    explicit_defaults_for_timestamp = ON
+</code></pre>
+
       
     </div>
     
@@ -502,7 +511,7 @@ source 123.sql;
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -513,7 +522,7 @@ source 123.sql;
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -524,7 +533,7 @@ source 123.sql;
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -564,7 +573,7 @@ source 123.sql;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mysql%E4%BF%AE%E6%94%B9root%E6%9D%83%E9%99%90-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81-%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE"><span class="nav-number">1.</span> <span class="nav-text">mysql修改root权限&#x2F;修改密码&#x2F;远程访问</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text"></span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mysql%E5%BF%98%E8%AE%B0%E5%AF%86%E7%A0%81-%E9%87%8D%E7%BD%AE%E5%AF%86%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">mysql忘记密码,重置密码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mysql%E4%BF%AE%E6%94%B9root%E6%9D%83%E9%99%90-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81-%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE"><span class="nav-number">2.</span> <span class="nav-text">mysql修改root权限&#x2F;修改密码&#x2F;远程访问</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E6%97%B6%E9%97%B4%E7%B1%BB%E5%9E%8B%E9%BB%98%E8%AE%A4%E5%80%BC%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">导入时间类型默认值报错问题</span></a></li></ol></div>
             
 
           </div>
@@ -584,7 +593,7 @@ source 123.sql;
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2025</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

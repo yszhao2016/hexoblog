@@ -81,15 +81,15 @@
 
 
 
-<meta name="description" content="1.查看分区容量是否增加lsblk  2. 扩容MBR分区和ext4文件系统第一步#redhat类系统 type growpart || sudo yum install -y cloud-utils-growpart  #debian类系统 type growpart || sudo apt-get install -y cloud-guest-utils  第二步sudo LC_ALL&#x3D;en_">
+<meta name="description" content="1.查看分区容量是否增加lsblk  2. 扩容MBR分区和ext4文件系统第一步#redhat类系统 type growpart || sudo yum install -y cloud-utils-growpart  #debian类系统 type growpart || sudo apt-get install -y cloud-guest-utils  第二步 扩展分区sudo LC_AL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="云主机硬盘扩容">
 <meta property="og:url" content="http://example.com/posts/18f37986.html">
 <meta property="og:site_name" content="yszhao的博客">
-<meta property="og:description" content="1.查看分区容量是否增加lsblk  2. 扩容MBR分区和ext4文件系统第一步#redhat类系统 type growpart || sudo yum install -y cloud-utils-growpart  #debian类系统 type growpart || sudo apt-get install -y cloud-guest-utils  第二步sudo LC_ALL&#x3D;en_">
+<meta property="og:description" content="1.查看分区容量是否增加lsblk  2. 扩容MBR分区和ext4文件系统第一步#redhat类系统 type growpart || sudo yum install -y cloud-utils-growpart  #debian类系统 type growpart || sudo apt-get install -y cloud-guest-utils  第二步 扩展分区sudo LC_AL">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-01-03T04:52:02.000Z">
-<meta property="article:modified_time" content="2024-05-14T09:29:08.484Z">
+<meta property="article:modified_time" content="2025-08-01T07:25:53.648Z">
 <meta property="article:author" content="yszhao">
 <meta property="article:tag" content="php">
 <meta name="twitter:card" content="summary">
@@ -386,23 +386,35 @@ type growpart || sudo yum install -y cloud-utils-growpart
 #debian类系统
 type growpart || sudo apt-get install -y cloud-guest-utils
 </code></pre>
-<h2 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h2><pre><code>sudo LC_ALL=en_US.UTF-8 growpart /dev/vdb 1
+<h2 id="第二步-扩展分区"><a href="#第二步-扩展分区" class="headerlink" title="第二步 扩展分区"></a>第二步 扩展分区</h2><pre><code>sudo LC_ALL=en_US.UTF-8 growpart /dev/vdb 1
 </code></pre>
-<h2 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h2><pre><code>sudo resize2fs /dev/vdb1
+<h2 id="第三步-扩展文件系统"><a href="#第三步-扩展文件系统" class="headerlink" title="第三步   扩展文件系统"></a>第三步   扩展文件系统</h2><pre><code>sudo resize2fs /dev/vdb1
 </code></pre>
 <h1 id="3-扩容GPT分区和xfs文件系统"><a href="#3-扩容GPT分区和xfs文件系统" class="headerlink" title="3. 扩容GPT分区和xfs文件系统"></a>3. 扩容GPT分区和xfs文件系统</h1><h2 id="第一步-1"><a href="#第一步-1" class="headerlink" title="第一步"></a>第一步</h2><pre><code>sudo apt-get update
 type growpart || sudo apt-get install -y cloud-guest-utils
 
 type sgdisk || sudo yum install -y gdisk
 </code></pre>
-<h2 id="第二步-1"><a href="#第二步-1" class="headerlink" title="第二步"></a>第二步</h2><pre><code># 扩容分区
+<h2 id="第二步-扩展分区-1"><a href="#第二步-扩展分区-1" class="headerlink" title="第二步  扩展分区"></a>第二步  扩展分区</h2><pre><code># 扩容分区
 sudo LC_ALL=en_US.UTF-8 growpart /dev/vdb 2
 </code></pre>
-<h2 id="第三步-1"><a href="#第三步-1" class="headerlink" title="第三步"></a>第三步</h2><pre><code>#扩容文件系统
+<h2 id="第三步-展文件系统"><a href="#第三步-展文件系统" class="headerlink" title="第三步   展文件系统"></a>第三步   展文件系统</h2><pre><code>#扩容文件系统
 type xfs_growfs || sudo yum install -y xfsprogs
 sudo xfs_growfs /mnt
 </code></pre>
-<h1 id="4-扩容裸数据盘"><a href="#4-扩容裸数据盘" class="headerlink" title="4.扩容裸数据盘"></a>4.扩容裸数据盘</h1><pre><code>sudo resize2fs /dev/vdb
+<h1 id="裸数据盘"><a href="#裸数据盘" class="headerlink" title="裸数据盘"></a>裸数据盘</h1><pre><code>无分区结构
+    未划分逻辑分区（如 /dev/vdb1、/dev/vdb2），直接以设备名 /dev/vdb 作为操作对象。
+无文件系统
+    未创建文件系统（如 ext4、XFS），需手动格式化才能存储文件。
+直接访问物理扇区
+    应用程序可直接读写原始二进制数据，绕过文件系统层，适用于高性能数据库或分布式存储场景
+</code></pre>
+<h2 id="裸数据盘创建"><a href="#裸数据盘创建" class="headerlink" title="裸数据盘创建"></a>裸数据盘创建</h2><pre><code>使用 mkfs 命令创建文件系统（无需分区）：
+sudo mkfs -t ext4 /dev/vdb  # ext4格式
+# 或使用XFS
+sudo mkfs -t xfs -f /dev/vdb  # -f强制覆盖现有文件系统
+</code></pre>
+<h2 id="扩容裸数据盘"><a href="#扩容裸数据盘" class="headerlink" title="扩容裸数据盘"></a>扩容裸数据盘</h2><pre><code>sudo resize2fs /dev/vdb
 </code></pre>
 
       
@@ -517,7 +529,7 @@ sudo xfs_growfs /mnt
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -528,7 +540,7 @@ sudo xfs_growfs /mnt
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -539,7 +551,7 @@ sudo xfs_growfs /mnt
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -579,7 +591,7 @@ sudo xfs_growfs /mnt
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E6%9F%A5%E7%9C%8B%E5%88%86%E5%8C%BA%E5%AE%B9%E9%87%8F%E6%98%AF%E5%90%A6%E5%A2%9E%E5%8A%A0"><span class="nav-number">1.</span> <span class="nav-text">1.查看分区容量是否增加</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E6%89%A9%E5%AE%B9MBR%E5%88%86%E5%8C%BA%E5%92%8Cext4%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.</span> <span class="nav-text">2. 扩容MBR分区和ext4文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="nav-number">2.1.</span> <span class="nav-text">第一步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5"><span class="nav-number">2.2.</span> <span class="nav-text">第二步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5"><span class="nav-number">2.3.</span> <span class="nav-text">第三步</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E6%89%A9%E5%AE%B9GPT%E5%88%86%E5%8C%BA%E5%92%8Cxfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.</span> <span class="nav-text">3. 扩容GPT分区和xfs文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5-1"><span class="nav-number">3.1.</span> <span class="nav-text">第一步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5-1"><span class="nav-number">3.2.</span> <span class="nav-text">第二步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5-1"><span class="nav-number">3.3.</span> <span class="nav-text">第三步</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E6%89%A9%E5%AE%B9%E8%A3%B8%E6%95%B0%E6%8D%AE%E7%9B%98"><span class="nav-number">4.</span> <span class="nav-text">4.扩容裸数据盘</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E6%9F%A5%E7%9C%8B%E5%88%86%E5%8C%BA%E5%AE%B9%E9%87%8F%E6%98%AF%E5%90%A6%E5%A2%9E%E5%8A%A0"><span class="nav-number">1.</span> <span class="nav-text">1.查看分区容量是否增加</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E6%89%A9%E5%AE%B9MBR%E5%88%86%E5%8C%BA%E5%92%8Cext4%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.</span> <span class="nav-text">2. 扩容MBR分区和ext4文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="nav-number">2.1.</span> <span class="nav-text">第一步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5-%E6%89%A9%E5%B1%95%E5%88%86%E5%8C%BA"><span class="nav-number">2.2.</span> <span class="nav-text">第二步 扩展分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5-%E6%89%A9%E5%B1%95%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.3.</span> <span class="nav-text">第三步   扩展文件系统</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E6%89%A9%E5%AE%B9GPT%E5%88%86%E5%8C%BA%E5%92%8Cxfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.</span> <span class="nav-text">3. 扩容GPT分区和xfs文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5-1"><span class="nav-number">3.1.</span> <span class="nav-text">第一步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5-%E6%89%A9%E5%B1%95%E5%88%86%E5%8C%BA-1"><span class="nav-number">3.2.</span> <span class="nav-text">第二步  扩展分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5-%E5%B1%95%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.3.</span> <span class="nav-text">第三步   展文件系统</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A3%B8%E6%95%B0%E6%8D%AE%E7%9B%98"><span class="nav-number">4.</span> <span class="nav-text">裸数据盘</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%B8%E6%95%B0%E6%8D%AE%E7%9B%98%E5%88%9B%E5%BB%BA"><span class="nav-number">4.1.</span> <span class="nav-text">裸数据盘创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A9%E5%AE%B9%E8%A3%B8%E6%95%B0%E6%8D%AE%E7%9B%98"><span class="nav-number">4.2.</span> <span class="nav-text">扩容裸数据盘</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -599,7 +611,7 @@ sudo xfs_growfs /mnt
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2025</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

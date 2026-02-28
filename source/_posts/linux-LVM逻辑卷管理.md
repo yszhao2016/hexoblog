@@ -24,9 +24,7 @@ categories:
      
      LV(Logical Volume)：逻辑卷，建立在VG之上，相当于原来分区的概念。不过大小可以动态改变。  
      
-     
-  
-     
+
      创建PV   pvcreate /dev/sdb1
      
      查看PV   pvscan
@@ -120,9 +118,9 @@ categories:
 
     e2fsck -f /dev/datavg/lvdata1 #ext4文件系统，检查lv的文件系统
     
-    resize2fs /dev/VG/LV01 #ext4文件系统命令，该命令后面接lv的设备名就行
+    resize2fs /dev/VG/LV01 <font color="red">#ext4文件系统命令，该命令后面接lv的设备名就行</font>
     
-    xfs_growfs /nas #xfs文件系统，该命令后面直接跟的是挂载点
+    xfs_growfs /nas <font color="red">#xfs文件系统，该命令后面直接跟的是挂载点</font>
     
     当更新文件系统后，你就会发现，df -h正常了
     

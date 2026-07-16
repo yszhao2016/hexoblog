@@ -57,11 +57,11 @@ yum install kubeadm kubelet kubectl
 
  apt-get update
  sudo apt update
- 
+ #zh
  #sudo apt install -y kubelet=1.26.1-00 kubeadm=1.26.1-00 kubectl=1.26.1-00
  
  sudo apt install kubelet kubeadm kubectl
- sudo apt-mark hold kubelet kubeadm kubectl
+ sudo apt-mark hold kubelet kubeadm kubectl #锁定 版本
 
 # 三、必要的系统设置
 
@@ -149,10 +149,77 @@ sysctl --system
                                                         
  kubernetes-version        指定kubenets版本号，默认值是stable-1，会导致从https://dl.k8s.io/release/stable-1.txt下载最新的版本号，
                            我们可以将其指定为固定版本（v1.22.1）来跳过网络请求
+ ## 安装 containerd
+
+    3 - 安装配置 Containerd
+    Containerd 为 Kubernetes 提供了容器运行时，在所有三个实例上安装 containerd
+    
+    首先，安装容器依赖项。
+    
+    sudo apt update
+    sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates
+    添加阿里云 Docker 镜像源
+    
+    sudo curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/docker.gpg
+    sudo add-apt-repository "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"
+    现在，使用以下 apt 命令安装 containerd
+    
+    sudo apt update
+    sudo apt install containerd.io -y
+    验证安装：
+    
+    containerd --version
+
+    #生成containetd的配置文件
+
+    sudo mkdir -p /etc/containerd/
+    containerd config default | sudo tee /etc/containerd/config.toml >/dev/null 2>&1
+
+    #修改/etc/containerd/config.toml，修改SystemdCgroup为true
+
+    vi  /etc/containerd/config.toml
+
+    # 或者使用下面的替换命令
+
+    sudo sed -i "s#SystemdCgroup\ \=\ false#SystemdCgroup\ \=\ true#g" /etc/containerd/config.toml
+    sudo cat /etc/containerd/config.toml | grep SystemdCgroup
+
+### 修改沙箱镜像源
+
+    sudo sed -i "s#registry.k8s.io/pause#registry.cn-hangzhou.aliyuncs.com/google_containers/pause#g" /etc/containerd/config.toml
+    sudo cat /etc/containerd/config.toml | grep sandbox_image
+
+
+utooo@master1:~$ containerd config default | sudo tee /etc/containerd/config.toml >/dev/null 2>&1
+utooo@master1:~$ sudo sed -i 's/SystemdCgroup = false/SystemdCgroup = true/g' /etc/containerd/config.toml
+utooo@master1:~$ sudo sed -i 's|config_path = ""|config_path = "/etc/containerd/certs.d"|g' /etc/containerd/config.toml
+### 重启生效
+
+    sudo systemctl restart containerd
+
                            
-                           
- ## 3.2配置示例：
- 
+### 3.2配置示例：
+
+方式一：
+
+ sudo kubeadm config print init-defaults | sudo tee /etc/kubernetes/kubeadm.yaml > /dev/null
+ 或者   
+ kubeadm config print init-defaults > /etc/kubernetes/kubeadm.yaml
+
+ 然后修改/etc/kubernetes/kubeadm.yaml 配置项 ip 等等
+ ```
+     localAPIEndpoint:
+      advertiseAddress: 192.168.100.180 # 本机ip
+      bindPort: 6443
+    nodeRegistration:
+      criSocket: unix:///run/containerd/containerd.sock # 容器运行时
+      imagePullPolicy: IfNotPresent
+      name: master1 # 节点名称
+      taints: null
+ ```
+ kubeadm init --config=/etc/kubernetes/kubeadm.yaml
+
+方式二：
  kubeadm init \
  --apiserver-advertise-address 192.168.240.11 \
  --apiserver-bind-port 6443 \

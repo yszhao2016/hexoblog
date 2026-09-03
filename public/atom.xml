@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2026-02-28T02:17:50.193Z</updated>
+  <updated>2026-09-03T12:19:31.918Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,111 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>php开发-南京银行聚合支付接口对接</title>
+    <link href="http://example.com/posts/198dc642.html"/>
+    <id>http://example.com/posts/198dc642.html</id>
+    <published>2026-09-03T12:11:50.000Z</published>
+    <updated>2026-09-03T12:19:31.918Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>java开发-微服务开发</title>
+    <link href="http://example.com/posts/3d22e825.html"/>
+    <id>http://example.com/posts/3d22e825.html</id>
+    <published>2026-09-03T12:09:34.000Z</published>
+    <updated>2026-09-03T12:19:31.913Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>物联网设备对接相关</title>
+    <link href="http://example.com/posts/b7a987e5.html"/>
+    <id>http://example.com/posts/b7a987e5.html</id>
+    <published>2026-09-03T12:08:15.000Z</published>
+    <updated>2026-09-03T12:19:31.919Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JT808协议对接</title>
+    <link href="http://example.com/posts/67c83517.html"/>
+    <id>http://example.com/posts/67c83517.html</id>
+    <published>2026-09-03T12:05:58.000Z</published>
+    <updated>2026-09-03T12:19:31.911Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Mes开发中SPC图相关开发</title>
+    <link href="http://example.com/posts/14ad81d9.html"/>
+    <id>http://example.com/posts/14ad81d9.html</id>
+    <published>2026-09-03T12:03:00.000Z</published>
+    <updated>2026-09-03T12:19:31.915Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>jenkins安装与配置</title>
+    <link href="http://example.com/posts/2590406b.html"/>
+    <id>http://example.com/posts/2590406b.html</id>
+    <published>2026-07-15T02:14:12.000Z</published>
+    <updated>2026-07-15T03:29:04.199Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h1><h2 id="1-1war包安装方案、"><a href="#1-1war包安装方案、" class="headerlink" title="1.1war包安装方案、"></a>1.1war包安装方案、</h2><p>基础环境 java版本 要对应好</p><h2 id="1-2docker安装"><a href="#1-2docker安装" class="headerlink" title="1.2docker安装"></a>1.2docker安装</h2><p>这个方式我用了 感觉 卡 慢</p><h1 id="二、相关基础配置"><a href="#二、相关基础配置" class="headerlink" title="二、相关基础配置"></a>二、相关基础配置</h1><h2 id="2-1-关闭那些-升级通知"><a href="#2-1-关闭那些-升级通知" class="headerlink" title="2.1 关闭那些 升级通知"></a>2.1 关闭那些 升级通知</h2><pre><code>Jenkins Update Notification（核心升级提示）Plugin Update Notification（插件升级提示）Hudson.model.UpdateCenter$CoreUpdateMonitor（核心更新监控）</code></pre><p><img src="../pic/jenkins-1.png" alt="lena"></p><h2 id="2-2-配置git拉取代码"><a href="#2-2-配置git拉取代码" class="headerlink" title="2.2 配置git拉取代码"></a>2.2 配置git拉取代码</h2><pre><code>sudo su -s /bin/bash jenkinsssh-keygen  #下面全多回车cat ~/.ssh/xxx.pub  # 放到git gitlab服务器上 配置jenkins系统配置 - 凭据配置中配置 私钥首次jenkins 服务器首次拉代码有个</code></pre><h3 id="2-2-1-方法一"><a href="#2-2-1-方法一" class="headerlink" title="2.2.1 方法一"></a>2.2.1 方法一</h3><p><img src="../pic/jenkins-2.png" alt="lena"></p><h3 id="2-2-2-方法二"><a href="#2-2-2-方法二" class="headerlink" title="2.2.2 方法二"></a>2.2.2 方法二</h3><p>直接系统上拉下代码 信任下，以后就可以了</p><h3 id="2-2-3-方法三"><a href="#2-2-3-方法三" class="headerlink" title="2.2.3 方法三"></a>2.2.3 方法三</h3><pre><code># 1. 切换到 jenkins 用户sudo -u jenkins -i# 2. 创建 .ssh 目录（如果不存在）mkdir -p ~/.sshchmod 700 ~/.ssh# 3. 生成 SSH 密钥（全程回车，不要设密码）ssh-keygen -t ed25519 -C &quot;jenkins@cxszh&quot; -f ~/.ssh/id_ed25519 -N &quot;&quot;# 4. 自动把 git.utooo.com 的主机密钥写入 known_hostsssh-keyscan -p 9068 git.utooo.com &gt;&gt; ~/.ssh/known_hosts# 5. 修正 known_hosts 权限（SSH 硬性要求）chmod 600 ~/.ssh/known_hosts</code></pre><h2 id="2-3安装插件"><a href="#2-3安装插件" class="headerlink" title="2.3安装插件"></a>2.3安装插件</h2><p>1.Publish Over SSH 【用于ssh 登录上传代码到服务器】</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;一、安装&quot;&gt;&lt;a href=&quot;#一、安装&quot; class=&quot;headerlink&quot; title=&quot;一、安装&quot;&gt;&lt;/a&gt;一、安装&lt;/h1&gt;&lt;h2 id=&quot;1-1war包安装方案、&quot;&gt;&lt;a href=&quot;#1-1war包安装方案、&quot; class=&quot;headerlink&quot; </summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu24上安装k8s</title>
+    <link href="http://example.com/posts/581068f7.html"/>
+    <id>http://example.com/posts/581068f7.html</id>
+    <published>2026-05-11T11:54:14.000Z</published>
+    <updated>2026-07-15T03:16:59.643Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、安装前基础操作"><a href="#一、安装前基础操作" class="headerlink" title="一、安装前基础操作"></a>一、安装前基础操作</h1><p>设置主机名称<br>sudo hostnamectl set-hostnam xxx-master</p><p>禁用 Swap 分区,加载内核模块</p><p>sudo swapoff -a<br>sudo sed -i ‘/swap/ s/^/#/‘ /etc/fstab</p><p>swapon –show  #如果没任何输出，则说明成功</p><p>加载overlay、br_netfilter内核模块<br>sudo tee /etc/modules-load.d/k8s.conf &lt;&lt;EOF<br>overlay<br>br_netfilter<br>EOF</p><p>修改内核参数<br>sudo tee /etc/sysctl.d/kubernetes.conf &lt;&lt;EOF<br>net.bridge.bridge-nf-call-ip6tables = 1<br>net.bridge.bridge-nf-call-iptables = 1<br>net.ip</p><p>加载上述内核参数。<br>sudo sysctl –system</p><h1 id="二、安装配置-Containerd"><a href="#二、安装配置-Containerd" class="headerlink" title="二、安装配置 Containerd"></a>二、安装配置 Containerd</h1><p>sudo apt update<br>sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates</p><p>添加阿里云 Docker 镜像源</p><p>udo curl -fsSL <a href="https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg">https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg</a> | sudo gpg –dearmour -o /etc/apt/trusted.gpg.d/docker.gpg<br>sudo add-apt-repository “deb [arch=amd64] <a href="https://mirrors.aliyun.com/docker-ce/linux/ubuntu">https://mirrors.aliyun.com/docker-ce/linux/ubuntu</a> $(lsb_release -cs) stable”</p><p>sudo apt update<br>sudo apt install containerd.io -y</p><p>生成默认配置<br>containerd config default | sudo tee /etc/containerd/config.toml &gt;/dev/null 2&gt;&amp;1</p><p>启用 SystemdCgroup<br>sudo sed -i ‘s/SystemdCgroup = false/SystemdCgroup = true/g’ /etc/containerd/config.toml</p><p>配置国内镜像源<br>sudo sed -i “s#registry.k8s.io/pause#registry.cn-hangzhou.aliyuncs.com/google_containers/pause#g” /etc/containerd/config.toml</p><p>sudo systemctl restart containerd<br>sudo systemctl enable containerd</p><h1 id="三、安装配置"><a href="#三、安装配置" class="headerlink" title="三、安装配置"></a>三、安装配置</h1><p>curl -fsSL <a href="https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg">https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg</a> | sudo gpg –dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg<br>echo ‘deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] <a href="https://mirrors.aliyun.com/kubernetes/apt/">https://mirrors.aliyun.com/kubernetes/apt/</a> kubernetes-xenial main’ | sudo tee /etc/apt/sources.list.d/kubernetes.list<br>sudo apt update</p><p>sudo apt install -y kubelet kubeadm kubectl</p><h1 id="锁定版本，防止意外升级"><a href="#锁定版本，防止意外升级" class="headerlink" title="锁定版本，防止意外升级"></a>锁定版本，防止意外升级</h1><p>sudo apt-mark hold kubelet kubeadm kubectl</p><p>kubectl命令补全<br>sudo apt install -y bash-completion<br>kubectl completion bash | sudo tee /etc/profile.d/kubectl_completion.sh &gt; /dev/null<br>. /etc/profile.d/kubectl_completion.sh</p><h1 id="四、Master-初始化集群"><a href="#四、Master-初始化集群" class="headerlink" title="四、Master 初始化集群"></a>四、Master 初始化集群</h1><p> 在K8S的Master服务器上生成K8S的安装配置文件，路径/etc/kubernetes/kubeadm.yaml<br>kubeadm config print init-defaults &gt; /etc/kubernetes/kubeadm.yaml<br>修改kubeadm.yaml文件 配置参数</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">localAPIEndpoint:</span></span><br><span class="line">  <span class="attr">advertiseAddress:</span> <span class="number">172.18</span><span class="number">.22</span><span class="number">.20</span></span><br><span class="line">  <span class="attr">bindPort:</span> <span class="number">6443</span></span><br><span class="line"><span class="attr">nodeRegistration:</span></span><br><span class="line">  <span class="attr">criSocket:</span> <span class="string">unix:///run/containerd/containerd.sock</span>  <span class="comment">#注意修改</span></span><br><span class="line">  <span class="attr">imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">test1</span>  <span class="comment">#注意修改</span></span><br><span class="line">  <span class="attr">taints:</span> <span class="literal">null</span></span><br><span class="line"><span class="comment">#省略一部分</span></span><br><span class="line"><span class="attr">networking:</span></span><br><span class="line">  <span class="attr">dnsDomain:</span> <span class="string">cluster.local</span></span><br><span class="line">  <span class="attr">serviceSubnet:</span> <span class="number">10.96</span><span class="number">.0</span><span class="number">.0</span><span class="string">/12</span>    <span class="comment">#注意修改</span></span><br><span class="line">  <span class="attr">podSubnet:</span> <span class="number">10.244</span><span class="number">.0</span><span class="number">.0</span><span class="string">/16</span>       <span class="comment">#注意修改</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>查看镜像版本<br>kubeadm config images list</p><p>#查看阿里云镜像<br>kubeadm config images list –image-repository registry.cn-hangzhou.aliyuncs.com/google_containers</p><p>初始化k8s<br>kubeadm init –config=/etc/kubernetes/kubeadm.yaml</p><p>给普通用户建一个 “存放登录密钥的文件夹<br>mkdir -p $HOME/.kube<br>把root权限的 “集群登录密钥”（admin.conf）复制到普通用户的.kube目录下，并重命名为config<br>sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config<br>把复制后的config文件的 “所有者” 改成当前普通用户（原本复制过来还是 root 权限，普通用户读不了）<br>sudo chown $(id -u):$(id -g) $HOME/.kube/config</p><h1 id="安装flannel"><a href="#安装flannel" class="headerlink" title="安装flannel"></a>安装flannel</h1><p>kubectl apply -f <a href="https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml">https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml</a></p><h1 id="五、Worker-节点加入集群"><a href="#五、Worker-节点加入集群" class="headerlink" title="五、Worker 节点加入集群"></a>五、Worker 节点加入集群</h1><pre><code>按照1、2、3步骤，在Worker节点上安装K8Smkdir -p $HOME/.kube#从master节点 拷贝config文件sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config kubeadm join 192.168.100.180:6443 --token abcdef.0123456789abcdef       --discovery-token-ca-cert-hash sha256:1b3aa873cf5301926cb6d7300afbc68ee1a15bd12a303fc34f74a1532ebe504e</code></pre><h1 id=""><a href="#" class="headerlink" title=""></a></h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;一、安装前基础操作&quot;&gt;&lt;a href=&quot;#一、安装前基础操作&quot; class=&quot;headerlink&quot; title=&quot;一、安装前基础操作&quot;&gt;&lt;/a&gt;一、安装前基础操作&lt;/h1&gt;&lt;p&gt;设置主机名称&lt;br&gt;sudo hostnamectl set-hostnam xxx</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>linux-基础命令汇总</title>
@@ -44,9 +149,9 @@ mount /dev/sdb1 /mnt/usb
     <link href="http://example.com/posts/1393ef52.html"/>
     <id>http://example.com/posts/1393ef52.html</id>
     <published>2026-02-27T03:45:45.000Z</published>
-    <updated>2026-02-28T02:18:48.952Z</updated>
+    <updated>2026-02-28T03:23:50.937Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h1><pre><code>下载地址 https://eco.dameng.com/download/安装操作文档 https://eco.dameng.com/document/dm/zh-cn/start/dm-service-registered-linux.html</code></pre><p>groupadd dinstall -g 2001</p><p>useradd  -G dinstall -m -d /home/dmdba -s /bin/bash -u 2001 dmdba</p><p>passwd dmdba</p><p>使用 root 用户打开 /etc/security/limits.conf 文件进行修改，命令如下：</p><p>vi /etc/security/limits.conf<br>在最后需要添加如下配置：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">dmdba  soft      nice       <span class="number">0</span></span><br><span class="line">dmdba  hard      nice       <span class="number">0</span></span><br><span class="line">dmdba  soft      <span class="keyword">as</span>         unlimited</span><br><span class="line">dmdba  hard      <span class="keyword">as</span>         unlimited</span><br><span class="line">dmdba  soft      fsize      unlimited</span><br><span class="line">dmdba  hard      fsize      unlimited</span><br><span class="line">dmdba  soft      nproc      <span class="number">65536</span></span><br><span class="line">dmdba  hard      nproc      <span class="number">65536</span></span><br><span class="line">dmdba  soft      nofile     <span class="number">65536</span></span><br><span class="line">dmdba  hard      nofile     <span class="number">65536</span></span><br><span class="line">dmdba  soft      core       unlimited</span><br><span class="line">dmdba  hard      core       unlimited</span><br><span class="line">dmdba  soft      data       unlimited</span><br><span class="line">dmdba  hard      data       unlimited</span><br></pre></td></tr></table></figure><p>##实例保存目录<br>mkdir -p /dmdata/data<br>##归档保存目录<br>mkdir -p /dmdata/arch<br>##备份保存目录<br>mkdir -p /dmdata/dmbak</p><p>chown -R dmdba:dinstall /dmdata/data<br>chown -R dmdba:dinstall /dmdata/arch<br>chown -R dmdba:dinstall /dmdata/dmbak</p><p>chmod -R 755 /dmdata/data<br>chmod -R 755 /dmdata/arch<br>chmod -R 755 /dmdata/dmbak</p><p>mount -o loop dm8_20240116_x86_rh7_64.iso /mnt</p><p>su - dmdba<br>cd /mnt<br>./DMInstall.bin -i 安装</p><h1 id="二、创建实例"><a href="#二、创建实例" class="headerlink" title="二、创建实例"></a>二、创建实例</h1><p>这个须在dmdba 用户下执行</p><p>CASE_SENSITIVE  y 大写  n 不限制大小写</p><p>./dminit path=/dmdata/data PAGE_SIZE=32 EXTENT_SIZE=32 CASE_SENSITIVE=n CHARSET=1 DB_NAME=szzldl INSTANCE_NAME=DBSERVER PORT_NUM=5237 SYSDBA_PWD=Utooo@520  SYSAUDITOR_PWD=Utooo@520</p><p>cd /home/dmdba/dmdbms/script/root/</p><p>./dm_service_installer.sh -t dmserver -dm_ini /dmdata/data/szzldl/dm.ini -p szzldl</p><p>cd /home/dmdba/dmdbms/bin<br>./DmServiceszzldl start</p><p>也可以<br>systemclt status DmService命令定义名称<br>    示例<br>    systemclt status DmServiceszzldl</p><h1 id="创建模式、创建用户"><a href="#创建模式、创建用户" class="headerlink" title="创建模式、创建用户"></a>创建模式、创建用户</h1><pre><code>达梦数据库的模式就类似MySQL中的数据库的概念</code></pre><p><img src="../pic/damdb-1.png" alt="damdb-1.png"></p><table><thead><tr><th align="left">角色</th><th align="left">含义</th><th align="left">应用场景</th><th align="left">是否授予应用用户</th></tr></thead><tbody><tr><td align="left"><strong>PUBLIC</strong></td><td align="left">公共角色，所有用户自动拥有</td><td align="left">基础权限，默认授予即可</td><td align="left">✓</td></tr><tr><td align="left"><strong>RESOURCE</strong></td><td align="left">资源角色，允许创建表、视图、索引等对象</td><td align="left">需要建表、修改结构的应用</td><td align="left">需要时授予</td></tr><tr><td align="left"><strong>VTI</strong></td><td align="left">允许查询动态性能视图（v$开头的系统视图）</td><td align="left">监控、性能分析应用</td><td align="left">需要时授予</td></tr><tr><td align="left"><strong>DBA</strong></td><td align="left">数据库管理员角色，拥有所有权限</td><td align="left">数据库管理员专用</td><td align="left">✗ <strong>绝对不要授予</strong></td></tr><tr><td align="left"><strong>SOI</strong></td><td align="left">系统操作员角色，可执行备份恢复等系统操作</td><td align="left">备份管理工具</td><td align="left">通常不授予</td></tr><tr><td align="left"><strong>SELECT_CATALOG_ROLE</strong></td><td align="left">可查询数据字典（系统表）</td><td align="left">需要查看元数据的工具</td><td align="left">需要时授予</td></tr></tbody></table><p><img src="../pic/damdb-2.png" alt="damdb-1.png"></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h1><pre><code>下载地址 https://eco.dameng.com/download/安装操作文档 https://eco.dameng.com/document/dm/zh-cn/start/dm-service-registered-linux.html</code></pre><p>groupadd dinstall -g 2001</p><p>useradd  -G dinstall -m -d /home/dmdba -s /bin/bash -u 2001 dmdba</p><p>passwd dmdba</p><p>使用 root 用户打开 /etc/security/limits.conf 文件进行修改，命令如下：</p><p>vi /etc/security/limits.conf<br>在最后需要添加如下配置：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">dmdba  soft      nice       <span class="number">0</span></span><br><span class="line">dmdba  hard      nice       <span class="number">0</span></span><br><span class="line">dmdba  soft      <span class="keyword">as</span>         unlimited</span><br><span class="line">dmdba  hard      <span class="keyword">as</span>         unlimited</span><br><span class="line">dmdba  soft      fsize      unlimited</span><br><span class="line">dmdba  hard      fsize      unlimited</span><br><span class="line">dmdba  soft      nproc      <span class="number">65536</span></span><br><span class="line">dmdba  hard      nproc      <span class="number">65536</span></span><br><span class="line">dmdba  soft      nofile     <span class="number">65536</span></span><br><span class="line">dmdba  hard      nofile     <span class="number">65536</span></span><br><span class="line">dmdba  soft      core       unlimited</span><br><span class="line">dmdba  hard      core       unlimited</span><br><span class="line">dmdba  soft      data       unlimited</span><br><span class="line">dmdba  hard      data       unlimited</span><br></pre></td></tr></table></figure><p>##实例保存目录<br>mkdir -p /dmdata/data<br>##归档保存目录<br>mkdir -p /dmdata/arch<br>##备份保存目录<br>mkdir -p /dmdata/dmbak</p><p>chown -R dmdba:dinstall /dmdata/data<br>chown -R dmdba:dinstall /dmdata/arch<br>chown -R dmdba:dinstall /dmdata/dmbak</p><p>chmod -R 755 /dmdata/data<br>chmod -R 755 /dmdata/arch<br>chmod -R 755 /dmdata/dmbak</p><p>mount -o loop dm8_20240116_x86_rh7_64.iso /mnt</p><p>su - dmdba<br>cd /mnt<br>./DMInstall.bin -i 安装</p><h1 id="二、创建实例"><a href="#二、创建实例" class="headerlink" title="二、创建实例"></a>二、创建实例</h1><p>这个须在dmdba 用户下执行</p><p>CASE_SENSITIVE  y 大写  n 不限制大小写</p><p>./dminit path=/dmdata/data PAGE_SIZE=32 EXTENT_SIZE=32 CASE_SENSITIVE=n CHARSET=1 DB_NAME=szzldl INSTANCE_NAME=DBSERVER PORT_NUM=5237 SYSDBA_PWD=Utooo@520  SYSAUDITOR_PWD=Utooo@520</p><p>cd /home/dmdba/dmdbms/script/root/</p><p>./dm_service_installer.sh -t dmserver -dm_ini /dmdata/data/szzldl/dm.ini -p szzldl</p><p>cd /home/dmdba/dmdbms/bin<br>./DmServiceszzldl start</p><p>也可以<br>systemclt status DmService命令定义名称<br>    示例<br>    systemclt status DmServiceszzldl</p><h1 id="三、创建模式、创建用户"><a href="#三、创建模式、创建用户" class="headerlink" title="三、创建模式、创建用户"></a>三、创建模式、创建用户</h1><pre><code>达梦数据库的模式就类似MySQL中的数据库的概念</code></pre><p><img src="../pic/damdb-1.png" alt="damdb-1.png"></p><table><thead><tr><th align="left">角色</th><th align="left">含义</th><th align="left">应用场景</th><th align="left">是否授予应用用户</th></tr></thead><tbody><tr><td align="left"><strong>PUBLIC</strong></td><td align="left">公共角色，所有用户自动拥有</td><td align="left">基础权限，默认授予即可</td><td align="left">✓</td></tr><tr><td align="left"><strong>RESOURCE</strong></td><td align="left">资源角色，允许创建表、视图、索引等对象</td><td align="left">需要建表、修改结构的应用</td><td align="left">需要时授予</td></tr><tr><td align="left"><strong>VTI</strong></td><td align="left">允许查询动态性能视图（v$开头的系统视图）</td><td align="left">监控、性能分析应用</td><td align="left">需要时授予</td></tr><tr><td align="left"><strong>DBA</strong></td><td align="left">数据库管理员角色，拥有所有权限</td><td align="left">数据库管理员专用</td><td align="left">✗ <strong>绝对不要授予</strong></td></tr><tr><td align="left"><strong>SOI</strong></td><td align="left">系统操作员角色，可执行备份恢复等系统操作</td><td align="left">备份管理工具</td><td align="left">通常不授予</td></tr><tr><td align="left"><strong>SELECT_CATALOG_ROLE</strong></td><td align="left">可查询数据字典（系统表）</td><td align="left">需要查看元数据的工具</td><td align="left">需要时授予</td></tr></tbody></table><p><img src="../pic/damdb-2.png" alt="damdb-1.png"></p>]]></content>
     
     
       
@@ -268,152 +373,6 @@ mount /dev/sdb1 /mnt/usb
     <summary type="html">&lt;h1 id=&quot;相关常用命令&quot;&gt;&lt;a href=&quot;#相关常用命令&quot; class=&quot;headerlink&quot; title=&quot;相关常用命令&quot;&gt;&lt;/a&gt;相关常用命令&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;timedatectl  #查看 当前 系统时间 时区 
 
 timedatectl set-</summary>
-      
-    
-    
-    
-    <category term="服务器相关" scheme="http://example.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%B8%E5%85%B3/"/>
-    
-    
-    <category term="linux" scheme="http://example.com/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>php开发-微信支付配置</title>
-    <link href="http://example.com/posts/b1a60784.html"/>
-    <id>http://example.com/posts/b1a60784.html</id>
-    <published>2025-04-22T03:32:50.000Z</published>
-    <updated>2025-12-02T02:49:25.058Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="支付Api相关参数申请"><a href="#支付Api相关参数申请" class="headerlink" title="支付Api相关参数申请"></a>支付Api相关参数申请</h1><p><img src="../pic/wx-pay-1.png" alt="lena"></p><p>【账号中心】-》 【API安全】</p><p>商户API证书  对应   privateKeyPath</p><p>商户APIv2秘钥  对应 mchKey</p><p>验证微信支付身份  可以不启用 ，若启用 需要修改请求方式  加入这个公钥</p><p>平台证书、微信支付公钥  模式多是用来验签的。<br>平台证书原有的[平台证书有效期为5年]，微信支付公钥模式升级功能<br>(不要轻易升级，可以导致签名验签失败)</p><p>解密回调-》APIv3秘钥     对应 apiV3Key</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pay:</span><br><span class="line">   mchId: 商户号</span><br><span class="line">   mchKey: 0E93E73BCFF80D67D676289957A9B274                        商户秘钥/商户APIv2秘钥</span><br><span class="line">   apiV3Key: 8D55C3D951565A8C6CF1792D37D0C445                      APIv3秘钥 </span><br><span class="line">   privateKeyPath: cert/apiclient_key.pem                          API私钥</span><br><span class="line">   publicKeyPath: cert/pub_key.pem                                 微信支付公钥</span><br><span class="line">   publicKeyId: PUB_KEY_ID_0117104098032025031900389200002398      验证微信支付身份</span><br><span class="line">   merchantSerialNumber: 1D554C3725C800F4CE3F1544426F7100A3FD99DA  API证书的序列号</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;支付Api相关参数申请&quot;&gt;&lt;a href=&quot;#支付Api相关参数申请&quot; class=&quot;headerlink&quot; title=&quot;支付Api相关参数申请&quot;&gt;&lt;/a&gt;支付Api相关参数申请&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../pic/wx-pay-1.png&quot; alt</summary>
-      
-    
-    
-    
-    <category term="PHP开发" scheme="http://example.com/categories/PHP%E5%BC%80%E5%8F%91/"/>
-    
-    
-    <category term="微信" scheme="http://example.com/tags/%E5%BE%AE%E4%BF%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>php开发-docker环境搭建</title>
-    <link href="http://example.com/posts/f4cbc520.html"/>
-    <id>http://example.com/posts/f4cbc520.html</id>
-    <published>2025-04-17T00:49:45.000Z</published>
-    <updated>2025-04-17T02:02:25.478Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="一、php环境搭建"><a href="#一、php环境搭建" class="headerlink" title="一、php环境搭建"></a>一、php环境搭建</h1><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> php:<span class="number">7.4</span>-fpm</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> apt-get update</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> apt-get  install -y  vim  libfreetype6-dev libjpeg64-turbo-dev libpng-dev</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> docker-php-ext-install -j$(nproc) iconv &amp;&amp; docker-php-ext-configure gd --with-freetype-dir=/user/include/ --with-jpeg-dir=/usr/include/ &amp;&amp;  docker-php-ext-install -j$(nproc) gd</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash">  docker-php-ext-configure pdo_mysql &amp;&amp;docker-php-ext-install pdo-mysql</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> pecl install swoole &amp;&amp; pecl install redis-4.3.0</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> docker-php-ext-enable redis swoole</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> groupadd www &amp;&amp; \</span></span><br><span class="line"><span class="bash">useradd -g www -s /sbin/nologin www &amp;&amp; \</span></span><br><span class="line"><span class="bash">usermod -u 8002 www &amp;&amp; groupmod -g 8002 www</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run  \</span><br><span class="line">-v /docker/php/etc:/usr/<span class="built_in">local</span>/etc \</span><br><span class="line">-v /docker/nginx/www:/var/www/html  \</span><br><span class="line">--privileged=<span class="literal">true</span> \</span><br><span class="line">--restart=always \</span><br><span class="line">--name php71 \</span><br><span class="line">-d php71:1.3</span><br></pre></td></tr></table></figure><h1 id="二、nginx环境搭建"><a href="#二、nginx环境搭建" class="headerlink" title="二、nginx环境搭建"></a>二、nginx环境搭建</h1><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span>  nginx:<span class="number">1.24</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> groupadd www &amp;&amp; \</span></span><br><span class="line"><span class="bash">useradd -g www -s /sbin/nologin www &amp;&amp; \</span></span><br><span class="line"><span class="bash">usermod -u 8002 www &amp;&amp; groupmod -g 8002 www</span></span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run  -p 8088:8088 -v /docker/nginx/www:/usr/share/nginx/html  \</span><br><span class="line">-v /docker/nginx/nginx.conf:/etc/nginx/nginx.conf  \</span><br><span class="line">-v /docker/nginx/logs/:/var/<span class="built_in">log</span>/nginx  \</span><br><span class="line">-v /docker/nginx/conf.d:/etc/nginx/conf.d  \</span><br><span class="line">--link php74 \</span><br><span class="line">--privileged=<span class="literal">true</span> \</span><br><span class="line">--restart=always \</span><br><span class="line">--name nginx \</span><br><span class="line">-d nginx:1.24</span><br></pre></td></tr></table></figure><h1 id="三、MySQL环境搭建"><a href="#三、MySQL环境搭建" class="headerlink" title="三、MySQL环境搭建"></a>三、MySQL环境搭建</h1>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;一、php环境搭建&quot;&gt;&lt;a href=&quot;#一、php环境搭建&quot; class=&quot;headerlink&quot; title=&quot;一、php环境搭建&quot;&gt;&lt;/a&gt;一、php环境搭建&lt;/h1&gt;&lt;figure class=&quot;highlight dockerfile&quot;&gt;&lt;table&gt;&lt;</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>java开发-配置idea调试线上的程序</title>
-    <link href="http://example.com/posts/4e8d42b6.html"/>
-    <id>http://example.com/posts/4e8d42b6.html</id>
-    <published>2025-02-27T02:01:02.000Z</published>
-    <updated>2025-02-27T02:20:52.532Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="../pic/java-remote-debug-1.png" alt="lena"></p><p><img src="../pic/java-remote-debug-2.png" alt="lena"></p><p><img src="../pic/java-remote-debug-3.png" alt="lena"></p><p><img src="../pic/java-remote-debug-4.png" alt="lena"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;../pic/java-remote-debug-1.png&quot; alt=&quot;lena&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;../pic/java-remote-debug-2.png&quot; alt=&quot;lena&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;../pi</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>php开发-对接南京银行接口</title>
-    <link href="http://example.com/posts/38689ecd.html"/>
-    <id>http://example.com/posts/38689ecd.html</id>
-    <published>2025-02-27T01:06:51.000Z</published>
-    <updated>2025-04-22T03:48:27.752Z</updated>
-    
-    
-    
-    
-    <category term="PHP开发" scheme="http://example.com/categories/PHP%E5%BC%80%E5%8F%91/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>java开发-配置idea运行银行包</title>
-    <link href="http://example.com/posts/9a132a59.html"/>
-    <id>http://example.com/posts/9a132a59.html</id>
-    <published>2025-02-27T01:05:43.000Z</published>
-    <updated>2025-02-27T01:55:50.863Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="一、项目目录"><a href="#一、项目目录" class="headerlink" title="一、项目目录"></a>一、项目目录</h1><p><img src="../pic/javaee-running-1.png" alt="lena"></p><h1 id="二、设置项"><a href="#二、设置项" class="headerlink" title="二、设置项"></a>二、设置项</h1><p><img src="../pic/javaee-running-2.png" alt="lena"></p><h1 id="三、配置包相关信息"><a href="#三、配置包相关信息" class="headerlink" title="三、配置包相关信息"></a>三、配置包相关信息</h1><p><img src="../pic/javaee-running-3.png" alt="lena"></p><h1 id="四、配置用到的库（jar包）"><a href="#四、配置用到的库（jar包）" class="headerlink" title="四、配置用到的库（jar包）"></a>四、配置用到的库（jar包）</h1><p><img src="../pic/javaee-running-4.png" alt="lena"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;一、项目目录&quot;&gt;&lt;a href=&quot;#一、项目目录&quot; class=&quot;headerlink&quot; title=&quot;一、项目目录&quot;&gt;&lt;/a&gt;一、项目目录&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../pic/javaee-running-1.png&quot; alt=&quot;lena&quot;&gt;&lt;/p&gt;</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>php开发-开源beast库源码加密</title>
-    <link href="http://example.com/posts/71e4e85e.html"/>
-    <id>http://example.com/posts/71e4e85e.html</id>
-    <published>2024-12-11T02:20:30.000Z</published>
-    <updated>2025-05-08T01:29:46.831Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="一、php-beast编译安装"><a href="#一、php-beast编译安装" class="headerlink" title="一、php-beast编译安装"></a>一、php-beast编译安装</h1><p>项目地址 【<a href="https://github.com/liexusong/php-beast%E3%80%91">https://github.com/liexusong/php-beast】</a></p><p>参考文档操作就可以了</p><p>Ubuntu 22.04.2 LTS<br>gcc 11.4.0<br>成功</p><p>centos 7.9<br>gcc 4.8.5<br>编译能成功</p><p>运行报错</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP Warning:  PHP Startup: Unable to load dynamic library &#x27;/opt/remi/php71/root/usr/lib64/php/modules/beast.so&#x27;</span><br><span class="line"> - /opt/remi/php71/root/usr/lib64/php/modules/beast.so: undefined symbol: rc_dtor_func in Unknown on line 0</span><br></pre></td></tr></table></figure><p>待解决</p><h1 id="二、具体加密操作"><a href="#二、具体加密操作" class="headerlink" title="二、具体加密操作"></a>二、具体加密操作</h1><h2 id="、2-1加密方案1"><a href="#、2-1加密方案1" class="headerlink" title="、2.1加密方案1"></a>、2.1加密方案1</h2><p>项目【<a href="https://github.com/liexusong/php-beast%E3%80%91%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%9C%89/tools/configure.ini">https://github.com/liexusong/php-beast】目录下有/tools/configure.ini</a></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">; source path</span><br><span class="line">src_path = &quot;&quot;</span><br><span class="line"></span><br><span class="line">; destination path</span><br><span class="line">dst_path = &quot;&quot;</span><br><span class="line"></span><br><span class="line">; expire time</span><br><span class="line">expire = &quot;&quot;</span><br><span class="line"></span><br><span class="line">; encrypt type (selection: DES, AES, BASE64)</span><br><span class="line">encrypt_type = &quot;DES&quot;</span><br></pre></td></tr></table></figure><p>修改完 configure.ini 文件后就可以使用命令 php encode_files.php 开始加密项目。</p><h2 id="、2-2-加密方案2"><a href="#、2-2-加密方案2" class="headerlink" title="、2.2 加密方案2"></a>、2.2 加密方案2</h2><p>制定自己的php-beast</p><ol><li><p>使用 header.c 文件可以修改 php-beast 加密后的文件头结构，<br>  这样网上的解密软件就不能认识我们的加密文件，就不能进行解密，增加加密的安全性。</p></li><li><p>php-beast 提供只能在指定的机器上运行的功能<br>要使用此功能可以在 networkcards.c 文件添加能够运行机器的网卡号，例如：</p></li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">char *allow_networkcards[] = &#123;</span><br><span class="line">&quot;fa:16:3e:08:88:01&quot;,</span><br><span class="line">    NULL,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h1 id="三、beast-加密部署相关问题"><a href="#三、beast-加密部署相关问题" class="headerlink" title="三、beast 加密部署相关问题"></a>三、beast 加密部署相关问题</h1><h2 id="3-1-laravel项目加密部署问题"><a href="#3-1-laravel项目加密部署问题" class="headerlink" title="3.1 laravel项目加密部署问题"></a>3.1 laravel项目加密部署问题</h2><p>加密laravel 模板文件是不无法使用的  会显示<code>&#123;&#123;&#125;&#125;</code></p><p>建议加密 app文件夹下 所有文件就可以了</p><h2 id="3-2-php配置库问题"><a href="#3-2-php配置库问题" class="headerlink" title="3.2 php配置库问题"></a>3.2 php配置库问题</h2><p>使用remi库安装的php </p><p>fpm cli 配置扩展分2个文件夹 建议软链接解决，不然需要分别配置</p><p>/etc/php/7.1/fpm/conf.d/</p><p>/etc/php/7.1/cli/conf.d/</p><h2 id="3-3-日志报错"><a href="#3-3-日志报错" class="headerlink" title="3.3 日志报错"></a>3.3 日志报错</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHP Fatal error:  PHP Startup: Unable open log file for beast in Unknown on line 0</span><br><span class="line">PHP Fatal error:  Unable to start beast module in Unknown on line 0</span><br></pre></td></tr></table></figure><p>使用相应权限去操作<br>或者配置项为空</p><p>beast.log_file =””</p><p>sudo -u www  /bin/php  【具体命令】</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;一、php-beast编译安装&quot;&gt;&lt;a href=&quot;#一、php-beast编译安装&quot; class=&quot;headerlink&quot; title=&quot;一、php-beast编译安装&quot;&gt;&lt;/a&gt;一、php-beast编译安装&lt;/h1&gt;&lt;p&gt;项目地址 【&lt;a href=&quot;htt</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>linux-screen软件应用</title>
-    <link href="http://example.com/posts/87fcad5d.html"/>
-    <id>http://example.com/posts/87fcad5d.html</id>
-    <published>2024-11-25T11:00:26.000Z</published>
-    <updated>2025-07-26T06:06:04.328Z</updated>
-    
-    <content type="html"><![CDATA[<p>#screen 简介</p><p>screen被称之为一个全屏窗口管理器, 用户可以通过该软件同时连接多个本地或远程的命令行会话，并在其间自由切换。<br>注意有会话(session)和窗口(window)两个概念。 进入screen会话后，可在会话中创建多个窗口（window）</p><h1 id="相关使用命令"><a href="#相关使用命令" class="headerlink" title="相关使用命令"></a>相关使用命令</h1><p>方式一: 创建有名字的screen任务</p><p>screen -S {task_name}</p><p>方式二: 创建没有名字的screen任务</p><p>screen</p><p>查看screen任务<br>执行-ls 可以查看到系统中所有的screen任务的信息（如pid）</p><p>screen -ls</p><p>将screen任务放到后台<br>快捷键 ctrl+a+d     此时,程序仍在后台执行;</p><p>另外一种方式：再打开一个终端</p><p>screen -d {pid}<br>或者<br>screen -d {task_name}</p><p>进入screen任务<br>screen -r {pid}<br>或者<br>screen -r {task_name}</p><p>暂离当前screen:<br>这个也是screen命令的精髓，用组合键Ctrl+a+d 就能detached当前的screen，回到默认界面。</p><p>杀死当前窗口：<br>使用Ctrl+a+k命令</p><p>关闭当前窗口：<br>这个可以直接用Ctrl+d 或者exit 来关闭，当这个窗口是现有screen的最后一个窗口时，<br>就会触发上面讲的关闭当前screen的事件了 。</p><p>查看当前是否在screen中<br>echo $STY</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;#screen 简介&lt;/p&gt;
-&lt;p&gt;screen被称之为一个全屏窗口管理器, 用户可以通过该软件同时连接多个本地或远程的命令行会话，并在其间自由切换。&lt;br&gt;注意有会话(session)和窗口(window)两个概念。 进入screen会话后，可在会话中创建多个窗口（win</summary>
       
     
     

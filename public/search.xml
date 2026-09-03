@@ -652,9 +652,8 @@ iptables -D OUTPUT  1
 <p> sudo apt-get update</p>
 <p>  vi /etc/apt/sources.list</p>
 <p> deb <a href="https://mirrors.aliyun.com/kubernetes/apt">https://mirrors.aliyun.com/kubernetes/apt</a> kubernetes-xenial main</p>
-<p> apt-get update<br> sudo apt update</p>
-<p> #sudo apt install -y kubelet=1.26.1-00 kubeadm=1.26.1-00 kubectl=1.26.1-00</p>
-<p> sudo apt install kubelet kubeadm kubectl<br> sudo apt-mark hold kubelet kubeadm kubectl</p>
+<p> apt-get update<br> sudo apt update<br> #zh<br> #sudo apt install -y kubelet=1.26.1-00 kubeadm=1.26.1-00 kubectl=1.26.1-00</p>
+<p> sudo apt install kubelet kubeadm kubectl<br> sudo apt-mark hold kubelet kubeadm kubectl #锁定 版本</p>
 <h1 id="三、必要的系统设置"><a href="#三、必要的系统设置" class="headerlink" title="三、必要的系统设置"></a>三、必要的系统设置</h1><h2 id="3-1-关闭-selinux-关闭防火墙【暂时】（redhat系统）"><a href="#3-1-关闭-selinux-关闭防火墙【暂时】（redhat系统）" class="headerlink" title="3.1 关闭 selinux  关闭防火墙【暂时】（redhat系统）"></a>3.1 关闭 selinux  关闭防火墙【暂时】（redhat系统）</h2><p>零时关闭<br>   setenforce 0  </p>
 <p>永久关闭<br>       vi /etc/selinux/config<br>       将参数修改为SELINUX=disabled</p>
 <p>关闭防火墙</p>
@@ -685,7 +684,51 @@ iptables -D OUTPUT  1
 <p> pod-network-cidr  :    这个参数指定了 Kubernetes 集群中 Pod 的 IP 地址范围。在该示例中，Pod 的 IP 地址将从 10.120.0.0 开始分配。<br>                        指定 Pod 网络的范围。Kubernetes 支持多种网络方案，而且不同网络方案对<br>                        –pod-network-cidr有自己的要求，这里设置为10.244.0.0/16 是因为我们将使用 flannel 网络方案<br>                        必须设置成这个 CIDR。</p>
 <p> image-repository           这个用于指定从什么位置来拉取镜像（1.13版本才有的），默认值是k8s.gcr.io，<br>                            我们将其指定为国内镜像地址：registry.aliyuncs.com/google_containers</p>
 <p> kubernetes-version        指定kubenets版本号，默认值是stable-1，会导致从<a href="https://dl.k8s.io/release/stable-1.txt%E4%B8%8B%E8%BD%BD%E6%9C%80%E6%96%B0%E7%9A%84%E7%89%88%E6%9C%AC%E5%8F%B7%EF%BC%8C">https://dl.k8s.io/release/stable-1.txt下载最新的版本号，</a><br>                           我们可以将其指定为固定版本（v1.22.1）来跳过网络请求</p>
-<h2 id="3-2配置示例："><a href="#3-2配置示例：" class="headerlink" title="3.2配置示例："></a>3.2配置示例：</h2><p> kubeadm init <br> –apiserver-advertise-address 192.168.240.11 <br> –apiserver-bind-port 6443 <br> –control-plane-endpoint 192.168.240.11 <br> –service-cidr=10.119.0.0/16 <br> –service-dns-domain=”cluster.local” <br> –pod-network-cidr=10.120.0.0/16 <br> –image-repository registry.aliyuncs.com/google_containers </p>
+<h2 id="安装-containerd"><a href="#安装-containerd" class="headerlink" title="安装 containerd"></a>安装 containerd</h2><pre><code>3 - 安装配置 Containerd
+Containerd 为 Kubernetes 提供了容器运行时，在所有三个实例上安装 containerd
+
+首先，安装容器依赖项。
+
+sudo apt update
+sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates
+添加阿里云 Docker 镜像源
+
+sudo curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/docker.gpg
+sudo add-apt-repository &quot;deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable&quot;
+现在，使用以下 apt 命令安装 containerd
+
+sudo apt update
+sudo apt install containerd.io -y
+验证安装：
+
+containerd --version
+
+#生成containetd的配置文件
+
+sudo mkdir -p /etc/containerd/
+containerd config default | sudo tee /etc/containerd/config.toml &gt;/dev/null 2&gt;&amp;1
+
+#修改/etc/containerd/config.toml，修改SystemdCgroup为true
+
+vi  /etc/containerd/config.toml
+
+# 或者使用下面的替换命令
+
+sudo sed -i &quot;s#SystemdCgroup\ \=\ false#SystemdCgroup\ \=\ true#g&quot; /etc/containerd/config.toml
+sudo cat /etc/containerd/config.toml | grep SystemdCgroup
+</code></pre>
+<h3 id="修改沙箱镜像源"><a href="#修改沙箱镜像源" class="headerlink" title="修改沙箱镜像源"></a>修改沙箱镜像源</h3><pre><code>sudo sed -i &quot;s#registry.k8s.io/pause#registry.cn-hangzhou.aliyuncs.com/google_containers/pause#g&quot; /etc/containerd/config.toml
+sudo cat /etc/containerd/config.toml | grep sandbox_image
+</code></pre>
+<p>utooo@master1:<del>$ containerd config default | sudo tee /etc/containerd/config.toml &gt;/dev/null 2&gt;&amp;1<br>utooo@master1:</del>$ sudo sed -i ‘s/SystemdCgroup = false/SystemdCgroup = true/g’ /etc/containerd/config.toml<br>utooo@master1:~$ sudo sed -i ‘s|config_path = “”|config_path = “/etc/containerd/certs.d”|g’ /etc/containerd/config.toml</p>
+<h3 id="重启生效"><a href="#重启生效" class="headerlink" title="重启生效"></a>重启生效</h3><pre><code>sudo systemctl restart containerd
+
+                       
+</code></pre>
+<h3 id="3-2配置示例："><a href="#3-2配置示例：" class="headerlink" title="3.2配置示例："></a>3.2配置示例：</h3><p>方式一：</p>
+<p> sudo kubeadm config print init-defaults | sudo tee /etc/kubernetes/kubeadm.yaml &gt; /dev/null<br> 或者<br> kubeadm config print init-defaults &gt; /etc/kubernetes/kubeadm.yaml</p>
+<p> 然后修改/etc/kubernetes/kubeadm.yaml 配置项 ip 等等<br> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> localAPIEndpoint:</span><br><span class="line">  advertiseAddress: 192.168.100.180 # 本机ip</span><br><span class="line">  bindPort: 6443</span><br><span class="line">nodeRegistration:</span><br><span class="line">  criSocket: unix:///run/containerd/containerd.sock # 容器运行时</span><br><span class="line">  imagePullPolicy: IfNotPresent</span><br><span class="line">  name: master1 # 节点名称</span><br><span class="line">  taints: null</span><br></pre></td></tr></table></figure><br> kubeadm init –config=/etc/kubernetes/kubeadm.yaml</p>
+<p>方式二：<br> kubeadm init <br> –apiserver-advertise-address 192.168.240.11 <br> –apiserver-bind-port 6443 <br> –control-plane-endpoint 192.168.240.11 <br> –service-cidr=10.119.0.0/16 <br> –service-dns-domain=”cluster.local” <br> –pod-network-cidr=10.120.0.0/16 <br> –image-repository registry.aliyuncs.com/google_containers </p>
 <p> kubeadm init <br>  –apiserver-advertise-address=192.168.100.203 <br>  –image-repository registry.aliyuncs.com/google_containers <br>  –service-cidr=10.119.0.0/16 <br>  –pod-network-cidr=10.120.0.0/16 <br>  –kubernetes-version v1.28.2</p>
 <p> kubeadm init <br>   –apiserver-advertise-address=192.168.31.200 <br>   –image-repository registry.aliyuncs.com/google_containers <br>   –kubernetes-version v1.18.0 <br>   –service-cidr=10.96.0.0/12 <br>   –pod-network-cidr=10.244.0.0/16</p>
 <h2 id="3-3-配置-kubectl"><a href="#3-3-配置-kubectl" class="headerlink" title="3.3 配置 kubectl"></a>3.3 配置 kubectl</h2><p>   mkdir -p $HOME/.kube<br>   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config<br>   sudo chown $(id -u):$(id -g) $HOME/.kube/config<br>   echo ‘export KUBECONFIG=$HOME/.kube/config’ &gt;&gt; $HOME/.bashrc<br>   source ~/.bashrc</p>
@@ -5931,7 +5974,7 @@ mount -o loop /home/user/file.iso /mnt
 <p>./dm_service_installer.sh -t dmserver -dm_ini /dmdata/data/szzldl/dm.ini -p szzldl</p>
 <p>cd /home/dmdba/dmdbms/bin<br>./DmServiceszzldl start</p>
 <p>也可以<br>systemclt status DmService命令定义名称<br>    示例<br>    systemclt status DmServiceszzldl</p>
-<h1 id="创建模式、创建用户"><a href="#创建模式、创建用户" class="headerlink" title="创建模式、创建用户"></a>创建模式、创建用户</h1><pre><code>达梦数据库的模式就类似MySQL中的数据库的概念
+<h1 id="三、创建模式、创建用户"><a href="#三、创建模式、创建用户" class="headerlink" title="三、创建模式、创建用户"></a>三、创建模式、创建用户</h1><pre><code>达梦数据库的模式就类似MySQL中的数据库的概念
 </code></pre>
 <p><img src="../pic/damdb-1.png" alt="damdb-1.png"></p>
 <table>
@@ -5982,5 +6025,110 @@ mount -o loop /home/user/file.iso /mnt
 </tbody></table>
 <p><img src="../pic/damdb-2.png" alt="damdb-1.png"></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>jenkins安装与配置</title>
+    <url>/posts/2590406b.html</url>
+    <content><![CDATA[<h1 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h1><h2 id="1-1war包安装方案、"><a href="#1-1war包安装方案、" class="headerlink" title="1.1war包安装方案、"></a>1.1war包安装方案、</h2><p>基础环境 java版本 要对应好</p>
+<h2 id="1-2docker安装"><a href="#1-2docker安装" class="headerlink" title="1.2docker安装"></a>1.2docker安装</h2><p>这个方式我用了 感觉 卡 慢</p>
+<h1 id="二、相关基础配置"><a href="#二、相关基础配置" class="headerlink" title="二、相关基础配置"></a>二、相关基础配置</h1><h2 id="2-1-关闭那些-升级通知"><a href="#2-1-关闭那些-升级通知" class="headerlink" title="2.1 关闭那些 升级通知"></a>2.1 关闭那些 升级通知</h2><pre><code>Jenkins Update Notification（核心升级提示）
+Plugin Update Notification（插件升级提示）
+Hudson.model.UpdateCenter$CoreUpdateMonitor（核心更新监控）
+</code></pre>
+<p><img src="../pic/jenkins-1.png" alt="lena"></p>
+<h2 id="2-2-配置git拉取代码"><a href="#2-2-配置git拉取代码" class="headerlink" title="2.2 配置git拉取代码"></a>2.2 配置git拉取代码</h2><pre><code>sudo su -s /bin/bash jenkins
+
+ssh-keygen  #下面全多回车
+
+cat ~/.ssh/xxx.pub  # 放到git gitlab服务器上 配置
+
+jenkins系统配置 - 凭据配置中配置 私钥
+
+首次jenkins 服务器首次拉代码有个
+</code></pre>
+<h3 id="2-2-1-方法一"><a href="#2-2-1-方法一" class="headerlink" title="2.2.1 方法一"></a>2.2.1 方法一</h3><p><img src="../pic/jenkins-2.png" alt="lena"></p>
+<h3 id="2-2-2-方法二"><a href="#2-2-2-方法二" class="headerlink" title="2.2.2 方法二"></a>2.2.2 方法二</h3><p>直接系统上拉下代码 信任下，以后就可以了</p>
+<h3 id="2-2-3-方法三"><a href="#2-2-3-方法三" class="headerlink" title="2.2.3 方法三"></a>2.2.3 方法三</h3><pre><code># 1. 切换到 jenkins 用户
+sudo -u jenkins -i
+
+# 2. 创建 .ssh 目录（如果不存在）
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+
+# 3. 生成 SSH 密钥（全程回车，不要设密码）
+ssh-keygen -t ed25519 -C &quot;jenkins@cxszh&quot; -f ~/.ssh/id_ed25519 -N &quot;&quot;
+
+# 4. 自动把 git.utooo.com 的主机密钥写入 known_hosts
+ssh-keyscan -p 9068 git.utooo.com &gt;&gt; ~/.ssh/known_hosts
+
+# 5. 修正 known_hosts 权限（SSH 硬性要求）
+chmod 600 ~/.ssh/known_hosts
+</code></pre>
+<h2 id="2-3安装插件"><a href="#2-3安装插件" class="headerlink" title="2.3安装插件"></a>2.3安装插件</h2><p>1.Publish Over SSH 【用于ssh 登录上传代码到服务器】</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>ubuntu24上安装k8s</title>
+    <url>/posts/581068f7.html</url>
+    <content><![CDATA[<h1 id="一、安装前基础操作"><a href="#一、安装前基础操作" class="headerlink" title="一、安装前基础操作"></a>一、安装前基础操作</h1><p>设置主机名称<br>sudo hostnamectl set-hostnam xxx-master</p>
+<p>禁用 Swap 分区,加载内核模块</p>
+<p>sudo swapoff -a<br>sudo sed -i ‘/swap/ s/^/#/‘ /etc/fstab</p>
+<p>swapon –show  #如果没任何输出，则说明成功</p>
+<p>加载overlay、br_netfilter内核模块<br>sudo tee /etc/modules-load.d/k8s.conf &lt;&lt;EOF<br>overlay<br>br_netfilter<br>EOF</p>
+<p>修改内核参数<br>sudo tee /etc/sysctl.d/kubernetes.conf &lt;&lt;EOF<br>net.bridge.bridge-nf-call-ip6tables = 1<br>net.bridge.bridge-nf-call-iptables = 1<br>net.ip</p>
+<p>加载上述内核参数。<br>sudo sysctl –system</p>
+<h1 id="二、安装配置-Containerd"><a href="#二、安装配置-Containerd" class="headerlink" title="二、安装配置 Containerd"></a>二、安装配置 Containerd</h1><p>sudo apt update<br>sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates</p>
+<p>添加阿里云 Docker 镜像源</p>
+<p>udo curl -fsSL <a href="https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg">https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg</a> | sudo gpg –dearmour -o /etc/apt/trusted.gpg.d/docker.gpg<br>sudo add-apt-repository “deb [arch=amd64] <a href="https://mirrors.aliyun.com/docker-ce/linux/ubuntu">https://mirrors.aliyun.com/docker-ce/linux/ubuntu</a> $(lsb_release -cs) stable”</p>
+<p>sudo apt update<br>sudo apt install containerd.io -y</p>
+<p>生成默认配置<br>containerd config default | sudo tee /etc/containerd/config.toml &gt;/dev/null 2&gt;&amp;1</p>
+<p>启用 SystemdCgroup<br>sudo sed -i ‘s/SystemdCgroup = false/SystemdCgroup = true/g’ /etc/containerd/config.toml</p>
+<p>配置国内镜像源<br>sudo sed -i “s#registry.k8s.io/pause#registry.cn-hangzhou.aliyuncs.com/google_containers/pause#g” /etc/containerd/config.toml</p>
+<p>sudo systemctl restart containerd<br>sudo systemctl enable containerd</p>
+<h1 id="三、安装配置"><a href="#三、安装配置" class="headerlink" title="三、安装配置"></a>三、安装配置</h1><p>curl -fsSL <a href="https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg">https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg</a> | sudo gpg –dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg<br>echo ‘deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] <a href="https://mirrors.aliyun.com/kubernetes/apt/">https://mirrors.aliyun.com/kubernetes/apt/</a> kubernetes-xenial main’ | sudo tee /etc/apt/sources.list.d/kubernetes.list<br>sudo apt update</p>
+<p>sudo apt install -y kubelet kubeadm kubectl</p>
+<h1 id="锁定版本，防止意外升级"><a href="#锁定版本，防止意外升级" class="headerlink" title="锁定版本，防止意外升级"></a>锁定版本，防止意外升级</h1><p>sudo apt-mark hold kubelet kubeadm kubectl</p>
+<p>kubectl命令补全<br>sudo apt install -y bash-completion<br>kubectl completion bash | sudo tee /etc/profile.d/kubectl_completion.sh &gt; /dev/null<br>. /etc/profile.d/kubectl_completion.sh</p>
+<h1 id="四、Master-初始化集群"><a href="#四、Master-初始化集群" class="headerlink" title="四、Master 初始化集群"></a>四、Master 初始化集群</h1><p> 在K8S的Master服务器上生成K8S的安装配置文件，路径/etc/kubernetes/kubeadm.yaml<br>kubeadm config print init-defaults &gt; /etc/kubernetes/kubeadm.yaml<br>修改kubeadm.yaml文件 配置参数</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">localAPIEndpoint:</span></span><br><span class="line">  <span class="attr">advertiseAddress:</span> <span class="number">172.18</span><span class="number">.22</span><span class="number">.20</span></span><br><span class="line">  <span class="attr">bindPort:</span> <span class="number">6443</span></span><br><span class="line"><span class="attr">nodeRegistration:</span></span><br><span class="line">  <span class="attr">criSocket:</span> <span class="string">unix:///run/containerd/containerd.sock</span>  <span class="comment">#注意修改</span></span><br><span class="line">  <span class="attr">imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">test1</span>  <span class="comment">#注意修改</span></span><br><span class="line">  <span class="attr">taints:</span> <span class="literal">null</span></span><br><span class="line"><span class="comment">#省略一部分</span></span><br><span class="line"><span class="attr">networking:</span></span><br><span class="line">  <span class="attr">dnsDomain:</span> <span class="string">cluster.local</span></span><br><span class="line">  <span class="attr">serviceSubnet:</span> <span class="number">10.96</span><span class="number">.0</span><span class="number">.0</span><span class="string">/12</span>    <span class="comment">#注意修改</span></span><br><span class="line">  <span class="attr">podSubnet:</span> <span class="number">10.244</span><span class="number">.0</span><span class="number">.0</span><span class="string">/16</span>       <span class="comment">#注意修改</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>查看镜像版本<br>kubeadm config images list</p>
+<p>#查看阿里云镜像<br>kubeadm config images list –image-repository registry.cn-hangzhou.aliyuncs.com/google_containers</p>
+<p>初始化k8s<br>kubeadm init –config=/etc/kubernetes/kubeadm.yaml</p>
+<p>给普通用户建一个 “存放登录密钥的文件夹<br>mkdir -p $HOME/.kube<br>把root权限的 “集群登录密钥”（admin.conf）复制到普通用户的.kube目录下，并重命名为config<br>sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config<br>把复制后的config文件的 “所有者” 改成当前普通用户（原本复制过来还是 root 权限，普通用户读不了）<br>sudo chown $(id -u):$(id -g) $HOME/.kube/config</p>
+<h1 id="安装flannel"><a href="#安装flannel" class="headerlink" title="安装flannel"></a>安装flannel</h1><p>kubectl apply -f <a href="https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml">https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml</a></p>
+<h1 id="五、Worker-节点加入集群"><a href="#五、Worker-节点加入集群" class="headerlink" title="五、Worker 节点加入集群"></a>五、Worker 节点加入集群</h1><pre><code>按照1、2、3步骤，在Worker节点上安装K8S
+
+mkdir -p $HOME/.kube
+#从master节点 拷贝config文件
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config 
+
+kubeadm join 192.168.100.180:6443 --token abcdef.0123456789abcdef       --discovery-token-ca-cert-hash sha256:1b3aa873cf5301926cb6d7300afbc68ee1a15bd12a303fc34f74a1532ebe504e
+</code></pre>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>]]></content>
+  </entry>
+  <entry>
+    <title>JT808协议对接</title>
+    <url>/posts/67c83517.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>java开发-微服务开发</title>
+    <url>/posts/3d22e825.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Mes开发中SPC图相关开发</title>
+    <url>/posts/14ad81d9.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>php开发-南京银行聚合支付接口对接</title>
+    <url>/posts/198dc642.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>物联网设备对接相关</title>
+    <url>/posts/b7a987e5.html</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>

@@ -245,37 +245,88 @@ public static double getD4(int n) {
 ```
 
 # 二、计数型图
+    C图【缺陷数图】、U图【缺陷率图】 NP图【不合格品数图】、P图【不合格率图】
+## 2.1 缺陷数图(C图 Count)
 
-## 2.1 缺陷数图(C图)
+c图用于监控固定机会/固定面积/固定单位下的缺陷数。
+C图上点 为缺陷数
 
-c图用于监控固定机会/固定面积/固定单位下的或缺陷数。
+    cl = C̄  缺陷数的 平均值
+    ucl = C̄ + 3*√C̄   缺陷数的平均值 + 3 * 开根号缺陷数的平均值
+    lcl = C̄ - 3*√C̄
 
-    cl =
-    ucl =
-    lcl =
-## 2.2 单位缺陷数图(U图)
+    泊松分布：均值 = 方差 = C̄  ，所以标准差 = √C̄
+    LCL 若 < 0，取 0。
+```java
+        for (SpcDataCount data : spcDataList) {
+            int c = data.getUnqualifiedNum();
+            totalDefect += c;
+        }
 
-u图用于监控单位单位缺陷数，适用于检查单位数可变。
+        // 3. 平均缺陷数 c̄
+        double cBar = (double) totalDefect / spcDataList.size();
 
-    cl =
-    ucl =
-    lcl =
+        // 4. 控制限（C图：固定样本量）
+        double sigma = 3 * Math.sqrt(cBar);
 
-## 2.3 不良品/不合格数图 (NP图)
+        double ucl = SpcMathUtil.round4(cBar + sigma);
+        double lcl = SpcMathUtil.round4(Math.max(0, cBar - sigma));
+        double cl = SpcMathUtil.round4(cBar);
+```
+## 2.2 单位缺陷数图(U图 Unit)
+
+u图用于监控单位单位缺陷数，适用于检查单位数可变。【ucl、lcl 每个点多不一样的】
+U图上的点 为缺陷率率（缺陷数/样本数）
+
+    cl = ū  缺陷数的 平均值（总缺陷数 ÷ 总检查单位数）
+    ucl = ū + 3√(ū/nᵢ)  缺陷数的平均值 + 3 * 开根号 （缺陷数的平均值 / 当前的样本量值）
+    lcl = ū - 3√(ū/nᵢ)
+```java
+
+```
+## 2.3 不良品/不合格数图 (NP图 Number of defectives)
 
 np图用于监控固定样本量下的不合格品数，样本量必须固定。
+NP图上点 为不合格数  
+
+    cl = np̄  不合格品数的平均值
+    ucl = np̄ + 3√(np̄(1-p̄))
+    lcl = np̄ - 3√(np̄(1-p̄))
+
+```java
+    // 3. 平均不合格品数 np̄
+    double npBar = (double) totalDefect / spcDataList.size();
     
-    cl =
-    ucl = 
-    lcl = 
-
-
-## 2.4 不良品/不合格率图 (P图)
+    // 4. 平均不合格品率 p̄
+    double pBar = npBar / n;
+    
+    // 5. 控制限（固定）
+    double sigma = 3 * Math.sqrt(npBar * (1 - pBar));
+    double ucl = SpcMathUtil.round4(npBar + sigma);
+    double lcl = SpcMathUtil.round4(Math.max(0, npBar - sigma));
+    double cl = SpcMathUtil.round4(npBar);
+```
+## 2.4 不良品/不合格率图 (P图 Proportion)
 
 p图用于监控不合格品率/比例，适用于样本量可变或固定的计件型数据。
+P图上点 为不合格率
 
-    cl =
-    ucl = 
-    lcl = 
+    cl = p̄  不合格品率的平均值[总不合格数/总的样品数]
+    ucl =  p̄ + 3√(p̄(1-p̄)/nᵢ)
+    lcl =  p̄ - 3√(p̄(1-p̄)/nᵢ)
 
+```java
+    double pBar = (double) totalDefect / totalSample;
+        
+    double ucl = Double.NaN;
+    double lcl = Double.NaN;
+    
+    for (SpcDataCount data : spcDataList) {
+        int n = data.getSampleNum();
+    
+        double sigma = Math.sqrt(pBar * (1 - pBar) / n);
+         ucl = pBar + 3 * sigma;
+         lcl = Math.max(0, pBar - 3 * sigma);
+    }
+```
     

@@ -166,6 +166,8 @@ toc:
 
   # If true, all words will placed on next lines if header width longer then sidebar width.
   wrap: false
+  max_depth: 6
+  expand_all: true
 
 # Creative Commons 4.0 International License.
 # http://creativecommons.org/
@@ -815,3 +817,7 @@ symbols_count_time:
 
 # Theme version
 version: 5.1.4
+# Anchor
+anchor:
+  enable: true
+  show: true

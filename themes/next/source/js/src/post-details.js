@@ -72,17 +72,36 @@ $(document).ready(function () {
   // TOC item animation navigate & prevent #item selector in adress bar.
   $('.post-toc a').on('click', function (e) {
     e.preventDefault();
-    var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
-    var offset = $(targetSelector).offset().top;
 
-    hasVelocity ?
-      html.velocity('stop').velocity('scroll', {
-        offset: offset  + 'px',
+    var href = this.getAttribute('href');
+    var targetSelector = decodeURI(href); // 中文锚点解码，例如 #计量型图
+    targetSelector = NexT.utils.escapeSelector(targetSelector);
+
+    var $target = $(targetSelector);
+    if (!$target.length) {
+      // 兜底：直接用 id 查
+      var id = decodeURI(href).replace(/^#/, '');
+      $target = $('#' + NexT.utils.escapeSelector(id));
+    }
+
+    if (!$target.length) return;
+
+    var offset = $target.offset().top;
+
+    if (typeof hasVelocity !== 'undefined' && hasVelocity) {
+      $('html, body').velocity('stop').velocity('scroll', {
+        offset: offset + 'px',
         mobileHA: false
-      }) :
+      });
+    } else {
       $('html, body').stop().animate({
         scrollTop: offset
       }, 500);
+    }
+
+    if (history.replaceState) {
+      history.replaceState(null, null, href);
+    }
   });
 
   // Expand sidebar on post detail page by default, when post has a toc.
